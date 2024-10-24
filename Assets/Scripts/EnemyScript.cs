@@ -12,12 +12,12 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        
+        //agent.SetDestination(targetPos);
     }
 
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(Vector3.zero);
+        
     }
 }
