@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GridMouseInput : MonoBehaviour
 {
+    public static bool mouseOverTower;
+
     [SerializeField]
     private Camera sceneCamera;
 
@@ -19,9 +21,23 @@ public class GridMouseInput : MonoBehaviour
         mousePos.z = sceneCamera.nearClipPlane;
         Ray ray = sceneCamera.ScreenPointToRay(mousePos);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 1000, placementLayermask) && hit.collider.CompareTag("GridTag"))
+        if (Physics.Raycast(ray, out hit, 1000, placementLayermask))
         {
-            lastPos = hit.point;
+            if (hit.collider.CompareTag("GridTag"))
+            {
+                lastPos = hit.point;
+                mouseOverTower = false;
+            }
+            else if (hit.collider.CompareTag("Tower"))
+            {
+                lastPos = hit.point + new UnityEngine.Vector3(0, 1f, 0);
+                mouseOverTower = true;
+            }
+        }
+        else
+        {
+            lastPos = new UnityEngine.Vector3(0, 0, 300);
+            mouseOverTower = false;
         }
         return lastPos;
         
