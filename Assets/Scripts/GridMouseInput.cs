@@ -30,7 +30,7 @@ public class GridMouseInput : MonoBehaviour
             }
             else if (hit.collider.CompareTag("Tower"))
             {
-                lastPos = hit.point + new UnityEngine.Vector3(0, 1f, 0);
+                lastPos = hit.point + new UnityEngine.Vector3(0, 0.5f, 0);
                 mouseOverTower = true;
             }
         }

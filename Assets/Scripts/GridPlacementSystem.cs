@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GridPlacementSystem : MonoBehaviour
 {
+    public static Vector3Int gridPosition; 
+
     [SerializeField]
     private GameObject mouseIndicator, cellIndicator;
 
@@ -15,7 +17,8 @@ public class GridPlacementSystem : MonoBehaviour
     private void Update()
     {
         Vector3 mousePos = gridMouseInput.GetSelectedMapPos();
-        Vector3Int gridPosition = grid.WorldToCell(mousePos);
+        gridPosition = grid.WorldToCell(mousePos);
+        //Debug.Log(grid.WorldToCell(mousePos));
         mouseIndicator.transform.position = mousePos;
         cellIndicator.transform.position = grid.CellToWorld(gridPosition);
     }
