@@ -14,28 +14,44 @@ using UnityEditor;
 
 public class EnemyScript : MonoBehaviour
 {
-    public enum MovementTypes
+    public Vector3 towerPos;
+    public enum Targets
     {
-        Enemy1,
-        Enemy2,
-        Enemy3
+        Main,
+        Towers,
+        Walls,
+        Mines
     }
 
-    public MovementTypes MovementType = MovementTypes.Enemy1;
+    [SerializeField] private float sightRange, attackRange;
+
+    public Targets target = Targets.Main;
     NavMeshAgent agent;
-    public Vector3 towerPos;
+    
 
   
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.SetDestination(towerPos);
+        if(target == Targets.Main)
+        {
+            agent.SetDestination(towerPos);
+        }
+        
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-      
+      if (target == Targets.Towers)
+        {
+
+            // walk forward
+            // search for towers
+            // move to tower 
+            // attack tower
+        }
     }
 }

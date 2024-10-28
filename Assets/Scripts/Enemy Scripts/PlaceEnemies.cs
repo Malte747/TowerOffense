@@ -1,19 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 
-public class GridMouseInput : MonoBehaviour
+public class PlaceEnemies : MonoBehaviour
 {
-    public static bool mouseOverTower, mouseOverGrid;
-
     [SerializeField]
     private Camera sceneCamera;
 
-    private Vector3 lastPos;
+    private Vector3 placePos;
 
     [SerializeField]
     private LayerMask placementLayermask;
+
 
     public Vector3 GetSelectedMapPos()
     {
@@ -25,28 +23,22 @@ public class GridMouseInput : MonoBehaviour
         {
             if (hit.collider.CompareTag("GridTag"))
             {
-                lastPos = hit.point;
-                mouseOverGrid = true;
-                mouseOverTower = false;
+                placePos = hit.point;
             }
             else if (hit.collider.CompareTag("Tower"))
             {
-                lastPos = hit.point + new Vector3(0, 0.5f, 0);
-                mouseOverGrid = true;
-                mouseOverTower = true;
+                placePos = hit.point;
             }
             else
             {
-            lastPos = new Vector3(hit.point.x , 0, hit.point.z);
-            mouseOverGrid = false;
-            mouseOverTower = false;
+                placePos = new Vector3(hit.point.x, 0, hit.point.z);
             }
         }
-        else        
+        else
         {
-            
+
         }
-        return lastPos;
-        
+        return placePos;
+
     }
 }
