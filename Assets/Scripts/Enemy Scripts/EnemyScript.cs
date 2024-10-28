@@ -24,6 +24,7 @@ public class EnemyScript : MonoBehaviour
     }
 
     [SerializeField] private float sightRange, attackRange;
+    [SerializeField] LayerMask visibleToEnemy;
 
     public Targets target = Targets.Main;
     NavMeshAgent agent;
@@ -54,4 +55,17 @@ public class EnemyScript : MonoBehaviour
             // attack tower
         }
     }
+
+    void SearchForTarget()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, sightRange, visibleToEnemy);
+        foreach (Collider hitCollider in hitColliders)
+        {
+            GameObject target = null;
+            //if(hitCollider.gameObject.CompareTag("")
+            
+        }
+    }
+
+
 }

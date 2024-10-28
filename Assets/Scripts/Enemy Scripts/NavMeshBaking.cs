@@ -12,24 +12,22 @@ public class NavMeshBaking : MonoBehaviour
 {
     public static bool firstEnemyExists, secondEnemyExists, thirdEnemyExists;
     public static float NavMeshbakingProgress;
-    [SerializeField] NavMeshSurface[] surfaces;
+    [SerializeField] NavMeshSurface surface;
 
     private void Start()
     {
-        UpdateNavMeshes();
+        surface = GetComponent<NavMeshSurface>();
     }
-    public void UpdateNavMeshes()
+    public void Update()
     {
-        Debug.Log("Started Baking NavMesh");
-
-        NavMeshbakingProgress = 0f;
-        if (firstEnemyExists) StartCoroutine(BakeNavMesh(surfaces[0]));
-        if (secondEnemyExists) StartCoroutine(BakeNavMesh(surfaces[1]));
-        if (thirdEnemyExists) StartCoroutine(BakeNavMesh(surfaces[2]));
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(BakeNavMesh());
+        }
 
     }
 
-    private IEnumerator BakeNavMesh(NavMeshSurface surface)
+    private IEnumerator BakeNavMesh()
     {
         float progress = 0f;
         
@@ -40,10 +38,8 @@ public class NavMeshBaking : MonoBehaviour
             yield return null;
         }
         progress = 100f;
+        NavMeshbakingProgress = progress;
+        Debug.Log("baking finished");
     }
 
-    private void Update()
-    {
-        
-    }
 }

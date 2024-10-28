@@ -153,8 +153,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 949a8ff9974f6274cab08e182fdfce03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: 2
   towerPos: {x: 5, y: 0, z: 100}
+  sightRange: 15
+  attackRange: 4
+  visibleToEnemy:
+    serializedVersion: 2
+    m_Bits: 448
+  target: 2
 --- !u!195 &1697327694870662928
 NavMeshAgent:
   m_ObjectHideFlags: 0

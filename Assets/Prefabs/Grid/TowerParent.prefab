@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 246940297470864583}
   - component: {fileID: 3604360299146816372}
   - component: {fileID: 61311908798859987}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Tower
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 1028404931266764145}
   - component: {fileID: 5384747813433552782}
   - component: {fileID: 8333056034878958720}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Tower (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3091603103723997491}
   - component: {fileID: 6750572575538997333}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: TowerParent
   m_TagString: Tower
   m_Icon: {fileID: 0}
