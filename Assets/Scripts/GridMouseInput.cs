@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GridMouseInput : MonoBehaviour
 {
-    public static bool mouseOverTower;
+    public static bool mouseOverTower, mouseOverGrid;
 
     [SerializeField]
     private Camera sceneCamera;
@@ -26,18 +26,25 @@ public class GridMouseInput : MonoBehaviour
             if (hit.collider.CompareTag("GridTag"))
             {
                 lastPos = hit.point;
+                mouseOverGrid = true;
                 mouseOverTower = false;
             }
             else if (hit.collider.CompareTag("Tower"))
             {
                 lastPos = hit.point + new UnityEngine.Vector3(0, 0.5f, 0);
+                mouseOverGrid = true;
                 mouseOverTower = true;
             }
-        }
-        else
-        {
-            lastPos = new UnityEngine.Vector3(0, 0, 300);
+            else
+            {
+            lastPos = new UnityEngine.Vector3(hit.point.x , 0, hit.point.z);
+            mouseOverGrid = false;
             mouseOverTower = false;
+            }
+        }
+        else        
+        {
+            
         }
         return lastPos;
         

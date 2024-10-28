@@ -12,13 +12,16 @@ public class TowerGridPlacement : MonoBehaviour
     public List<Vector3Int> Occupied;
     public Material indicatorColor;
     public GameObject indicator;
+    private bool placingTowers;
 
     [SerializeField]
     private Grid grid;
 
-    public int xSize, zSize, placementRangeX, placementRangeZ;
+    public int xSize, zSize, placementRangeSX, placementRangeBX, placementRangeSZ, placementRangeBZ;
 
     public List<GameObject> Towers;
+    public List<GameObject> IndicatorTowers;
+
 
 
     //Bis UI existiert Placeholder
@@ -27,6 +30,8 @@ public class TowerGridPlacement : MonoBehaviour
     void Start()
     {
         indicator.transform.localScale = new Vector3 (xSize, 1, zSize);
+        indicator.SetActive(false);
+        placingTowers = false;
     }
 
     void Update()
@@ -43,7 +48,7 @@ public class TowerGridPlacement : MonoBehaviour
                     hitTower = true;
                 }
             }
-        if(GridPlacementSystem.gridPosition.x + xSize -1 > placementRangeX || GridPlacementSystem.gridPosition.z + zSize - 1 > placementRangeZ)
+        if(GridPlacementSystem.gridPosition.x < placementRangeSX || GridPlacementSystem.gridPosition.x + xSize -1 > placementRangeBX || GridPlacementSystem.gridPosition.z < placementRangeSZ || GridPlacementSystem.gridPosition.z + zSize - 1 > placementRangeBZ)
             {
                 hitTower = true;
             }
@@ -59,12 +64,29 @@ public class TowerGridPlacement : MonoBehaviour
             indicatorColor.SetColor("_BaseColor", new Color(0f, 1f, 0f, 0.1f));
         }
 
-        if (Input.GetMouseButtonDown(0) && !hitTower)
+        if(EventSystem.current.IsPointerOverGameObject() && placingTowers)
         {
-            if (!EventSystem.current.IsPointerOverGameObject())
+            Cursor.visible = true;
+            indicator.transform.parent.gameObject.SetActive(false);
+        }
+        else if(placingTowers) 
+        {
+            Cursor.visible = false;
+            indicator.transform.parent.gameObject.SetActive(true);
+        }
+
+        if (Input.GetMouseButtonDown(0) && !hitTower && placingTowers)
+        {
+            if(!EventSystem.current.IsPointerOverGameObject())
             {
                 PlaceTower(towerNumberUI);
+                StopPlacingTowers();
             }
+        }
+
+        if (Input.GetMouseButtonDown(1) && placingTowers)
+        {    
+            StopPlacingTowers();
         }
 
     }
@@ -82,10 +104,7 @@ public class TowerGridPlacement : MonoBehaviour
                     //Debug.Log("Occupy");
             }
         }
-
-
-
-            Instantiate(Towers[number], grid.CellToWorld(GridPlacementSystem.gridPosition), Quaternion.identity);
+        Instantiate(Towers[number], grid.CellToWorld(GridPlacementSystem.gridPosition), Quaternion.identity);
     }
 
     public void OccupyCell(Vector3Int cellNumbers)
@@ -95,6 +114,9 @@ public class TowerGridPlacement : MonoBehaviour
 
     public void ChangeTowerWhilePlacing(string numbers)
     {
+        indicator.SetActive(true);
+        Cursor.visible = false;
+        placingTowers = true;
         string[] digits = Regex.Split(numbers, @"\D+");
         List<int> ints = new List<int>();
         foreach (string value in digits)
@@ -110,5 +132,25 @@ public class TowerGridPlacement : MonoBehaviour
         xSize = ints[1];
         zSize = ints[2];
         indicator.transform.localScale = new Vector3(xSize, 1, zSize);
+
+        DeactivateTowerPreview();
+        IndicatorTowers[ints[0]].SetActive(true);
+
+    }
+
+    public void StopPlacingTowers()
+    {
+        Cursor.visible = true;
+        placingTowers = false;
+        DeactivateTowerPreview();
+        indicator.SetActive(false);
+    }
+
+    public void DeactivateTowerPreview()
+    {
+        foreach (GameObject tower in IndicatorTowers)
+        {
+            tower.SetActive(false);
+        }
     }
 }
