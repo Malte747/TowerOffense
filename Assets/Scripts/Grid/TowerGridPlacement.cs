@@ -80,7 +80,10 @@ public class TowerGridPlacement : MonoBehaviour
             if(!EventSystem.current.IsPointerOverGameObject())
             {
                 PlaceTower(towerNumberUI);
-                StopPlacingTowers();
+                if (!Input.GetKey(KeyCode.LeftShift))
+                {
+                    StopPlacingTowers();
+                }
             }
         }
 
