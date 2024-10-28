@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class GridMouseInput : MonoBehaviour
 {
-    public static bool mouseOverTower, mouseOverGrid;
+    public static bool mouseOverTower, mouseOverGrid;   
 
     [SerializeField]
     private Camera sceneCamera;
 
     private Vector3 lastPos;
+    public static GameObject clickedTower;
 
     [SerializeField]
     private LayerMask placementLayermask;
@@ -25,26 +26,26 @@ public class GridMouseInput : MonoBehaviour
         {
             if (hit.collider.CompareTag("GridTag"))
             {
-                lastPos = hit.point;
+                lastPos = new Vector3(hit.point.x , 0.0f, hit.point.z);
                 mouseOverGrid = true;
                 mouseOverTower = false;
             }
-            else if (hit.collider.CompareTag("Tower"))
+            else if (hit.collider.CompareTag("Tower") || hit.collider.CompareTag("Mine") || hit.collider.CompareTag("Wall"))
             {
-                lastPos = hit.point + new Vector3(0, 0.5f, 0);
+                lastPos = new Vector3(hit.point.x , 0.0f, hit.point.z);
                 mouseOverGrid = true;
                 mouseOverTower = true;
+                 if (hit.collider != null)
+                    {
+                        clickedTower = hit.collider.gameObject;
+                    }
             }
             else
             {
             lastPos = new Vector3(hit.point.x , 0, hit.point.z);
             mouseOverGrid = false;
             mouseOverTower = false;
-            }
-        }
-        else        
-        {
-            
+            }  
         }
         return lastPos;
         

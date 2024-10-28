@@ -12,7 +12,7 @@ public class TowerGridPlacement : MonoBehaviour
     public List<Vector3Int> Occupied;
     public Material indicatorColor;
     public GameObject indicator;
-    private bool placingTowers;
+    public static bool placingTowers;
 
     [SerializeField]
     private Grid grid;
@@ -75,9 +75,9 @@ public class TowerGridPlacement : MonoBehaviour
             indicator.transform.parent.gameObject.SetActive(true);
         }
 
-        if (Input.GetMouseButtonDown(0) && !hitTower && placingTowers)
+        if (Input.GetMouseButtonDown(0))
         {
-            if(!EventSystem.current.IsPointerOverGameObject())
+            if(!EventSystem.current.IsPointerOverGameObject() && !hitTower && placingTowers)
             {
                 PlaceTower(towerNumberUI);
                 if (!Input.GetKey(KeyCode.LeftShift))
@@ -85,7 +85,12 @@ public class TowerGridPlacement : MonoBehaviour
                     StopPlacingTowers();
                 }
             }
+            else if (GridMouseInput.mouseOverTower && !placingTowers)
+            {
+                ClickOnTower();
+            }
         }
+
 
         if (Input.GetMouseButtonDown(1) && placingTowers)
         {    
@@ -97,6 +102,8 @@ public class TowerGridPlacement : MonoBehaviour
     public void PlaceTower(int number)
     {
         // OccupyCell(GridPlacementSystem.gridPosition);
+        GameObject PlacedTower = Instantiate(Towers[number], grid.CellToWorld(GridPlacementSystem.gridPosition), Quaternion.identity);
+        TowerKnowsWhereItIs towerKnowsWhereItIs = PlacedTower.GetComponent<TowerKnowsWhereItIs>();
 
         for (int i = 1; i <= xSize; i++)
         {
@@ -104,10 +111,10 @@ public class TowerGridPlacement : MonoBehaviour
             for (int i2 = 1; i2 <= zSize; i2++)
             {
                     OccupyCell(new Vector3Int(GridPlacementSystem.gridPosition.x + i -1, 0 , GridPlacementSystem.gridPosition.z + i2 - 1));
+                    towerKnowsWhereItIs.MyCells.Add(new Vector3Int(GridPlacementSystem.gridPosition.x + i -1, 0 , GridPlacementSystem.gridPosition.z + i2 - 1));
                     //Debug.Log("Occupy");
             }
         }
-        Instantiate(Towers[number], grid.CellToWorld(GridPlacementSystem.gridPosition), Quaternion.identity);
     }
 
     public void OccupyCell(Vector3Int cellNumbers)
@@ -155,5 +162,12 @@ public class TowerGridPlacement : MonoBehaviour
         {
             tower.SetActive(false);
         }
+    }
+
+    public void ClickOnTower()
+    {
+        TowerKnowsWhereItIs towerKnowsWhereItIs = GridMouseInput.clickedTower.GetComponent<TowerKnowsWhereItIs>();
+        if(towerKnowsWhereItIs == null) {towerKnowsWhereItIs = GridMouseInput.clickedTower.GetComponentInParent<TowerKnowsWhereItIs>();}
+        Debug.Log("Cells: " + towerKnowsWhereItIs.MyCells.Count);
     }
 }

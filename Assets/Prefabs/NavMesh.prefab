@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 960
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 1
@@ -76,4 +76,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fdcfbcbc2dd28045b27e86eacdd99bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  surfaces: []
+  surface: {fileID: 0}

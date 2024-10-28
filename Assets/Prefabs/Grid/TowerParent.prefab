@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 8333056034878958720}
   m_Layer: 6
   m_Name: Tower (1)
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -220,6 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3091603103723997491}
   - component: {fileID: 6750572575538997333}
+  - component: {fileID: 3372792379370281747}
   m_Layer: 6
   m_Name: TowerParent
   m_TagString: Tower
@@ -260,3 +261,16 @@ MonoBehaviour:
   m_Center: {x: 5, y: 1, z: 5}
   m_Area: 4
   m_AffectedAgents: ffffffff
+--- !u!114 &3372792379370281747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7244464562473474179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d4648e735d0564a9bd3f7b18818e5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyCells: []
