@@ -9,7 +9,9 @@ using UnityEngine.EventSystems;
 
 public class TowerGridPlacement : MonoBehaviour
 {
-    public List<Vector3Int> Occupied;
+    //public List<Vector3Int> Occupied;
+    public static Dictionary<Vector3, GameObject> TowerBible = new Dictionary<Vector3, GameObject>();
+
     public Material indicatorColor;
     public GameObject indicator;
     public static bool placingTowers;
@@ -18,9 +20,9 @@ public class TowerGridPlacement : MonoBehaviour
     private Grid grid;
 
     public int xSize, zSize, placementRangeSX, placementRangeBX, placementRangeSZ, placementRangeBZ;
-
     public List<GameObject> Towers;
     public List<GameObject> IndicatorTowers;
+    private GameObject PlacedTower;
 
 
 
@@ -43,7 +45,7 @@ public class TowerGridPlacement : MonoBehaviour
             for (int i2 = 1; i2 <= zSize; i2++)
             {
                 Vector3Int gridCheck = new Vector3Int(GridPlacementSystem.gridPosition.x + i - 1, 0, GridPlacementSystem.gridPosition.z + i2 - 1);
-                if (Occupied.Contains(gridCheck))
+                if (TowerBible.ContainsKey(gridCheck))
                 {
                     hitTower = true;
                 }
@@ -102,7 +104,7 @@ public class TowerGridPlacement : MonoBehaviour
     public void PlaceTower(int number)
     {
         // OccupyCell(GridPlacementSystem.gridPosition);
-        GameObject PlacedTower = Instantiate(Towers[number], grid.CellToWorld(GridPlacementSystem.gridPosition), Quaternion.identity);
+        PlacedTower = Instantiate(Towers[number], grid.CellToWorld(GridPlacementSystem.gridPosition), Quaternion.identity);
         TowerKnowsWhereItIs towerKnowsWhereItIs = PlacedTower.GetComponent<TowerKnowsWhereItIs>();
 
         for (int i = 1; i <= xSize; i++)
@@ -119,7 +121,8 @@ public class TowerGridPlacement : MonoBehaviour
 
     public void OccupyCell(Vector3Int cellNumbers)
     {
-        Occupied.Add(cellNumbers);
+        TowerBible.Add(cellNumbers, PlacedTower);
+        
     }
 
     public void ChangeTowerWhilePlacing(string numbers)

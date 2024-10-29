@@ -58,6 +58,7 @@ public class EnemyScript : MonoBehaviour
 
     void SearchForTarget()
     {
+        /*
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, sightRange, visibleToEnemy);
         foreach (Collider hitCollider in hitColliders)
         {
@@ -65,6 +66,8 @@ public class EnemyScript : MonoBehaviour
             //if(hitCollider.gameObject.CompareTag("")
             
         }
+        */
+
     }
 
 
