@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 2518f6424553df34d934e4f162b2dccf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -158,6 +158,8 @@ MonoBehaviour:
   target: 2
   sightRange: 4
   attackRange: 1
+  damage: 10
+  attackCooldown: 1
 --- !u!195 &1697327694870662928
 NavMeshAgent:
   m_ObjectHideFlags: 0

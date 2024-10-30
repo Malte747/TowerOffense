@@ -26,14 +26,15 @@ public class EnemyScript : MonoBehaviour
     public Targets target = Targets.MainTower;
 
     [SerializeField] private int sightRange = 1, attackRange = 1;
-
+    [SerializeField] private float damage, attackCooldown;
 
     private Grid grid;
     NavMeshAgent agent;
-    float t = 1f;
+    float t = 1f, cooldown = 0f;
     Vector3 currentPosOnGrid;
     List<GameObject> foundTowers = new List<GameObject>();
     GameObject nextVictim;
+
 
 
     // Start is called before the first frame update
@@ -42,23 +43,23 @@ public class EnemyScript : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         grid = GameObject.Find("Grid").GetComponent<Grid>();
         EnemyBibleScript.EnemyBible.Add(transform.position, gameObject);
+        
 
 
         if (target == Targets.MainTower)
         {
             agent.SetDestination(towerPos);
         }
-       
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-         
 
         t += Time.deltaTime;
-
+        cooldown -= Time.deltaTime;
         if (target != Targets.MainTower && t >= 1 && nextVictim == null)
         {
 
@@ -73,6 +74,9 @@ public class EnemyScript : MonoBehaviour
             }
 
         }
+        if (nextVictim != null) if (Vector3.Distance(transform.position, nextVictim.transform.GetChild(0).position) <= attackRange * 5.1 && cooldown <= 0) Attack();
+
+
     }
 
     void CheckGridPositions()
@@ -109,14 +113,14 @@ public class EnemyScript : MonoBehaviour
             if (((target == Targets.Towers && tower.CompareTag("Tower"))
                 || (target == Targets.Walls && tower.CompareTag("Wall"))
                 || (target == Targets.Mines && tower.CompareTag("Mine")))
-                && Vector3.Distance(transform.position, tower.transform.position) < distance)
+                && Vector3.Distance(transform.position, tower.transform.GetChild(0).position) < distance)
             {
                 distance = Vector3.Distance(transform.position, tower.transform.position);
                 nextVictim = tower;
-                agent.SetDestination(tower.transform.position);
-                Debug.Log("Moving to: " + tower.transform.position);
+                agent.SetDestination(tower.transform.GetChild(0).position);
+                Debug.Log("Moving to: " + tower.transform.GetChild(0).position);
             }
-            
+
             /*
             else if (Vector3.Distance(transform.position, tower.transform.position) < distance)
             {
@@ -126,7 +130,14 @@ public class EnemyScript : MonoBehaviour
                 Debug.Log("Moving to: " + tower.transform.position);
             }
             */
-            
+
         }
+    }
+
+    void Attack()
+    { 
+        cooldown = attackCooldown;
+        Health health = nextVictim.GetComponent<Health>();
+        health.health -= damage;
     }
 }
