@@ -284,7 +284,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a271fdcfb9a607499632c569016e00a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Occupied: []
   indicatorColor: {fileID: 2100000, guid: 3c9f9b6f979957a4f90455a1c6499a38, type: 2}
   indicator: {fileID: 228658071}
   grid: {fileID: 415096506}
@@ -2556,15 +2555,7 @@ PrefabInstance:
     - target: {fileID: -8511890322228776741, guid: 4a531db828e9bef49a8f9266e64db759, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 63e85a1c0a463d14f9bce25c83258339, type: 2}
-    - target: {fileID: -8511890322228776741, guid: 4a531db828e9bef49a8f9266e64db759, type: 3}
-      propertyPath: m_CollectObjects
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: -8511890322228776741, guid: 4a531db828e9bef49a8f9266e64db759, type: 3}
-      propertyPath: m_LayerMask.m_Bits
-      value: 456
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 23800000, guid: 48d82748f9ef03c4497ebd7bfaa79553, type: 2}
     - target: {fileID: 3313689500541374855, guid: 4a531db828e9bef49a8f9266e64db759, type: 3}
       propertyPath: m_Name
       value: NavMesh

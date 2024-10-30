@@ -1,15 +1,15 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEditor;
 
 //  SCRIPT SUMMARY: enemy brain for movement, attacking & dying
-//      (wip)           create a NavMeshAgent component when the round starts
-//      (not started)   calculate easiest path
-//      (not started)   choose next target
-//      (not started)   attack target
-//      (not started)   animations
+// get grid position
+// check grid positions in FOV
+// check for targets
+// target found: take ideal path to target 
+// target found: DESTROY
+// no target found: attack closet tower
+// no target found & no towers near: take ideal path forward
 
 
 public class EnemyScript : MonoBehaviour
@@ -17,58 +17,110 @@ public class EnemyScript : MonoBehaviour
     public Vector3 towerPos;
     public enum Targets
     {
-        Main,
+        None,
+        MainTower,
         Towers,
         Walls,
         Mines
     }
+    public Targets target = Targets.MainTower;
 
-    [SerializeField] private float sightRange, attackRange;
-    [SerializeField] LayerMask visibleToEnemy;
+    [SerializeField] private int sightRange = 1, attackRange = 1;
 
-    public Targets target = Targets.Main;
+
+    private Grid grid;
     NavMeshAgent agent;
-    
+    float t = 1f;
+    Vector3 currentPosOnGrid;
+    List<GameObject> foundTowers = new List<GameObject>();
+    GameObject nextVictim;
 
-  
+
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        if(target == Targets.Main)
+        grid = GameObject.Find("Grid").GetComponent<Grid>();
+
+
+        if (target == Targets.MainTower)
         {
             agent.SetDestination(towerPos);
         }
-        
-        
+       
+
     }
 
     // Update is called once per frame
     void Update()
     {
-      if (target == Targets.Towers)
+        t += Time.deltaTime;
+
+        if (target != Targets.MainTower && t >= 1 && nextVictim == null)
         {
 
-            // walk forward
-            // search for towers
-            // move to tower 
-            // attack tower
+            CheckGridPositions();
+            t = 0;
+
+            if (foundTowers.Count != 0) SelectTarget();
+            else agent.SetDestination(transform.position + Vector3.forward * 10f);
+
         }
     }
 
-    void SearchForTarget()
+    void CheckGridPositions()
     {
-        /*
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, sightRange, visibleToEnemy);
-        foreach (Collider hitCollider in hitColliders)
+        Debug.Log("checking grid positions");
+        foundTowers.Clear();
+        currentPosOnGrid = grid.WorldToCell(transform.position);
+
+        for (int i = 1; i <= sightRange; i++)
         {
-            GameObject target = null;
-            //if(hitCollider.gameObject.CompareTag("")
+            SearchForTowersAt(currentPosOnGrid + new Vector3(0, 0, 0));
+            SearchForTowersAt(currentPosOnGrid + new Vector3(i, 0, 0));  // only checks outer ring :c
+            SearchForTowersAt(currentPosOnGrid + new Vector3(0, 0, i));  // should works fine with a sight range of 1 for now
+            SearchForTowersAt(currentPosOnGrid + new Vector3(i, 0, i));
+            SearchForTowersAt(currentPosOnGrid + new Vector3(-i, 0, 0));
+            SearchForTowersAt(currentPosOnGrid + new Vector3(0, 0, -i));
+            SearchForTowersAt(currentPosOnGrid + new Vector3(-i, 0, -i)); // imma fix later
+        }
+
+    }
+
+    void SearchForTowersAt(Vector3 pos)
+    {
+        if (TowerGridPlacement.TowerBible.ContainsKey(pos) && !foundTowers.Contains(TowerGridPlacement.TowerBible[pos]))
+        {
+            foundTowers.Add(TowerGridPlacement.TowerBible[pos]);
+            Debug.Log("Found Tower: " + TowerGridPlacement.TowerBible[pos]);
+        }
+    }
+
+    void SelectTarget()
+    {
+        Debug.Log("selecting target");
+        List<GameObject> targets = new List<GameObject>();
+        float distance = Mathf.Infinity;
+        foreach (GameObject tower in foundTowers)
+        {
+            if (((target == Targets.Towers && tower.CompareTag("Tower"))
+                || (target == Targets.Walls && tower.CompareTag("Wall"))
+                || (target == Targets.Mines && tower.CompareTag("Mine")))
+                && Vector3.Distance(transform.position, tower.transform.position) < distance)
+            {
+                distance = Vector3.Distance(transform.position, tower.transform.position);
+                nextVictim = tower;
+                agent.SetDestination(tower.transform.position);
+                Debug.Log("Moving to: " + tower.transform.position);
+            }
+            else if (Vector3.Distance(transform.position, tower.transform.position) < distance)
+            {
+                distance = Vector3.Distance(transform.position, tower.transform.position);
+                nextVictim = tower;
+                agent.SetDestination(tower.transform.position);
+                Debug.Log("Moving to: " + tower.transform.position);
+            }
             
         }
-        */
-
     }
-
-
 }
