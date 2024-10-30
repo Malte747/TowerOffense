@@ -41,6 +41,7 @@ public class EnemyScript : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         grid = GameObject.Find("Grid").GetComponent<Grid>();
+        EnemyBibleScript.EnemyBible.Add(transform.position, gameObject);
 
 
         if (target == Targets.MainTower)
@@ -54,6 +55,8 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+         
+
         t += Time.deltaTime;
 
         if (target != Targets.MainTower && t >= 1 && nextVictim == null)
@@ -63,14 +66,17 @@ public class EnemyScript : MonoBehaviour
             t = 0;
 
             if (foundTowers.Count != 0) SelectTarget();
-            else agent.SetDestination(transform.position + Vector3.forward * 10f);
+            else agent.SetDestination(transform.position + Vector3.forward * 100f);
+            if (nextVictim == null)
+            {
+                agent.SetDestination(transform.position + Vector3.forward * 100f);
+            }
 
         }
     }
 
     void CheckGridPositions()
     {
-        Debug.Log("checking grid positions");
         foundTowers.Clear();
         currentPosOnGrid = grid.WorldToCell(transform.position);
 
@@ -91,13 +97,11 @@ public class EnemyScript : MonoBehaviour
         if (TowerGridPlacement.TowerBible.ContainsKey(pos) && !foundTowers.Contains(TowerGridPlacement.TowerBible[pos]))
         {
             foundTowers.Add(TowerGridPlacement.TowerBible[pos]);
-            Debug.Log("Found Tower: " + TowerGridPlacement.TowerBible[pos]);
         }
     }
 
     void SelectTarget()
     {
-        Debug.Log("selecting target");
         List<GameObject> targets = new List<GameObject>();
         float distance = Mathf.Infinity;
         foreach (GameObject tower in foundTowers)
@@ -112,6 +116,8 @@ public class EnemyScript : MonoBehaviour
                 agent.SetDestination(tower.transform.position);
                 Debug.Log("Moving to: " + tower.transform.position);
             }
+            
+            /*
             else if (Vector3.Distance(transform.position, tower.transform.position) < distance)
             {
                 distance = Vector3.Distance(transform.position, tower.transform.position);
@@ -119,6 +125,7 @@ public class EnemyScript : MonoBehaviour
                 agent.SetDestination(tower.transform.position);
                 Debug.Log("Moving to: " + tower.transform.position);
             }
+            */
             
         }
     }

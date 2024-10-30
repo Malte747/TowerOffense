@@ -84,6 +84,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6750572575538997333, guid: e07f0fa165e0eb042aae915b0b72e0f9, type: 3}
+      propertyPath: m_Area
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750572575538997333, guid: e07f0fa165e0eb042aae915b0b72e0f9, type: 3}
+      propertyPath: m_Size.x
+      value: 17.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750572575538997333, guid: e07f0fa165e0eb042aae915b0b72e0f9, type: 3}
+      propertyPath: m_Size.z
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7244464562473474179, guid: e07f0fa165e0eb042aae915b0b72e0f9, type: 3}
       propertyPath: m_Name
       value: TowerParent 3x2 Variant
@@ -99,5 +111,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7244464562473474179, guid: e07f0fa165e0eb042aae915b0b72e0f9, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 2266583041060544192}
   m_SourcePrefab: {fileID: 100100000, guid: e07f0fa165e0eb042aae915b0b72e0f9, type: 3}
+--- !u!1 &6980274837318347827 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7244464562473474179, guid: e07f0fa165e0eb042aae915b0b72e0f9, type: 3}
+  m_PrefabInstance: {fileID: 312833977169097904}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2266583041060544192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6980274837318347827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 10, y: 3, z: 10}
+  m_Center: {x: 5, y: 1, z: 5}
+  m_Area: 4
+  m_AffectedAgents: ffffffff
