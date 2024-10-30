@@ -12,9 +12,9 @@ NavMeshProjectSettings:
   - name: Jump
     cost: 2
   - name: Damage
-    cost: 5
+    cost: 3
   - name: Occupied
-    cost: 100
+    cost: 6
   - name: 
     cost: 1
   - name: 

@@ -74,17 +74,16 @@ public class EnemyScript : MonoBehaviour
         foundTowers.Clear();
         currentPosOnGrid = grid.WorldToCell(transform.position);
 
-        for (int i = 1; i <= sightRange; i++)
-        {
-            SearchForTowersAt(currentPosOnGrid + new Vector3(0, 0, 0));
-            SearchForTowersAt(currentPosOnGrid + new Vector3(i, 0, 0));  // only checks outer ring :c
-            SearchForTowersAt(currentPosOnGrid + new Vector3(0, 0, i));  // should works fine with a sight range of 1 for now
-            SearchForTowersAt(currentPosOnGrid + new Vector3(i, 0, i));
-            SearchForTowersAt(currentPosOnGrid + new Vector3(-i, 0, 0));
-            SearchForTowersAt(currentPosOnGrid + new Vector3(0, 0, -i));
-            SearchForTowersAt(currentPosOnGrid + new Vector3(-i, 0, -i)); // imma fix later
-        }
 
+        for (int x = -sightRange; x <= sightRange; x++)
+        {
+            for (int z = -sightRange; z <= sightRange; z++)
+            {
+                Vector3 offset = new Vector3(x, 0, z);
+                Vector3 checkPosition = currentPosOnGrid + offset;
+                SearchForTowersAt(checkPosition);
+            }
+        }
     }
 
     void SearchForTowersAt(Vector3 pos)

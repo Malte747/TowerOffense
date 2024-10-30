@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPos: {x: 5, y: 0, z: 100}
   target: 2
-  sightRange: 1
+  sightRange: 4
   attackRange: 1
 --- !u!195 &1697327694870662928
 NavMeshAgent:
