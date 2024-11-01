@@ -48,26 +48,7 @@ public class EnemyScript : MonoBehaviour
         t += Time.deltaTime;
         cooldown -= Time.deltaTime;
 
-        // stop moving if theres a tower in the way
-        if (TowerGridPlacement.TowerBible.ContainsKey(grid.WorldToCell(transform.position))) agent.enabled = false;
-        else agent.enabled = true;
 
-        // attack towers that aren't a target but are in the way. it's nothing personal :(
-        if (!agent.enabled && Vector3.Distance(transform.position, agent.destination) > attackRange * 10) 
-        {
-            float distance = Mathf.Infinity;
-
-            CheckGridPositions();
-            foreach (GameObject tower in foundTowers)
-            {
-                if (Vector3.Distance(transform.position, tower.transform.GetChild(0).position) < distance)
-                {
-                    distance = Vector3.Distance(transform.position, tower.transform.position);
-                    nextVictim = tower;
-                }
-
-            }
-        }
 
         // update the agent's destination once every second 
         if (t >= 1)
@@ -76,7 +57,7 @@ public class EnemyScript : MonoBehaviour
             // if unit targets the main tower just try to move forwards while taking the least amount of damage 
             if (target == Targets.MainTower)
             {
-                if (agent.enabled == true) agent.SetDestination(transform.position + Vector3.forward * 100f);
+                if (agent.enabled == true) agent.SetDestination(transform.position + Vector3.forward * 50f);
             }
             // if unit targets eveything move to the closest tower or keep moving forwards if there are none
             else if (target == Targets.Everything)
@@ -84,19 +65,25 @@ public class EnemyScript : MonoBehaviour
                 float distance = Mathf.Infinity;
 
                 CheckGridPositions();
+
                 foreach (GameObject tower in foundTowers)
                 {
-                    if (Vector3.Distance(transform.position, tower.transform.GetChild(0).position) < distance)
+                    TowerKnowsWhereItIs towerScript = tower.GetComponent<TowerKnowsWhereItIs>();
+                    foreach (Vector3Int pos in towerScript.MyCells)
                     {
-                        distance = Vector3.Distance(transform.position, tower.transform.position);
-                        nextVictim = tower;
-                        if (agent.enabled == true) agent.SetDestination(tower.transform.GetChild(0).position);
+                        if (Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5)) < distance)
+                        {
+                            distance = Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5));
+                            nextVictim = tower;
+                            if (agent.enabled == true) agent.SetDestination(grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5));
+                        }
                     }
 
                 }
+
                 if (nextVictim == null)
                 {
-                    if (agent.enabled == true) agent.SetDestination(transform.position + Vector3.forward * 100f);
+                    if (agent.enabled == true) agent.SetDestination(transform.position + Vector3.forward * 50f);
                 }
             }
             // if unit targets a specific type of tower move to the closest tower of that type or keep moving forwards if there are none
@@ -107,7 +94,7 @@ public class EnemyScript : MonoBehaviour
                 if (foundTowers.Count != 0) SelectTarget();
                 if (nextVictim == null)
                 {
-                    if (agent.enabled == true) agent.SetDestination(transform.position + Vector3.forward * 100f);
+                    if (agent.enabled == true) agent.SetDestination(transform.position + Vector3.forward * 50f);
                 }
             }
         }
@@ -119,7 +106,31 @@ public class EnemyScript : MonoBehaviour
             CheckAttackRange(nextVictim);
             if (canAttackVictim && cooldown <= 0) Attack();
         }
+        // stop moving if theres a tower in the way
+        if (TowerGridPlacement.TowerBible.ContainsKey(grid.WorldToCell(transform.position))) agent.enabled = false;
+        else agent.enabled = true;
 
+        // attack towers that aren't a target but are in the way. it's nothing personal :(
+        if (!agent.enabled && Vector3.Distance(transform.position, agent.destination) > attackRange * 8)
+        {
+            float distance = Mathf.Infinity;
+
+            CheckGridPositions();
+            foreach (GameObject tower in foundTowers)
+            {
+                TowerKnowsWhereItIs towerScript = tower.GetComponent<TowerKnowsWhereItIs>();
+                foreach (Vector3Int pos in towerScript.MyCells)
+                {
+                    if (Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5)) < distance)
+                    {
+                        distance = Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5));
+                        nextVictim = tower;
+                        
+                    }
+                }
+
+            }
+        }
     }
 
     void CheckGridPositions()
@@ -149,12 +160,19 @@ public class EnemyScript : MonoBehaviour
         {
             if (((target == Targets.Towers && tower.CompareTag("Tower"))
                 || (target == Targets.Walls && tower.CompareTag("Wall"))
-                || (target == Targets.Mines && tower.CompareTag("Mine")))
-                && Vector3.Distance(transform.position, tower.transform.GetChild(0).position) < distance)
+                || (target == Targets.Mines && tower.CompareTag("Mine"))))
             {
-                distance = Vector3.Distance(transform.position, tower.transform.position);
-                nextVictim = tower;
-                if (agent.enabled == true) agent.SetDestination(tower.transform.GetChild(0).position);
+                TowerKnowsWhereItIs towerScript = tower.GetComponent<TowerKnowsWhereItIs>();
+                foreach (Vector3Int pos in towerScript.MyCells)
+                {
+                    if (Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5)) < distance)
+                    {
+                        distance = Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5));
+                        nextVictim = tower;
+                        if (agent.enabled == true) agent.SetDestination(grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5));
+                    }
+                }
+
             }
         }
     }
@@ -176,13 +194,13 @@ public class EnemyScript : MonoBehaviour
 
         }
 
-        if (distance > attackRange * 10) canAttackVictim = false;
+        if (distance > attackRange * 8) canAttackVictim = false;
         else canAttackVictim = true;
     }
 
     void Attack()
     {
-        Debug.Log("Attack!!! " + damage +" damage dealt to " + nextVictim);
+        Debug.Log("Attack!!! " + damage + " damage dealt to " + nextVictim);
         cooldown = attackCooldown;
         Health health = nextVictim.GetComponent<Health>();
         health.health -= damage;
