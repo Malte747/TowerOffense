@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+//  SCRIPT SUMMARY: keeps track of a towers/units health & kills it
+
 public class Health : MonoBehaviour
 {
     public float health;
@@ -20,6 +22,8 @@ public class Health : MonoBehaviour
     void Death()
     {
         RemoveEntries(gameObject);
+        NavMeshBaking baking = GameObject.Find("NavMesh").GetComponent<NavMeshBaking>();
+        baking.StartCoroutine("BakeNavMesh");
         Destroy(gameObject);
         
     }
