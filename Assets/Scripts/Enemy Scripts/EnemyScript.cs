@@ -7,7 +7,6 @@ using UnityEngine.AI;
 
 public class EnemyScript : MonoBehaviour
 {
-    public Vector3 towerPos;
     public enum Targets
     {
         Everything,
@@ -18,11 +17,12 @@ public class EnemyScript : MonoBehaviour
     }
     [Tooltip("Select which towers this unit will attack. It will try to avoid the others.")]
     public Targets target = Targets.MainTower;
-
+    [Tooltip("all towers within x tiles of the unit")]
     [SerializeField] private int sightRange = 1, attackRange = 1;
-    [Tooltip("Units that target everything always do base damage")]
-    [SerializeField] private float baseDamage, buffedDamage, attackCooldown;
-
+    [Tooltip("Damage per attack. Units targeting everything always do base damage")]
+    [SerializeField] private float baseDamage, buffedDamage;
+    [Tooltip("Time in seconds between attacks")]
+    [SerializeField] private float attackCooldown;
 
     private Grid grid;
     NavMeshAgent agent;
@@ -45,7 +45,6 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Victim: " + nextVictim);
         t += Time.deltaTime;
         cooldown -= Time.deltaTime;
 
@@ -100,16 +99,23 @@ public class EnemyScript : MonoBehaviour
             }
         }
 
+        // stop moving if theres a tower in the way
+        if (TowerGridPlacement.TowerBible.ContainsKey(grid.WorldToCell(transform.position))) agent.enabled = false;
+        else agent.enabled = true;
+
         // always move to & try to attack the current victim
         if (nextVictim != null)
         {
             if (agent.enabled == true && agent.destination != null) agent.SetDestination(nextVictim.transform.GetChild(0).position);
             CheckAttackRange(nextVictim);
             if (canAttackVictim && cooldown <= 0) Attack();
+            if (canAttackVictim && attackRange > 1) 
+            {
+                agent.enabled = false;
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(nextVictim.transform.GetChild(0).position - transform.position), 5 * Time.deltaTime);
+            }
         }
-        // stop moving if theres a tower in the way
-        if (TowerGridPlacement.TowerBible.ContainsKey(grid.WorldToCell(transform.position))) agent.enabled = false;
-        else agent.enabled = true;
+       
 
         // attack towers that aren't a target but are in the way. it's nothing personal :(
         if (!agent.enabled && Vector3.Distance(transform.position, agent.destination) > attackRange * 8)
@@ -132,6 +138,8 @@ public class EnemyScript : MonoBehaviour
 
             }
         }
+
+        
     }
 
     void CheckGridPositions()

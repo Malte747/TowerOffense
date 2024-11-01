@@ -33,7 +33,6 @@ public class NavMeshBaking : MonoBehaviour
         }
         progress = 100f;
         NavMeshbakingProgress = progress;
-        Debug.Log("baking finished");
     }
 
 }
