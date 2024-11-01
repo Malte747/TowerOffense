@@ -107,6 +107,9 @@ public class TowerGridPlacement : MonoBehaviour
         PlacedTower = Instantiate(Towers[number], grid.CellToWorld(GridPlacementSystem.gridPosition), Quaternion.identity);
         TowerKnowsWhereItIs towerKnowsWhereItIs = PlacedTower.GetComponent<TowerKnowsWhereItIs>();
 
+        NavMeshBaking baking = GameObject.Find("NavMesh").GetComponent<NavMeshBaking>();
+        baking.StartCoroutine("BakeNavMesh");
+
         for (int i = 1; i <= xSize; i++)
         {
 

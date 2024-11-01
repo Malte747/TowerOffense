@@ -17,18 +17,12 @@ public class NavMeshBaking : MonoBehaviour
     private void Start()
     {
         surface = GetComponent<NavMeshSurface>();
-    }
-    public void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(BakeNavMesh());
-        }
-
+        StartCoroutine(BakeNavMesh());
     }
 
-    private IEnumerator BakeNavMesh()
+    public IEnumerator BakeNavMesh()
     {
+        yield return new WaitForSeconds(0.01f);
         float progress = 0f;
         
         AsyncOperation BakingAsync = surface.UpdateNavMesh(surface.navMeshData);
@@ -39,7 +33,6 @@ public class NavMeshBaking : MonoBehaviour
         }
         progress = 100f;
         NavMeshbakingProgress = progress;
-        Debug.Log("baking finished");
     }
 
 }
