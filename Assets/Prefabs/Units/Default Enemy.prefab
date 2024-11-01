@@ -134,7 +134,8 @@ MonoBehaviour:
   target: 2
   sightRange: 4
   attackRange: 1
-  damage: 50
+  baseDamage: 10
+  buffedDamage: 20
   attackCooldown: 1
 --- !u!195 &1697327694870662928
 NavMeshAgent:

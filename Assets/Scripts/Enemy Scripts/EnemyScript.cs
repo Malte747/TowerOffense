@@ -16,15 +16,17 @@ public class EnemyScript : MonoBehaviour
         Walls,
         Mines
     }
+    [Tooltip("Select which towers this unit will attack. It will try to avoid the others.")]
     public Targets target = Targets.MainTower;
 
     [SerializeField] private int sightRange = 1, attackRange = 1;
-    [SerializeField] private float damage, attackCooldown;
+    [Tooltip("Units that target everything always do base damage")]
+    [SerializeField] private float baseDamage, buffedDamage, attackCooldown;
 
 
     private Grid grid;
     NavMeshAgent agent;
-    float t = 1f, cooldown = 0f, speed;
+    float t = 1f, cooldown = 0f;
     Vector3 currentPosOnGrid;
     List<GameObject> foundTowers = new List<GameObject>();
     GameObject nextVictim;
@@ -38,7 +40,6 @@ public class EnemyScript : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         grid = GameObject.Find("Grid").GetComponent<Grid>();
         EnemyBibleScript.EnemyBible.Add(transform.position, gameObject);
-        speed = agent.speed;
     }
 
     // Update is called once per frame
@@ -125,7 +126,7 @@ public class EnemyScript : MonoBehaviour
                     {
                         distance = Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5));
                         nextVictim = tower;
-                        
+
                     }
                 }
 
@@ -200,9 +201,18 @@ public class EnemyScript : MonoBehaviour
 
     void Attack()
     {
-        Debug.Log("Attack!!! " + damage + " damage dealt to " + nextVictim);
         cooldown = attackCooldown;
         Health health = nextVictim.GetComponent<Health>();
-        health.health -= damage;
+        if        ((target == Targets.Towers && nextVictim.CompareTag("Tower"))
+                || (target == Targets.Walls && nextVictim.CompareTag("Wall"))
+                || (target == Targets.Mines && nextVictim.CompareTag("Mine")))
+        {
+            health.health -= buffedDamage;
+        }
+        else
+        {
+            health.health -= baseDamage;
+        }
+        
     }
 }
