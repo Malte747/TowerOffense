@@ -1,44 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlaceEnemies : MonoBehaviour
 {
-    [SerializeField]
-    private Camera sceneCamera;
+    public LayerMask planeLayer;
+    public GameObject[] Units;
+    public GameObject unit;
 
-    private Vector3 placePos;
-
-    [SerializeField]
-    private LayerMask placementLayermask;
-
-
-    public Vector3 GetSelectedMapPos()
+    
+    void Update()
     {
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = sceneCamera.nearClipPlane;
-        Ray ray = sceneCamera.ScreenPointToRay(mousePos);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 1000, placementLayermask))
+        if (Input.GetMouseButtonDown(0))
         {
-            if (hit.collider.CompareTag("GridTag"))
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, planeLayer))
             {
-                placePos = hit.point;
-            }
-            else if (hit.collider.CompareTag("Tower"))
-            {
-                placePos = hit.point;
-            }
-            else
-            {
-                placePos = new Vector3(hit.point.x, 0, hit.point.z);
+                Instantiate(unit, hit.point, Quaternion.identity);
             }
         }
-        else
-        {
+    }
 
-        }
-        return placePos;
-
+    public void ChangeUnit(int unitNumber)
+    {
+        unit = Units[unitNumber];
     }
 }
