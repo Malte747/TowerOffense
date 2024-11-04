@@ -82,7 +82,9 @@ public class TowerGridPlacement : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if(!EventSystem.current.IsPointerOverGameObject() && !hitTower && placingTowers)
+            if(!EventSystem.current.IsPointerOverGameObject())
+            {
+            if(!hitTower && placingTowers)
             {
                 PlaceTower(towerNumberUI);
                 if (!Input.GetKey(KeyCode.LeftShift))
@@ -97,6 +99,7 @@ public class TowerGridPlacement : MonoBehaviour
             else if (!GridMouseInput.mouseOverTower && !placingTowers)
             {
                 UnselectTower();
+            }
             }
         }
 
@@ -185,7 +188,7 @@ public class TowerGridPlacement : MonoBehaviour
     {
         UnselectTower();
         TowerKnowsWhereItIs towerKnowsWhereItIs = GridMouseInput.clickedTower.GetComponent<TowerKnowsWhereItIs>();
-        if(towerKnowsWhereItIs == null) {towerKnowsWhereItIs = GridMouseInput.clickedTower.GetComponentInParent<TowerKnowsWhereItIs>();}
+        if(towerKnowsWhereItIs == null) towerKnowsWhereItIs = GridMouseInput.clickedTower.GetComponentInParent<TowerKnowsWhereItIs>();
         Debug.Log("Cells: " + towerKnowsWhereItIs.MyCells.Count);
         clickedTowerParent = GridMouseInput.clickedTower.transform.parent.gameObject;
         if (clickedTowerParent.GetComponent<Outline>() != null)

@@ -34388,7 +34388,7 @@ MonoBehaviour:
   sceneCamera: {fileID: 1601479780}
   placementLayermask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 960
 --- !u!1 &815832460
 GameObject:
   m_ObjectHideFlags: 0
@@ -89067,6 +89067,10 @@ PrefabInstance:
     - target: {fileID: 3313689500541374855, guid: 4a531db828e9bef49a8f9266e64db759, type: 3}
       propertyPath: m_Name
       value: NavMesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 3313689500541374855, guid: 4a531db828e9bef49a8f9266e64db759, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5523369498684655511, guid: 4a531db828e9bef49a8f9266e64db759, type: 3}
       propertyPath: m_LocalPosition.x

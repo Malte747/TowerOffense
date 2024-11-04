@@ -32,6 +32,7 @@ public class GridMouseInput : MonoBehaviour
             }
             else if (hit.collider.CompareTag("Tower") || hit.collider.CompareTag("Mine") || hit.collider.CompareTag("Wall"))
             {
+                Debug.Log("Tower");
                 lastPos = new Vector3(hit.point.x , 0.0f, hit.point.z);
                 mouseOverGrid = true;
                 mouseOverTower = true;
