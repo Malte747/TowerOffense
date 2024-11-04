@@ -36,6 +36,7 @@ public class TowerGridPlacement : MonoBehaviour
         indicator.transform.localScale = new Vector3 (xSize, 1, zSize);
         indicator.SetActive(false);
         placingTowers = false;
+        clickedTowerParent = gameObject;
     }
 
     void Update()
@@ -93,6 +94,10 @@ public class TowerGridPlacement : MonoBehaviour
             {
                 ClickOnTower();
             }
+            else if (!GridMouseInput.mouseOverTower && !placingTowers)
+            {
+                UnselectTower();
+            }
         }
 
 
@@ -109,8 +114,12 @@ public class TowerGridPlacement : MonoBehaviour
         PlacedTower = Instantiate(Towers[number], grid.CellToWorld(GridPlacementSystem.gridPosition), Quaternion.identity);
         TowerKnowsWhereItIs towerKnowsWhereItIs = PlacedTower.GetComponent<TowerKnowsWhereItIs>();
 
-//        NavMeshBaking baking = GameObject.Find("NavMesh").GetComponent<NavMeshBaking>();
- //       baking.StartCoroutine("BakeNavMesh");
+       GameObject NavMesh = GameObject.Find("NavMesh");
+       if(NavMesh != null)
+       { 
+            NavMeshBaking baking = NavMesh.GetComponent<NavMeshBaking>();
+            baking.StartCoroutine("BakeNavMesh");
+       }
     
         for (int i = 1; i <= xSize; i++)
         {
@@ -174,6 +183,7 @@ public class TowerGridPlacement : MonoBehaviour
 
     public void ClickOnTower()
     {
+        UnselectTower();
         TowerKnowsWhereItIs towerKnowsWhereItIs = GridMouseInput.clickedTower.GetComponent<TowerKnowsWhereItIs>();
         if(towerKnowsWhereItIs == null) {towerKnowsWhereItIs = GridMouseInput.clickedTower.GetComponentInParent<TowerKnowsWhereItIs>();}
         Debug.Log("Cells: " + towerKnowsWhereItIs.MyCells.Count);
@@ -192,9 +202,9 @@ public class TowerGridPlacement : MonoBehaviour
 
     public void UnselectTower()
     {
-        if (GetComponent<Outline>() != null)
+        if (clickedTowerParent.GetComponent<Outline>() != null)
         {
-            GetComponent<Outline>().enabled = false;
+            clickedTowerParent.GetComponent<Outline>().enabled = false;
         }
     }
 }
