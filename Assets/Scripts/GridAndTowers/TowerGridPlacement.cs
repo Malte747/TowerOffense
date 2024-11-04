@@ -15,11 +15,13 @@ public class TowerGridPlacement : MonoBehaviour
     public Material indicatorColor;
     public GameObject indicator;
     public static bool placingTowers;
+    public int xSizeDirection, zSizeDirection, xAdjustment, zAdjustment;
+    public static int towerRotation;
 
     [SerializeField]
     private Grid grid;
 
-    public int xSize, zSize, placementRangeSX, placementRangeBX, placementRangeSZ, placementRangeBZ;
+    public int xSize, zSize, xSizeSaved, zSizeSaved, placementRangeSX, placementRangeBX, placementRangeSZ, placementRangeBZ;
     public List<GameObject> Towers;
     public List<GameObject> IndicatorTowers;
     private GameObject PlacedTower;
@@ -42,20 +44,24 @@ public class TowerGridPlacement : MonoBehaviour
     void Update()
     {
         bool hitTower = false;
-        for (int i = 1; i <= xSize; i++)
+        for (int i = 1; i <= Mathf.Abs(xSize); i++)
         {
 
-            for (int i2 = 1; i2 <= zSize; i2++)
+            for (int i2 = 1; i2 <= Mathf.Abs(zSize); i2++)
             {
-                Vector3Int gridCheck = new Vector3Int(GridPlacementSystem.gridPosition.x + i - 1, 0, GridPlacementSystem.gridPosition.z + i2 - 1);
+                Vector3Int gridCheck = new Vector3Int(GridPlacementSystem.gridPosition.x + (i * xSizeDirection) - xAdjustment, 0, GridPlacementSystem.gridPosition.z + (i2 * zSizeDirection) -zAdjustment);
                 if (TowerBible.ContainsKey(gridCheck))
                 {
                     hitTower = true;
                 }
+                if(gridCheck.x < placementRangeSX || gridCheck.x > placementRangeBX || gridCheck.z < placementRangeSZ || gridCheck.z > placementRangeBZ)
+                {
+                    hitTower = true;
+                }
             }
-        if(GridPlacementSystem.gridPosition.x < placementRangeSX || GridPlacementSystem.gridPosition.x + xSize -1 > placementRangeBX || GridPlacementSystem.gridPosition.z < placementRangeSZ || GridPlacementSystem.gridPosition.z + zSize - 1 > placementRangeBZ)
+        //if(GridPlacementSystem.gridPosition.x - xSize + 1 < placementRangeSX || GridPlacementSystem.gridPosition.x + xSize -1 > placementRangeBX || GridPlacementSystem.gridPosition.z - zSize +1 < placementRangeSZ || GridPlacementSystem.gridPosition.z + zSize - 1 > placementRangeBZ)
             {
-                hitTower = true;
+              //  hitTower = true;
             }
         }
         if (hitTower)
@@ -103,10 +109,51 @@ public class TowerGridPlacement : MonoBehaviour
             }
         }
 
-
-        if (Input.GetMouseButtonDown(1) && placingTowers)
+            if (Input.GetMouseButtonDown(1) && placingTowers)
         {    
             StopPlacingTowers();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Tab) && placingTowers)
+        {
+            towerRotation += 90;
+            if (towerRotation >= 360) towerRotation = 0;
+            if (towerRotation == 0)
+            {
+                xSize = xSizeSaved;
+                zSize = zSizeSaved;
+                xSizeDirection = +1;
+                zSizeDirection = +1;
+                xAdjustment = 1;
+                zAdjustment = 1;
+            }
+        }
+        else if (towerRotation == 90)
+        {
+            xSize = zSizeSaved;
+            zSize = -xSizeSaved;
+            xSizeDirection = 1;
+            zSizeDirection = -1;    
+            xAdjustment = 1;
+            zAdjustment = 0;
+        }
+        else if (towerRotation == 180)
+        {
+            xSize = -xSizeSaved;
+            zSize = -zSizeSaved;
+            xSizeDirection = -1;
+            zSizeDirection = -1;
+            xAdjustment = 0;
+            zAdjustment = 0;
+        }
+        else if (towerRotation == 270)
+        {
+            xSize = -zSizeSaved;
+            zSize = xSizeSaved;
+            xSizeDirection = -1;
+            zSizeDirection = 1;
+            xAdjustment = 0;
+            zAdjustment = 1;
         }
 
     }
@@ -114,7 +161,7 @@ public class TowerGridPlacement : MonoBehaviour
     public void PlaceTower(int number)
     {
         // OccupyCell(GridPlacementSystem.gridPosition);
-        PlacedTower = Instantiate(Towers[number], grid.CellToWorld(GridPlacementSystem.gridPosition), Quaternion.identity);
+        PlacedTower = Instantiate(Towers[number], grid.CellToWorld(GridPlacementSystem.gridPosition), GridPlacementSystem.rotationSave);
         TowerKnowsWhereItIs towerKnowsWhereItIs = PlacedTower.GetComponent<TowerKnowsWhereItIs>();
 
        GameObject NavMesh = GameObject.Find("NavMesh");
@@ -124,14 +171,14 @@ public class TowerGridPlacement : MonoBehaviour
             baking.StartCoroutine("BakeNavMesh");
        }
     
-        for (int i = 1; i <= xSize; i++)
+        for (int i = 1; i <= Mathf.Abs(xSize); i++)
         {
 
-            for (int i2 = 1; i2 <= zSize; i2++)
+            for (int i2 = 1; i2 <= Mathf.Abs(zSize); i2++)
             {
-                    OccupyCell(new Vector3Int(GridPlacementSystem.gridPosition.x + i -1, 0 , GridPlacementSystem.gridPosition.z + i2 - 1));
-                    towerKnowsWhereItIs.MyCells.Add(new Vector3Int(GridPlacementSystem.gridPosition.x + i -1, 0 , GridPlacementSystem.gridPosition.z + i2 - 1));
-                    //Debug.Log("Occupy");
+                OccupyCell(new Vector3Int(GridPlacementSystem.gridPosition.x + (i * xSizeDirection) -xAdjustment, 0 , GridPlacementSystem.gridPosition.z + (i2 * zSizeDirection) -zAdjustment));
+                towerKnowsWhereItIs.MyCells.Add(new Vector3Int(GridPlacementSystem.gridPosition.x + (i * xSizeDirection) - xAdjustment, 0 , GridPlacementSystem.gridPosition.z + (i2 * zSizeDirection) -zAdjustment));
+                //Debug.Log("Occupy");
             }
         }
     }
@@ -145,6 +192,13 @@ public class TowerGridPlacement : MonoBehaviour
     public void ChangeTowerWhilePlacing(string numbers)
     {
         UnselectTower();
+        towerRotation = 0;
+        xSizeDirection = +1;
+        zSizeDirection = +1;
+        xAdjustment = 1;
+        zAdjustment = 1;
+        xSize = xSizeSaved;
+        zSize = zSizeSaved;
         indicator.SetActive(true);
         Cursor.visible = false;
         placingTowers = true;
@@ -161,7 +215,9 @@ public class TowerGridPlacement : MonoBehaviour
 
         towerNumberUI = ints[0];
         xSize = ints[1];
+        xSizeSaved = ints[1];
         zSize = ints[2];
+        zSizeSaved = ints[2];
         indicator.transform.localScale = new Vector3(xSize, 1, zSize);
 
         DeactivateTowerPreview();
