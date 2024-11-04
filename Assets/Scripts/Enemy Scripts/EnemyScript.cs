@@ -17,16 +17,22 @@ public class EnemyScript : MonoBehaviour
     }
     [Tooltip("Select which towers this unit will attack. It will try to avoid the others.")]
     public Targets target = Targets.MainTower;
-    [Tooltip("all towers within x tiles of the unit")]
+    [Tooltip("Unit sees all towers within x tiles")]
     [SerializeField] private int sightRange = 1;
-    [Tooltip("all towers within x tiles of the unit")]
+    [Tooltip("Unit can attack all towers within x tiles")]
     [SerializeField] private float attackRange = 1;
     [Tooltip("Damage per attack. Units targeting everything always do base damage")]
     [SerializeField] private float baseDamage, buffedDamage;
     [Tooltip("Time in seconds between attacks")]
     [SerializeField] private float attackCooldown;
-    [Tooltip("units does damage x seconds into the attack animation")]
+    [Tooltip("Unit does damage x seconds into the attack animation")]
     [SerializeField] private float damageDelay;
+    [Tooltip("Does this unit yeet something")]
+    [SerializeField] private bool isRangeUnit;
+    [Tooltip("If this is a Range Unit assign a projectile here")]
+    [SerializeField] private GameObject projectile;
+    
+    
 
     private Grid grid;
     NavMeshAgent agent;
@@ -37,13 +43,15 @@ public class EnemyScript : MonoBehaviour
     bool canAttackVictim;
     Animator animator;
     private Vector3 lastPosition;
+    private Vector3 projectileStartPos;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = transform.GetChild(0).GetComponent<Animator>();
+        
+        animator = transform.GetChild(1).GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         grid = GameObject.Find("Grid").GetComponent<Grid>();
         EnemyBibleScript.EnemyBible.Add(transform.position, gameObject);
@@ -52,6 +60,7 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        projectileStartPos = transform.GetChild(0).transform.position;
         t += Time.deltaTime;
         cooldown -= Time.deltaTime;
 
@@ -221,7 +230,30 @@ public class EnemyScript : MonoBehaviour
     {
         cooldown = attackCooldown;
         if (animator != null) animator.SetBool("chomping", true);
-        Invoke("Damage", damageDelay);
+
+        if(isRangeUnit)Projectile();
+        else Invoke("Damage", damageDelay);
+        
+    }
+
+    void Projectile()
+    {
+        GameObject yeet = Instantiate(projectile, projectileStartPos, Quaternion.identity);
+        Projectile script = yeet.GetComponent<Projectile>();
+        float distance = Mathf.Infinity;
+        script.p1 = projectileStartPos;
+        
+        
+        TowerKnowsWhereItIs towerScript = nextVictim.GetComponent<TowerKnowsWhereItIs>();
+        foreach (Vector3Int pos in towerScript.MyCells)
+        {
+            if (Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5)) < distance)
+            {
+                distance = Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5));
+                script.p3 = grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5);
+            }
+        }
+        script.p2 = (projectileStartPos + script.p3) / 2 + Vector3.up * 40;
     }
 
     void Damage()
