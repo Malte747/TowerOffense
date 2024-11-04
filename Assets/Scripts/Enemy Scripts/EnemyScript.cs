@@ -18,11 +18,15 @@ public class EnemyScript : MonoBehaviour
     [Tooltip("Select which towers this unit will attack. It will try to avoid the others.")]
     public Targets target = Targets.MainTower;
     [Tooltip("all towers within x tiles of the unit")]
-    [SerializeField] private int sightRange = 1, attackRange = 1;
+    [SerializeField] private int sightRange = 1;
+    [Tooltip("all towers within x tiles of the unit")]
+    [SerializeField] private float attackRange = 1;
     [Tooltip("Damage per attack. Units targeting everything always do base damage")]
     [SerializeField] private float baseDamage, buffedDamage;
     [Tooltip("Time in seconds between attacks")]
     [SerializeField] private float attackCooldown;
+    [Tooltip("units does damage x seconds into the attack animation")]
+    [SerializeField] private float damageDelay;
 
     private Grid grid;
     NavMeshAgent agent;
@@ -31,12 +35,15 @@ public class EnemyScript : MonoBehaviour
     List<GameObject> foundTowers = new List<GameObject>();
     GameObject nextVictim;
     bool canAttackVictim;
+    Animator animator;
+    private Vector3 lastPosition;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = transform.GetChild(0).GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         grid = GameObject.Find("Grid").GetComponent<Grid>();
         EnemyBibleScript.EnemyBible.Add(transform.position, gameObject);
@@ -49,6 +56,9 @@ public class EnemyScript : MonoBehaviour
         cooldown -= Time.deltaTime;
 
 
+        float distanceToLastFrame = Vector3.Distance(transform.position, lastPosition);
+        lastPosition = transform.position;
+        if (animator != null) animator.SetFloat("speed", distanceToLastFrame / Time.deltaTime);
 
         // update the agent's destination once every second 
         if (t >= 1)
@@ -210,17 +220,27 @@ public class EnemyScript : MonoBehaviour
     void Attack()
     {
         cooldown = attackCooldown;
-        Health health = nextVictim.GetComponent<Health>();
-        if        ((target == Targets.Towers && nextVictim.CompareTag("Tower"))
-                || (target == Targets.Walls && nextVictim.CompareTag("Wall"))
-                || (target == Targets.Mines && nextVictim.CompareTag("Mine")))
+        if (animator != null) animator.SetBool("chomping", true);
+        Invoke("Damage", damageDelay);
+    }
+
+    void Damage()
+    {
+        Health health;
+        if (nextVictim != null)
         {
-            health.health -= buffedDamage;
+            health = nextVictim.GetComponent<Health>();
+            if ((target == Targets.Towers && nextVictim.CompareTag("Tower"))
+                    || (target == Targets.Walls && nextVictim.CompareTag("Wall"))
+                    || (target == Targets.Mines && nextVictim.CompareTag("Mine")))
+            {
+                health.health -= buffedDamage;
+            }
+            else
+            {
+                health.health -= baseDamage;
+            }
         }
-        else
-        {
-            health.health -= baseDamage;
-        }
-        
+        if (animator != null) animator.SetBool("chomping", false);
     }
 }

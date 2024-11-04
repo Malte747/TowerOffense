@@ -284,7 +284,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a271fdcfb9a607499632c569016e00a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Occupied: []
   indicatorColor: {fileID: 2100000, guid: 3c9f9b6f979957a4f90455a1c6499a38, type: 2}
   indicator: {fileID: 228658071}
   grid: {fileID: 415096506}
@@ -1911,8 +1910,8 @@ Transform:
   m_GameObject: {fileID: 1064843319}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5, y: 0, z: 5}
-  m_LocalScale: {x: 10, y: 1, z: 10}
+  m_LocalPosition: {x: 5, y: 2.5, z: 5}
+  m_LocalScale: {x: 10, y: 5, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 228658072}
@@ -1999,7 +1998,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3353403737941325249, guid: d9157e6efc78f304eb5256cc3376ff6b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 7
+      value: 9.8
       objectReference: {fileID: 0}
     - target: {fileID: 3353403737941325249, guid: d9157e6efc78f304eb5256cc3376ff6b, type: 3}
       propertyPath: m_LocalPosition.x
