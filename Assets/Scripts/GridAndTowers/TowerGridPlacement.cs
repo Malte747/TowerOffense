@@ -144,6 +144,7 @@ public class TowerGridPlacement : MonoBehaviour
 
     public void ChangeTowerWhilePlacing(string numbers)
     {
+        UnselectTower();
         indicator.SetActive(true);
         Cursor.visible = false;
         placingTowers = true;
