@@ -24,6 +24,8 @@ public class TowerGridPlacement : MonoBehaviour
     public List<GameObject> IndicatorTowers;
     private GameObject PlacedTower;
 
+    public static GameObject clickedTowerParent;
+
 
 
     //Bis UI existiert Placeholder
@@ -107,9 +109,9 @@ public class TowerGridPlacement : MonoBehaviour
         PlacedTower = Instantiate(Towers[number], grid.CellToWorld(GridPlacementSystem.gridPosition), Quaternion.identity);
         TowerKnowsWhereItIs towerKnowsWhereItIs = PlacedTower.GetComponent<TowerKnowsWhereItIs>();
 
-        NavMeshBaking baking = GameObject.Find("NavMesh").GetComponent<NavMeshBaking>();
-        baking.StartCoroutine("BakeNavMesh");
-
+//        NavMeshBaking baking = GameObject.Find("NavMesh").GetComponent<NavMeshBaking>();
+ //       baking.StartCoroutine("BakeNavMesh");
+    
         for (int i = 1; i <= xSize; i++)
         {
 
@@ -175,5 +177,24 @@ public class TowerGridPlacement : MonoBehaviour
         TowerKnowsWhereItIs towerKnowsWhereItIs = GridMouseInput.clickedTower.GetComponent<TowerKnowsWhereItIs>();
         if(towerKnowsWhereItIs == null) {towerKnowsWhereItIs = GridMouseInput.clickedTower.GetComponentInParent<TowerKnowsWhereItIs>();}
         Debug.Log("Cells: " + towerKnowsWhereItIs.MyCells.Count);
+        clickedTowerParent = GridMouseInput.clickedTower.transform.parent.gameObject;
+        if (clickedTowerParent.GetComponent<Outline>() != null)
+        {
+            clickedTowerParent.GetComponent<Outline>().enabled = true;
+        }
+        else
+        {
+            Outline outline = clickedTowerParent.AddComponent<Outline>();
+            outline.enabled = true;
+            clickedTowerParent.GetComponent<Outline>().OutlineWidth = 2.0f;
+        }
+    }
+
+    public void UnselectTower()
+    {
+        if (GetComponent<Outline>() != null)
+        {
+            GetComponent<Outline>().enabled = false;
+        }
     }
 }
