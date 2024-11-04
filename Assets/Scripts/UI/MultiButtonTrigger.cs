@@ -91,7 +91,7 @@ public class MultiButtonTrigger : MonoBehaviour
         }
     }
 
-    void ResetButtonColor(Button button)
+    public void ResetButtonColor(Button button)
     {
         // Setze die Farbe auf normal zurück
         var colors = button.colors;
