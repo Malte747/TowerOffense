@@ -6,6 +6,7 @@ public class SequentialActivator : MonoBehaviour
     public List<GameObject> objectsToActivateDefense; // Liste der GameObjects
     public List<GameObject> objectsToActivateAttack;
     private int currentIndex = 0; // Der aktuell aktivierte Index
+    private int currentIndexAttack = 0;
 
     public void ActivateNextObject()
     {
@@ -31,9 +32,9 @@ public class SequentialActivator : MonoBehaviour
         }
 
         // Inkrementiere den Index, und wenn das Ende der Liste erreicht ist, starte von vorn
-        currentIndex = (currentIndex + 1) % objectsToActivateAttack.Count;
+        currentIndexAttack = (currentIndexAttack + 1) % objectsToActivateAttack.Count;
 
         // Aktiviere das nächste Objekt in der Liste
-        objectsToActivateAttack[currentIndex].SetActive(true);
+        objectsToActivateAttack[currentIndexAttack].SetActive(true);
     }
 }
