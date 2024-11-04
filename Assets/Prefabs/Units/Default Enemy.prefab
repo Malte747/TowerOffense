@@ -281,6 +281,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7120528216715753670}
   - {fileID: 9165351942538134369}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -298,10 +299,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: 2
   sightRange: 4
-  attackRange: 1
+  attackRange: 5
   baseDamage: 10
   buffedDamage: 20
   attackCooldown: 1
+  damageDelay: 0
+  isRangeUnit: 1
+  projectile: {fileID: 109498624868919209, guid: 8a71728ba4bc90846894bddba7a851c9, type: 3}
 --- !u!195 &1697327694870662928
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -456,6 +460,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7992934786443076392
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7120528216715753670}
+  m_Layer: 6
+  m_Name: ProjectileStartPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7120528216715753670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7992934786443076392}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.32331878, y: -0, z: -0, w: 0.94629014}
+  m_LocalPosition: {x: 0, y: 5.03, z: 1.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8314551243890678352}
+  m_LocalEulerAnglesHint: {x: -37.728, y: 0, z: 0}
 --- !u!1 &8190955968891189755
 GameObject:
   m_ObjectHideFlags: 0
