@@ -196,7 +196,7 @@ public class TowerGridPlacement : MonoBehaviour
         {
             Outline outline = clickedTowerParent.AddComponent<Outline>();
             outline.enabled = true;
-            clickedTowerParent.GetComponent<Outline>().OutlineWidth = 2.0f;
+            clickedTowerParent.GetComponent<Outline>().OutlineWidth = 3.0f;
         }
     }
 
