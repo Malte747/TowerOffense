@@ -1,9 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro;
 
 public class SequentialActivator : MonoBehaviour
 {
+    GameManager gameManager;
+
     public List<GameObject> objectsToActivateDefense; // Liste der GameObjects
     public List<GameObject> objectsToActivateTierDefense;
     public List<GameObject> objectsToActivateAttack;
@@ -11,10 +14,83 @@ public class SequentialActivator : MonoBehaviour
     private int currentIndex = 0; // Der aktuell aktivierte Index
     private int currentIndexAttack = 0;
 
-    public void ActivateNextObject()
+    public int Tier2Price = 10;
+    public int Tier3Price = 100;
+
+    //Text
+    [Header("text")]
+    
+    [SerializeField] public TMP_Text tierTextAttack;
+    [SerializeField] public TMP_Text goldPriceTextAttack;
+    [SerializeField] public TMP_Text tierTextDefense;    
+    [SerializeField] public TMP_Text goldPriceTextDefense;
+
+
+    void Start()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        tierTextAttack.text = "Upgraden zu Tier 2";
+        tierTextDefense.text = "Upgraden zu Tier 2";
+        goldPriceTextAttack.text = Tier2Price.ToString();
+        goldPriceTextDefense.text = Tier2Price.ToString();
+
+    }
+
+
+    public void BuyTierUpgradeDefense()
     {
         if(currentIndex + 2 <= objectsToActivateDefense.Count)
         {
+            if(currentIndex == 0 && gameManager.defenderGold >= Tier2Price)
+            {
+                gameManager.TurretPayment(Tier2Price);
+                ActivateNextObject();
+                tierTextDefense.text = "Upgraden zu Tier 3";
+                goldPriceTextDefense.text = Tier3Price.ToString();
+            }
+            else if(currentIndex == 1 && gameManager.defenderGold >= Tier3Price)
+            {
+                gameManager.TurretPayment(Tier3Price);
+                ActivateNextObject();
+                tierTextDefense.text = "Max Tier";
+                goldPriceTextDefense.text = "-";
+            }
+            else
+            {
+                Debug.Log("Not enough Gold");
+            }
+        }
+    }
+
+    public void BuyTierUpgradeAttack()
+    {
+        if(currentIndexAttack + 2 <= objectsToActivateAttack.Count)
+        {
+             if(currentIndexAttack == 0 && gameManager.attackerGold >= Tier2Price)
+            {
+                gameManager.UnitPayment(Tier2Price);
+                ActivateNextObjectAttack();
+                tierTextAttack.text = "Upgraden zu Tier 3";
+                goldPriceTextAttack.text = Tier3Price.ToString();
+
+            }
+            else if(currentIndexAttack == 1 && gameManager.attackerGold  >= Tier3Price)
+            {
+                gameManager.UnitPayment(Tier3Price);
+                ActivateNextObjectAttack();
+                tierTextAttack.text = "Max Tier";
+                goldPriceTextAttack.text = "-";
+            }
+            else
+            {
+                Debug.Log("Not enough Gold");
+            }
+        }
+    }
+
+
+    public void ActivateNextObject()
+    {
 
         foreach (var obj in objectsToActivateDefense)
         {
@@ -36,13 +112,10 @@ public class SequentialActivator : MonoBehaviour
         {
             SetButtonsInteractable(objectsToActivateTierDefense[i], true);
         }
-        }
     }
 
         public void ActivateNextObjectAttack()
     {
-        if(currentIndexAttack + 2 <= objectsToActivateDefense.Count)
-        {
         // Deaktiviert alle Objekte in der Liste
         foreach (var obj in objectsToActivateAttack)
         {
@@ -62,7 +135,6 @@ public class SequentialActivator : MonoBehaviour
             for (int i = 0; i <= currentIndexAttack; i++)
         {
             SetButtonsInteractable(objectsToActivateTierAttack[i], true);
-        }
         }
     }
 
@@ -135,6 +207,12 @@ public void ResetUITierButtons()
     {
         objectsToActivateAttack[0].SetActive(true);
     }
+    
+    // Zurücksetzen der Texte
+    tierTextAttack.text = "Upgraden zu Tier 2";
+    tierTextDefense.text = "Upgraden zu Tier 2";
+    goldPriceTextAttack.text = Tier2Price.ToString();
+    goldPriceTextDefense.text = Tier2Price.ToString();
 
     // Zurücksetzen der Indizes
     currentIndex = 0;
