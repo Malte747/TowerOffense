@@ -5,16 +5,20 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public MonoBehaviour defenderUI;
-    public MonoBehaviour attackerUI;
+
+    public MultiButtonTrigger multiButtonTriggerAttack;
+    public MultiButtonTrigger multiButtonTriggerDefense;
+
+
     public GameObject attackerUIBlock;
     public GameObject defenderUIBlock;
+    public GameObject attackerSupplyIcon;
+    public GameObject defenderSupplyIcon;
 
     public Button pause;  
     public Button unpause;
     private bool isPaused = false; 
     private bool toggle = true;    
-
 
 
 
@@ -58,18 +62,32 @@ public class UIManager : MonoBehaviour
 
     public void ActivateDefenderUI()
     {
-        attackerUI.enabled = false;
-        defenderUI.enabled = true;
+        multiButtonTriggerAttack.ResetMenuNavigation();
         attackerUIBlock.SetActive(false);
         defenderUIBlock.SetActive(true);
+        attackerSupplyIcon.SetActive(false);
+        defenderSupplyIcon.SetActive(true);
+
+
     }
 
     public void ActivateAttackerUI()
     {
-        defenderUI.enabled = false;
-        attackerUI.enabled = true;
+        multiButtonTriggerDefense.ResetMenuNavigation();
         defenderUIBlock.SetActive(false);
         attackerUIBlock.SetActive(true);
+        defenderSupplyIcon.SetActive(false);
+        attackerSupplyIcon.SetActive(true);
+
+
+    }
+
+    public void ResetNavigation()
+    {
+        multiButtonTriggerAttack.ResetMenuNavigation();
+        multiButtonTriggerDefense.ResetMenuNavigation();
+        attackerUIBlock.SetActive(false);
+        defenderUIBlock.SetActive(true);
     }
 
 }

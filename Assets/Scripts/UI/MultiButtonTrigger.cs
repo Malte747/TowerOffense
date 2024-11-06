@@ -24,6 +24,9 @@ public class MultiButtonTrigger : MonoBehaviour
     private Dictionary<KeyCode, Button> buttonMapping = new Dictionary<KeyCode, Button>();
     private bool menuChanged = false;               // Markierung, ob das Menü gewechselt wurde
 
+    // Liste der Submemüs für die reset funktion
+    public List<GameObject> TierMenues;
+
     void Start()
     {
         // Standardmäßig das erste Menü als aktiv setzen (z. B. das Hauptmenü)
@@ -59,8 +62,32 @@ public class MultiButtonTrigger : MonoBehaviour
 
     void SetActiveMenu(Menu menu)
     {
+        // Deaktiviere alle Buttons in den bisherigen Menüs
+        foreach (var m in menus)
+        {
+            foreach (var pair in m.keyButtonPairs)
+            {
+                pair.button.interactable = false; // Alle Buttons in anderen Menüs deaktivieren
+            }
+        }
+
+        // Setze das neue aktive Menü und markiere die Änderung
         activeMenu = menu;
         menuChanged = true; // Markiere das Menü als geändert, damit UpdateButtonMapping aufgerufen wird
+
+        // Aktiviere die Buttons im neuen aktiven Menü
+foreach (var pair in activeMenu.keyButtonPairs)
+{
+    // Prüfe, ob der Button nicht den Tag "TierButton" hat
+    if (pair.button.tag != "TierButtonInactive")
+    {
+        pair.button.interactable = true; // Nur Buttons ohne den Tag "TierButton" interaktiv machen
+    }
+    else
+    {
+        pair.button.interactable = false; // Deaktiviere Buttons mit dem Tag "TierButton"
+    }
+}
     }
 
     void UpdateButtonMapping()
@@ -76,6 +103,9 @@ public class MultiButtonTrigger : MonoBehaviour
 
     void HandleButtonPress(Button button)
     {
+        // Überprüfen, ob der Button interaktiv ist
+        if (!button.interactable) return;
+
         // Setze den Button auf die gedrückte Farbe
         var colors = button.colors;
         button.image.color = colors.pressedColor;
@@ -108,5 +138,24 @@ public class MultiButtonTrigger : MonoBehaviour
         {
             SetActiveMenu(submenu);
         }
+    }
+
+    public void ResetMenuNavigation()
+    {
+        
+        SetActiveMenu(menus[0]);
+
+         for (int i = 0; i < TierMenues.Count; i++)
+            {
+                // Aktiviert nur das erste Element (Index 0), deaktiviert alle anderen
+                if (i == 0)
+                {
+                    TierMenues[i].SetActive(true); // Element 0 aktivieren
+                }
+                else
+                {
+                    TierMenues[i].SetActive(false); // Alle anderen deaktivieren
+                }
+            }
     }
 }

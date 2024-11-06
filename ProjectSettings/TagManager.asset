@@ -8,6 +8,8 @@ TagManager:
   - Tower
   - Wall
   - Mine
+  - TierButtonActive
+  - TierButtonInactive
   layers:
   - Default
   - TransparentFX
