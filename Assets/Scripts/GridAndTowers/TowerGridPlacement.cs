@@ -17,6 +17,7 @@ public class TowerGridPlacement : MonoBehaviour
     public static bool placingTowers;
     public int xSizeDirection, zSizeDirection, xAdjustment, zAdjustment;
     public static int towerRotation;
+    public static Vector3Int towerRotationCorrection;
 
     [SerializeField]
     private Grid grid;
@@ -49,7 +50,7 @@ public class TowerGridPlacement : MonoBehaviour
 
             for (int i2 = 1; i2 <= Mathf.Abs(zSize); i2++)
             {
-                Vector3Int gridCheck = new Vector3Int(GridPlacementSystem.gridPosition.x + (i * xSizeDirection) - xAdjustment, 0, GridPlacementSystem.gridPosition.z + (i2 * zSizeDirection) -zAdjustment);
+                Vector3Int gridCheck = new Vector3Int(GridPlacementSystem.gridPosition.x + (i * xSizeDirection) - xAdjustment, 0, GridPlacementSystem.gridPosition.z + (i2 * zSizeDirection) -zAdjustment) + towerRotationCorrection;
                 if (TowerBible.ContainsKey(gridCheck))
                 {
                     hitTower = true;
@@ -126,6 +127,7 @@ public class TowerGridPlacement : MonoBehaviour
                 zSizeDirection = +1;
                 xAdjustment = 1;
                 zAdjustment = 1;
+                towerRotationCorrection = new Vector3Int(0, 0, 0);
             }
         }
         else if (towerRotation == 90)
@@ -136,6 +138,7 @@ public class TowerGridPlacement : MonoBehaviour
             zSizeDirection = -1;    
             xAdjustment = 1;
             zAdjustment = 0;
+            towerRotationCorrection = new Vector3Int(0, 0, 1);
         }
         else if (towerRotation == 180)
         {
@@ -145,6 +148,7 @@ public class TowerGridPlacement : MonoBehaviour
             zSizeDirection = -1;
             xAdjustment = 0;
             zAdjustment = 0;
+            towerRotationCorrection = new Vector3Int(1, 0, 1);
         }
         else if (towerRotation == 270)
         {
@@ -154,6 +158,7 @@ public class TowerGridPlacement : MonoBehaviour
             zSizeDirection = 1;
             xAdjustment = 0;
             zAdjustment = 1;
+            towerRotationCorrection = new Vector3Int(1, 0, 0);
         }
 
     }
@@ -161,7 +166,7 @@ public class TowerGridPlacement : MonoBehaviour
     public void PlaceTower(int number)
     {
         // OccupyCell(GridPlacementSystem.gridPosition);
-        PlacedTower = Instantiate(Towers[number], grid.CellToWorld(GridPlacementSystem.gridPosition), GridPlacementSystem.rotationSave);
+        PlacedTower = Instantiate(Towers[number], grid.CellToWorld(GridPlacementSystem.gridPosition + towerRotationCorrection), GridPlacementSystem.rotationSave);
         TowerKnowsWhereItIs towerKnowsWhereItIs = PlacedTower.GetComponent<TowerKnowsWhereItIs>();
 
        GameObject NavMesh = GameObject.Find("NavMesh");
@@ -176,8 +181,8 @@ public class TowerGridPlacement : MonoBehaviour
 
             for (int i2 = 1; i2 <= Mathf.Abs(zSize); i2++)
             {
-                OccupyCell(new Vector3Int(GridPlacementSystem.gridPosition.x + (i * xSizeDirection) -xAdjustment, 0 , GridPlacementSystem.gridPosition.z + (i2 * zSizeDirection) -zAdjustment));
-                towerKnowsWhereItIs.MyCells.Add(new Vector3Int(GridPlacementSystem.gridPosition.x + (i * xSizeDirection) - xAdjustment, 0 , GridPlacementSystem.gridPosition.z + (i2 * zSizeDirection) -zAdjustment));
+                OccupyCell(new Vector3Int(GridPlacementSystem.gridPosition.x + (i * xSizeDirection) -xAdjustment, 0 , GridPlacementSystem.gridPosition.z + (i2 * zSizeDirection) -zAdjustment) + towerRotationCorrection);
+                towerKnowsWhereItIs.MyCells.Add(new Vector3Int(GridPlacementSystem.gridPosition.x + (i * xSizeDirection) - xAdjustment, 0 , GridPlacementSystem.gridPosition.z + (i2 * zSizeDirection) -zAdjustment) + towerRotationCorrection);
                 //Debug.Log("Occupy");
             }
         }
@@ -197,6 +202,7 @@ public class TowerGridPlacement : MonoBehaviour
         zSizeDirection = +1;
         xAdjustment = 1;
         zAdjustment = 1;
+        towerRotationCorrection = new Vector3Int(0, 0, 0);
         xSize = xSizeSaved;
         zSize = zSizeSaved;
         indicator.SetActive(true);

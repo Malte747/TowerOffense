@@ -20,7 +20,7 @@ public class GridPlacementSystem : MonoBehaviour
         Vector3 mousePos = gridMouseInput.GetSelectedMapPos();
         gridPosition = grid.WorldToCell(mousePos);
         //Debug.Log(grid.WorldToCell(mousePos));  
-        cellIndicator.transform.position = grid.CellToWorld(gridPosition);
+        cellIndicator.transform.position = grid.CellToWorld(gridPosition + TowerGridPlacement.towerRotationCorrection);
         cellIndicator.transform.eulerAngles = new Vector3(cellIndicator.transform.eulerAngles.x, TowerGridPlacement.towerRotation, cellIndicator.transform.eulerAngles.z);
         rotationSave = cellIndicator.transform.rotation;
         /*
