@@ -300,11 +300,11 @@ MonoBehaviour:
   target: 2
   sightRange: 4
   attackRange: 5
-  baseDamage: 10
-  buffedDamage: 20
+  baseDamage: 3
+  buffedDamage: 5
   attackCooldown: 1
   damageDelay: 0
-  isRangeUnit: 1
+  isRangeUnit: 0
   projectile: {fileID: 109498624868919209, guid: 8a71728ba4bc90846894bddba7a851c9, type: 3}
 --- !u!195 &1697327694870662928
 NavMeshAgent:

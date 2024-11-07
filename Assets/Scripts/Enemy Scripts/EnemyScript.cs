@@ -54,12 +54,12 @@ public class EnemyScript : MonoBehaviour
         animator = transform.GetChild(1).GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         grid = GameObject.Find("Grid").GetComponent<Grid>();
-        EnemyBibleScript.EnemyBible.Add(transform.position, gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
+        EnemyBibleScript.EnemyBible.Add(transform.position, gameObject);
         projectileStartPos = transform.GetChild(0).transform.position;
         t += Time.deltaTime;
         cooldown -= Time.deltaTime;

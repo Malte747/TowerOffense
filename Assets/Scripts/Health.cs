@@ -43,7 +43,7 @@ public class Health : MonoBehaviour
                 TowerGridPlacement.TowerBible.Remove(key);
             }
         }
-        else if (gameObject.CompareTag("Enemy"))
+        /*else if (gameObject.CompareTag("Enemy"))
         {
             var keysToRemove = EnemyBibleScript.EnemyBible
             .Where(entry => entry.Value == targetObject)
@@ -55,6 +55,6 @@ public class Health : MonoBehaviour
             {
                 EnemyBibleScript.EnemyBible.Remove(key);
             }
-        }
+        }*/
     }
 }
