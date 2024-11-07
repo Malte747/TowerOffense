@@ -17,6 +17,10 @@ public class NavMeshBaking : MonoBehaviour
     private void Start()
     {
         surface = GetComponent<NavMeshSurface>();
+        if (surface.navMeshData == null)
+        {
+            surface.BuildNavMesh();
+        }
         StartCoroutine(BakeNavMesh());
     }
 
