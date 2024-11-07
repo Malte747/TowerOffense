@@ -63,10 +63,10 @@ public class UIManager : MonoBehaviour
     public void ActivateDefenderUI()
     {
         multiButtonTriggerAttack.ResetMenuNavigation();
-        attackerUIBlock.SetActive(false);
-        defenderUIBlock.SetActive(true);
         attackerSupplyIcon.SetActive(false);
         defenderSupplyIcon.SetActive(true);
+        attackerUIBlock.SetActive(false);
+        defenderUIBlock.SetActive(true);
 
 
     }
@@ -74,10 +74,10 @@ public class UIManager : MonoBehaviour
     public void ActivateAttackerUI()
     {
         multiButtonTriggerDefense.ResetMenuNavigation();
-        defenderUIBlock.SetActive(false);
-        attackerUIBlock.SetActive(true);
         defenderSupplyIcon.SetActive(false);
         attackerSupplyIcon.SetActive(true);
+        defenderUIBlock.SetActive(false);
+        attackerUIBlock.SetActive(true);
 
 
     }

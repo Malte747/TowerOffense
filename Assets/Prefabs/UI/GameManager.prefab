@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1607305795470544464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9145123453110784212}
+  - component: {fileID: 363030609527304405}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9145123453110784212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607305795470544464}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 959.34845, y: 625.29095, z: -1.3795222}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &363030609527304405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607305795470544464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c744dddb59ce7474c8e97848231f27f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackersTurn: 0
+  defendersTurn: 1
+  currentTurn: 1
+  maxTurnCount: 10
+  attackerGold: 0
+  attackerStartGold: 100
+  attackerGoldIncome: 0
+  attackerSupply: 0
+  defenderGold: 0
+  defenderStartGold: 50
+  defenderGoldIncome: 0
+  defenderSupply: 0
+  maxSupply: 0
+  startGoldIncome: 10
+  goldText: {fileID: 0}
+  currentIncomeText: {fileID: 0}
+  supplyText: {fileID: 0}
+  maxSupplyText: {fileID: 0}
+  currentTurnText: {fileID: 0}
+  maxTurnCountText: {fileID: 0}

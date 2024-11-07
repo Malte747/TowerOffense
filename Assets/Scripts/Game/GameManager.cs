@@ -44,17 +44,19 @@ public class GameManager : MonoBehaviour
     [Header("Allgemeine Stats")]
 
     public int maxSupply;
-    public int StartGoldIncome;
+    public int startGoldIncome;
 
     // Text
     [Header("Texts")]
 
     [SerializeField] public TMP_Text goldText;
+    [SerializeField] public TMP_Text currentIncomeText;
     [SerializeField] public TMP_Text supplyText;
     [SerializeField] public TMP_Text maxSupplyText;
     [SerializeField] public TMP_Text currentTurnText;
     [SerializeField] public TMP_Text maxTurnCountText;
     private int goldValue; 
+    private int currentIncomeValue; 
     private int supplyValue;
     private int maxSupplyValue;
     private int currentTurnValue;
@@ -75,15 +77,16 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         attackerGold = attackerStartGold;
-        attackerGoldIncome = StartGoldIncome;
+        attackerGoldIncome = startGoldIncome;
         
 
         defenderGold = defenderStartGold;
-        defenderGoldIncome = StartGoldIncome;
+        defenderGoldIncome = startGoldIncome;
 
         SetMaxSupplyValue(maxSupply);
         SetCurrentTurnValue(currentTurn);
         SetMaxTurnCountValue(maxTurnCount);
+        
 
 
 
@@ -98,6 +101,7 @@ public class GameManager : MonoBehaviour
             attackerGold = attackerGold + attackerGoldIncome;
             SetGoldValue(attackerGold);
             SetSupplyValue(attackerSupply);
+            SetCurrentIncomeValue(attackerGoldIncome);
         }
     }
 
@@ -108,6 +112,7 @@ public class GameManager : MonoBehaviour
             defenderGold = defenderGold + defenderGoldIncome;
             SetGoldValue(defenderGold);
             SetSupplyValue(defenderSupply);
+            SetCurrentIncomeValue( defenderGoldIncome);
             
         }
     }
@@ -207,6 +212,19 @@ public class GameManager : MonoBehaviour
         UpdateMaxTurnCountText();
     }
 
+    public void UpdateCurrentIncomeText()
+    {
+        
+        currentIncomeText.text = "+ " + currentIncomeValue.ToString();
+    }
+
+    public void SetCurrentIncomeValue(int newValue)
+    {
+        
+        currentIncomeValue = newValue;
+        UpdateCurrentIncomeText();
+    }
+
 
     #endregion
 
@@ -242,6 +260,22 @@ public class GameManager : MonoBehaviour
         defenderSupply = defenderSupply + turretPrice;
         SetSupplyValue(defenderSupply);
         
+    }
+
+    public void GainIncomeAttacker(int moreIncome)
+    {
+
+        attackerGoldIncome = attackerGoldIncome + moreIncome;
+        SetCurrentIncomeValue(attackerGoldIncome);
+
+    }
+
+    public void GainIncomeDefender(int moreIncome)
+    {
+
+        defenderGoldIncome = defenderGoldIncome + moreIncome;
+        SetCurrentIncomeValue(defenderGoldIncome);
+
     }
 
 
