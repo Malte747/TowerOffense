@@ -5,18 +5,20 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static EnemyScript;
 using static UnityEditor.PlayerSettings;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 using static UnityEngine.GraphicsBuffer;
 
 public class TowerAttack : MonoBehaviour
 {
     GameObject nextVictim;
     float t = Mathf.Infinity;
+    float aoeSize = 1;
 
     public enum Targets
     {
         Closest,
         First,
-        ClosestToMainTower,
+        LowHP,
         BiggestGroup
     }
     [Tooltip("Select which units this tower will attack. It will try to avoid the others.")]
@@ -49,7 +51,7 @@ public class TowerAttack : MonoBehaviour
             if (nextVictim != null && Vector3.Distance(transform.position, nextVictim.transform.position) <= attackRange)
             {
                 Damage();
-                Debug.Log("Huuuge Damage");
+                //Debug.Log("Huuuge Damage");
             }
             else
             {
@@ -61,16 +63,58 @@ public class TowerAttack : MonoBehaviour
     void SelectTarget()
     {
         float distance = attackRange;
+        float zPos = -300f;
+        float hp = Mathf.Infinity;
+        int groupSize = 0;
         foreach (Vector3 pos in EnemyBibleScript.EnemyBible.Keys)
         {
-            Debug.Log(Vector3.Distance(transform.position, pos));
-            if (Vector3.Distance(transform.position, pos) <= distance) 
+            if (target == Targets.Closest)
             {
-                Debug.Log("foundVictim");
-                nextVictim = EnemyBibleScript.EnemyBible[pos];
-                distance = Vector3.Distance(transform.position, pos);
+                if (Vector3.Distance(transform.position, pos) <= distance)
+                {
+                    VictimFound(pos);
+                    distance = Vector3.Distance(transform.position, pos);
+                }
+            }
+            else if (target == Targets.First)
+            {
+                if (pos.z > zPos)
+                {
+                    VictimFound(pos);
+                    zPos = pos.z;
+                }
+            }
+            else if (target == Targets.LowHP)
+            {
+                Health health;
+                GameObject possibleVictim = EnemyBibleScript.EnemyBible[pos];
+                health = possibleVictim.GetComponent<Health>();
+                if (health.health < hp)
+                {
+                    hp = health.health;
+                    VictimFound(pos);
+                }
+            }
+            else if (target == Targets.BiggestGroup)
+            {
+                List<Vector3> group = new List<Vector3>();
+                foreach (Vector3 nearPos in EnemyBibleScript.EnemyBible.Keys)
+                {
+                    if(Vector3.Distance(pos, nearPos) <= aoeSize) group.Add(nearPos);
+                }
+                if(group.Count > groupSize) 
+                { 
+                    groupSize = group.Count;
+                    VictimFound(pos);
+                }
             }
         }
+    }
+
+    void VictimFound(Vector3 pos)
+    {
+        Debug.Log("foundVictim");
+        nextVictim = EnemyBibleScript.EnemyBible[pos];
     }
 
 
@@ -79,6 +123,10 @@ public class TowerAttack : MonoBehaviour
         Health health;
         if (nextVictim != null)
         {
+            //Mark for Testing
+            Outline outline = nextVictim.AddComponent<Outline>();
+            if (outline != null) outline.enabled = true;
+        
             health = nextVictim.GetComponent<Health>();
             /*if ((target == Targets.Towers && nextVictim.CompareTag("Tower"))
             || (target == Targets.Walls && nextVictim.CompareTag("Wall"))
