@@ -51,7 +51,7 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         
-        animator = transform.GetChild(1).GetComponent<Animator>();
+        animator = gameObject.transform.GetChild(0).GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         grid = GameObject.Find("Grid").GetComponent<Grid>();
     }
