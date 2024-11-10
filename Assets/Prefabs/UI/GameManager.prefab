@@ -56,7 +56,7 @@ MonoBehaviour:
   defenderStartGold: 50
   defenderGoldIncome: 0
   defenderSupply: 0
-  maxSupply: 0
+  maxSupply: 100
   startGoldIncome: 10
   goldText: {fileID: 0}
   currentIncomeText: {fileID: 0}
@@ -64,3 +64,7 @@ MonoBehaviour:
   maxSupplyText: {fileID: 0}
   currentTurnText: {fileID: 0}
   maxTurnCountText: {fileID: 0}
+  roundTextDefense: {fileID: 0}
+  roundTextAttack: {fileID: 0}
+  roundTextDefenseObject: {fileID: 0}
+  roundTextAttackObject: {fileID: 0}

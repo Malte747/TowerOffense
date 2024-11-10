@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
     public int maxSupply;
     public int startGoldIncome;
 
+
+
     // Text
     [Header("Texts")]
 
@@ -55,12 +57,36 @@ public class GameManager : MonoBehaviour
     [SerializeField] public TMP_Text maxSupplyText;
     [SerializeField] public TMP_Text currentTurnText;
     [SerializeField] public TMP_Text maxTurnCountText;
+    [SerializeField] public TMP_Text roundTextDefense;
+    [SerializeField] public TMP_Text roundTextAttack;
     private int goldValue; 
     private int currentIncomeValue; 
     private int supplyValue;
     private int maxSupplyValue;
     private int currentTurnValue;
     private int maxTurnCountValue;
+
+    //Text Animation
+
+    [Header("Text Animation")]
+
+    public GameObject roundTextDefenseObject;
+    public GameObject roundTextAttackObject;
+
+    private float animationDuration = 1.0f;
+    private int lastSpending;
+    private int latestSpending;
+    private Queue<int> updateQueue = new Queue<int>();
+    private Queue<int> spendingQueue = new Queue<int>();
+    private bool isUpdating = false; 
+
+    private int incomeBonus;
+    private int latestIncomeSpending;
+    private int incomeValue;
+    private Queue<int> updateIncomeQueue = new Queue<int>();
+    private Queue<int> spendingIncomeQueue = new Queue<int>();
+    private bool isUpdatingIncome = false; 
+  
     
 
 
@@ -99,9 +125,10 @@ public class GameManager : MonoBehaviour
         if (attackersTurn)
         {
             attackerGold = attackerGold + attackerGoldIncome;
-            SetGoldValue(attackerGold);
+            StartCoroutine(AnimateGoldTextRoundStartAttack());
             SetSupplyValue(attackerSupply);
-            SetCurrentIncomeValue(attackerGoldIncome);
+            SetIncomeText(attackerGoldIncome);
+            roundTextAttackObject.SetActive(true);
         }
     }
 
@@ -110,9 +137,11 @@ public class GameManager : MonoBehaviour
         if (defendersTurn)
         {
             defenderGold = defenderGold + defenderGoldIncome;
-            SetGoldValue(defenderGold);
+            
+            StartCoroutine(AnimateGoldTextRoundStartDefense());
             SetSupplyValue(defenderSupply);
-            SetCurrentIncomeValue( defenderGoldIncome);
+            SetIncomeText(defenderGoldIncome);
+            roundTextDefenseObject.SetActive(true);
             
         }
     }
@@ -130,6 +159,7 @@ public class GameManager : MonoBehaviour
             currentTurn++;
             SetCurrentTurnValue(currentTurn);
             uiManager.ActivateDefenderUI();
+            roundTextAttackObject.SetActive(false);
             DefendersTurn();
         }
         else if (defendersTurn)
@@ -137,6 +167,7 @@ public class GameManager : MonoBehaviour
             defendersTurn = false;
             attackersTurn = true;
             uiManager.ActivateAttackerUI();
+            roundTextDefenseObject.SetActive(false);
             AttackersTurn();
         }
     }
@@ -146,17 +177,243 @@ public class GameManager : MonoBehaviour
 
     #region TextUpdates
 
-        public void UpdateGoldText()
+    #region GoldAnimation
+    public void EnqueueGoldUpdate(int newGoldValue, int spending)
     {
         
-        goldText.text = goldValue.ToString();
+        updateQueue.Enqueue(newGoldValue);
+        spendingQueue.Enqueue(spending);
+        
+
+       
+        if (!isUpdating)
+        {
+            StartCoroutine(ProcessQueue());
+        }
     }
 
+    private IEnumerator ProcessQueue()
+    {
+        isUpdating = true;
+
+        while (updateQueue.Count > 0)
+        {
+           
+            goldValue = updateQueue.Dequeue();
+            latestSpending = spendingQueue.Dequeue();
+            yield return StartCoroutine(UpdateGoldText());
+        }
+
+        isUpdating = false; 
+    }
+
+    private IEnumerator UpdateGoldText()
+    {
+        int startValue = goldValue + latestSpending;
+        if(latestSpending <= 10)
+        {
+            animationDuration = 0.3f;
+        }
+        else if (latestSpending <= 50)
+        {
+            animationDuration = 0.5f;
+        }
+        else if(latestSpending <= 100)
+        {
+            animationDuration = 1f;
+        }
+        else
+        {
+            animationDuration = 1.5f;
+        }
+
+        float elapsedTime = 0f;
+        float rate = 2.0f;
+
+        while (elapsedTime < animationDuration)
+        {
+    
+            float progress = Mathf.Pow(rate, elapsedTime / animationDuration) - 1;
+            int currentValue = (int)Mathf.Lerp(startValue, goldValue, progress);
+
+            goldText.text = currentValue.ToString();
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        goldText.text = goldValue.ToString();
+        
+    }
+
+
+    private IEnumerator AnimateGoldTextRoundStartAttack()
+    {
+        int startValue = attackerGold - attackerGoldIncome;
+
+        if(attackerGoldIncome <= 10)
+        {
+            animationDuration = 0.3f;
+        }
+        else if (attackerGoldIncome <= 50)
+        {
+            animationDuration = 0.5f;
+        }
+        else if(attackerGoldIncome <= 100)
+        {
+            animationDuration = 1f;
+        }
+        else
+        {
+            animationDuration = 1.5f;
+        }
+
+        float elapsedTime = 0f;
+        float rate = 2.0f; 
+
+
+        while (elapsedTime < animationDuration)
+        {
+            
+            float progress = Mathf.Pow(rate, elapsedTime / animationDuration) - 1;
+            int currentValue = (int)Mathf.Lerp(startValue, attackerGold, progress);
+            
+             goldText.text = currentValue.ToString();
+            elapsedTime += Time.deltaTime;
+            
+            yield return null; 
+        }
+        
+        
+        goldText.text = attackerGold.ToString();
+    }
+
+    private IEnumerator AnimateGoldTextRoundStartDefense()
+    {
+        int startValue = defenderGold - defenderGoldIncome;
+
+        if(defenderGoldIncome <= 10)
+        {
+            animationDuration = 0.3f;
+        }
+        else if (defenderGoldIncome <= 50)
+        {
+            animationDuration = 0.5f;
+        }
+        else if(defenderGoldIncome <= 100)
+        {
+            animationDuration = 1f;
+        }
+        else
+        {
+            animationDuration = 1.5f;
+        }
+        float elapsedTime = 0f;
+        float rate = 2f; 
+
+        while (elapsedTime < animationDuration)
+        {
+            
+            float progress = Mathf.Pow(rate, elapsedTime / animationDuration) - 1;
+            int currentValue = (int)Mathf.Lerp(startValue, defenderGold, progress);
+            
+            goldText.text = currentValue.ToString();
+            elapsedTime += Time.deltaTime;
+            
+            yield return null; 
+        }
+        
+        
+        goldText.text = defenderGold.ToString();
+    }
+
+    #endregion 
+
+    #region IncomeAnimation
+
+    public void EnqueueIncomeUpdate(int newIncomeValue, int spending)
+    {
+        
+        updateIncomeQueue.Enqueue(newIncomeValue);
+        spendingIncomeQueue.Enqueue(spending);
+        
+
+       
+        if (!isUpdatingIncome)
+        {
+            StartCoroutine(ProcessIncomeQueue());
+        }
+    }
+
+    private IEnumerator ProcessIncomeQueue()
+    {
+        isUpdatingIncome = true;
+
+        while (updateIncomeQueue.Count > 0)
+        {
+           
+            incomeValue = updateIncomeQueue.Dequeue();
+            latestIncomeSpending = spendingIncomeQueue.Dequeue();
+            yield return StartCoroutine(UpdateIncomeText());
+        }
+
+        isUpdatingIncome = false; 
+    }
+
+    private IEnumerator UpdateIncomeText()
+    {
+        int startIncomeValue = incomeValue - latestIncomeSpending;
+        if(latestIncomeSpending <= 5)
+        {
+            animationDuration = 0.2f;
+        }
+        else if(latestIncomeSpending <= 10)
+        {
+            animationDuration = 0.3f;
+        }
+        else if (latestIncomeSpending <= 50)
+        {
+            animationDuration = 0.5f;
+        }
+        else if(latestIncomeSpending <= 100)
+        {
+            animationDuration = 1f;
+        }
+        else
+        {
+            animationDuration = 1.5f;
+        }
+
+        float elapsedTime = 0f;
+        float rate = 2.0f;
+
+        while (elapsedTime < animationDuration)
+        {
+    
+            float progress = Mathf.Pow(rate, elapsedTime / animationDuration) - 1;
+            int localIncomeValue = (int)Mathf.Lerp(startIncomeValue, incomeValue, progress);
+
+            currentIncomeText.text = "+ " + localIncomeValue.ToString();
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        currentIncomeText.text = "+ " + currentIncomeValue.ToString();
+        
+    }
+
+
+
+
+
+
+
+    #endregion
     public void SetGoldValue(int newValue)
     {
         
-        goldValue = newValue;
-        UpdateGoldText();
+        EnqueueGoldUpdate(newValue, lastSpending);
     }
 
     public void UpdateSupplyText()
@@ -212,17 +469,18 @@ public class GameManager : MonoBehaviour
         UpdateMaxTurnCountText();
     }
 
-    public void UpdateCurrentIncomeText()
+    public void SetIncomeText(int newValue)
     {
-        
+        currentIncomeValue = newValue;
         currentIncomeText.text = "+ " + currentIncomeValue.ToString();
     }
 
     public void SetCurrentIncomeValue(int newValue)
     {
-        
         currentIncomeValue = newValue;
-        UpdateCurrentIncomeText();
+        EnqueueIncomeUpdate(newValue, incomeBonus);
+        
+       
     }
 
 
@@ -234,6 +492,7 @@ public class GameManager : MonoBehaviour
     {
         
         attackerGold = attackerGold - unitPrice;
+        lastSpending = unitPrice;
         SetGoldValue(attackerGold);
         
     }
@@ -251,6 +510,7 @@ public class GameManager : MonoBehaviour
     {
         
         defenderGold = defenderGold - turretPrice;
+        lastSpending = turretPrice;
         SetGoldValue(defenderGold);
     }
 
@@ -266,6 +526,7 @@ public class GameManager : MonoBehaviour
     {
 
         attackerGoldIncome = attackerGoldIncome + moreIncome;
+        incomeBonus = moreIncome;
         SetCurrentIncomeValue(attackerGoldIncome);
 
     }
@@ -274,6 +535,7 @@ public class GameManager : MonoBehaviour
     {
 
         defenderGoldIncome = defenderGoldIncome + moreIncome;
+        incomeBonus = moreIncome;
         SetCurrentIncomeValue(defenderGoldIncome);
 
     }
