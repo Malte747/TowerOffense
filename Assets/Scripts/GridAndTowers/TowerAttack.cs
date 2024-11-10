@@ -12,7 +12,8 @@ public class TowerAttack : MonoBehaviour
 {
     GameObject nextVictim;
     float t = Mathf.Infinity;
-    float aoeSize = 1;
+    float aoeSize = 5;
+    Outline outline;
 
     public enum Targets
     {
@@ -97,6 +98,7 @@ public class TowerAttack : MonoBehaviour
             }
             else if (target == Targets.BiggestGroup)
             {
+                Debug.Log("group");
                 List<Vector3> group = new List<Vector3>();
                 foreach (Vector3 nearPos in EnemyBibleScript.EnemyBible.Keys)
                 {
@@ -109,12 +111,15 @@ public class TowerAttack : MonoBehaviour
                 }
             }
         }
+        Debug.Log(groupSize);
     }
 
     void VictimFound(Vector3 pos)
     {
         Debug.Log("foundVictim");
         nextVictim = EnemyBibleScript.EnemyBible[pos];
+        //Mark for Testing
+        outline = null;
     }
 
 
@@ -124,8 +129,9 @@ public class TowerAttack : MonoBehaviour
         if (nextVictim != null)
         {
             //Mark for Testing
-            Outline outline = nextVictim.AddComponent<Outline>();
-            if (outline != null) outline.enabled = true;
+            if (outline == null) outline = nextVictim.AddComponent<Outline>();
+            //if (outline = null) nextVictim.AddComponent<Outline>();
+            //if (outline != null) outline.enabled = true;
         
             health = nextVictim.GetComponent<Health>();
             /*if ((target == Targets.Towers && nextVictim.CompareTag("Tower"))
