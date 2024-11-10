@@ -1,49 +1,147 @@
-using UnityEngine.Audio;
-using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class audiomanager : MonoBehaviour
+public class AudioManager : MonoBehaviour
 {
-    public Sound[] sounds;
+    [Header("Music")]
+    [SerializeField] private AudioSource _titleMusic;
+    [SerializeField] private AudioSource _gameMusic;
+    [SerializeField] private AudioClip[] _music;
+    [SerializeField] private float _fadeTimerInterval = 0.001f;
+    private bool _titleMusicPlaying = false;
+    private bool _gameMusicPlaying = false;
 
-    public static audiomanager instance;
+    [Header("SFX")]
+
+    [Header("Explosions")]
+    [SerializeField] private AudioSource _explosionSource;
+    [SerializeField] private AudioClip[] _explosionClips;
+
+    [Header("Projectiles")]
+    [SerializeField] private AudioSource _projectilesSource;
+    [SerializeField] private AudioClip[] _projectileClips;
+
+    [Header("UI")]
+    [SerializeField] private AudioSource _click;
+    [SerializeField] private AudioSource _pause;
+
+    public static AudioManager instance;
 
     void Awake()
     {
-        if (instance == null)
-            instance = this;
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-
         DontDestroyOnLoad(gameObject);
 
-        foreach (Sound s in sounds)
-        {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
+        //if (instance == null) instance = this;
+        //else Destroy(gameObject);
+    }
 
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-            s.source.loop = s.loop;
+    public void StartTitleMusic(int hummer)
+    {
+        if (!_titleMusicPlaying)
+        {
+            _titleMusic.Play();
+            _gameMusic.Stop();
+            _titleMusic.volume = 0.5f;
+            _gameMusicPlaying = false;
+            _titleMusicPlaying = true;
         }
     }
 
-    private void Start()
+    public void StartGameMusic()
     {
-        Play("StartTheme");
+        if (!_gameMusicPlaying)
+        {
+            _gameMusic.Play();
+            _titleMusic.Stop();
+            _gameMusic.volume = 0.5f;
+            _titleMusicPlaying = false;
+            _gameMusicPlaying = true;
+        }
     }
 
-    public void Play (string name)
+    public void GamePaused(bool paused)
     {
-       Sound s = Array.Find(sounds, sound => sound.name == name);
-        if (s == null)
+        if (paused)
         {
-            Debug.LogWarning("Sound + name + not found or misspelled!");
-            return;
+            _pause.Play();
+            _gameMusic.Pause();
+            _titleMusic.Play();
         }
-        s.source.Play();
+
     }
+
+    public void StartFadeTitleMusicOut()
+    {
+        StartCoroutine(FadeTitleMusic(true));
+    }
+
+    public void StartFadeTitleMusicIn()
+    {
+        StartCoroutine(FadeTitleMusic(false));
+    }
+
+    public void StartFadeGameMusicOut()
+    {
+        StartCoroutine(FadeOutGameMusic(true));
+    }
+
+    public void StartFadeGameMusicIn()
+    {
+        StartCoroutine(FadeOutGameMusic(false));
+    }
+
+    private IEnumerator FadeTitleMusic(bool fadeOut)
+    {
+        if (fadeOut)
+        {
+            while (_titleMusic.volume > 0)
+            {
+                _titleMusic.volume -= 0.001f;
+                yield return new WaitForSeconds(_fadeTimerInterval);
+            }
+        }
+        else if (!fadeOut)
+        {
+            while (_titleMusic.volume < 0.5f)
+            {
+                _titleMusic.volume += 0.001f;
+                yield return new WaitForSeconds(_fadeTimerInterval);
+            }
+        }
+
+    }
+
+    private IEnumerator FadeOutGameMusic(bool fadeOut)
+    {
+        if (fadeOut)
+        {
+            Debug.Log("game music fading out.");
+            _gameMusic.volume = .5f;
+            while (_gameMusic.volume > 0)
+            {
+                _gameMusic.volume -= 0.001f;
+                yield return new WaitForSeconds(_fadeTimerInterval);
+            }
+        }
+        else if (!fadeOut)
+        {
+            Debug.Log("game music fading in.");
+            _gameMusic.volume = 0;
+            while (_gameMusic.volume < 0.5f)
+            {
+                _gameMusic.volume += 0.001f;
+                yield return new WaitForSeconds(_fadeTimerInterval);
+            }
+        }
+    }
+
+    public void PlayRandomExplosion()
+    {
+        int clip = Random.Range(0, _explosionClips.Length);
+        _explosionSource.pitch -= Random.Range(0.9f, 1.1f);
+        _explosionSource.PlayOneShot(_explosionClips[clip]);
+
+    }
+
 }
