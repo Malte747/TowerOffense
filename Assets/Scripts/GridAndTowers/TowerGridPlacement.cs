@@ -173,6 +173,7 @@ public class TowerGridPlacement : MonoBehaviour
             gameManager.TurretSupplyPayment(towerKnowsWhereItIs.supplyCost);
             // OccupyCell(GridPlacementSystem.gridPosition);
             PlacedTower = Instantiate(Towers[number], grid.CellToWorld(GridPlacementSystem.gridPosition + towerRotationCorrection), GridPlacementSystem.rotationSave);
+            towerKnowsWhereItIs = PlacedTower.GetComponent<TowerKnowsWhereItIs>();
 
             GameObject NavMesh = GameObject.Find("NavMesh");
             if (NavMesh != null)
