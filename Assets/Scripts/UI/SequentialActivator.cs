@@ -41,14 +41,14 @@ public class SequentialActivator : MonoBehaviour
     {
         if(currentIndex + 2 <= objectsToActivateDefense.Count)
         {
-            if(currentIndex == 0 && gameManager.defenderGold >= Tier2Price)
+            if(currentIndex == 0 && GameManager.defenderGold >= Tier2Price)
             {
                 gameManager.TurretPayment(Tier2Price);
                 ActivateNextObject();
                 tierTextDefense.text = "Upgraden zu Tier 3";
                 goldPriceTextDefense.text = Tier3Price.ToString();
             }
-            else if(currentIndex == 1 && gameManager.defenderGold >= Tier3Price)
+            else if(currentIndex == 1 && GameManager.defenderGold >= Tier3Price)
             {
                 gameManager.TurretPayment(Tier3Price);
                 ActivateNextObject();
@@ -66,7 +66,7 @@ public class SequentialActivator : MonoBehaviour
     {
         if(currentIndexAttack + 2 <= objectsToActivateAttack.Count)
         {
-             if(currentIndexAttack == 0 && gameManager.attackerGold >= Tier2Price)
+             if(currentIndexAttack == 0 && GameManager.attackerGold >= Tier2Price)
             {
                 gameManager.UnitPayment(Tier2Price);
                 ActivateNextObjectAttack();
@@ -74,7 +74,7 @@ public class SequentialActivator : MonoBehaviour
                 goldPriceTextAttack.text = Tier3Price.ToString();
 
             }
-            else if(currentIndexAttack == 1 && gameManager.attackerGold  >= Tier3Price)
+            else if(currentIndexAttack == 1 && GameManager.attackerGold  >= Tier3Price)
             {
                 gameManager.UnitPayment(Tier3Price);
                 ActivateNextObjectAttack();

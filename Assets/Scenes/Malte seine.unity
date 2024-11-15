@@ -452,6 +452,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3803667255288615174, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
   m_PrefabInstance: {fileID: 7442257304723873356}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1380062267 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8671766238514062342, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+  m_PrefabInstance: {fileID: 7442257304723873356}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1435631410 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4889305333793764721, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
@@ -942,6 +947,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1054660632}
     - target: {fileID: 363030609527304405, guid: 60e63cd3a24195e439478a2e59b60b47, type: 3}
+      propertyPath: goldTextAnimator
+      value: 
+      objectReference: {fileID: 7442257304723873358}
+    - target: {fileID: 363030609527304405, guid: 60e63cd3a24195e439478a2e59b60b47, type: 3}
       propertyPath: maxTurnCountText
       value: 
       objectReference: {fileID: 360678305}
@@ -957,6 +966,10 @@ PrefabInstance:
       propertyPath: roundTextAttackObject
       value: 
       objectReference: {fileID: 1054660628}
+    - target: {fileID: 363030609527304405, guid: 60e63cd3a24195e439478a2e59b60b47, type: 3}
+      propertyPath: goldIncomeTextAnimator
+      value: 
+      objectReference: {fileID: 1380062267}
     - target: {fileID: 363030609527304405, guid: 60e63cd3a24195e439478a2e59b60b47, type: 3}
       propertyPath: roundTextDefenseObject
       value: 
@@ -1391,6 +1404,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+--- !u!95 &7442257304723873358 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1185577731634252844, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+  m_PrefabInstance: {fileID: 7442257304723873356}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7956881252163598258
 PrefabInstance:
   m_ObjectHideFlags: 0
