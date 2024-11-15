@@ -122,6 +122,7 @@ public class GameManager : MonoBehaviour
     }
 
 
+
     private void AttackersTurn()
     {
         if (attackersTurn)
@@ -552,7 +553,45 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    #region GameSettings
 
+    public void UpdateValue(string identifier, int value)
+    {
+        switch (identifier)
+        {
+            case "MaxSupply":
+                maxSupply = value;
+                Debug.Log($"maxSupply wurde auf {maxSupply} gesetzt.");
+                break;
+
+            case "StartGoldIncome":
+                startGoldIncome = value;
+                break;
+
+            case "StartGold":
+                defenderStartGold = value;
+                attackerStartGold = value;
+                break;
+
+            case "StartGoldAttacker":
+                attackerStartGold = value;
+                break;
+
+            case "StartGoldDefender":
+                defenderStartGold = value;
+                break;
+
+            case "TurnCount":
+                maxTurnCount = value;
+                break;
+
+            default:
+                Debug.LogWarning($"Unbekannter Identifier: {identifier}. Wert wurde nicht gesetzt.");
+                break;
+        }
+    }
+
+    #endregion
 
 
     private void EndGameDefenderWin()
