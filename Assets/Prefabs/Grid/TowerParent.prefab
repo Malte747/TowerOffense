@@ -325,6 +325,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyCells: []
+  goldCost: 50
+  supplyCost: 1
 --- !u!114 &-128767940523663639
 MonoBehaviour:
   m_ObjectHideFlags: 0

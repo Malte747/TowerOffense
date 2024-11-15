@@ -14,15 +14,16 @@ public class TowerGridPlacement : MonoBehaviour
 
     public Material indicatorColor;
     public GameObject indicator;
+    public GameManager gameManager;
     public static bool placingTowers;
-    public int xSizeDirection, zSizeDirection, xAdjustment, zAdjustment;
+    int xSizeDirection, zSizeDirection, xAdjustment, zAdjustment, xSizeSaved, zSizeSaved;
     public static int towerRotation;
     public static Vector3Int towerRotationCorrection;
 
     [SerializeField]
     private Grid grid;
 
-    public int xSize, zSize, xSizeSaved, zSizeSaved, placementRangeSX, placementRangeBX, placementRangeSZ, placementRangeBZ;
+    public int xSize, zSize, placementRangeSX, placementRangeBX, placementRangeSZ, placementRangeBZ;
     public List<GameObject> Towers;
     public List<GameObject> IndicatorTowers;
     private GameObject PlacedTower;
@@ -165,25 +166,31 @@ public class TowerGridPlacement : MonoBehaviour
 
     public void PlaceTower(int number)
     {
-        // OccupyCell(GridPlacementSystem.gridPosition);
-        PlacedTower = Instantiate(Towers[number], grid.CellToWorld(GridPlacementSystem.gridPosition + towerRotationCorrection), GridPlacementSystem.rotationSave);
-        TowerKnowsWhereItIs towerKnowsWhereItIs = PlacedTower.GetComponent<TowerKnowsWhereItIs>();
-
-       GameObject NavMesh = GameObject.Find("NavMesh");
-       if(NavMesh != null)
-       { 
-            NavMeshBaking baking = NavMesh.GetComponent<NavMeshBaking>();
-            baking.StartCoroutine("BakeNavMesh");
-       }
-    
-        for (int i = 1; i <= Mathf.Abs(xSize); i++)
+        TowerKnowsWhereItIs towerKnowsWhereItIs = Towers[number].GetComponent<TowerKnowsWhereItIs>();
+        if (towerKnowsWhereItIs.goldCost <= GameManager.defenderGold && towerKnowsWhereItIs.supplyCost + GameManager.defenderSupply <= GameManager.maxSupply)
         {
+            gameManager.TurretPayment(towerKnowsWhereItIs.goldCost);
+            gameManager.TurretSupplyPayment(towerKnowsWhereItIs.supplyCost);
+            // OccupyCell(GridPlacementSystem.gridPosition);
+            PlacedTower = Instantiate(Towers[number], grid.CellToWorld(GridPlacementSystem.gridPosition + towerRotationCorrection), GridPlacementSystem.rotationSave);
+            towerKnowsWhereItIs = PlacedTower.GetComponent<TowerKnowsWhereItIs>();
 
-            for (int i2 = 1; i2 <= Mathf.Abs(zSize); i2++)
+            GameObject NavMesh = GameObject.Find("NavMesh");
+            if (NavMesh != null)
             {
-                OccupyCell(new Vector3Int(GridPlacementSystem.gridPosition.x + (i * xSizeDirection) -xAdjustment, 0 , GridPlacementSystem.gridPosition.z + (i2 * zSizeDirection) -zAdjustment) + towerRotationCorrection);
-                towerKnowsWhereItIs.MyCells.Add(new Vector3Int(GridPlacementSystem.gridPosition.x + (i * xSizeDirection) - xAdjustment, 0 , GridPlacementSystem.gridPosition.z + (i2 * zSizeDirection) -zAdjustment) + towerRotationCorrection);
-                //Debug.Log("Occupy");
+                NavMeshBaking baking = NavMesh.GetComponent<NavMeshBaking>();
+                baking.StartCoroutine("BakeNavMesh");
+            }
+
+            for (int i = 1; i <= Mathf.Abs(xSize); i++)
+            {
+
+                for (int i2 = 1; i2 <= Mathf.Abs(zSize); i2++)
+                {
+                    OccupyCell(new Vector3Int(GridPlacementSystem.gridPosition.x + (i * xSizeDirection) - xAdjustment, 0, GridPlacementSystem.gridPosition.z + (i2 * zSizeDirection) - zAdjustment) + towerRotationCorrection);
+                    towerKnowsWhereItIs.MyCells.Add(new Vector3Int(GridPlacementSystem.gridPosition.x + (i * xSizeDirection) - xAdjustment, 0, GridPlacementSystem.gridPosition.z + (i2 * zSizeDirection) - zAdjustment) + towerRotationCorrection);
+                    //Debug.Log("Occupy");
+                }
             }
         }
     }
