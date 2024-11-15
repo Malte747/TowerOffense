@@ -127,6 +127,7 @@ public class GameManager : MonoBehaviour
         if (attackersTurn)
         {
             attackerGold = attackerGold + attackerGoldIncome;
+            attackerSupply = 0;
             goldTextAnimator.SetTrigger("GoldAnimation");
             goldIncomeTextAnimator.SetTrigger("IncomeAnimation");
             StartCoroutine(AnimateGoldTextRoundStartAttack());
