@@ -23,13 +23,5 @@ public class GridPlacementSystem : MonoBehaviour
         cellIndicator.transform.position = grid.CellToWorld(gridPosition + TowerGridPlacement.towerRotationCorrection);
         cellIndicator.transform.eulerAngles = new Vector3(cellIndicator.transform.eulerAngles.x, TowerGridPlacement.towerRotation, cellIndicator.transform.eulerAngles.z);
         rotationSave = cellIndicator.transform.rotation;
-        /*
-        Transform child1 = cellIndicator.transform.GetChild(0);
-        Transform child2 = cellIndicator.transform.GetChild(1);
-
-        child1.rotation = Quaternion.Euler(0, TowerGridPlacement.towerRotation, 0);
-        child2.rotation = Quaternion.Euler(0, TowerGridPlacement.towerRotation, 0);
-        rotationSave = child1.transform.rotation;
-        */
     }
 }

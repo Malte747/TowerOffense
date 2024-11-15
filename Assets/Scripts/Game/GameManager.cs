@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     //Allgemeine stats
     [Header("Allgemeine Stats")]
 
-    public static int maxSupply;
+    public static int maxSupply = 20;
     public int startGoldIncome;
 
 
