@@ -15,7 +15,7 @@ public class EnemyScript : MonoBehaviour
         Walls,
         Mines
     }
-    public int cost, income;
+    public int cost, supplyCost, income;
     [Tooltip("Select which towers this unit will attack. It will try to avoid the others.")]
     public Targets target = Targets.MainTower;
     [Tooltip("Unit sees all towers within x tiles")]

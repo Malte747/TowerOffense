@@ -5,11 +5,11 @@ public class PlaceEnemies : MonoBehaviour
     public LayerMask planeLayer;
     public GameObject[] Units;
     public GameObject unit;
-    GameObject manager;
+    GameManager manager;
 
     private void Start()
     {
-        manager = GameObject.Find("GameManager");
+        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
     void Update()
     {
@@ -19,10 +19,13 @@ public class PlaceEnemies : MonoBehaviour
             RaycastHit hit;
 
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, planeLayer) && unit.GetComponent<EnemyScript>())
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, planeLayer)
+                && unit.GetComponent<EnemyScript>().cost <= GameManager.attackerGold
+                && unit.GetComponent<EnemyScript>().supplyCost + GameManager.attackerSupply <= GameManager.maxSupply)
             {
                 Instantiate(unit, hit.point, Quaternion.identity);
-                manager.GetComponent<GameManager>().UnitPayment(unit.GetComponent<EnemyScript>().cost);
+                manager.UnitPayment(unit.GetComponent<EnemyScript>().cost);
+                manager.UnitSupplyPayment(unit.GetComponent<EnemyScript>().supplyCost);
             }
         }
     }
