@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 949a8ff9974f6274cab08e182fdfce03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 0
+  income: 5
   target: 0
   sightRange: 4
   attackRange: 1.5
@@ -54,6 +56,8 @@ MonoBehaviour:
   buffedDamage: 0
   attackCooldown: 1
   damageDelay: 0.17
+  isRangeUnit: 0
+  projectile: {fileID: 0}
 --- !u!195 &1697327694870662928
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -297,6 +297,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 949a8ff9974f6274cab08e182fdfce03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 10
+  income: 2
   target: 2
   sightRange: 4
   attackRange: 5

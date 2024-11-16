@@ -5,8 +5,12 @@ public class PlaceEnemies : MonoBehaviour
     public LayerMask planeLayer;
     public GameObject[] Units;
     public GameObject unit;
+    GameObject manager;
 
-    
+    private void Start()
+    {
+        manager = GameObject.Find("GameManager");
+    }
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -14,9 +18,11 @@ public class PlaceEnemies : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, planeLayer))
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, planeLayer) && unit.GetComponent<EnemyScript>())
             {
                 Instantiate(unit, hit.point, Quaternion.identity);
+                manager.GetComponent<GameManager>().UnitPayment(unit.GetComponent<EnemyScript>().cost);
             }
         }
     }

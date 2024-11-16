@@ -15,6 +15,7 @@ public class EnemyScript : MonoBehaviour
         Walls,
         Mines
     }
+    public int cost, income;
     [Tooltip("Select which towers this unit will attack. It will try to avoid the others.")]
     public Targets target = Targets.MainTower;
     [Tooltip("Unit sees all towers within x tiles")]
@@ -31,8 +32,8 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private bool isRangeUnit;
     [Tooltip("If this is a Range Unit assign a projectile here")]
     [SerializeField] private GameObject projectile;
-    
-    
+
+
 
     private Grid grid;
     NavMeshAgent agent;
@@ -44,13 +45,15 @@ public class EnemyScript : MonoBehaviour
     Animator animator;
     private Vector3 lastPosition;
     private Vector3 projectileStartPos;
-
+    private GameObject GameManager;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameManager = GameObject.Find("GameManager");
+        GameManager.GetComponent<GameManager>().GainIncomeAttacker(income);
+
         animator = gameObject.transform.GetChild(0).GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         grid = GameObject.Find("Grid").GetComponent<Grid>();
@@ -128,13 +131,13 @@ public class EnemyScript : MonoBehaviour
             if (agent.enabled == true && agent.destination != null) agent.SetDestination(nextVictim.transform.GetChild(0).position);
             CheckAttackRange(nextVictim);
             if (canAttackVictim && cooldown <= 0) Attack();
-            if (canAttackVictim && attackRange > 1) 
+            if (canAttackVictim && attackRange > 1)
             {
                 agent.enabled = false;
                 transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(nextVictim.transform.GetChild(0).position - transform.position), 5 * Time.deltaTime);
             }
         }
-       
+
 
         // attack towers that aren't a target but are in the way. it's nothing personal :(
         if (!agent.enabled && Vector3.Distance(transform.position, agent.destination) > attackRange * 8)
@@ -158,7 +161,7 @@ public class EnemyScript : MonoBehaviour
             }
         }
 
-        
+
     }
 
     void CheckGridPositions()
@@ -231,9 +234,9 @@ public class EnemyScript : MonoBehaviour
         cooldown = attackCooldown;
         if (animator != null) animator.SetBool("chomping", true);
 
-        if(isRangeUnit)Projectile();
+        if (isRangeUnit) Projectile();
         else Invoke("Damage", damageDelay);
-        
+
     }
 
     void Projectile()
@@ -246,18 +249,18 @@ public class EnemyScript : MonoBehaviour
                     || (target == Targets.Walls && nextVictim.CompareTag("Wall"))
                     || (target == Targets.Mines && nextVictim.CompareTag("Mine")))
             {
-               yeet.GetComponent<Projectile>().damage = buffedDamage;
+                yeet.GetComponent<Projectile>().damage = buffedDamage;
             }
             else
             {
                 yeet.GetComponent<Projectile>().damage = baseDamage;
             }
-             yeet.GetComponent<Projectile>().victim = nextVictim;
+            yeet.GetComponent<Projectile>().victim = nextVictim;
         }
         float distance = Mathf.Infinity;
         script.p1 = projectileStartPos;
-        
-        
+
+
         TowerKnowsWhereItIs towerScript = nextVictim.GetComponent<TowerKnowsWhereItIs>();
         foreach (Vector3Int pos in towerScript.MyCells)
         {
@@ -267,7 +270,8 @@ public class EnemyScript : MonoBehaviour
                 script.p3 = grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5);
             }
         }
-        script.p2 = (projectileStartPos + script.p3) / 2 + Vector3.up * 40;
+        float height = Vector3.Distance(script.p1, script.p3);
+        script.p2 = (projectileStartPos + script.p3) / 2 + Vector3.up * height;
         Debug.Log(script.p3);
     }
 
