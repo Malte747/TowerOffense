@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
     //Turns
     [Header("Turns")]
 
-    [SerializeField] private bool attackersTurn = false;
-    [SerializeField] private bool defendersTurn = true;
+    [SerializeField] public bool attackersTurn = false;
+    [SerializeField] public bool defendersTurn = true;
     [SerializeField] private int currentTurn = 1;
     public int maxTurnCount;
 

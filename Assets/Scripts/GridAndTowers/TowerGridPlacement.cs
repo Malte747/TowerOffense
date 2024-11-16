@@ -44,7 +44,7 @@ public class TowerGridPlacement : MonoBehaviour
     }
 
     void Update()
-    {
+    {   
         bool hitTower = false;
         for (int i = 1; i <= Mathf.Abs(xSize); i++)
         {
@@ -109,6 +109,7 @@ public class TowerGridPlacement : MonoBehaviour
                 UnselectTower();
             }
             }
+
         }
 
             if (Input.GetMouseButtonDown(1) && placingTowers)
@@ -162,6 +163,7 @@ public class TowerGridPlacement : MonoBehaviour
             towerRotationCorrection = new Vector3Int(1, 0, 0);
         }
 
+        if (!gameManager.defendersTurn) StopPlacingTowers();
     }
 
     public void PlaceTower(int number)
