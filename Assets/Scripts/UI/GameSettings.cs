@@ -158,4 +158,17 @@ public void UpdateImageColorsForStartGold()
             }
         }
     }
+
+
+
+
+
+
+
 }
+
+
+
+
+
+

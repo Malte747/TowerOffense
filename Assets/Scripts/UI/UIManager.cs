@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
 
+    GameManager gameManager;
+
     public MultiButtonTrigger multiButtonTriggerAttack;
     public MultiButtonTrigger multiButtonTriggerDefense;
 
@@ -14,17 +16,22 @@ public class UIManager : MonoBehaviour
     public GameObject defenderUIBlock;
     public GameObject attackerSupplyIcon;
     public GameObject defenderSupplyIcon;
+    public List<GameObject> gameUI;
+    public List<GameObject> additionalGameUI;
 
     public Button pause;  
     public Button unpause;
     private bool isPaused = false; 
     private bool toggle = true;    
 
-
+    void Start()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && gameManager.gameInProgress)
         {
 
             
@@ -40,6 +47,16 @@ public class UIManager : MonoBehaviour
 
  
             
+        }
+    }
+
+    public void Unpause()
+    {
+        if (isPaused)
+        {
+            Time.timeScale = 1f; // Spiel fortsetzen
+            isPaused = false;
+            toggle = !toggle;
         }
     }
 
@@ -88,6 +105,28 @@ public class UIManager : MonoBehaviour
         multiButtonTriggerDefense.ResetMenuNavigation();
         attackerUIBlock.SetActive(false);
         defenderUIBlock.SetActive(true);
+    }
+
+    public void StartOrStopGameUI()
+    {
+         foreach (var obj in gameUI)
+        {
+            if (obj != null)
+            {
+                obj.SetActive(!obj.activeSelf); 
+            }
+        }
+    }
+
+    public void StopAdditionalGameUI()
+    {
+        foreach (var obj in additionalGameUI)
+        {
+            if (obj != null)
+            {
+                obj.SetActive(false); 
+            }
+        }
     }
 
 }

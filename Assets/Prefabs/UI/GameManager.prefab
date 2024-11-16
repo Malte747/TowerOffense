@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9145123453110784212}
   - component: {fileID: 363030609527304405}
+  - component: {fileID: 3312278497822602383}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -48,16 +49,12 @@ MonoBehaviour:
   defendersTurn: 1
   currentTurn: 1
   maxTurnCount: 10
-  attackerGold: 0
   attackerStartGold: 100
   attackerGoldIncome: 0
-  attackerSupply: 0
-  defenderGold: 0
   defenderStartGold: 50
   defenderGoldIncome: 0
-  defenderSupply: 0
-  maxSupply: 100
   startGoldIncome: 10
+  gameInProgress: 0
   goldText: {fileID: 0}
   currentIncomeText: {fileID: 0}
   supplyText: {fileID: 0}
@@ -68,3 +65,69 @@ MonoBehaviour:
   roundTextAttack: {fileID: 0}
   roundTextDefenseObject: {fileID: 0}
   roundTextAttackObject: {fileID: 0}
+  goldTextAnimator: {fileID: 0}
+  goldIncomeTextAnimator: {fileID: 0}
+  attackerRoundTextAnimator: {fileID: 0}
+  defenderRoundTextAnimator: {fileID: 0}
+--- !u!114 &3312278497822602383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607305795470544464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cfb54aa205cafb42a76ce5ced3338ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliderInputPairs:
+  - slider: {fileID: 0}
+    inputField: {fileID: 0}
+    background: {fileID: 0}
+    border: {fileID: 0}
+    identifier: StartGoldIncome
+    shortGame: 50
+    mediumGame: 50
+    longGame: 50
+  - slider: {fileID: 0}
+    inputField: {fileID: 0}
+    background: {fileID: 0}
+    border: {fileID: 0}
+    identifier: StartGold
+    shortGame: 150
+    mediumGame: 100
+    longGame: 100
+  - slider: {fileID: 0}
+    inputField: {fileID: 0}
+    background: {fileID: 0}
+    border: {fileID: 0}
+    identifier: MaxSupply
+    shortGame: 100
+    mediumGame: 150
+    longGame: 200
+  - slider: {fileID: 0}
+    inputField: {fileID: 0}
+    background: {fileID: 0}
+    border: {fileID: 0}
+    identifier: TurnCount
+    shortGame: 10
+    mediumGame: 20
+    longGame: 50
+  - slider: {fileID: 0}
+    inputField: {fileID: 0}
+    background: {fileID: 0}
+    border: {fileID: 0}
+    identifier: StartGoldAttacker
+    shortGame: 150
+    mediumGame: 100
+    longGame: 100
+  - slider: {fileID: 0}
+    inputField: {fileID: 0}
+    background: {fileID: 0}
+    border: {fileID: 0}
+    identifier: StartGoldDefender
+    shortGame: 150
+    mediumGame: 100
+    longGame: 100
+  gameManager: {fileID: 363030609527304405}

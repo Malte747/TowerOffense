@@ -85,5 +85,17 @@ MonoBehaviour:
   defenderUIBlock: {fileID: 0}
   attackerSupplyIcon: {fileID: 0}
   defenderSupplyIcon: {fileID: 0}
+  gameUI:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  additionalGameUI:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   pause: {fileID: 0}
   unpause: {fileID: 0}

@@ -23,28 +23,33 @@ public class GameManager : MonoBehaviour
 
     //Attackers stats
     [Header("Attacker Stats")]
-
-    public static int attackerGold;
     public int attackerStartGold;
     [SerializeField] private int attackerGoldIncome;
-    public static int attackerSupply;
+    
 
 
 
     //defenders stats
     [Header("Defender Stats")]
-
-    public static int defenderGold; 
     public int defenderStartGold;
     [SerializeField] private int defenderGoldIncome;
-    public static int defenderSupply;
+    
 
 
     //Allgemeine stats
     [Header("Allgemeine Stats")]
 
-    public static int maxSupply = 20;
+    
     public int startGoldIncome;
+    public bool gameInProgress = false;
+
+
+    //static values
+    public static int attackerGold;
+    public static int defenderGold; 
+    public static int attackerSupply;
+    public static int defenderSupply;
+    public static int maxSupply = 20;
 
 
 
@@ -74,6 +79,8 @@ public class GameManager : MonoBehaviour
     public GameObject roundTextAttackObject;
     public Animator goldTextAnimator;
     public Animator goldIncomeTextAnimator;
+    public Animator attackerRoundTextAnimator;
+    public Animator defenderRoundTextAnimator;
 
     private float animationDuration = 1.0f;
     private int lastSpending;
@@ -99,7 +106,6 @@ public class GameManager : MonoBehaviour
         uiManager = FindObjectOfType<UIManager>();
         sequentialActivator = GameObject.Find("UiManager").GetComponent<SequentialActivator>();
 
-        GameStart();
     }
 
     public void GameStart()
@@ -116,7 +122,7 @@ public class GameManager : MonoBehaviour
         SetMaxTurnCountValue(maxTurnCount);
         
 
-
+        gameInProgress = true;
 
         DefendersTurn();
     }
@@ -150,6 +156,7 @@ public class GameManager : MonoBehaviour
             SetSupplyValue(defenderSupply);
             SetIncomeText(defenderGoldIncome);
             roundTextDefenseObject.SetActive(true);
+           
             
         }
     }
@@ -597,6 +604,7 @@ public class GameManager : MonoBehaviour
     private void EndGameDefenderWin()
     {
         Debug.Log("Das Spiel ist zuende, verteidiger gewinnt");
+        gameInProgress = false;
     }
 
 
@@ -614,12 +622,23 @@ public class GameManager : MonoBehaviour
         defendersTurn = true;
     }
 
+    private void ResetAnimations()
+    {
+        goldTextAnimator.SetTrigger("ResetAnimationGold");
+        goldIncomeTextAnimator.SetTrigger("ResetAnimationIncome");
+        attackerRoundTextAnimator.SetTrigger("ResetRoundTextAnimation");
+        defenderRoundTextAnimator.SetTrigger("ResetRoundTextAnimation");
+        
+    }
+
 
     public void ResetGame()
     {
+        ResetAnimations();
         sequentialActivator.ResetUITierButtons();
         uiManager.ResetNavigation();
         ResetIngameValues();
+        
     }
 
 
