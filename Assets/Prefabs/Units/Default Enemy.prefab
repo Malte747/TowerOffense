@@ -298,6 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 10
+  supplyCost: 1
   income: 2
   target: 2
   sightRange: 4

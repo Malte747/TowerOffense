@@ -54,7 +54,7 @@ public class EnemyScript : MonoBehaviour
         GameManager = GameObject.Find("GameManager");
         GameManager.GetComponent<GameManager>().GainIncomeAttacker(income);
 
-        animator = gameObject.transform.GetChild(0).GetComponent<Animator>();
+        animator = gameObject.transform.GetChild(1).GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         grid = GameObject.Find("Grid").GetComponent<Grid>();
     }
@@ -79,7 +79,7 @@ public class EnemyScript : MonoBehaviour
             // if unit targets the main tower just try to move forwards while taking the least amount of damage 
             if (target == Targets.MainTower)
             {
-                if (agent.enabled == true) agent.SetDestination(transform.position + Vector3.forward * 50f);
+                if (agent.enabled == true) agent.SetDestination(transform.position + Vector3.forward * sightRange * 9);
             }
             // if unit targets eveything move to the closest tower or keep moving forwards if there are none
             else if (target == Targets.Everything)
@@ -105,7 +105,7 @@ public class EnemyScript : MonoBehaviour
 
                 if (nextVictim == null)
                 {
-                    if (agent.enabled == true) agent.SetDestination(transform.position + Vector3.forward * 50f);
+                    if (agent.enabled == true) agent.SetDestination(transform.position + Vector3.forward * sightRange * 9);
                 }
             }
             // if unit targets a specific type of tower move to the closest tower of that type or keep moving forwards if there are none
@@ -116,7 +116,7 @@ public class EnemyScript : MonoBehaviour
                 if (foundTowers.Count != 0) SelectTarget();
                 if (nextVictim == null)
                 {
-                    if (agent.enabled == true) agent.SetDestination(transform.position + Vector3.forward * 50f);
+                    if (agent.enabled == true) agent.SetDestination(transform.position + Vector3.forward * sightRange * 9);
                 }
             }
         }
