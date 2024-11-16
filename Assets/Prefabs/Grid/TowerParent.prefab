@@ -327,6 +327,8 @@ MonoBehaviour:
   MyCells: []
   goldCost: 50
   supplyCost: 1
+  xSize: 1
+  zSize: 1
 --- !u!114 &-128767940523663639
 MonoBehaviour:
   m_ObjectHideFlags: 0

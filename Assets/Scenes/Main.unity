@@ -2803,6 +2803,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 792503388210413698, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 792503388210413698, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 792503388210413698, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 119031398}
+    - target: {fileID: 792503388210413698, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 792503388210413698, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeTowerWhilePlacing
+      objectReference: {fileID: 0}
+    - target: {fileID: 792503388210413698, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TowerGridPlacement, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 792503388210413698, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 915005836266928626, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2821,7 +2849,7 @@ PrefabInstance:
       objectReference: {fileID: 36889974}
     - target: {fileID: 1666582496173995968, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
       propertyPath: m_Delegates.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1666582496173995968, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
       propertyPath: m_Delegates.Array.data[2].eventID
@@ -3191,9 +3219,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4421895978056737051, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421895978056737051, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421895978056737051, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 119031398}
+    - target: {fileID: 4421895978056737051, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421895978056737051, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeTowerWhilePlacing
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421895978056737051, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TowerGridPlacement, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421895978056737051, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421895978056737051, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4799224900532214303, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
       propertyPath: m_Delegates.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4799224900532214303, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
       propertyPath: m_Delegates.Array.data[2].eventID
@@ -3201,7 +3261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4799224900532214303, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
       propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4799224900532214303, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
       propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -3289,7 +3349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5580414513748867555, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
       propertyPath: m_Delegates.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5580414513748867555, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
       propertyPath: m_Delegates.Array.data[2].eventID
@@ -3339,6 +3399,38 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
       objectReference: {fileID: 36889973}
+    - target: {fileID: 6966732316584848810, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6966732316584848810, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6966732316584848810, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 119031398}
+    - target: {fileID: 6966732316584848810, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6966732316584848810, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeTowerWhilePlacing
+      objectReference: {fileID: 0}
+    - target: {fileID: 6966732316584848810, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TowerGridPlacement, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6966732316584848810, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6966732316584848810, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6971076792885101889, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1

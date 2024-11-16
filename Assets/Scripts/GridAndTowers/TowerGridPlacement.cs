@@ -201,7 +201,7 @@ public class TowerGridPlacement : MonoBehaviour
         
     }
 
-    public void ChangeTowerWhilePlacing(string numbers)
+    public void ChangeTowerWhilePlacing(int number)
     {
         UnselectTower();
         towerRotation = 0;
@@ -210,31 +210,20 @@ public class TowerGridPlacement : MonoBehaviour
         xAdjustment = 1;
         zAdjustment = 1;
         towerRotationCorrection = new Vector3Int(0, 0, 0);
-        xSize = xSizeSaved;
-        zSize = zSizeSaved;
         indicator.SetActive(true);
         Cursor.visible = false;
         placingTowers = true;
-        string[] digits = Regex.Split(numbers, @"\D+");
-        List<int> ints = new List<int>();
-        foreach (string value in digits)
-        {
-            int number;
-            if (int.TryParse(value, out number))
-            {
-                ints.Add(number);
-            }
-        }
+        TowerKnowsWhereItIs towerKnowsWhereItIs = Towers[number].GetComponent<TowerKnowsWhereItIs>();
+        towerNumberUI = number;
+        xSize = towerKnowsWhereItIs.xSize;
+        xSizeSaved = towerKnowsWhereItIs.xSize;
+        zSize = towerKnowsWhereItIs.zSize;
+        zSizeSaved = towerKnowsWhereItIs.zSize;
 
-        towerNumberUI = ints[0];
-        xSize = ints[1];
-        xSizeSaved = ints[1];
-        zSize = ints[2];
-        zSizeSaved = ints[2];
         indicator.transform.localScale = new Vector3(xSize, 1, zSize);
 
         DeactivateTowerPreview();
-        IndicatorTowers[ints[0]].SetActive(true);
+        IndicatorTowers[number].SetActive(true);
 
     }
 
