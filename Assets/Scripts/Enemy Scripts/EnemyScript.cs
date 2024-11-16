@@ -240,6 +240,20 @@ public class EnemyScript : MonoBehaviour
     {
         GameObject yeet = Instantiate(projectile, projectileStartPos, Quaternion.identity);
         Projectile script = yeet.GetComponent<Projectile>();
+        if (nextVictim != null)
+        {
+            if ((target == Targets.Towers && nextVictim.CompareTag("Tower"))
+                    || (target == Targets.Walls && nextVictim.CompareTag("Wall"))
+                    || (target == Targets.Mines && nextVictim.CompareTag("Mine")))
+            {
+               yeet.GetComponent<Projectile>().damage = buffedDamage;
+            }
+            else
+            {
+                yeet.GetComponent<Projectile>().damage = baseDamage;
+            }
+             yeet.GetComponent<Projectile>().victim = nextVictim;
+        }
         float distance = Mathf.Infinity;
         script.p1 = projectileStartPos;
         
@@ -254,6 +268,7 @@ public class EnemyScript : MonoBehaviour
             }
         }
         script.p2 = (projectileStartPos + script.p3) / 2 + Vector3.up * 40;
+        Debug.Log(script.p3);
     }
 
     void Damage()
