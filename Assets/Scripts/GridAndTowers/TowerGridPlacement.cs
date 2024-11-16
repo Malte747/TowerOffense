@@ -61,10 +61,6 @@ public class TowerGridPlacement : MonoBehaviour
                     hitTower = true;
                 }
             }
-        //if(GridPlacementSystem.gridPosition.x - xSize + 1 < placementRangeSX || GridPlacementSystem.gridPosition.x + xSize -1 > placementRangeBX || GridPlacementSystem.gridPosition.z - zSize +1 < placementRangeSZ || GridPlacementSystem.gridPosition.z + zSize - 1 > placementRangeBZ)
-            {
-              //  hitTower = true;
-            }
         }
         if (hitTower)
         {

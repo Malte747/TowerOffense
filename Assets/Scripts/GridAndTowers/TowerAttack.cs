@@ -129,22 +129,10 @@ public class TowerAttack : MonoBehaviour
         if (nextVictim != null)
         {
             //Mark for Testing
-            if (outline == null) outline = nextVictim.AddComponent<Outline>();
-            //if (outline = null) nextVictim.AddComponent<Outline>();
-            //if (outline != null) outline.enabled = true;
-        
+            //if (outline == null) outline = nextVictim.AddComponent<Outline>();
+
             health = nextVictim.GetComponent<Health>();
-            /*if ((target == Targets.Towers && nextVictim.CompareTag("Tower"))
-            || (target == Targets.Walls && nextVictim.CompareTag("Wall"))
-                    || (target == Targets.Mines && nextVictim.CompareTag("Mine")))
-            {
-                health.health -= buffedDamage;
-            }
-            else
-            {
-            */
-                health.health -= baseDamage;
-            //}
+            health.health -= baseDamage;
         }
     }
 }
