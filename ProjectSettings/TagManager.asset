@@ -10,6 +10,7 @@ TagManager:
   - Mine
   - TierButtonActive
   - TierButtonInactive
+  - MainTower
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Wall
   - Mine
   - Grid
-  - 
+  - MainTower
   - 
   - 
   - 

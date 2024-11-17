@@ -21,10 +21,17 @@ public class Health : MonoBehaviour
 
     void Death()
     {
-        RemoveEntries(gameObject);
-        NavMeshBaking baking = GameObject.Find("NavMesh").GetComponent<NavMeshBaking>();
-        baking.StartCoroutine("BakeNavMesh");
-        Destroy(gameObject);
+        if (gameObject.CompareTag("MainTower"))
+        {
+            Debug.Log("Atacker Wins!!!");
+        }
+        else
+        { 
+            RemoveEntries(gameObject);
+            NavMeshBaking baking = GameObject.Find("NavMesh").GetComponent<NavMeshBaking>();
+            baking.StartCoroutine("BakeNavMesh");
+            Destroy(gameObject);
+        }
         
     }
 
