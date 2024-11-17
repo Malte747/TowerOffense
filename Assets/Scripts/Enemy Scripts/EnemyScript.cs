@@ -79,7 +79,7 @@ public class EnemyScript : MonoBehaviour
             // if unit targets the main tower just try to move forwards while taking the least amount of damage 
             if (target == Targets.MainTower)
             {
-                if (agent.enabled == true) agent.SetDestination(transform.position + Vector3.forward * sightRange * 9);
+                if (agent.enabled == true) agent.SetDestination(transform.position + Vector3.forward * 10);
             }
             // if unit targets eveything move to the closest tower or keep moving forwards if there are none
             else if (target == Targets.Everything)
@@ -105,7 +105,7 @@ public class EnemyScript : MonoBehaviour
 
                 if (nextVictim == null)
                 {
-                    if (agent.enabled == true) agent.SetDestination(transform.position + Vector3.forward * sightRange * 9);
+                    if (agent.enabled == true) agent.SetDestination(transform.position + Vector3.forward * 10);
                 }
             }
             // if unit targets a specific type of tower move to the closest tower of that type or keep moving forwards if there are none
@@ -116,7 +116,7 @@ public class EnemyScript : MonoBehaviour
                 if (foundTowers.Count != 0) SelectTarget();
                 if (nextVictim == null)
                 {
-                    if (agent.enabled == true) agent.SetDestination(transform.position + Vector3.forward * sightRange * 9);
+                    if (agent.enabled == true) agent.SetDestination(transform.position + Vector3.forward * 10);
                 }
             }
         }
@@ -232,7 +232,7 @@ public class EnemyScript : MonoBehaviour
     void Attack()
     {
         cooldown = attackCooldown;
-        if (animator != null) animator.SetBool("chomping", true);
+        if (animator != null) animator.SetBool("isAttacking", true);
 
         if (isRangeUnit) Projectile();
         else Invoke("Damage", damageDelay);
@@ -292,6 +292,7 @@ public class EnemyScript : MonoBehaviour
                 health.health -= baseDamage;
             }
         }
-        if (animator != null) animator.SetBool("chomping", false);
+        if (animator != null) animator.SetBool("isAttacking", false);
+        Debug.Log("attack");
     }
 }
