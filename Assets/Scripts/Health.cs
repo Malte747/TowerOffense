@@ -46,6 +46,14 @@ public class Health : MonoBehaviour
             .Select(entry => entry.Key)
             .ToList();
 
+            //Remove Gold Income if Mine
+            if(gameObject.CompareTag("Mine"))
+            {
+                Mine mine = gameObject.GetComponent<Mine>();
+                mine.MineIsDying();
+                Debug.Log("Mine is not ALive");
+            }
+
             // Remove each of those keys from the dictionary
             foreach (var key in keysToRemove)
             {

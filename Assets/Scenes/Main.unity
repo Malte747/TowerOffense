@@ -1582,6 +1582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd3c4032fff4a24ea1dea16bbf425a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackerWinsText: {fileID: 1838216456}
   cellIndicator: {fileID: 363742105}
   gridMouseInput: {fileID: 811114686}
   grid: {fileID: 415096506}
@@ -2648,7 +2649,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 540844313844700948, guid: f1862e734687bf149a362eb2c977ee70, type: 3}
     m_RemovedGameObjects:
     - {fileID: 2563026116900883903, guid: f1862e734687bf149a362eb2c977ee70, type: 3}
     m_AddedGameObjects: []
@@ -4264,7 +4266,7 @@ GameObject:
   - component: {fileID: 1838216459}
   - component: {fileID: 1838216458}
   m_Layer: 5
-  m_Name: RoundWinAttacker
+  m_Name: RoundWinAttackerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
