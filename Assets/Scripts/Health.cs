@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using TMPro;
 
 //  SCRIPT SUMMARY: keeps track of a towers/units health & kills it
 
@@ -23,7 +24,8 @@ public class Health : MonoBehaviour
     {
         if (gameObject.CompareTag("MainTower"))
         {
-            Debug.Log("Atacker Wins!!!");
+            GridPlacementSystem.attackerHasWon = true;
+            Destroy(gameObject);
         }
         else
         { 
@@ -63,5 +65,6 @@ public class Health : MonoBehaviour
                 EnemyBibleScript.EnemyBible.Remove(key);
             }
         }*/
+
     }
 }

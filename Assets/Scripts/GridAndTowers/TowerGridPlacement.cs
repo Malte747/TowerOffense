@@ -165,7 +165,7 @@ public class TowerGridPlacement : MonoBehaviour
     public void PlaceTower(int number)
     {
         TowerKnowsWhereItIs towerKnowsWhereItIs = Towers[number].GetComponent<TowerKnowsWhereItIs>();
-        //if (towerKnowsWhereItIs.goldCost <= GameManager.defenderGold && towerKnowsWhereItIs.supplyCost + GameManager.defenderSupply <= GameManager.maxSupply)
+        if (towerKnowsWhereItIs.goldCost <= GameManager.defenderGold && towerKnowsWhereItIs.supplyCost + GameManager.defenderSupply <= GameManager.maxSupply)
         {
             gameManager.TurretPayment(towerKnowsWhereItIs.goldCost);
             gameManager.TurretSupplyPayment(towerKnowsWhereItIs.supplyCost);
