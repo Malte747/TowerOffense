@@ -51,7 +51,7 @@ public class Health : MonoBehaviour
             {
                 Mine mine = gameObject.GetComponent<Mine>();
                 mine.MineIsDying();
-                Debug.Log("Mine is not ALive");
+                //Debug.Log("Mine is not ALive");
             }
 
             // Remove each of those keys from the dictionary

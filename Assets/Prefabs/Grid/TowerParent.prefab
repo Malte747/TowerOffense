@@ -355,7 +355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: 0
-  attackRange: 3
+  attackRange: 2
   baseDamage: 10
   buffedDamage: 10
   attackCooldown: 0.9

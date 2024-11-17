@@ -18,6 +18,6 @@ public class Mine : MonoBehaviour
     public void MineIsDying()
     {
         gameManager.GainIncomeDefender(- goldProduced);
-        Debug.Log("Mine is not ALive");
+        //Debug.Log("Mine is not ALive");
     }
 }
