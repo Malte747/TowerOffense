@@ -4,7 +4,30 @@ using UnityEngine;
 using UnityEngine.AI;
 
 //  SCRIPT SUMMARY: enemy brain for movement & attacking
-
+/*
+Me when this script compiles:
+⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⣿⣿⣿⣶⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠸⣿⣿⣿⠀⠙⠻⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⢹⣿⣿⠀⠀⠀⠈⠙⠷⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡀
+⠀⠀⠹⣿⠀⠀⠀⠀⠀⠀⠈⠙⢷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⡤⠶⣶⣿⣿⣿⠃
+⠀⠀⠀⠹⣯⠀⠀⠀⠀⠀⠀⠀⠀⠙⢷⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⡶⠞⠛⠉⠁⠀⠀⣿⣿⣿⠃⠀
+⠀⠀⠀⠀⠹⣯⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⠶⠞⠋⠉⠀⠀⠀⠀⠀⠀⠀⣸⣿⡿⠃⠀⠀
+⠀⠀⠀⠀⠀⠘⢷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠓⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠲⠶⠤⢤⠶⠚⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⠟⠁⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠈⢻⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡿⠋⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠹⣦⣀⣴⠟⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠋⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢨⡿⠓⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⡀⠀⠀⣠⡶⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢀⡾⠁⠀⠀⠀⠀⣀⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣶⠞⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢀⣾⠁⠀⠀⠀⠀⣼⡏⣹⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡶⢶⣶⡄⠀⠀⠀⠀⠀⠀⢹⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣸⠃⠀⠀⠀⠀⠀⢻⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣷⣾⣿⡿⠀⠀⠀⠀⠀⠀⠀⢻⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢰⡏⠀⠀⠀⠀⠀⠀⠀⠉⠉⠁⠀⠀⠀⠀⣤⣀⣀⠀⠀⠀⠀⠀⠀⠘⠻⠿⠛⠁⠀⠀⠀⠀⠀⠀⠀⠘⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣾⢠⣴⣿⣿⣶⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠛⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡀⠀⠀⠀⠀⠀⢻⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⡇⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⣶⡀⠀⠀⠸⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣧⠈⠻⠿⠿⠟⠋⠀⠀⠀⠀⠀⠀⠀⢀⣾⠟⠋⠉⠙⠻⣦⠀⠀⠀⠀⠀⠀⠸⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢻⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣇⠀⠀⠀⠀⠀  ⣿⠀⠀⠀⠀⠀⠀⠀⠙⠿⠿⠿⠿⠛⠀⠀⠀⠀⢿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠘⣷⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠷⣤⣀⣠⣴⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+*/
 public class EnemyScript : MonoBehaviour
 {
     public enum Targets
@@ -43,7 +66,7 @@ public class EnemyScript : MonoBehaviour
     GameObject nextVictim;
     bool canAttackVictim;
     Animator animator;
-    private Vector3 lastPosition;
+    private Vector3 lastPosition, destination;
     private Vector3 projectileStartPos;
     private GameObject GameManager;
 
@@ -66,6 +89,7 @@ public class EnemyScript : MonoBehaviour
         projectileStartPos = transform.GetChild(0).transform.position;
         t += Time.deltaTime;
         cooldown -= Time.deltaTime;
+        if (agent.enabled) destination = agent.destination;
 
 
         float distanceToLastFrame = Vector3.Distance(transform.position, lastPosition);
@@ -73,39 +97,23 @@ public class EnemyScript : MonoBehaviour
         if (animator != null) animator.SetFloat("speed", distanceToLastFrame / Time.deltaTime);
 
         // update the agent's destination once every second 
-        if (t >= 1)
+        if (t >= Random.Range(60,100)/100)
         {
             t = 0;
             // if unit targets the main tower just try to move forwards while taking the least amount of damage 
             if (target == Targets.MainTower)
             {
-                if (agent.enabled == true) agent.SetDestination(transform.position + Vector3.forward * 10);
+                MoveForwards();
             }
             // if unit targets eveything move to the closest tower or keep moving forwards if there are none
             else if (target == Targets.Everything)
             {
-                float distance = Mathf.Infinity;
-
                 CheckGridPositions();
-
-                foreach (GameObject tower in foundTowers)
-                {
-                    TowerKnowsWhereItIs towerScript = tower.GetComponent<TowerKnowsWhereItIs>();
-                    foreach (Vector3Int pos in towerScript.MyCells)
-                    {
-                        if (Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5)) < distance)
-                        {
-                            distance = Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5));
-                            nextVictim = tower;
-                            if (agent.enabled == true) agent.SetDestination(grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5));
-                        }
-                    }
-
-                }
-
+                GetClosestinFoundTowers();
+                
                 if (nextVictim == null)
                 {
-                    if (agent.enabled == true) agent.SetDestination(transform.position + Vector3.forward * 10);
+                    MoveForwards();
                 }
             }
             // if unit targets a specific type of tower move to the closest tower of that type or keep moving forwards if there are none
@@ -116,7 +124,7 @@ public class EnemyScript : MonoBehaviour
                 if (foundTowers.Count != 0) SelectTarget();
                 if (nextVictim == null)
                 {
-                    if (agent.enabled == true) agent.SetDestination(transform.position + Vector3.forward * 10);
+                    MoveForwards();
                 }
             }
         }
@@ -128,7 +136,10 @@ public class EnemyScript : MonoBehaviour
         // always move to & try to attack the current victim
         if (nextVictim != null)
         {
-            if (agent.enabled == true && agent.destination != null) agent.SetDestination(nextVictim.transform.GetChild(0).position);
+            if (agent.enabled == true && agent.destination != null)
+            {
+                GetClosestCell(nextVictim);
+            }
             CheckAttackRange(nextVictim);
             if (canAttackVictim && cooldown <= 0) Attack();
             if (canAttackVictim && attackRange > 1)
@@ -142,23 +153,8 @@ public class EnemyScript : MonoBehaviour
         // attack towers that aren't a target but are in the way. it's nothing personal :(
         if (!agent.enabled && Vector3.Distance(transform.position, agent.destination) > attackRange * 8)
         {
-            float distance = Mathf.Infinity;
-
             CheckGridPositions();
-            foreach (GameObject tower in foundTowers)
-            {
-                TowerKnowsWhereItIs towerScript = tower.GetComponent<TowerKnowsWhereItIs>();
-                foreach (Vector3Int pos in towerScript.MyCells)
-                {
-                    if (Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5)) < distance)
-                    {
-                        distance = Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5));
-                        nextVictim = tower;
-
-                    }
-                }
-
-            }
+            GetClosestinFoundTowers();
         }
 
 
@@ -200,7 +196,7 @@ public class EnemyScript : MonoBehaviour
                     {
                         distance = Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5));
                         nextVictim = tower;
-                        if (agent.enabled == true) agent.SetDestination(grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5));
+                        MoveToGridPos(pos);
                     }
                 }
 
@@ -219,7 +215,6 @@ public class EnemyScript : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(key.x), Mathf.RoundToInt(key.y), Mathf.RoundToInt(key.z))) + new Vector3(5, 0, 5)) < distance)
             {
-
                 distance = Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(key.x), Mathf.RoundToInt(key.y), Mathf.RoundToInt(key.z))) + new Vector3(5, 0, 5));
             }
 
@@ -257,22 +252,12 @@ public class EnemyScript : MonoBehaviour
             }
             yeet.GetComponent<Projectile>().victim = nextVictim;
         }
-        float distance = Mathf.Infinity;
+
         script.p1 = projectileStartPos;
+        script.p3 = destination;
 
-
-        TowerKnowsWhereItIs towerScript = nextVictim.GetComponent<TowerKnowsWhereItIs>();
-        foreach (Vector3Int pos in towerScript.MyCells)
-        {
-            if (Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5)) < distance)
-            {
-                distance = Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5));
-                script.p3 = grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5);
-            }
-        }
         float height = Vector3.Distance(script.p1, script.p3);
         script.p2 = (projectileStartPos + script.p3) / 2 + Vector3.up * height;
-        Debug.Log(script.p3);
     }
 
     void Damage()
@@ -294,5 +279,48 @@ public class EnemyScript : MonoBehaviour
         }
         if (animator != null) animator.SetBool("isAttacking", false);
         Debug.Log("attack");
+    }
+
+    void MoveForwards()
+    {
+        if (agent.enabled == true) agent.SetDestination(transform.position + Vector3.forward * 10);
+    }
+    void MoveToGridPos(Vector3 pos)
+    {
+        if (agent.enabled == true) agent.SetDestination(grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5));
+    }
+
+    void GetClosestinFoundTowers()
+    {
+        float distance = Mathf.Infinity;
+        Vector3Int closestPos = Vector3Int.zero;
+        foreach (GameObject tower in foundTowers)
+            {
+                TowerKnowsWhereItIs towerScript = tower.GetComponent<TowerKnowsWhereItIs>();
+                foreach (Vector3Int pos in towerScript.MyCells)
+                {
+                    if (Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5)) < distance)
+                    {
+                        distance = Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5));
+                        nextVictim = tower;
+                        MoveToGridPos(pos);
+                    }
+                }
+            }
+    }
+
+    void GetClosestCell(GameObject tower)
+    {
+        float distance = Mathf.Infinity;
+        TowerKnowsWhereItIs towerScript = tower.GetComponent<TowerKnowsWhereItIs>();
+        foreach (Vector3Int pos in towerScript.MyCells)
+                {
+                    if (Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5)) < distance)
+                    {
+                        distance = Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5));
+                        nextVictim = tower;
+                        MoveToGridPos(pos);
+                    }
+                }
     }
 }
