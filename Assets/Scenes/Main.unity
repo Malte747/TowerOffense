@@ -194,6 +194,8 @@ GameObject:
   - component: {fileID: 112609879}
   - component: {fileID: 112609878}
   - component: {fileID: 112609877}
+  - component: {fileID: 112609881}
+  - component: {fileID: 112609882}
   - component: {fileID: 112609876}
   - component: {fileID: 112609875}
   - component: {fileID: 112609874}
@@ -336,6 +338,35 @@ Transform:
   - {fileID: 783118523}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &112609881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112609873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45ecd13996859d942a1abd652037aaca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &112609882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112609873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d4648e735d0564a9bd3f7b18818e5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyCells: []
+  goldCost: 0
+  supplyCost: 0
+  xSize: 0
+  zSize: 0
 --- !u!1 &119031397
 GameObject:
   m_ObjectHideFlags: 0

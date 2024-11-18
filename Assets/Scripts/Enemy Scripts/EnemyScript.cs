@@ -187,7 +187,8 @@ public class EnemyScript : MonoBehaviour
         {
             if (((target == Targets.Towers && tower.CompareTag("Tower"))
                 || (target == Targets.Walls && tower.CompareTag("Wall"))
-                || (target == Targets.Mines && tower.CompareTag("Mine"))))
+                || (target == Targets.Mines && tower.CompareTag("Mine")))
+                || tower.CompareTag("MainTower"))
             {
                 TowerKnowsWhereItIs towerScript = tower.GetComponent<TowerKnowsWhereItIs>();
                 foreach (Vector3Int pos in towerScript.MyCells)
