@@ -55,6 +55,7 @@ MonoBehaviour:
   defenderGoldIncome: 0
   startGoldIncome: 10
   gameInProgress: 0
+  towerRepairCostMultiplier: 0
   goldText: {fileID: 0}
   currentIncomeText: {fileID: 0}
   supplyText: {fileID: 0}
@@ -130,4 +131,13 @@ MonoBehaviour:
     shortGame: 150
     mediumGame: 100
     longGame: 100
+  - slider: {fileID: 0}
+    inputField: {fileID: 0}
+    background: {fileID: 0}
+    border: {fileID: 0}
+    identifier: RepairMultiplier
+    shortGame: 30
+    mediumGame: 30
+    longGame: 30
   gameManager: {fileID: 363030609527304405}
+  repairCalculationInfoText: {fileID: 0}

@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     
     public int startGoldIncome;
     public bool gameInProgress = false;
+    public int towerRepairCostMultiplier;
 
 
     //static values
@@ -591,6 +592,10 @@ public class GameManager : MonoBehaviour
 
             case "TurnCount":
                 maxTurnCount = value;
+                break;
+            case "RepairMultiplier":
+                towerRepairCostMultiplier = value;
+                Debug.Log($"towerRepairCostMultiplier wurde auf {towerRepairCostMultiplier} gesetzt.");
                 break;
 
             default:

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -23,6 +24,12 @@ public class UIManager : MonoBehaviour
     public Button unpause;
     private bool isPaused = false; 
     private bool toggle = true;    
+
+    public Slider hpSlider;
+    public TMP_Text hpSliderText;
+    public static int towerRepairCost;
+    public TMP_Text towerRepairCostText;
+    public GameObject[] towerInfoUI;
 
     void Start()
     {
@@ -95,6 +102,7 @@ public class UIManager : MonoBehaviour
         attackerSupplyIcon.SetActive(true);
         defenderUIBlock.SetActive(false);
         attackerUIBlock.SetActive(true);
+        HideTowerInfoUI();
 
 
     }
@@ -128,5 +136,55 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+
+    #region TowerSelection...Ein Malte und Tom Project
+
+    
+    public void SetTowerHPSliderUIValues(int maxHP, int currentHP)
+    {
+
+        hpSlider.maxValue = maxHP;
+
+        hpSlider.value = Mathf.Clamp(currentHP, 0, maxHP);
+
+        hpSliderText.text = $"{ hpSlider.value}/{ hpSlider.maxValue}";
+
+        ShowTowerInfoUI();
+    }
+
+    public void SetTowerRepairCost(int towerPrice)
+    {
+        towerRepairCost = towerPrice * gameManager.towerRepairCostMultiplier / 100;
+
+        if(towerRepairCost > 0)
+        {
+        towerRepairCostText.text = towerRepairCost.ToString();
+        }
+        else
+        {
+            towerRepairCostText.text = "FREE";
+        }
+    }
+
+    public void ShowTowerInfoUI()
+    {
+        foreach (GameObject obj in towerInfoUI)
+        {
+            obj.SetActive(true); 
+        }
+    }
+    public void HideTowerInfoUI()
+    {
+        foreach (GameObject obj in towerInfoUI)
+        {
+            obj.SetActive(false); 
+        }
+    }
+
+
+
+
+
+    #endregion
 
 }

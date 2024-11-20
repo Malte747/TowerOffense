@@ -25,6 +25,7 @@ public class GameSettings : MonoBehaviour
     private float sliderMax = 300f;
     private Color overLimitColor = new Color32(96, 94, 94, 255);
     private Color defaultColor = Color.white;
+    public TMP_Text repairCalculationInfoText;
 
     public void Start()
     {
@@ -48,7 +49,14 @@ public class GameSettings : MonoBehaviour
     {
         if (value < 1)
         {
+        if (pair.identifier == "RepairMultiplier")
+        {
+        value = 0;
+        }
+        else
+        {
             value = 1;
+        }
         }
         pair.inputField.text = value.ToString("0");
         UpdateImageColors(pair, value <= sliderMax);
@@ -56,6 +64,11 @@ public class GameSettings : MonoBehaviour
         gameManager.UpdateValue(pair.identifier, (int)value);
 
         UpdateStartGoldValues(pair);
+
+        if (pair.identifier == "RepairMultiplier")
+        {
+        repairCalculationInfoText.text = $"{value}%";
+        }
     }
 
     private void UpdateSlider(SliderInputPair pair, string value)
@@ -64,8 +77,15 @@ public class GameSettings : MonoBehaviour
         {
             if (inputValue < 1)
             {
+                if (pair.identifier == "RepairMultiplier")
+                {
+                    inputValue = 0;
+                    UpdateInputField(pair, inputValue);
+                }
+                else{
                 inputValue = 1;
                 UpdateInputField(pair, inputValue);
+                }
             }
             if (inputValue > sliderMax)
             {
@@ -83,6 +103,11 @@ public class GameSettings : MonoBehaviour
             }
 
             UpdateStartGoldValues(pair);
+
+        if (pair.identifier == "RepairMultiplier")
+        {
+        repairCalculationInfoText.text = $"{value}%";
+        }
         }
         else
         {
