@@ -46,7 +46,7 @@ public class EnemyScript : MonoBehaviour
     [Tooltip("Unit can attack all towers within x tiles")]
     [SerializeField] private float attackRange = 1;
     [Tooltip("Damage per attack. Units targeting everything always do base damage")]
-    [SerializeField] private float baseDamage, buffedDamage;
+    [SerializeField] private int baseDamage, buffedDamage;
     [Tooltip("Time in seconds between attacks")]
     [SerializeField] private float attackCooldown;
     [Tooltip("Unit does damage x seconds into the attack animation")]

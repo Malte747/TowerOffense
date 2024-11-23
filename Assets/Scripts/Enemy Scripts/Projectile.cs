@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
     public Vector3 p3; 
 
     public GameObject victim;
-    public float damage;
+    public int damage;
 
 private Vector3 lastPosition;
     float t; 

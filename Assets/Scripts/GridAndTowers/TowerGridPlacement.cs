@@ -19,6 +19,11 @@ public class TowerGridPlacement : MonoBehaviour
     int xSizeDirection, zSizeDirection, xAdjustment, zAdjustment, xSizeSaved, zSizeSaved;
     public static int towerRotation;
     public static Vector3Int towerRotationCorrection;
+    public UIManager uiManager;
+    public Health health;
+    private int healthLastCheck;
+
+    TowerKnowsWhereItIs towerKnowsWhereItIs;
 
     [SerializeField]
     private Grid grid;
@@ -105,7 +110,6 @@ public class TowerGridPlacement : MonoBehaviour
                 UnselectTower();
             }
             }
-
         }
 
             if (Input.GetMouseButtonDown(1) && placingTowers)
@@ -160,11 +164,18 @@ public class TowerGridPlacement : MonoBehaviour
         }
 
         if (!gameManager.defendersTurn) StopPlacingTowers();
+
+        if(health != null && health.health < healthLastCheck)
+        {
+            healthLastCheck = health.health;
+            Debug.Log("HP");
+            TowerInfoUIHPChange();
+        }
     }
 
     public void PlaceTower(int number)
     {
-        TowerKnowsWhereItIs towerKnowsWhereItIs = Towers[number].GetComponent<TowerKnowsWhereItIs>();
+        towerKnowsWhereItIs = Towers[number].GetComponent<TowerKnowsWhereItIs>();
         if (towerKnowsWhereItIs.goldCost <= GameManager.defenderGold && towerKnowsWhereItIs.supplyCost + GameManager.defenderSupply <= GameManager.maxSupply)
         {
             gameManager.TurretPayment(towerKnowsWhereItIs.goldCost);
@@ -248,6 +259,9 @@ public class TowerGridPlacement : MonoBehaviour
         if(towerKnowsWhereItIs == null) towerKnowsWhereItIs = GridMouseInput.clickedTower.GetComponentInParent<TowerKnowsWhereItIs>();
         //Debug.Log("Cells: " + towerKnowsWhereItIs.MyCells.Count);
         clickedTowerParent = GridMouseInput.clickedTower.transform.parent.gameObject;
+        health = clickedTowerParent.GetComponent<Health>();
+        healthLastCheck = health.health;
+        TowerInfoUI();
         if (clickedTowerParent.GetComponent<Outline>() != null)
         {
             clickedTowerParent.GetComponent<Outline>().enabled = true;
@@ -268,6 +282,35 @@ public class TowerGridPlacement : MonoBehaviour
             {
                 clickedTowerParent.GetComponent<Outline>().enabled = false;
             }
+            uiManager.HideTowerInfoUI();
+        }
+    }
+
+    public void TowerInfoUI()
+    {
+        TowerInfoUIHPChange();
+        if (towerKnowsWhereItIs != null) uiManager.SetTowerRepairCost(towerKnowsWhereItIs.goldCost);
+        //Bild Change
+    }
+
+    public void TowerInfoUIHPChange()
+    {
+        uiManager.SetTowerHPSliderUIValues(health.maxHealth, health.health);
+    }
+
+    public void TowerUIButtons(bool repair)
+    {
+        if (health != null && repair)
+        {
+            if (UIManager.towerRepairCost <= GameManager.defenderGold)
+            {
+                gameManager.TurretPayment(UIManager.towerRepairCost);
+                health.RepairTower();
+            }
+        }
+        else if (health != null && !repair) 
+        { 
+            health.Death();
         }
     }
 }

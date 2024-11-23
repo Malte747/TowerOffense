@@ -51,8 +51,6 @@ public class UIManager : MonoBehaviour
             {
                 unpause.onClick.Invoke(); 
             }
-
- 
             
         }
     }
@@ -171,6 +169,11 @@ public class UIManager : MonoBehaviour
         foreach (GameObject obj in towerInfoUI)
         {
             obj.SetActive(true); 
+        }
+        if (gameManager.attackersTurn)
+        {
+            towerInfoUI[2].SetActive(false);
+            towerInfoUI[3].SetActive(false);
         }
     }
     public void HideTowerInfoUI()

@@ -8,9 +8,14 @@ using TMPro;
 
 public class Health : MonoBehaviour
 {
-    public float health;
-    // Start is called before the first frame update
+    public int health;
+    [HideInInspector] public int maxHealth;
 
+    // Start is called before the first frame update
+    private void Start()
+    {
+        maxHealth = health;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -20,7 +25,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    void Death()
+    public void Death()
     {
         if (gameObject.CompareTag("MainTower"))
         {
@@ -74,5 +79,9 @@ public class Health : MonoBehaviour
             }
         }*/
 
+    }
+    public void RepairTower()
+    {
+        health = maxHealth;
     }
 }

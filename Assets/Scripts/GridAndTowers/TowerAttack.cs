@@ -11,6 +11,7 @@ public class TowerAttack : MonoBehaviour
     float aoeSize = 5;
     Outline outline;
     private Grid grid;
+    Health health;
 
     public enum Targets
     {
@@ -25,7 +26,7 @@ public class TowerAttack : MonoBehaviour
     [Tooltip("Unit sees and can Attack all towers within x tiles")]
     [SerializeField] private int attackRange;
     [Tooltip("Damage per attack. Units targeting everything always do base damage")]
-    [SerializeField] private float baseDamage, buffedDamage;
+    [SerializeField] private int baseDamage, buffedDamage;
     [Tooltip("Time in seconds between attacks")]
     [SerializeField] private float attackCooldown;
     [Tooltip("Unit does damage x seconds into the attack animation")]
@@ -38,6 +39,7 @@ public class TowerAttack : MonoBehaviour
     void Start()
     {
         grid = GameObject.Find("Grid").GetComponent<Grid>();
+        health = GetComponent<Health>();
     }
 
     // Update is called once per frame

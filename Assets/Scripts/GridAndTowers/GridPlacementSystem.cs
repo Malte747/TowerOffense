@@ -31,14 +31,14 @@ public class GridPlacementSystem : MonoBehaviour
 
         if (attackerHasWon) 
         {
-            AttackerHasWon();
+            //AttackerHasWon();
+            Debug.Log("Atacker Wins!!!");
         }
     }
 
     private void AttackerHasWon()
     {
         attackerWinsText.SetActive(true);
-        //Debug.Log("Atacker Wins!!!");
         if (Time.timeScale > 0.01f) Time.timeScale -= 0.003f;
         else
         {
