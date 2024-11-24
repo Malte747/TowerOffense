@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GridPlacementSystem : MonoBehaviour
 {
@@ -33,18 +32,6 @@ public class GridPlacementSystem : MonoBehaviour
         {
             //AttackerHasWon();
             Debug.Log("Atacker Wins!!!");
-        }
-    }
-
-    private void AttackerHasWon()
-    {
-        attackerWinsText.SetActive(true);
-        if (Time.timeScale > 0.01f) Time.timeScale -= 0.003f;
-        else
-        {
-            Time.timeScale = 1f;
-            attackerHasWon = false;
-            SceneManager.LoadScene("Main");
         }
     }
 }

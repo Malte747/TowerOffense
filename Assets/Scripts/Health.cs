@@ -29,8 +29,9 @@ public class Health : MonoBehaviour
     {
         if (gameObject.CompareTag("MainTower"))
         {
+            GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+            gameManager.EndGameAttackerWin();
             GridPlacementSystem.attackerHasWon = true;
-            Destroy(gameObject);
         }
         else
         { 
@@ -56,7 +57,6 @@ public class Health : MonoBehaviour
             {
                 Mine mine = gameObject.GetComponent<Mine>();
                 mine.MineIsDying();
-                //Debug.Log("Mine is not ALive");
             }
 
             // Remove each of those keys from the dictionary
@@ -65,19 +65,7 @@ public class Health : MonoBehaviour
                 TowerGridPlacement.TowerBible.Remove(key);
             }
         }
-        /*else if (gameObject.CompareTag("Enemy"))
-        {
-            var keysToRemove = EnemyBibleScript.EnemyBible
-            .Where(entry => entry.Value == targetObject)
-            .Select(entry => entry.Key)
-            .ToList();
-
-            // Remove each of those keys from the dictionary
-            foreach (var key in keysToRemove)
-            {
-                EnemyBibleScript.EnemyBible.Remove(key);
-            }
-        }*/
+        
 
     }
     public void RepairTower()

@@ -49,7 +49,9 @@ public class TowerGridPlacement : MonoBehaviour
     }
 
     void Update()
-    {   
+    {
+        #region Grid Check 
+
         bool hitTower = false;
         for (int i = 1; i <= Mathf.Abs(xSize); i++)
         {
@@ -88,6 +90,10 @@ public class TowerGridPlacement : MonoBehaviour
             Cursor.visible = false;
             indicator.transform.parent.gameObject.SetActive(true);
         }
+
+        #endregion
+
+        #region Mouse Inputs
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -163,6 +169,8 @@ public class TowerGridPlacement : MonoBehaviour
             towerRotationCorrection = new Vector3Int(1, 0, 0);
         }
 
+        #endregion
+
         if (!gameManager.defendersTurn) StopPlacingTowers();
 
         if(health != null && health.health < healthLastCheck)
@@ -172,6 +180,8 @@ public class TowerGridPlacement : MonoBehaviour
             TowerInfoUIHPChange();
         }
     }
+
+    #region Place Towers 
 
     public void PlaceTower(int number)
     {
@@ -209,6 +219,10 @@ public class TowerGridPlacement : MonoBehaviour
         TowerBible.Add(cellNumbers, PlacedTower);
         
     }
+
+    #endregion
+
+    #region Tower Select
 
     public void ChangeTowerWhilePlacing(int number)
     {
@@ -251,6 +265,10 @@ public class TowerGridPlacement : MonoBehaviour
             tower.SetActive(false);
         }
     }
+
+    #endregion
+
+    #region Click Towers
 
     public void ClickOnTower()
     {
@@ -313,4 +331,6 @@ public class TowerGridPlacement : MonoBehaviour
             health.Death();
         }
     }
+
+    #endregion
 }
