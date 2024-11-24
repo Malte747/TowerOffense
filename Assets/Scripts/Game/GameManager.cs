@@ -53,6 +53,16 @@ public class GameManager : MonoBehaviour
     public static int defenderSupply;
     public static int maxSupply = 20;
 
+    //Game Victory
+
+    [Header("Victory Screen")]
+    public GameObject victoryScreen;
+    public GameObject imageDefender;
+    public GameObject imageAttacker;
+    public GameObject winnerTextAttacker;
+    public GameObject winnerTextDefender;
+
+
 
 
     // Text
@@ -609,11 +619,32 @@ public class GameManager : MonoBehaviour
 
     private void EndGameDefenderWin()
     {
-        Debug.Log("Das Spiel ist zuende, verteidiger gewinnt");
         gameInProgress = false;
+        uiManager.StartOrStopGameUI();
+        uiManager.StopAdditionalGameUI();
+        ResetGame();
 
-        //Playtest Zwecke
-        SceneManager.LoadScene("Main");
+        winnerTextDefender.SetActive(true);
+        winnerTextAttacker.SetActive(false);
+        imageAttacker.SetActive(false);
+        imageDefender.SetActive(true);
+        victoryScreen.SetActive(true);
+
+    }
+
+    public void EndGameAttackerWin()
+    {
+        gameInProgress = false;
+        uiManager.StartOrStopGameUI();
+        uiManager.StopAdditionalGameUI();
+        ResetGame();
+
+        winnerTextDefender.SetActive(false);
+        winnerTextAttacker.SetActive(true);
+        imageAttacker.SetActive(true);
+        imageDefender.SetActive(false);
+        victoryScreen.SetActive(true);
+
     }
 
 
