@@ -183,7 +183,7 @@ public class TowerGridPlacement : MonoBehaviour
     public void PlaceTower(int number)
     {
         towerKnowsWhereItIs = Towers[number].GetComponent<TowerKnowsWhereItIs>();
-        if (towerKnowsWhereItIs.goldCost <= GameManager.defenderGold && towerKnowsWhereItIs.supplyCost + GameManager.defenderSupply <= GameManager.maxSupply)
+        if (towerKnowsWhereItIs.goldCost <= gameManager.defenderGold && towerKnowsWhereItIs.supplyCost + gameManager.defenderSupply <= gameManager.maxSupply)
         {
             gameManager.TurretPayment(towerKnowsWhereItIs.goldCost);
             gameManager.TurretSupplyPayment(towerKnowsWhereItIs.supplyCost);
@@ -316,7 +316,7 @@ public class TowerGridPlacement : MonoBehaviour
     {
         if (health != null && repair)
         {
-            if (UIManager.towerRepairCost <= GameManager.defenderGold)
+            if (UIManager.towerRepairCost <= gameManager.defenderGold)
             {
                 gameManager.TurretPayment(UIManager.towerRepairCost);
                 health.RepairTower();

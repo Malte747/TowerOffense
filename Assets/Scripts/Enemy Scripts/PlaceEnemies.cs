@@ -20,8 +20,8 @@ public class PlaceEnemies : MonoBehaviour
 
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, planeLayer)
-                && unit.GetComponent<EnemyScript>().cost <= GameManager.attackerGold
-                && unit.GetComponent<EnemyScript>().supplyCost + GameManager.attackerSupply <= GameManager.maxSupply)
+                && unit.GetComponent<EnemyScript>().cost <= manager.attackerGold
+                && unit.GetComponent<EnemyScript>().supplyCost + manager.attackerSupply <= manager.maxSupply)
             {
                 Instantiate(unit, hit.point, Quaternion.identity);
                 manager.UnitPayment(unit.GetComponent<EnemyScript>().cost);

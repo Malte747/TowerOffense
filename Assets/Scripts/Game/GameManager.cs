@@ -47,11 +47,11 @@ public class GameManager : MonoBehaviour
 
 
     //static values
-    public static int attackerGold;
-    public static int defenderGold; 
-    public static int attackerSupply;
-    public static int defenderSupply;
-    public static int maxSupply = 20;
+    public int attackerGold;
+    public int defenderGold; 
+    public int attackerSupply;
+    public int defenderSupply;
+    public int maxSupply = 20;
 
     //Game Victory
 
@@ -590,6 +590,7 @@ public class GameManager : MonoBehaviour
             case "StartGold":
                 defenderStartGold = value;
                 attackerStartGold = value;
+                Debug.Log($"startgold wurde auf {value} gesetzt.");
                 break;
 
             case "StartGoldAttacker":

@@ -102,7 +102,7 @@ public class GameSettings : MonoBehaviour
                 gameManager.UpdateValue(pair.identifier, (int)inputValue);
             }
 
-            UpdateStartGoldValues(pair);
+            
 
         if (pair.identifier == "RepairMultiplier")
         {
@@ -167,6 +167,7 @@ public class GameSettings : MonoBehaviour
                 {
                     p.slider.value = Mathf.Clamp(startGoldValue, 1, sliderMax);
                     UpdateInputField(p, p.slider.value);
+                    UpdateImageColors(p, false);
                     
                 }
             }
