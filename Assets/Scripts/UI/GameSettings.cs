@@ -165,17 +165,17 @@ public class GameSettings : MonoBehaviour
             float startGoldValue = pair.slider.value;
             foreach (var p in sliderInputPairs)
             {
-                if (p.identifier == "StartGoldDefender" || p.identifier == "StartGoldAttacker" && startGoldValue > 300)
-                {
-                    p.slider.value = Mathf.Clamp(startGoldValue, 1, sliderMax);
-                    UpdateInputField(p, p.slider.value);
-                    UpdateImageColors(p, false);
-                    
-                }
-                else if (p.identifier == "StartGoldDefender" || p.identifier == "StartGoldAttacker" && startGoldValue <= 300)
+                if (p.identifier == "StartGoldDefender" || p.identifier == "StartGoldAttacker" && value > sliderMax)
                 {
                     p.slider.value = Mathf.Clamp(startGoldValue, 1, sliderMax);
                     UpdateInputField(p, value);
+                    UpdateImageColors(p, false);
+                    
+                }
+                else if (p.identifier == "StartGoldDefender" || p.identifier == "StartGoldAttacker" && value <= sliderMax)
+                {
+                    p.slider.value = Mathf.Clamp(startGoldValue, 1, sliderMax);
+                    UpdateInputField(p, p.slider.value);
                     UpdateImageColors(p, false);
                     
                 }
