@@ -63,7 +63,7 @@ public class GameSettings : MonoBehaviour
 
         gameManager.UpdateValue(pair.identifier, (int)value);
 
-        UpdateStartGoldValues(pair);
+        UpdateStartGoldValues(pair, value);
 
         if (pair.identifier == "RepairMultiplier")
         {
@@ -101,6 +101,8 @@ public class GameSettings : MonoBehaviour
             {
                 gameManager.UpdateValue(pair.identifier, (int)inputValue);
             }
+
+            UpdateStartGoldValues(pair, inputValue);
 
             
 
@@ -156,17 +158,24 @@ public class GameSettings : MonoBehaviour
         }
     }
 
-    public void UpdateStartGoldValues(SliderInputPair pair)
+    public void UpdateStartGoldValues(SliderInputPair pair, float value)
     {
         if (pair.identifier == "StartGold")
         {
             float startGoldValue = pair.slider.value;
             foreach (var p in sliderInputPairs)
             {
-                if (p.identifier == "StartGoldDefender" || p.identifier == "StartGoldAttacker")
+                if (p.identifier == "StartGoldDefender" || p.identifier == "StartGoldAttacker" && startGoldValue > 300)
                 {
                     p.slider.value = Mathf.Clamp(startGoldValue, 1, sliderMax);
                     UpdateInputField(p, p.slider.value);
+                    UpdateImageColors(p, false);
+                    
+                }
+                else if (p.identifier == "StartGoldDefender" || p.identifier == "StartGoldAttacker" && startGoldValue <= 300)
+                {
+                    p.slider.value = Mathf.Clamp(startGoldValue, 1, sliderMax);
+                    UpdateInputField(p, value);
                     UpdateImageColors(p, false);
                     
                 }
