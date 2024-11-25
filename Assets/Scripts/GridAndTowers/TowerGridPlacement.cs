@@ -21,7 +21,6 @@ public class TowerGridPlacement : MonoBehaviour
     public static Vector3Int towerRotationCorrection;
     public UIManager uiManager;
     public Health health;
-    private int healthLastCheck;
 
     TowerKnowsWhereItIs towerKnowsWhereItIs;
 
@@ -173,10 +172,8 @@ public class TowerGridPlacement : MonoBehaviour
 
         if (!gameManager.defendersTurn) StopPlacingTowers();
 
-        if(health != null && health.health < healthLastCheck)
+        if(health != null && health.health < health.healthLastCheck)
         {
-            healthLastCheck = health.health;
-            Debug.Log("HP");
             TowerInfoUIHPChange();
         }
     }
@@ -278,7 +275,6 @@ public class TowerGridPlacement : MonoBehaviour
         //Debug.Log("Cells: " + towerKnowsWhereItIs.MyCells.Count);
         clickedTowerParent = GridMouseInput.clickedTower.transform.parent.gameObject;
         health = clickedTowerParent.GetComponent<Health>();
-        healthLastCheck = health.health;
         TowerInfoUI();
         if (clickedTowerParent.GetComponent<Outline>() != null)
         {

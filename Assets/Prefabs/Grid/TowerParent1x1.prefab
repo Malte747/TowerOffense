@@ -100,6 +100,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  maxHealth: 0
+  healthLastCheck: 0
+  _towerHealthBar: {fileID: 0}
 --- !u!114 &1316378967969799111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +165,14 @@ PrefabInstance:
     - target: {fileID: 1759703018221832, guid: 12d2a802f92d1b24297a0237ea69f8b5, type: 3}
       propertyPath: m_Name
       value: SM_Bld_Wooden_Tower_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759703018221832, guid: 12d2a802f92d1b24297a0237ea69f8b5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759703018221832, guid: 12d2a802f92d1b24297a0237ea69f8b5, type: 3}
+      propertyPath: m_TagString
+      value: Tower
       objectReference: {fileID: 0}
     - target: {fileID: 4484737482211340, guid: 12d2a802f92d1b24297a0237ea69f8b5, type: 3}
       propertyPath: m_LocalScale.x

@@ -10,11 +10,16 @@ public class Health : MonoBehaviour
 {
     public int health;
     [HideInInspector] public int maxHealth;
+    [HideInInspector] public int healthLastCheck;
+
+    public TowerHealthBar _towerHealthBar;
 
     // Start is called before the first frame update
     private void Start()
     {
         maxHealth = health;
+        healthLastCheck = health;
+        _towerHealthBar = GetComponent<TowerHealthBar>();
     }
     // Update is called once per frame
     void Update()
@@ -22,6 +27,11 @@ public class Health : MonoBehaviour
         if (health <= 0)
         {
             Death();
+        }
+        else if (health < healthLastCheck && _towerHealthBar != null)
+        {
+            healthLastCheck = health;
+            _towerHealthBar.UpdateHealthBar(maxHealth, health);
         }
     }
 
