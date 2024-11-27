@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
 {
 
     GameManager gameManager;
+    MessageSystem messageSystem;
 
     public MultiButtonTrigger multiButtonTriggerAttack;
     public MultiButtonTrigger multiButtonTriggerDefense;
@@ -31,9 +32,12 @@ public class UIManager : MonoBehaviour
     public TMP_Text towerRepairCostText;
     public GameObject[] towerInfoUI;
 
+    
+
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        messageSystem = GameObject.Find("MessageBox").GetComponent<MessageSystem>();
     }
 
     void Update()
@@ -53,6 +57,7 @@ public class UIManager : MonoBehaviour
             }
             
         }
+
     }
 
     public void Unpause()
@@ -184,8 +189,34 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    #endregion
 
+    #region MessageSystem
 
+    public void NotEnoughGoldMessage()
+    {
+        messageSystem.ShowMessage("Nicht genug Gold!"); 
+    }
+
+    public void NotEnoughSupplyMessage()
+    {
+        messageSystem.ShowMessage("Nicht genug Gold!"); 
+    }
+
+    public void CannotBuildHereMessage()
+    {
+        messageSystem.ShowMessage("Hier kannst du nichts bauen!"); 
+    }
+
+    public void CannotSpwanUnitsHereMessage()
+    {
+        messageSystem.ShowMessage("Hier kannst du nichts erschaffen!"); 
+    }
+
+    public void UnitsStillFightingMessage()
+    {
+        messageSystem.ShowMessage("Deine Truppen kämpfen noch!"); 
+    }
 
 
     #endregion

@@ -28924,6 +28924,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 967249468307963834, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 985693363325452253, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -30232,6 +30236,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5826063762294566901, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5826063762294566902, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -30376,6 +30384,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6755459227234803871, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6783978276936090349, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -30384,7 +30396,15 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6826967560507273477, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6826967561112008963, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932019190523986862, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
