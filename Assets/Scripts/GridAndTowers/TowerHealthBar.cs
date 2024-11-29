@@ -29,7 +29,11 @@ public class TowerHealthBar : MonoBehaviour
 
     public void UpdateHealthBar(int maxHealth, float currentHealth)
     {
-        if(currentHealth / maxHealth < 1) { _healthBarCanvas.gameObject.SetActive(true);}
+        if (currentHealth / maxHealth < 1) { _healthBarCanvas.gameObject.SetActive(true);}
+        else if (currentHealth / maxHealth >= 1) { _healthBarCanvas.gameObject.SetActive(false); }
+        //Debug.Log(currentHealth + " a " + maxHealth + " a " + currentHealth / maxHealth);
         _healthBarSprite.fillAmount = currentHealth / maxHealth;
+        UIManager uiManager = GameObject.Find("UiManager").GetComponent<UIManager>();
+        uiManager.SetTowerHPSliderUIValues(maxHealth, Mathf.RoundToInt(currentHealth));
     }
 }

@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
     [HideInInspector] public int maxHealth;
     [HideInInspector] public int healthLastCheck;
 
-    public TowerHealthBar _towerHealthBar;
+    private TowerHealthBar _towerHealthBar;
 
     // Start is called before the first frame update
     private void Start()
@@ -81,5 +81,7 @@ public class Health : MonoBehaviour
     public void RepairTower()
     {
         health = maxHealth;
+        healthLastCheck = maxHealth;
+        _towerHealthBar.UpdateHealthBar(maxHealth, health);
     }
 }

@@ -22,7 +22,10 @@ public class TowerGridPlacement : MonoBehaviour
     public UIManager uiManager;
     public Health health;
 
+    [SerializeField] private GameObject MainTowerPrefab;
+
     TowerKnowsWhereItIs towerKnowsWhereItIs;
+    UIManager _uiManager;
 
     [SerializeField]
     private Grid grid;
@@ -31,6 +34,7 @@ public class TowerGridPlacement : MonoBehaviour
     public List<GameObject> Towers;
     public List<GameObject> IndicatorTowers;
     private GameObject PlacedTower;
+    private bool hitTower;
 
     public static GameObject clickedTowerParent;
 
@@ -45,13 +49,14 @@ public class TowerGridPlacement : MonoBehaviour
         indicator.SetActive(false);
         placingTowers = false;
         clickedTowerParent = gameObject;
+        _uiManager = GameObject.Find("UiManager").GetComponent<UIManager>();
     }
 
     void Update()
     {
         #region Grid Check 
 
-        bool hitTower = false;
+        hitTower = false;
         for (int i = 1; i <= Mathf.Abs(xSize); i++)
         {
 
@@ -71,12 +76,12 @@ public class TowerGridPlacement : MonoBehaviour
         if (hitTower)
         {
             //Debug.Log("Position is occupied.");
-            indicatorColor.SetColor("_BaseColor", new Color(1f, 0f, 0f, 0.1f));
+            indicatorColor.SetColor("_BaseColor", new Color(1f, 0f, 0f, 0.5f));
         }
         else
         {
             //Debug.Log("Position is free.");
-            indicatorColor.SetColor("_BaseColor", new Color(0f, 1f, 0f, 0.1f));
+            indicatorColor.SetColor("_BaseColor", new Color(0f, 1f, 0f, 0.5f));
         }
 
         if(EventSystem.current.IsPointerOverGameObject() && placingTowers)
@@ -98,7 +103,7 @@ public class TowerGridPlacement : MonoBehaviour
         {
             if(!EventSystem.current.IsPointerOverGameObject())
             {
-            if(!hitTower && placingTowers)
+            if(placingTowers)
             {
                 PlaceTower(towerNumberUI);
                 if (!Input.GetKey(KeyCode.LeftShift))
@@ -183,7 +188,7 @@ public class TowerGridPlacement : MonoBehaviour
     public void PlaceTower(int number)
     {
         towerKnowsWhereItIs = Towers[number].GetComponent<TowerKnowsWhereItIs>();
-        if (towerKnowsWhereItIs.goldCost <= gameManager.defenderGold && towerKnowsWhereItIs.supplyCost + gameManager.defenderSupply <= gameManager.maxSupply)
+        if (!hitTower && towerKnowsWhereItIs.goldCost <= gameManager.defenderGold && towerKnowsWhereItIs.supplyCost + gameManager.defenderSupply <= gameManager.maxSupply)
         {
             gameManager.TurretPayment(towerKnowsWhereItIs.goldCost);
             gameManager.TurretSupplyPayment(towerKnowsWhereItIs.supplyCost);
@@ -208,6 +213,18 @@ public class TowerGridPlacement : MonoBehaviour
                     //Debug.Log("Occupy");
                 }
             }
+        }
+        else if(towerKnowsWhereItIs.goldCost > gameManager.defenderGold)
+        {
+            _uiManager.NotEnoughGoldMessage();
+        }
+        else if (towerKnowsWhereItIs.supplyCost + gameManager.defenderSupply > gameManager.maxSupply)
+        {
+            _uiManager.NotEnoughSupplyMessage();
+        }
+        else if (hitTower) 
+        {
+            _uiManager.CannotBuildHereMessage();
         }
     }
 
@@ -327,6 +344,23 @@ public class TowerGridPlacement : MonoBehaviour
             health.Death();
         }
     }
+
+    #endregion
+
+    #region ResetGame
+
+    public void ResetGameTowers()
+    {
+        foreach (Vector3 pos in TowerBible.Keys) 
+        {
+            Destroy(TowerBible[pos]);
+        }
+        TowerBible.Clear();
+        GameObject main = GameObject.Find("MainTower");
+        Destroy(main);
+        Instantiate(MainTowerPrefab, new Vector3(0, 20, 145), Quaternion.identity);
+    }
+
 
     #endregion
 }
