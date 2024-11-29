@@ -200,7 +200,7 @@ public class UIManager : MonoBehaviour
 
     public void NotEnoughSupplyMessage()
     {
-        messageSystem.ShowMessage("Nicht genug Gold!"); 
+        messageSystem.ShowMessage("Nicht genug Supply!"); 
     }
 
     public void CannotBuildHereMessage()

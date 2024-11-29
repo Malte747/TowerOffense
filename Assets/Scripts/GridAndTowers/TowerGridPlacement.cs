@@ -19,13 +19,12 @@ public class TowerGridPlacement : MonoBehaviour
     int xSizeDirection, zSizeDirection, xAdjustment, zAdjustment, xSizeSaved, zSizeSaved;
     public static int towerRotation;
     public static Vector3Int towerRotationCorrection;
-    public UIManager uiManager;
+    public UIManager _uiManager;
     public Health health;
 
     [SerializeField] private GameObject MainTowerPrefab;
 
     TowerKnowsWhereItIs towerKnowsWhereItIs;
-    UIManager _uiManager;
 
     [SerializeField]
     private Grid grid;
@@ -73,15 +72,20 @@ public class TowerGridPlacement : MonoBehaviour
                 }
             }
         }
-        if (hitTower)
+        if (towerKnowsWhereItIs == null)
         {
-            //Debug.Log("Position is occupied.");
+            //Debug.Log("No Tower Selected.");
             indicatorColor.SetColor("_BaseColor", new Color(1f, 0f, 0f, 0.5f));
         }
-        else
+        else if (!hitTower  && towerKnowsWhereItIs.goldCost  <= gameManager.defenderGold  && towerKnowsWhereItIs.supplyCost + gameManager.defenderSupply <= gameManager.maxSupply)
         {
             //Debug.Log("Position is free.");
             indicatorColor.SetColor("_BaseColor", new Color(0f, 1f, 0f, 0.5f));
+        }
+        else
+        {
+            //Debug.Log("Position is occupied.");
+            indicatorColor.SetColor("_BaseColor", new Color(1f, 0f, 0f, 0.5f));
         }
 
         if(EventSystem.current.IsPointerOverGameObject() && placingTowers)
@@ -250,7 +254,7 @@ public class TowerGridPlacement : MonoBehaviour
         indicator.SetActive(true);
         Cursor.visible = false;
         placingTowers = true;
-        TowerKnowsWhereItIs towerKnowsWhereItIs = Towers[number].GetComponent<TowerKnowsWhereItIs>();
+        towerKnowsWhereItIs = Towers[number].GetComponent<TowerKnowsWhereItIs>();
         towerNumberUI = number;
         xSize = towerKnowsWhereItIs.xSize;
         xSizeSaved = towerKnowsWhereItIs.xSize;
@@ -313,20 +317,20 @@ public class TowerGridPlacement : MonoBehaviour
             {
                 clickedTowerParent.GetComponent<Outline>().enabled = false;
             }
-            uiManager.HideTowerInfoUI();
+            _uiManager.HideTowerInfoUI();
         }
     }
 
     public void TowerInfoUI()
     {
         TowerInfoUIHPChange();
-        if (towerKnowsWhereItIs != null) uiManager.SetTowerRepairCost(towerKnowsWhereItIs.goldCost);
+        if (towerKnowsWhereItIs != null) _uiManager.SetTowerRepairCost(towerKnowsWhereItIs.goldCost);
         //Bild Change
     }
 
     public void TowerInfoUIHPChange()
     {
-        uiManager.SetTowerHPSliderUIValues(health.maxHealth, health.health);
+        _uiManager.SetTowerHPSliderUIValues(health.maxHealth, health.health);
     }
 
     public void TowerUIButtons(bool repair)
