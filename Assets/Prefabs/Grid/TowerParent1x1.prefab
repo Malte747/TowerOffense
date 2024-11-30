@@ -102,7 +102,6 @@ MonoBehaviour:
   health: 100
   maxHealth: 0
   healthLastCheck: 0
-  _towerHealthBar: {fileID: 0}
 --- !u!114 &1316378967969799111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,12 +116,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: 0
   attackRange: 4
-  baseDamage: 10
-  buffedDamage: 10
+  damage: 7
   attackCooldown: 0.9
   damageDelay: 0.5
-  isRangeUnit: 0
-  projectile: {fileID: 0}
+  isRangeUnit: 1
+  projectile: {fileID: 109498624868919209, guid: e8be9f5ca7dfec44caa505b8f70e9cfc, type: 3}
+  projectileStartPos: {x: 5, y: 14, z: 1.5}
 --- !u!1 &9118414151562623986
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,7 +26,7 @@ public class TowerAttack : MonoBehaviour
     [Tooltip("Unit sees and can Attack all towers within x tiles")]
     [SerializeField] private int attackRange;
     [Tooltip("Damage per attack. Units targeting everything always do base damage")]
-    [SerializeField] private int baseDamage, buffedDamage;
+    [SerializeField] private int damage;
     [Tooltip("Time in seconds between attacks")]
     [SerializeField] private float attackCooldown;
     [Tooltip("Unit does damage x seconds into the attack animation")]
@@ -35,11 +35,13 @@ public class TowerAttack : MonoBehaviour
     [SerializeField] private bool isRangeUnit;
     [Tooltip("If this is a Range Unit assign a projectile here")]
     [SerializeField] private GameObject projectile;
+    [SerializeField] private Vector3 projectileStartPos;
     // Start is called before the first frame update
     void Start()
     {
         grid = GameObject.Find("Grid").GetComponent<Grid>();
         health = GetComponent<Health>();
+        projectileStartPos = transform.position + projectileStartPos;
     }
 
     // Update is called once per frame
@@ -51,16 +53,20 @@ public class TowerAttack : MonoBehaviour
             if (t >= attackCooldown)
             {
                 t = 0;
-                Damage();
-                //Debug.Log("Huuuge Damage");
-            }
+                if (isRangeUnit)
+                {
+                    Invoke("ShootProjectile", damageDelay);
+                    //Debug.Log("Huuuge Projectile");
+
+                }
+                else Invoke("Damage", damageDelay);
+            }            
         }
         else
         {
             SelectTarget();
             //Debug.Log("finding Target");
-        }
-        
+        }      
     }
 
     void SelectTarget()
@@ -158,6 +164,7 @@ public class TowerAttack : MonoBehaviour
 
     void Damage()
     {
+        //Debug.Log("Huuuge Damage");
         Health health;
         if (nextVictim != null)
         {
@@ -165,7 +172,23 @@ public class TowerAttack : MonoBehaviour
             //if (outline == null) outline = nextVictim.AddComponent<Outline>();
 
             health = nextVictim.GetComponent<Health>();
-            health.health -= baseDamage;
+            health.health -= damage;
+        }
+    }
+
+    void ShootProjectile()
+    {
+        if (nextVictim != null)
+        { 
+            GameObject arrow = Instantiate(projectile, projectileStartPos, Quaternion.identity);
+            ProjectileTower _projectileTower = arrow.GetComponent<ProjectileTower>();
+            _projectileTower.damage = damage;
+            _projectileTower.p1 = projectileStartPos;
+            _projectileTower.p3 = nextVictim.transform.position;
+            float height = (Vector3.Distance(_projectileTower.p1, _projectileTower.p3) / 2);
+            _projectileTower.p2 = (projectileStartPos + _projectileTower.p3) / 2 + Vector3.up * height;
+            _projectileTower.victim = nextVictim;
+            //Debug.Log("Shot Arrow");
         }
     }
 }

@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7950106080787592607}
-  - component: {fileID: 734444496614359462}
+  - component: {fileID: 3106984067191043275}
   m_Layer: 0
-  m_Name: Ugly Ass Arrow
+  m_Name: Tower Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109498624868919209}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 8.982239, y: 5.0350003, z: -151.30101}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -40,8 +40,8 @@ Transform:
   - {fileID: 5817854989222226209}
   - {fileID: 3081668709589738221}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &734444496614359462
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &3106984067191043275
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 109498624868919209}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fe432ddc19eb3543af2cfabc278e56c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f55507d1b919e741a08dce9ea6bf93b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   p1: {x: 0, y: 0, z: 0}
