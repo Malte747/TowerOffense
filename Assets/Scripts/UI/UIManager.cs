@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        messageSystem = GameObject.Find("MessageBox").GetComponent<MessageSystem>();
+        messageSystem = GetComponent<MessageSystem>();
     }
 
     void Update()

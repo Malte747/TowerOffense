@@ -1613,7 +1613,6 @@ MonoBehaviour:
   health: 300
   maxHealth: 0
   healthLastCheck: 0
-  _towerHealthBar: {fileID: 0}
 --- !u!65 &112609877
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1767,8 +1766,9 @@ MonoBehaviour:
   indicatorColor: {fileID: 2100000, guid: 3c9f9b6f979957a4f90455a1c6499a38, type: 2}
   indicator: {fileID: 228658071}
   gameManager: {fileID: 36889974}
-  uiManager: {fileID: 935221082}
+  _uiManager: {fileID: 0}
   health: {fileID: 0}
+  MainTowerPrefab: {fileID: 0}
   grid: {fileID: 415096506}
   xSize: 1
   zSize: 1
@@ -3549,7 +3549,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8723893582950481804, guid: b73e78c24c74eeb46ab0005d28621701, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1189205922}
   m_SourcePrefab: {fileID: 100100000, guid: b73e78c24c74eeb46ab0005d28621701, type: 3}
 --- !u!1 &222518582
 GameObject:
@@ -12537,12 +12540,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: 4
   attackRange: 6
-  baseDamage: 0
-  buffedDamage: 0
+  damage: 0
   attackCooldown: 1
   damageDelay: 0.5
   isRangeUnit: 0
   projectile: {fileID: 0}
+  projectileStartPos: {x: 0, y: 0, z: 0}
 --- !u!65 &783118525
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14823,7 +14826,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 373994413364370001, guid: b73e78c24c74eeb46ab0005d28621701, type: 3}
   m_PrefabInstance: {fileID: 217037275}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1189205920}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 118b1c84bb0bc6e4984f39e38b5befd6, type: 3}
@@ -14834,7 +14837,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7843187059823326683, guid: b73e78c24c74eeb46ab0005d28621701, type: 3}
   m_PrefabInstance: {fileID: 217037275}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1189205920}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec9af5db7772a07469f83dbca22416d0, type: 3}
@@ -18560,6 +18563,28 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8941072164462600585, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
   m_PrefabInstance: {fileID: 1815921741}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1189205920 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8723893582950481804, guid: b73e78c24c74eeb46ab0005d28621701, type: 3}
+  m_PrefabInstance: {fileID: 217037275}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1189205922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189205920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12bdc5862cde3404e95e28b6efc9af37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messageBox: {fileID: 1932493609}
+  messagePrefab: {fileID: 653915296638120366, guid: 3bdaaef3a7416464cb9f173c38bb2191, type: 3}
+  maxMessages: 3
+  messageDuration: 5
+  delayBeforeFade: 2
 --- !u!1 &1191952913
 GameObject:
   m_ObjectHideFlags: 0
@@ -29298,7 +29323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2002666500535102321, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -91.599976
+      value: -91.6001
       objectReference: {fileID: 0}
     - target: {fileID: 2002666500535102321, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -31068,7 +31093,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 66798818593291213, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
     m_RemovedGameObjects:
     - {fileID: 8688155835180361411, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
     m_AddedGameObjects:
@@ -33036,6 +33062,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930091458}
   m_CullTransparentMesh: 0
+--- !u!1 &1932493609 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8989750075506943320, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+  m_PrefabInstance: {fileID: 1815921741}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1937549042 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3546267093934904370, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
