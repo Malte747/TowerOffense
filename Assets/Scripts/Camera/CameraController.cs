@@ -131,7 +131,7 @@ public class CameraController : MonoBehaviour
         // Kamera-Rotation mit Tasten
         if (Input.GetKey(KeyCode.N) || Input.GetKey(KeyCode.PageUp))
         {
-        float rotationY = Mathf.Clamp(newRotation.eulerAngles.y + rotationAmount, startRotation.eulerAngles.y - 45f, startRotation.eulerAngles.y + 45f);
+        float rotationY = Mathf.Clamp(newRotation.eulerAngles.y + rotationAmount, startRotation.eulerAngles.y + 45f, startRotation.eulerAngles.y - 45f);
         newRotation = Quaternion.Euler(newRotation.eulerAngles.x, rotationY, newRotation.eulerAngles.z);
         }
         else if (Input.GetKey(KeyCode.M) || Input.GetKey(KeyCode.PageDown))

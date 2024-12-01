@@ -1795,7 +1795,7 @@ MonoBehaviour:
   gameManager: {fileID: 36889974}
   _uiManager: {fileID: 0}
   health: {fileID: 0}
-  MainTowerPrefab: {fileID: 0}
+  MainTowerPrefab: {fileID: 5094967345839549146, guid: e0586e91f0cd5804daac931652bfcea7, type: 3}
   grid: {fileID: 415096506}
   xSize: 1
   zSize: 1
