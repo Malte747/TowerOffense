@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
+    [SerializeField] AudioMixer _mixer;
+
     [Header("Music")]
     [SerializeField] private AudioSource _titleMusic;
     [SerializeField] private AudioSource _gameMusic;
@@ -14,26 +17,32 @@ public class AudioManager : MonoBehaviour
 
     [Header("SFX")]
 
-    [Header("Explosions")]
-    [SerializeField] private AudioSource _explosionSource;
-    [SerializeField] private AudioClip[] _explosionClips;
-
-    [Header("Projectiles")]
-    [SerializeField] private AudioSource _projectilesSource;
-    [SerializeField] private AudioClip[] _projectileClips;
+    [Header("Game")]
+    [SerializeField] private List<AudioClip> _gameSFX;
 
     [Header("UI")]
-    [SerializeField] private AudioSource _click;
-    [SerializeField] private AudioSource _pause;
+    [SerializeField] private List<AudioClip> _uiSFX;
+    [SerializeField] private AudioSource soundFXObject2D;
+    [SerializeField] private AudioSource soundFXObject3D;
 
     public static AudioManager instance;
 
+    public const string MUSIC_KEY = "musicVolume";
+    public const string SFX_KEY = "sfxVolume";
+
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
-        //if (instance == null) instance = this;
-        //else Destroy(gameObject);
+        LoadVolume();
     }
 
     public void StartTitleMusic(int hummer)
@@ -60,7 +69,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void GamePaused(bool paused)
+   /* public void GamePaused(bool paused)
     {
         if (paused)
         {
@@ -70,7 +79,7 @@ public class AudioManager : MonoBehaviour
         }
 
     }
-
+   */
     public void StartFadeTitleMusicOut()
     {
         StartCoroutine(FadeTitleMusic(true));
@@ -136,12 +145,73 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlayRandomExplosion()
+    /*public void PlayRandomExplosion()
     {
         int clip = Random.Range(0, _explosionClips.Length);
         _explosionSource.pitch -= Random.Range(0.9f, 1.1f);
         _explosionSource.PlayOneShot(_explosionClips[clip]);
 
     }
+    */
+    public void PlaySoundFXUIClip(AudioClip audioClip, Transform spawnTransform, float volume)
+    {
+        AudioSource audioSource = Instantiate(soundFXObject2D, spawnTransform.position, Quaternion.identity);
 
+
+
+        audioSource.clip = audioClip;
+
+        audioSource.volume = volume;
+
+        audioSource.Play();
+
+        float clipLength = audioSource.clip.length;
+
+        Destroy(audioSource.gameObject, clipLength + 1);
+
+    }
+
+    public void PlaySoundFXGameClip(AudioClip audioClip, Transform spawnTransform, float volume)
+    {
+        AudioSource audioSource = Instantiate(soundFXObject3D, spawnTransform.position, Quaternion.identity);
+
+
+
+        audioSource.clip = audioClip;
+
+        audioSource.volume = volume;
+
+        audioSource.Play();
+
+        float clipLength = audioSource.clip.length;
+
+        Destroy(audioSource.gameObject, clipLength + 1);
+
+    }
+
+    public void PlayGameSound(int soundIndex)
+    {
+        if (soundIndex >= 0 && soundIndex < _gameSFX.Count)
+        {
+            PlaySoundFXGameClip(_gameSFX[soundIndex], transform, 1f);
+        }
+    }
+
+
+    public void PlayUISound(int soundIndex)
+    {
+        if (soundIndex >= 0 && soundIndex < _uiSFX.Count)
+        {
+            PlaySoundFXUIClip(_uiSFX[soundIndex], transform, 1f);
+        }
+    }
+
+    void LoadVolume()
+    {
+        float musicVolume = PlayerPrefs.GetFloat(MUSIC_KEY, 1f);
+        float sfxVolume = PlayerPrefs.GetFloat(SFX_KEY, 1f);
+
+        _mixer.SetFloat(volumesettings.MIXER_MUSIC, Mathf.Log10(musicVolume) * 20);
+        _mixer.SetFloat(volumesettings.MIXER_SFX, Mathf.Log10(sfxVolume) * 20);
+    }
 }
