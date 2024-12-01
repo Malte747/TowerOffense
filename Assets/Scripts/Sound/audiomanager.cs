@@ -8,12 +8,22 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioMixer _mixer;
 
     [Header("Music")]
-    [SerializeField] private AudioSource _titleMusic;
+    /*[SerializeField] private AudioSource _titleMusic;
     [SerializeField] private AudioSource _gameMusic;
-    [SerializeField] private AudioClip[] _music;
-    [SerializeField] private float _fadeTimerInterval = 0.001f;
-    private bool _titleMusicPlaying = false;
+    [SerializeField] private AudioClip[] _music; 
+    [SerializeField] private float _fadeTimerInterval = 0.001f; */
+
+    public List<AudioClip> audioClips; // Liste der vorab zugewiesenen Audiotracks
+    public float fadeDuration = 2.0f; // Dauer des Fades
+
+    private AudioSource audioSourceA;
+    private AudioSource audioSourceB;
+    private AudioSource activeSource;
+    private bool isFading = false;
+
+    /*private bool _titleMusicPlaying = false;
     private bool _gameMusicPlaying = false;
+    private bool _isFading = false;*/
 
     [Header("SFX")]
 
@@ -30,6 +40,7 @@ public class AudioManager : MonoBehaviour
     public const string MUSIC_KEY = "musicVolume";
     public const string SFX_KEY = "sfxVolume";
 
+
     void Awake()
     {
         if (instance == null)
@@ -45,7 +56,94 @@ public class AudioManager : MonoBehaviour
         LoadVolume();
     }
 
-    public void StartTitleMusic(int hummer)
+    private void Start()
+    {
+        SpawnAudioSources();
+
+        if (audioClips.Count > 0)
+        {
+            audioSourceA.clip = audioClips[0];
+            audioSourceA.Play();
+            activeSource = audioSourceA;
+        }
+    }
+
+    public void CrossfadeToClip(int clipIndex)
+    {
+        if (isFading || clipIndex < 0 || clipIndex >= audioClips.Count)
+        {
+            Debug.LogWarning("Ungültiger Clip-Index oder ein Fade läuft bereits!");
+            return;
+        }
+
+        StartCoroutine(FadeToClip(clipIndex));
+    }
+
+    private IEnumerator FadeToClip(int clipIndex)
+    {
+        isFading = true;
+
+        // Clip für die nächste Quelle festlegen
+        AudioSource newSource = (activeSource == audioSourceA) ? audioSourceB : audioSourceA;
+        newSource.clip = audioClips[clipIndex];
+        newSource.Play();
+
+        float elapsedTime = 0f;
+
+        // Lautstärke der beiden Quellen interpolieren
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / fadeDuration;
+
+            activeSource.volume = Mathf.Lerp(1f, 0f, t);
+            newSource.volume = Mathf.Lerp(0f, 1f, t);
+
+            yield return null;
+        }
+
+        // Lautstärke korrekt setzen und alte Quelle stoppen
+        activeSource.volume = 0f;
+        newSource.volume = 1f;
+        activeSource.Stop();
+        activeSource = newSource;
+
+        isFading = false;
+    }
+
+    public void SpawnAudioSources()
+    {
+        if (audioSourceA == null)
+        {
+            GameObject audioObjectA = new GameObject("AudioSourceA");
+            audioSourceA = audioObjectA.AddComponent<AudioSource>();
+            audioObjectA.transform.SetParent(transform);
+        }
+
+        if (audioSourceB == null)
+        {
+            GameObject audioObjectB = new GameObject("AudioSourceB");
+            audioSourceB = audioObjectB.AddComponent<AudioSource>();
+            audioObjectB.transform.SetParent(transform);
+        }
+    }
+
+    public void DespawnAudioSources()
+    {
+        if (audioSourceA != null)
+        {
+            Destroy(audioSourceA.gameObject);
+            audioSourceA = null;
+        }
+
+        if (audioSourceB != null)
+        {
+            Destroy(audioSourceB.gameObject);
+            audioSourceB = null;
+        }
+    }
+
+    /* public void StartTitleMusic(int hummer)
     {
         if (!_titleMusicPlaying)
         {
@@ -69,7 +167,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-   /* public void GamePaused(bool paused)
+    public void GamePaused(bool paused)
     {
         if (paused)
         {
@@ -79,7 +177,7 @@ public class AudioManager : MonoBehaviour
         }
 
     }
-   */
+   
     public void StartFadeTitleMusicOut()
     {
         StartCoroutine(FadeTitleMusic(true));

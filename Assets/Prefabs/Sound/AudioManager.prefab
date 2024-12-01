@@ -302,13 +302,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mixer: {fileID: 24100000, guid: de32485de7f40e6449350a56d56b28c9, type: 2}
-  _titleMusic: {fileID: 6435157195343625767}
-  _gameMusic: {fileID: 2763103649173497074}
-  _music: []
-  _fadeTimerInterval: 0.001
+  audioClips:
+  - {fileID: 8300000, guid: a620fc306c84ae04189222ffc23c9694, type: 3}
+  - {fileID: 8300000, guid: dbac05f150ebc9b43b50cb85efdf1f84, type: 3}
+  audioSourceA: {fileID: -643956258472908786, guid: e6a01e9541e42b14aa2ceae4c3ee8813, type: 3}
+  audioSourceB: {fileID: -643956258472908786, guid: 1cfe15da392cafd48b81b0cc6f29085c, type: 3}
+  fadeDuration: 2
   _gameSFX: []
   _uiSFX:
-  - {fileID: 8300000, guid: 5dc901bd0178c664585a0f8417a9e7c2, type: 3}
+  - {fileID: 8300000, guid: 280b467f4bb728743946c802f769d034, type: 3}
   - {fileID: 8300000, guid: 91580b9bf72ded242811628c0906eeb6, type: 3}
   - {fileID: 8300000, guid: ea9eaa5165c5b994a9127d25c4fbd262, type: 3}
   - {fileID: 8300000, guid: 6424ff63a1f797c4b95cb1260695c57d, type: 3}
