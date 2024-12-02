@@ -75,17 +75,17 @@ public class TowerGridPlacement : MonoBehaviour
         if (towerKnowsWhereItIs == null)
         {
             //Debug.Log("No Tower Selected.");
-            indicatorColor.SetColor("_BaseColor", new Color(1f, 0f, 0f, 0.5f));
+            indicatorColor.SetColor("_BaseColor", new Color(0.8392157f, 0.03921568f, 0.06320632f, 0.9f));
         }
         else if (!hitTower  && towerKnowsWhereItIs.goldCost  <= gameManager.defenderGold  && towerKnowsWhereItIs.supplyCost + gameManager.defenderSupply <= gameManager.maxSupply)
         {
             //Debug.Log("Position is free.");
-            indicatorColor.SetColor("_BaseColor", new Color(0f, 1f, 0f, 0.5f));
+            indicatorColor.SetColor("_BaseColor", new Color(0.09215922f, 0.838f, 0.04049486f, 0.9f));
         }
         else
         {
             //Debug.Log("Position is occupied.");
-            indicatorColor.SetColor("_BaseColor", new Color(1f, 0f, 0f, 0.5f));
+            indicatorColor.SetColor("_BaseColor", new Color(0.8392157f, 0.03921568f, 0.06320632f, 0.9f));
         }
 
         if(EventSystem.current.IsPointerOverGameObject() && placingTowers)
