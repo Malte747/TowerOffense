@@ -395,7 +395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3154e20f4e6593d44a35d67ec30d17e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainTower: 0
 --- !u!1 &3647315434395575687
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +410,7 @@ GameObject:
   - component: {fileID: 3001106908410715817}
   - component: {fileID: 1316378967969799111}
   - component: {fileID: 7829610398277998020}
+  - component: {fileID: 6913131116089323627}
   m_Layer: 6
   m_Name: TowerParent1x1
   m_TagString: Tower
@@ -534,6 +534,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthBarSlider: {fileID: 6615795833319142148}
   _healthBarCanvas: {fileID: 3833114945708485631}
+--- !u!65 &6913131116089323627
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3647315434395575687}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7548295050751767644
 GameObject:
   m_ObjectHideFlags: 0

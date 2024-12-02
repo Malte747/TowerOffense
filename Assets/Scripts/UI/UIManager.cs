@@ -180,6 +180,17 @@ public class UIManager : MonoBehaviour
             towerInfoUI[2].SetActive(false);
             towerInfoUI[3].SetActive(false);
         }
+        else if(TowerGridPlacement.clickedTowerParent.GetComponent<Collider>().CompareTag("MainTower"))
+        {
+            Button button = towerInfoUI[3].GetComponent<Button>();
+            button.interactable = false;
+            //Debug.Log("MainTower Clicked");
+        }
+        else
+        {
+            Button button = towerInfoUI[3].GetComponent<Button>();  
+            button.interactable = true;
+        }
     }
     public void HideTowerInfoUI()
     {

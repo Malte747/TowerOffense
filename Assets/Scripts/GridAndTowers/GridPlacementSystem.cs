@@ -28,10 +28,10 @@ public class GridPlacementSystem : MonoBehaviour
         cellIndicator.transform.eulerAngles = new Vector3(cellIndicator.transform.eulerAngles.x, TowerGridPlacement.towerRotation, cellIndicator.transform.eulerAngles.z);
         rotationSave = cellIndicator.transform.rotation;
 
-        if (attackerHasWon) 
+        //if (attackerHasWon) 
         {
             //AttackerHasWon();
-            Debug.Log("Atacker Wins!!!");
+            //Debug.Log("Atacker Wins!!!");
         }
     }
 }
