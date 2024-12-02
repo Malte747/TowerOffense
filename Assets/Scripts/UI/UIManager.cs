@@ -158,7 +158,6 @@ public class UIManager : MonoBehaviour
     public void SetTowerRepairCost(int towerPrice)
     {
         towerRepairCost = towerPrice * gameManager.towerRepairCostMultiplier / 100;
-
         if(towerRepairCost > 0)
         {
         towerRepairCostText.text = towerRepairCost.ToString();
