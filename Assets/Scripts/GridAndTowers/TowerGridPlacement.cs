@@ -88,7 +88,7 @@ public class TowerGridPlacement : MonoBehaviour
             indicatorColor.SetColor("_BaseColor", new Color(0.8392157f, 0.03921568f, 0.06320632f, 0.9f));
         }
 
-        if(EventSystem.current.IsPointerOverGameObject() && placingTowers)
+        if(!GridMouseInput.mouseOverGrid && placingTowers || EventSystem.current.IsPointerOverGameObject() && placingTowers)
         {
             Cursor.visible = true;
             indicator.transform.parent.gameObject.SetActive(false);

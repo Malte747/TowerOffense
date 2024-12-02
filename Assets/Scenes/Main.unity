@@ -2174,7 +2174,7 @@ MonoBehaviour:
   sceneCamera: {fileID: 1601479780}
   placementLayermask:
     serializedVersion: 2
-    m_Bits: 960
+    m_Bits: 961
 --- !u!1 &811579308 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4889305333793764721, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
@@ -3743,6 +3743,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 538895478}
+    - target: {fileID: 8688155835976778512, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688155835976778512, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688155835976778512, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688155835976778512, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688155835976778512, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8986546849693696259, guid: 2f362c45d1e335b4baa70b889ccfead6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
