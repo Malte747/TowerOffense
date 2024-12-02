@@ -84,6 +84,10 @@ PrefabInstance:
       propertyPath: zSize
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4818728100630943762, guid: e07f0fa165e0eb042aae915b0b72e0f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6534907640937123319, guid: e07f0fa165e0eb042aae915b0b72e0f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 6
@@ -131,6 +135,14 @@ PrefabInstance:
     - target: {fileID: 7244464562473474179, guid: e07f0fa165e0eb042aae915b0b72e0f9, type: 3}
       propertyPath: m_TagString
       value: Mine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8881422383634685230, guid: e07f0fa165e0eb042aae915b0b72e0f9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8881422383634685230, guid: e07f0fa165e0eb042aae915b0b72e0f9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6437427266642713572, guid: e07f0fa165e0eb042aae915b0b72e0f9, type: 3}
