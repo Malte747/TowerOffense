@@ -10,15 +10,14 @@ public class Billboard : MonoBehaviour
     {
         GameObject cameraObject = GameObject.Find("Camera");
         
-            cam = cameraObject.transform;
-        
+        cam = cameraObject.transform; 
     }
 
     void LateUpdate()
     {
         if (cam != null)
         {
-            transform.LookAt(transform.position + cam.forward);
+            transform.LookAt(cam.transform.position);
         }
     }
 }

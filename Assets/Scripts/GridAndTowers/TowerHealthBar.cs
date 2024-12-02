@@ -1,12 +1,12 @@
-using System.Collections;
+                    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TowerHealthBar : MonoBehaviour
 {
-    [SerializeField] private Slider _healthBarSlider;
     [SerializeField] private RectTransform _healthBarCanvas;
+    private Slider _healthBarSlider;
 
     private Health _health;
 
@@ -15,8 +15,8 @@ public class TowerHealthBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         _health = GetComponent<Health>();
+        _healthBarSlider = _healthBarCanvas.GetComponentInChildren<Slider>();
     }
 
 
