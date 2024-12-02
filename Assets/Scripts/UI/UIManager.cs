@@ -151,8 +151,6 @@ public class UIManager : MonoBehaviour
         hpSlider.value = Mathf.Clamp(currentHP, 0, maxHP);
 
         hpSliderText.text = $"{ hpSlider.value}/{ hpSlider.maxValue}";
-
-        ShowTowerInfoUI();
     }
 
     public void SetTowerRepairCost(int towerPrice)

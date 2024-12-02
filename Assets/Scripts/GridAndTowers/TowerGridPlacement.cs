@@ -36,10 +36,6 @@ public class TowerGridPlacement : MonoBehaviour
     private bool hitTower;
 
     public static GameObject clickedTowerParent;
-
-
-
-    //Bis UI existiert Placeholder
     public static int towerNumberUI;
 
     void Start()
@@ -323,6 +319,7 @@ public class TowerGridPlacement : MonoBehaviour
 
     public void TowerInfoUI()
     {
+        _uiManager.ShowTowerInfoUI();
         TowerInfoUIHPChange();
         if (towerKnowsWhereItIs != null) _uiManager.SetTowerRepairCost(towerKnowsWhereItIs.goldCost);
         //Bild Change
