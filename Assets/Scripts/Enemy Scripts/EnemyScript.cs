@@ -80,6 +80,8 @@ public class EnemyScript : MonoBehaviour
         animator = gameObject.transform.GetChild(1).GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         grid = GameObject.Find("Grid").GetComponent<Grid>();
+
+        if(damageDelay == 0) damageDelay = 0.01f;
     }
 
     // Update is called once per frame
@@ -131,7 +133,13 @@ public class EnemyScript : MonoBehaviour
 
         // stop moving if theres a tower in the way
         if (TowerGridPlacement.TowerBible.ContainsKey(grid.WorldToCell(transform.position))) agent.enabled = false;
-        else agent.enabled = true;
+        else
+        {
+            agent.enabled = true;
+            
+            transform.rotation = new Quaternion(0,0,0,1);
+        }
+        
 
         // always move to & try to attack the current victim
         if (nextVictim != null)
@@ -145,7 +153,8 @@ public class EnemyScript : MonoBehaviour
             if (canAttackVictim && attackRange > 1)
             {
                 agent.enabled = false;
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(nextVictim.transform.GetChild(0).position - transform.position), 5 * Time.deltaTime);
+                Quaternion targetRotation = Quaternion.LookRotation( new Vector3(nextVictim.transform.GetChild(0).position.x - transform.position.x, 0 , nextVictim.transform.GetChild(0).position.z - transform.position.z));
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 5 * Time.deltaTime);
             }
         }
 
@@ -228,7 +237,8 @@ public class EnemyScript : MonoBehaviour
     void Attack()
     {
         cooldown = attackCooldown;
-        if (animator != null) animator.SetBool("isAttacking", true);
+        if (animator != null) animator.SetTrigger("attack");
+        else Debug.LogWarning("no animator found");
 
         if (isRangeUnit) Projectile();
         else Invoke("Damage", damageDelay);
@@ -278,7 +288,6 @@ public class EnemyScript : MonoBehaviour
                 health.health -= baseDamage;
             }
         }
-        if (animator != null) animator.SetBool("isAttacking", false);
         Debug.Log("attack");
     }
 

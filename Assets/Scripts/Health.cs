@@ -13,6 +13,7 @@ public class Health : MonoBehaviour
     [HideInInspector] public int healthLastCheck;
 
     private TowerHealthBar _towerHealthBar;
+    Animator animator;
 
     // Start is called before the first frame update
     private void Start()
@@ -46,9 +47,21 @@ public class Health : MonoBehaviour
         else
         { 
             RemoveEntries(gameObject);
-            NavMeshBaking baking = GameObject.Find("NavMesh").GetComponent<NavMeshBaking>();
-            baking.StartCoroutine("BakeNavMesh");
-            Destroy(gameObject);
+            if (gameObject.CompareTag("Tower") || gameObject.CompareTag("Mine") || gameObject.CompareTag("Wall"))
+            {
+                NavMeshBaking baking = GameObject.Find("NavMesh").GetComponent<NavMeshBaking>();
+                baking.StartCoroutine("BakeNavMesh");
+                Destroy(gameObject);
+            }
+            else
+            {
+                animator = transform.GetChild(1).GetComponent<Animator>();
+                GetComponent<EnemyScript>().enabled = false;
+                GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+                animator.SetTrigger("death");
+                 Destroy(gameObject, 3.6f);
+            }
+            
         }
         
     }
