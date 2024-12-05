@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class TowerAttack : MonoBehaviour
 {
@@ -71,7 +72,7 @@ public class TowerAttack : MonoBehaviour
 
     void SelectTarget()
     {
-        float distance = Mathf.Infinity;
+        float distance = attackRange;
         float zPos = -300f;
         float hp = Mathf.Infinity;
         int groupSize = 0;
@@ -145,8 +146,8 @@ public class TowerAttack : MonoBehaviour
     {
         Vector3Int posOnGrid = grid.WorldToCell(pos);
         Vector3Int towerTile = grid.WorldToCell(transform.position);
-        if (posOnGrid != null && posOnGrid.x >= towerTile.x - attackRange && posOnGrid.z >= towerTile.z - attackRange
-            && posOnGrid.x <= towerTile.x + attackRange && posOnGrid.z <= towerTile.z + attackRange)
+
+        if (Vector3.Distance(transform.position, pos) <= attackRange)
         {
             return true;
         }
@@ -159,6 +160,7 @@ public class TowerAttack : MonoBehaviour
         {
             return false;
         }
+
     }
 
 

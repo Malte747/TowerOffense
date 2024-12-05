@@ -713,7 +713,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2e024dfc7f39834193495f8c97a435c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthBarSlider: {fileID: 2652377799473979727}
   _healthBarCanvas: {fileID: 9048991870113174791}
 --- !u!1 &5615125355917913486
 GameObject:

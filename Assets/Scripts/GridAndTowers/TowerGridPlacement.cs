@@ -34,6 +34,7 @@ public class TowerGridPlacement : MonoBehaviour
     public List<GameObject> IndicatorTowers;
     private GameObject PlacedTower;
     private bool hitTower;
+    private GameObject meshes;
 
     public static GameObject clickedTowerParent;
     public static int towerNumberUI;
@@ -240,7 +241,7 @@ public class TowerGridPlacement : MonoBehaviour
 
     public void ChangeTowerWhilePlacing(int number)
     {
-        UnselectTower();
+        if(towerKnowsWhereItIs != null) UnselectTower();
         towerRotation = 0;
         xSizeDirection = +1;
         zSizeDirection = +1;
@@ -287,33 +288,38 @@ public class TowerGridPlacement : MonoBehaviour
     public void ClickOnTower()
     {
         UnselectTower();
-        clickedTowerParent = GridMouseInput.clickedTower.transform.parent.gameObject;
+        clickedTowerParent = GridMouseInput.clickedTower.transform.parent.parent.gameObject;
         towerKnowsWhereItIs = clickedTowerParent.GetComponent<TowerKnowsWhereItIs>();
         if(towerKnowsWhereItIs == null) towerKnowsWhereItIs = clickedTowerParent.GetComponentInParent<TowerKnowsWhereItIs>();
         //Debug.Log("Cells: " + towerKnowsWhereItIs.MyCells.Count);
         health = clickedTowerParent.GetComponent<Health>();
         TowerInfoUI();
-        if (clickedTowerParent.GetComponent<Outline>() != null)
+        meshes = clickedTowerParent.transform.GetChild(0).gameObject;
+        if (meshes.GetComponent<Outline>() != null)
         {
-            clickedTowerParent.GetComponent<Outline>().enabled = true;
+            meshes.GetComponent<Outline>().enabled = true;
         }
         else
         {
-            Outline outline = clickedTowerParent.AddComponent<Outline>();
+            Outline outline = meshes.AddComponent<Outline>();
             outline.enabled = true;
-            clickedTowerParent.GetComponent<Outline>().OutlineWidth = 3.0f;
+            meshes.GetComponent<Outline>().OutlineWidth = 3.0f;
         }
+        MeshRenderer towerBoden = towerKnowsWhereItIs.gameObject.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>();
+        towerBoden.renderingLayerMask = 2;
     }
 
     public void UnselectTower()
     {
-        if (clickedTowerParent != null)
+        if (clickedTowerParent != null && meshes != null)
         {
-            if (clickedTowerParent.GetComponent<Outline>() != null)
+            if (meshes.GetComponent<Outline>() != null)
             {
-                clickedTowerParent.GetComponent<Outline>().enabled = false;
+                meshes.GetComponent<Outline>().enabled = false;
             }
             _uiManager.HideTowerInfoUI();
+            MeshRenderer towerBoden = towerKnowsWhereItIs.gameObject.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>();
+            towerBoden.renderingLayerMask = 0;
         }
     }
 
