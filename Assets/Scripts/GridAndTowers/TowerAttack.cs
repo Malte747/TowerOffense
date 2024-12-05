@@ -40,6 +40,7 @@ public class TowerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        attackRange = attackRange * 10;
         grid = GameObject.Find("Grid").GetComponent<Grid>();
         health = GetComponent<Health>();
         projectileStartPos = transform.position + projectileStartPos;
@@ -144,15 +145,12 @@ public class TowerAttack : MonoBehaviour
             
     public bool IsEnemyInRange(Vector3 pos) 
     {
-        Vector3Int posOnGrid = grid.WorldToCell(pos);
-        Vector3Int towerTile = grid.WorldToCell(transform.position);
 
         if (Vector3.Distance(transform.position, pos) <= attackRange)
         {
             return true;
         }
-        else if (posOnGrid != null && target == Targets.MainTower && posOnGrid.z >= towerTile.z - attackRange
-                 &&  posOnGrid.z <= towerTile.z + attackRange)
+        else if (target == Targets.MainTower && Mathf.Abs(transform.position.z - pos.z) <= attackRange)
         {
             return true;
         }

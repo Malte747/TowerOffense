@@ -497,7 +497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: 0
-  attackRange: 4
+  attackRange: 5
   damage: 14
   attackCooldown: 1
   damageDelay: 0.5
@@ -658,7 +658,7 @@ GameObject:
   - component: {fileID: 3701208054913437076}
   - component: {fileID: 1586135879937451633}
   - component: {fileID: 36088120328456925}
-  m_Layer: 11
+  m_Layer: 3
   m_Name: Tower Range NavMesh Modifier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -675,7 +675,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5, y: 0, z: 5}
-  m_LocalScale: {x: 119.796036, y: 0.01, z: 119.796036}
+  m_LocalScale: {x: 100, y: 0.01, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7658227451962457627}

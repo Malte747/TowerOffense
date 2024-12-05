@@ -58,7 +58,7 @@ MonoBehaviour:
   p3: {x: 0, y: 0, z: 0}
   victim: {fileID: 0}
   damage: 0
-  speed: 1
+  speed: 2
 --- !u!1 &171426054284103267
 GameObject:
   m_ObjectHideFlags: 0
