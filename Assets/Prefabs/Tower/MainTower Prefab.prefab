@@ -1064,8 +1064,8 @@ GameObject:
   - component: {fileID: 6409709768739672625}
   - component: {fileID: 3832949112738537433}
   m_Layer: 10
-  m_Name: MainTower
-  m_TagString: Tower
+  m_Name: MainTower Prefab
+  m_TagString: MainTower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -19,8 +19,8 @@ public class TowerGridPlacement : MonoBehaviour
     int xSizeDirection, zSizeDirection, xAdjustment, zAdjustment, xSizeSaved, zSizeSaved;
     public static int towerRotation;
     public static Vector3Int towerRotationCorrection;
-    public UIManager _uiManager;
-    public Health health;
+    private UIManager _uiManager;
+    private Health health;
 
     [SerializeField] private GameObject MainTowerPrefab;
 
