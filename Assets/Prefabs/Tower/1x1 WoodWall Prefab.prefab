@@ -388,7 +388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyCells: []
-  goldCost: 20
+  goldCost: 35
   supplyCost: 1
   xSize: 1
   zSize: 1
