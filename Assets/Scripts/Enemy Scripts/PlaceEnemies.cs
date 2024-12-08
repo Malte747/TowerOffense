@@ -34,4 +34,13 @@ public class PlaceEnemies : MonoBehaviour
     {
         unit = Units[unitNumber];
     }
+
+    public void ResetGameUnits()
+    {
+        foreach (Vector3 pos in EnemyBibleScript.EnemyBible.Keys)
+        {
+            Destroy(EnemyBibleScript.EnemyBible[pos]);
+        }
+        EnemyBibleScript.EnemyBible.Clear();
+    }
 }
