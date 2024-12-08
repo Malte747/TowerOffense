@@ -1,26 +1,22 @@
 using UnityEngine;
-using UnityEngine.Audio;
 
 public class MuteMixer : MonoBehaviour
 {
-    public AudioMixer audioMixer; // Der AudioMixer, der gesteuert werden soll
-    public string volumeParameter = "MasterVolume"; // Der Name des Lautstärkeparameters im Mixer
-    private bool isMuted = false; // Zustand des Mutes
+    public AudioManager crossfadeAudio; // Referenz zum CrossfadeAudio-Skript
 
-    // Wird vom Button aufgerufen
-    public void ToggleMute()
+    void Update()
     {
-        isMuted = !isMuted;
-
-        if (isMuted)
+        // Beispiel: Drücke "1", um Track mit Index 1 abzuspielen
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            // Lautstärke auf den niedrigsten Wert setzen
-            audioMixer.SetFloat(volumeParameter, -80f); // -80dB ist praktisch stumm
-        }
-        else
-        {
-            // Lautstärke auf 0dB zurücksetzen
-            audioMixer.SetFloat(volumeParameter, 0f);
+            if (crossfadeAudio != null)
+            {
+                //crossfadeAudio.CrossfadeToClip(1);
+            }
+            else
+            {
+                Debug.LogWarning("CrossfadeAudio-Skript ist nicht zugewiesen!");
+            }
         }
     }
 }

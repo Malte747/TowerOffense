@@ -48,10 +48,14 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: a620fc306c84ae04189222ffc23c9694, type: 3}
   - {fileID: 8300000, guid: dbac05f150ebc9b43b50cb85efdf1f84, type: 3}
+  - {fileID: 8300000, guid: dbac05f150ebc9b43b50cb85efdf1f84, type: 3}
+  - {fileID: 8300000, guid: dbac05f150ebc9b43b50cb85efdf1f84, type: 3}
+  - {fileID: 8300000, guid: dbac05f150ebc9b43b50cb85efdf1f84, type: 3}
+  - {fileID: 8300000, guid: dbac05f150ebc9b43b50cb85efdf1f84, type: 3}
+  - {fileID: 8300000, guid: dbac05f150ebc9b43b50cb85efdf1f84, type: 3}
+  - {fileID: 8300000, guid: 061156c28bf232d48860c3a2e38570e0, type: 3}
   fadeDuration: 2
   loopFadeDuration: 5
-  audioMixer: {fileID: 24100000, guid: de32485de7f40e6449350a56d56b28c9, type: 2}
-  volumeParameter: Master
   musicMixer: {fileID: -8651801749233867576, guid: de32485de7f40e6449350a56d56b28c9, type: 2}
   _gameSFX: []
   _uiSFX:

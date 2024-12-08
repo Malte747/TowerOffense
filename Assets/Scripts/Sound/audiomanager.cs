@@ -17,12 +17,14 @@ public class AudioManager : MonoBehaviour
     public List<AudioClip> audioClips; // Liste der vorab zugewiesenen Audiotracks
     public float fadeDuration = 2.0f; // Dauer des Fades
     public float loopFadeDuration = 5.0f; // Dauer des Fades innerhalb eines Loops
+    float elapsedTime = 0f;
 
     private AudioSource audioSourceA;
     private AudioSource audioSourceB;
     private AudioSource activeSource;
     private bool isFading = false;
     private bool loopFading = false;
+    private int currentTrackIndex = 0;
 
     public const string volumeParameter = "MasterVolume"; // Der Name des Lautstärkeparameters im Mixer
     private bool isMuted = false; // Zustand des Mutes
@@ -65,7 +67,7 @@ public class AudioManager : MonoBehaviour
         LoadVolume();
     }
 
-    private void StartLoopFade(AudioSource source)
+    /*rivate void StartLoopFade(AudioSource source)
     {
         if (!loopFading)
         {
@@ -101,7 +103,7 @@ public class AudioManager : MonoBehaviour
                 yield return null;
             }
         }
-    }
+    }*/
 
     private void Start()
     {
@@ -118,20 +120,42 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void CrossfadeToClip(int clipIndex)
+    public void PlayTrackByButton(int trackIndex)
     {
+        Debug.Log("1");
+        PlaySpecificTrack(trackIndex);
+    }
+
+    // Spielt einen bestimmten Track mit Crossfade ab
+    public void PlaySpecificTrack(int trackIndex)
+    {
+        Debug.Log("2");
+        if (audioClips.Count == 0 || trackIndex < 0 || trackIndex >= audioClips.Count)
+        {
+            Debug.LogWarning("Ungültiger Track-Index!");
+            return;
+        }
+        Debug.Log("3");
+        CrossfadeToClip(trackIndex);
+    }
+
+    // Crossfade zwischen aktiver Quelle und der neuen Quelle
+    private void CrossfadeToClip(int clipIndex)
+    {
+        Debug.Log("4");
         if (isFading || clipIndex < 0 || clipIndex >= audioClips.Count)
         {
             Debug.LogWarning("Ungültiger Clip-Index oder ein Fade läuft bereits!");
             return;
         }
-
+        Debug.Log("5");
         StartCoroutine(FadeToClip(clipIndex));
     }
 
     private IEnumerator FadeToClip(int clipIndex)
     {
         isFading = true;
+        Debug.Log("6");
 
         // Clip für die nächste Quelle festlegen
         AudioSource newSource = (activeSource == audioSourceA) ? audioSourceB : audioSourceA;
@@ -141,15 +165,18 @@ public class AudioManager : MonoBehaviour
 
         float elapsedTime = 0f;
 
+
+
         // Lautstärke der beiden Quellen interpolieren
         while (elapsedTime < fadeDuration)
         {
-            elapsedTime += Time.deltaTime;
+            Debug.Log("7");
+            elapsedTime += .1f;
             float t = elapsedTime / fadeDuration;
 
             activeSource.volume = Mathf.Lerp(1f, 0f, t);
             newSource.volume = Mathf.Lerp(0f, 1f, t);
-
+            Debug.Log(elapsedTime + " " + fadeDuration);
             yield return null;
         }
 
@@ -160,6 +187,14 @@ public class AudioManager : MonoBehaviour
         activeSource = newSource;
 
         isFading = false;
+        Debug.Log("8");
+        yield return null;
+    }
+
+    public void CrossFadeTime()
+    {
+        elapsedTime += Time.deltaTime;
+        Debug.Log("9");
     }
 
     public void SpawnAudioSources()
@@ -376,7 +411,7 @@ public class AudioManager : MonoBehaviour
 
     public void ToggleMute()
     {
-        Debug.Log("Minecraft!!!");
+
         isMuted = !isMuted;
 
         if (isMuted)
