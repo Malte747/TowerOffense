@@ -389,7 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyCells: []
-  goldCost: 150
+  goldCost: 30
   supplyCost: 1
   xSize: 1
   zSize: 1
@@ -421,9 +421,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: 0
-  attackRange: 5
-  damage: 14
-  attackCooldown: 1
+  attackRange: 3
+  damage: 9
+  attackCooldown: 0.6
   damageDelay: 0.5
   isRangeUnit: 1
   projectile: {fileID: 109498624868919209, guid: e8be9f5ca7dfec44caa505b8f70e9cfc, type: 3}
