@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering;
 
 public class AudioManager : MonoBehaviour
 {
@@ -15,11 +16,19 @@ public class AudioManager : MonoBehaviour
 
     public List<AudioClip> audioClips; // Liste der vorab zugewiesenen Audiotracks
     public float fadeDuration = 2.0f; // Dauer des Fades
+    public float loopFadeDuration = 5.0f; // Dauer des Fades innerhalb eines Loops
 
     private AudioSource audioSourceA;
     private AudioSource audioSourceB;
     private AudioSource activeSource;
     private bool isFading = false;
+    private bool loopFading = false;
+
+    public const string volumeParameter = "MasterVolume"; // Der Name des Lautstärkeparameters im Mixer
+    private bool isMuted = false; // Zustand des Mutes
+
+
+    public AudioMixerGroup musicMixer;
 
     /*private bool _titleMusicPlaying = false;
     private bool _gameMusicPlaying = false;
@@ -56,6 +65,44 @@ public class AudioManager : MonoBehaviour
         LoadVolume();
     }
 
+    private void StartLoopFade(AudioSource source)
+    {
+        if (!loopFading)
+        {
+            loopFading = true;
+            StartCoroutine(LoopFadeCoroutine(source));
+        }
+    }
+
+    private void StopLoopFade()
+    {
+        loopFading = false;
+    }
+
+    private IEnumerator LoopFadeCoroutine(AudioSource source)
+    {
+        while (loopFading)
+        {
+            // Fading-Out
+            float elapsedTime = 0f;
+            while (elapsedTime < loopFadeDuration / 2)
+            {
+                elapsedTime += Time.deltaTime;
+                source.volume = Mathf.Lerp(1f, 0f, elapsedTime / (loopFadeDuration / 2));
+                yield return null;
+            }
+
+            // Fading-In
+            elapsedTime = 0f;
+            while (elapsedTime < loopFadeDuration / 2)
+            {
+                elapsedTime += Time.deltaTime;
+                source.volume = Mathf.Lerp(0f, 1f, elapsedTime / (loopFadeDuration / 2));
+                yield return null;
+            }
+        }
+    }
+
     private void Start()
     {
         SpawnAudioSources();
@@ -63,8 +110,11 @@ public class AudioManager : MonoBehaviour
         if (audioClips.Count > 0)
         {
             audioSourceA.clip = audioClips[0];
+            audioSourceA.loop = true;
             audioSourceA.Play();
             activeSource = audioSourceA;
+
+            // StartLoopFade(audioSourceA);
         }
     }
 
@@ -86,6 +136,7 @@ public class AudioManager : MonoBehaviour
         // Clip für die nächste Quelle festlegen
         AudioSource newSource = (activeSource == audioSourceA) ? audioSourceB : audioSourceA;
         newSource.clip = audioClips[clipIndex];
+        newSource.loop = true;
         newSource.Play();
 
         float elapsedTime = 0f;
@@ -118,6 +169,11 @@ public class AudioManager : MonoBehaviour
             GameObject audioObjectA = new GameObject("AudioSourceA");
             audioSourceA = audioObjectA.AddComponent<AudioSource>();
             audioObjectA.transform.SetParent(transform);
+
+            if (musicMixer != null)
+            {
+                audioSourceA.outputAudioMixerGroup = musicMixer;
+            }
         }
 
         if (audioSourceB == null)
@@ -125,6 +181,11 @@ public class AudioManager : MonoBehaviour
             GameObject audioObjectB = new GameObject("AudioSourceB");
             audioSourceB = audioObjectB.AddComponent<AudioSource>();
             audioObjectB.transform.SetParent(transform);
+
+            if (musicMixer != null)
+            {
+                audioSourceB.outputAudioMixerGroup = musicMixer;
+            }
         }
     }
 
@@ -311,5 +372,22 @@ public class AudioManager : MonoBehaviour
 
         _mixer.SetFloat(volumesettings.MIXER_MUSIC, Mathf.Log10(musicVolume) * 20);
         _mixer.SetFloat(volumesettings.MIXER_SFX, Mathf.Log10(sfxVolume) * 20);
+    }
+
+    public void ToggleMute()
+    {
+        Debug.Log("Minecraft!!!");
+        isMuted = !isMuted;
+
+        if (isMuted)
+        {
+            // Lautstärke auf den niedrigsten Wert setzen
+            _mixer.SetFloat(volumeParameter, -80f); // -80dB ist praktisch stumm
+        }
+        else
+        {
+            // Lautstärke auf 0dB zurücksetzen
+            _mixer.SetFloat(volumeParameter, 0f);
+        }
     }
 }
