@@ -153,7 +153,7 @@ public class EnemyScript : MonoBehaviour
             if (canAttackVictim && attackRange > 1)
             {
                 agent.enabled = false;
-                Quaternion targetRotation = Quaternion.LookRotation( new Vector3(nextVictim.transform.GetChild(0).position.x - transform.position.x, 0 , nextVictim.transform.GetChild(0).position.z - transform.position.z));
+                Quaternion targetRotation = Quaternion.LookRotation( new Vector3(nextVictim.transform.GetChild(0).position.x - transform.position.x, nextVictim.transform.GetChild(0).position.y - transform.position.y, nextVictim.transform.GetChild(0).position.z - transform.position.z), Vector3.up);
                 transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 5 * Time.deltaTime);
             }
         }
