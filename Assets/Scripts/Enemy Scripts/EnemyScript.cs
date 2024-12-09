@@ -141,8 +141,6 @@ public class EnemyScript : MonoBehaviour
         else
         {
             agent.enabled = true;
-
-            transform.rotation = new Quaternion(0, 0, 0, 1);
         }
         
 
