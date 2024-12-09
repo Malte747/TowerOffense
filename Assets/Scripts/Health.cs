@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using TMPro;
 
 //  SCRIPT SUMMARY: keeps track of a towers/units health & kills it
 
@@ -86,6 +85,19 @@ public class Health : MonoBehaviour
             foreach (var key in keysToRemove)
             {
                 TowerGridPlacement.TowerBible.Remove(key);
+            }
+        }
+        else 
+        {
+            var keysToRemove = EnemyBibleScript.EnemyBible
+           .Where(entry => entry.Value == targetObject)
+           .Select(entry => entry.Key)
+           .ToList();
+
+            // Remove each of those keys from the dictionary
+            foreach (var key in keysToRemove)
+            {
+                EnemyBibleScript.EnemyBible.Remove(key);
             }
         }
         

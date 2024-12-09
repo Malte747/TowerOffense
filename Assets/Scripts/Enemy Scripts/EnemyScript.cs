@@ -132,12 +132,17 @@ public class EnemyScript : MonoBehaviour
         }
 
         // stop moving if theres a tower in the way
-        if (TowerGridPlacement.TowerBible.ContainsKey(grid.WorldToCell(transform.position))) agent.enabled = false;
+        if (TowerGridPlacement.TowerBible.ContainsKey(grid.WorldToCell(transform.position)))
+        {
+            agent.enabled = false;
+            //Quaternion targetRotation = Quaternion.LookRotation(new Vector3(nextVictim.transform.GetChild(0).position.x - transform.position.x, 0, nextVictim.transform.GetChild(0).position.z - transform.position.z), Vector3.up);
+            //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 5 * Time.deltaTime);
+        }
         else
         {
             agent.enabled = true;
-            
-            transform.rotation = new Quaternion(0,0,0,1);
+
+            transform.rotation = new Quaternion(0, 0, 0, 1);
         }
         
 
@@ -153,8 +158,8 @@ public class EnemyScript : MonoBehaviour
             if (canAttackVictim && attackRange > 1)
             {
                 agent.enabled = false;
-                Quaternion targetRotation = Quaternion.LookRotation( new Vector3(nextVictim.transform.GetChild(0).position.x - transform.position.x, nextVictim.transform.GetChild(0).position.y - transform.position.y, nextVictim.transform.GetChild(0).position.z - transform.position.z), Vector3.up);
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 5 * Time.deltaTime);
+                //Quaternion targetRotation = Quaternion.LookRotation( new Vector3(nextVictim.transform.GetChild(0).position.x - transform.position.x, 0, nextVictim.transform.GetChild(0).position.z - transform.position.z), Vector3.up);
+                //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 5 * Time.deltaTime);
             }
         }
 
