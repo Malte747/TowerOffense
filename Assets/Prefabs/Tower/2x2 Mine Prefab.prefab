@@ -529,8 +529,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyCells: []
-  goldCost: 50
-  supplyCost: 1
+  goldCost: 70
+  supplyCost: 5
   xSize: 2
   zSize: 2
 --- !u!114 &3039760167830725453

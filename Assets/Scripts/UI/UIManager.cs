@@ -223,8 +223,9 @@ public class UIManager : MonoBehaviour
 
     public void UnitsStillFightingMessage()
     {
-        messageSystem.ShowMessage("Deine Truppen kämpfen noch!"); 
+        messageSystem.ShowMessage("Unsere Truppen sind im Kampf!"); 
     }
+
 
 
     #endregion

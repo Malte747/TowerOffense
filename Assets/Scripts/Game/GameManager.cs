@@ -119,7 +119,6 @@ public class GameManager : MonoBehaviour
         uiManager = FindObjectOfType<UIManager>();
         sequentialActivator = GameObject.Find("UiManager").GetComponent<SequentialActivator>();
         towerGridPlacement = GameObject.Find("GridScripts 3").GetComponent<TowerGridPlacement>();
-
     }
 
     public void GameStart()
@@ -181,7 +180,7 @@ public class GameManager : MonoBehaviour
         {
             EndGameDefenderWin();
         }
-        else if (attackersTurn)
+        else if (attackersTurn && EnemyBibleScript.EnemyBible.Count == 0)
         {
             attackersTurn = false;
             defendersTurn = true;
@@ -198,6 +197,10 @@ public class GameManager : MonoBehaviour
             uiManager.ActivateAttackerUI();
             roundTextDefenseObject.SetActive(false);
             AttackersTurn();
+        }
+        else
+        {
+            uiManager.UnitsStillFightingMessage();
         }
     }
 

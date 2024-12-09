@@ -8,6 +8,6 @@ public class EnemyBibleScript : MonoBehaviour
 
     void Update()
     {
-        EnemyBible.Clear();
+        Debug.Log(EnemyBibleScript.EnemyBible.Count);
     }
 }

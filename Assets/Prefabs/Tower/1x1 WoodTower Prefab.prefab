@@ -389,8 +389,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyCells: []
-  goldCost: 30
-  supplyCost: 1
+  goldCost: 50
+  supplyCost: 2
   xSize: 1
   zSize: 1
 --- !u!114 &3001106908410715817
@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ecf182658ebf94d9311861d7b3d135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 150
+  health: 100
   maxHealth: 0
   healthLastCheck: 0
 --- !u!114 &1316378967969799111
