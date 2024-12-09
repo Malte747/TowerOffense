@@ -50,7 +50,7 @@ public class TowerAttack : MonoBehaviour
     void LateUpdate()
     {
         t += Time.deltaTime;
-        if (nextVictim != null && IsEnemyInRange(nextVictim.transform.position))
+        if (nextVictim != null && IsEnemyInRange(nextVictim.transform.position) && nextVictim.GetComponent<EnemyScript>().enabled)
         {
             if (t >= attackCooldown)
             {
