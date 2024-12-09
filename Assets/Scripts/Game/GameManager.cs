@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
 
     UIManager uiManager;
+    PlaceEnemies placeEnemies;
     TowerGridPlacement towerGridPlacement;
     SequentialActivator sequentialActivator;
 
@@ -119,6 +120,7 @@ public class GameManager : MonoBehaviour
         uiManager = FindObjectOfType<UIManager>();
         sequentialActivator = GameObject.Find("UiManager").GetComponent<SequentialActivator>();
         towerGridPlacement = GameObject.Find("GridScripts 3").GetComponent<TowerGridPlacement>();
+        placeEnemies = GameObject.Find("EnemyPlacementPlane").GetComponent<PlaceEnemies>();
     }
 
     public void GameStart()
@@ -684,6 +686,7 @@ public class GameManager : MonoBehaviour
         sequentialActivator.ResetUITierButtons();
         uiManager.ResetNavigation();
         towerGridPlacement.ResetGameTowers();   
+        placeEnemies.ResetGameUnits();
         ResetIngameValues();
         
     }
