@@ -80,6 +80,10 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 1f; // Spiel fortsetzen
             isPaused = false;
             toggle = !toggle;
+            foreach (Animator animator in animatorsToChange)
+            {
+            animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+            }
         }
     }
 

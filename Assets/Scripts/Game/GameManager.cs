@@ -672,13 +672,23 @@ private IEnumerator UpdateIncomeText()
 
     }
 
+    public void ResumeGame()
+    {
+        gameInProgress = true;
+    }
+
+    public void ExitToMainMenuDuringGame()
+    {
+        gameInProgress = false;
+    }
 
 
 
 
 
 
-        private void ResetIngameValues()
+
+    private void ResetIngameValues()
     {
         currentTurn = 1;
         attackerSupply = 0;
