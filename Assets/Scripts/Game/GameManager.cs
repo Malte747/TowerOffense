@@ -156,6 +156,8 @@ public class GameManager : MonoBehaviour
             SetSupplyValue(attackerSupply);
             SetIncomeText(attackerGoldIncome);
             roundTextAttackObject.SetActive(true);
+            uiManager.ResetTimeScale();
+            
         }
     }
 
@@ -171,6 +173,7 @@ public class GameManager : MonoBehaviour
             SetSupplyValue(defenderSupply);
             SetIncomeText(defenderGoldIncome);
             roundTextDefenseObject.SetActive(true);
+            uiManager.ResetTimeScale();
            
             
         }
@@ -237,128 +240,138 @@ public class GameManager : MonoBehaviour
         isUpdating = false; 
     }
 
-    private IEnumerator UpdateGoldText()
+private IEnumerator UpdateGoldText()
+{
+    int startValue = goldValue + latestSpending;
+
+    if (latestSpending <= 10)
     {
-        int startValue = goldValue + latestSpending;
-        if(latestSpending <= 10)
-        {
-            animationDuration = 0.3f;
-        }
-        else if (latestSpending <= 50)
-        {
-            animationDuration = 0.5f;
-        }
-        else if(latestSpending <= 100)
-        {
-            animationDuration = 1f;
-        }
-        else
-        {
-            animationDuration = 1.5f;
-        }
-
-        float elapsedTime = 0f;
-        float rate = 2.0f;
-
-        while (elapsedTime < animationDuration)
-        {
-    
-            float progress = Mathf.Pow(rate, elapsedTime / animationDuration) - 1;
-            int currentValue = (int)Mathf.Lerp(startValue, goldValue, progress);
-
-            goldText.text = currentValue.ToString();
-            elapsedTime += Time.deltaTime;
-
-            yield return null;
-        }
-
-        goldText.text = goldValue.ToString();
-        
+        animationDuration = 0.1f;
     }
+    else if (latestSpending <= 50)
+    {
+        animationDuration = 0.2f;
+    }
+    else if (latestSpending <= 100)
+    {
+        animationDuration = 0.3f;
+    }
+    else
+    {
+        animationDuration = 1f;
+    }
+
+    float elapsedTime = 0f;
+    float rate = 2.0f;
+
+    while (elapsedTime < animationDuration)
+    {
+        float progress = Mathf.Pow(rate, elapsedTime / animationDuration) - 1;
+        int currentValue = (int)Mathf.Lerp(startValue, goldValue, progress);
+
+        goldText.text = currentValue.ToString();
+        elapsedTime += Time.unscaledDeltaTime;
+
+        yield return null;
+    }
+
+    goldText.text = goldValue.ToString();
+}
+
 
 
     private IEnumerator AnimateGoldTextRoundStartAttack()
+{
+    int startValue = attackerGold - attackerGoldIncome;
+    goldText.text = startValue.ToString();
+
+
+    float waitTime = 2f;
+    float startTime = Time.realtimeSinceStartup;
+    while (Time.realtimeSinceStartup < startTime + waitTime)
     {
-        int startValue = attackerGold - attackerGoldIncome;
-        goldText.text = startValue.ToString();
-
-        yield return new WaitForSeconds(2f);
-
-        
-
-        if(attackerGoldIncome <= 10)
-        {
-            animationDuration = 0.3f;
-        }
-        else if (attackerGoldIncome <= 50)
-        {
-            animationDuration = 0.5f;
-        }
-        else
-        {
-            animationDuration = 1f;
-        }
-
-
-        float elapsedTime = 0f;
-        float rate = 2.0f; 
-
-
-        while (elapsedTime < animationDuration)
-        {
-            
-            float progress = Mathf.Pow(rate, elapsedTime / animationDuration) - 1;
-            int currentValue = (int)Mathf.Lerp(startValue, attackerGold, progress);
-            
-             goldText.text = currentValue.ToString();
-            elapsedTime += Time.deltaTime;
-            
-            yield return null; 
-        }
-        
-        
-        goldText.text = attackerGold.ToString();
+        yield return null;
     }
 
-    private IEnumerator AnimateGoldTextRoundStartDefense()
+
+    if (attackerGoldIncome <= 10)
     {
-        int startValue = defenderGold - defenderGoldIncome;
-        goldText.text = startValue.ToString();
-
-        yield return new WaitForSeconds(2f);
-
-
-        if(defenderGoldIncome <= 10)
-        {
-            animationDuration = 0.3f;
-        }
-        else if (defenderGoldIncome <= 50)
-        {
-            animationDuration = 0.5f;
-        }
-        else 
-        {
-            animationDuration = 1f;
-        }
-
-        float elapsedTime = 0f;
-        float rate = 2f; 
-
-        while (elapsedTime < animationDuration)
-        {
-            
-            float progress = Mathf.Pow(rate, elapsedTime / animationDuration) - 1;
-            int currentValue = (int)Mathf.Lerp(startValue, defenderGold, progress);
-            
-            goldText.text = currentValue.ToString();
-            elapsedTime += Time.deltaTime;
-            
-            yield return null; 
-        }
-        
-        
-        goldText.text = defenderGold.ToString();
+        animationDuration = 0.3f;
     }
+    else if (attackerGoldIncome <= 50)
+    {
+        animationDuration = 0.5f;
+    }
+    else
+    {
+        animationDuration = 1f;
+    }
+
+    float elapsedTime = 0f;
+    float rate = 2.0f;
+
+    while (elapsedTime < animationDuration)
+    {
+
+        float progress = Mathf.Pow(rate, elapsedTime / animationDuration) - 1;
+        int currentValue = (int)Mathf.Lerp(startValue, attackerGold, progress);
+
+        goldText.text = currentValue.ToString();
+        elapsedTime += Time.unscaledDeltaTime;
+
+        yield return null;
+    }
+
+    goldText.text = attackerGold.ToString();
+}
+
+
+private IEnumerator AnimateGoldTextRoundStartDefense()
+{
+    int startValue = defenderGold - defenderGoldIncome;
+    goldText.text = startValue.ToString();
+
+    // Wartezeit unabhängig von timeScale
+    float waitTime = 2f;
+    float startTime = Time.realtimeSinceStartup;
+    while (Time.realtimeSinceStartup < startTime + waitTime)
+    {
+        yield return null;
+    }
+
+    // Animation duration based on income
+    if (defenderGoldIncome <= 10)
+    {
+        animationDuration = 0.3f;
+    }
+    else if (defenderGoldIncome <= 50)
+    {
+        animationDuration = 0.5f;
+    }
+    else
+    {
+        animationDuration = 1f;
+    }
+
+    float elapsedTime = 0f;
+    float rate = 2f;
+
+    while (elapsedTime < animationDuration)
+    {
+        // Calculate progress independently of timeScale
+        float progress = Mathf.Pow(rate, elapsedTime / animationDuration) - 1;
+        int currentValue = (int)Mathf.Lerp(startValue, defenderGold, progress);
+
+        goldText.text = currentValue.ToString();
+        elapsedTime += Time.unscaledDeltaTime;
+
+        yield return null; // Wait for the next frame
+    }
+
+    // Ensure the final value is set
+    goldText.text = defenderGold.ToString();
+}
+
 
     #endregion 
 
@@ -393,48 +406,52 @@ public class GameManager : MonoBehaviour
         isUpdatingIncome = false; 
     }
 
-    private IEnumerator UpdateIncomeText()
+private IEnumerator UpdateIncomeText()
+{
+    int startIncomeValue = incomeValue - latestIncomeSpending;
+
+
+    if (latestIncomeSpending <= 5)
     {
-        int startIncomeValue = incomeValue - latestIncomeSpending;
-        if(latestIncomeSpending <= 5)
-        {
-            animationDuration = 0.2f;
-        }
-        else if(latestIncomeSpending <= 10)
-        {
-            animationDuration = 0.3f;
-        }
-        else if (latestIncomeSpending <= 50)
-        {
-            animationDuration = 0.5f;
-        }
-        else if(latestIncomeSpending <= 100)
-        {
-            animationDuration = 1f;
-        }
-        else
-        {
-            animationDuration = 1.5f;
-        }
-
-        float elapsedTime = 0f;
-        float rate = 2.0f;
-
-        while (elapsedTime < animationDuration)
-        {
-    
-            float progress = Mathf.Pow(rate, elapsedTime / animationDuration) - 1;
-            int localIncomeValue = (int)Mathf.Lerp(startIncomeValue, incomeValue, progress);
-
-            currentIncomeText.text = "+ " + localIncomeValue.ToString();
-            elapsedTime += Time.deltaTime;
-
-            yield return null;
-        }
-
-        currentIncomeText.text = "+ " + currentIncomeValue.ToString();
-        
+        animationDuration = 0.2f;
     }
+    else if (latestIncomeSpending <= 10)
+    {
+        animationDuration = 0.3f;
+    }
+    else if (latestIncomeSpending <= 50)
+    {
+        animationDuration = 0.5f;
+    }
+    else if (latestIncomeSpending <= 100)
+    {
+        animationDuration = 1f;
+    }
+    else
+    {
+        animationDuration = 1.5f;
+    }
+
+    float elapsedTime = 0f;
+    float rate = 2.0f;
+
+
+    while (elapsedTime < animationDuration)
+    {
+
+        float progress = Mathf.Pow(rate, elapsedTime / animationDuration) - 1;
+        int localIncomeValue = (int)Mathf.Lerp(startIncomeValue, incomeValue, progress);
+
+    
+        currentIncomeText.text = "+ " + localIncomeValue.ToString();
+        elapsedTime += Time.unscaledDeltaTime;
+
+        yield return null; 
+    }
+
+    currentIncomeText.text = "+ " + incomeValue.ToString();
+}
+
 
 
 

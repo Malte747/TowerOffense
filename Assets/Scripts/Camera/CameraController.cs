@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    UIManager uiManager;
+
     public Transform cameraTransform;
     public float normalSpeed;
     public float fastSpeed;
@@ -33,6 +34,8 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
+        uiManager = FindObjectOfType<UIManager>();
+
         newPosition = transform.position;
         startRotation = transform.rotation;
         newRotation = transform.rotation;
@@ -43,13 +46,16 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        if (uiManager != null && uiManager.isPaused) return;
+
         HandleMouseInput();
         HandleMovementInput();
     }
 
     void HandleMouseInput()
     {
-        // Zoom mit dem Mausrad
+        if (uiManager != null && uiManager.isPaused) return;
+
         if (Input.mouseScrollDelta.y != 0)
         {
             newZoom += Input.mouseScrollDelta.y * zoomAmount;
@@ -66,7 +72,6 @@ public class CameraController : MonoBehaviour
             }
         }
 
-        // Halten der mittleren Maustaste für Draggen
         if (Input.GetMouseButton(2))
         {
             Plane plane = new Plane(Vector3.up, Vector3.zero);
@@ -82,7 +87,8 @@ public class CameraController : MonoBehaviour
 
     void HandleMovementInput()
     {
-        // Kamera-Geschwindigkeit erhöhen, wenn Shift gedrückt wird
+        if (uiManager != null && uiManager.isPaused) return;
+
         if (Input.GetKey(KeyCode.LeftShift))
         {
             movementSpeed = fastSpeed;
@@ -92,59 +98,55 @@ public class CameraController : MonoBehaviour
             movementSpeed = normalSpeed;
         }
 
-        // Kamera durch Tastatureingabe bewegen
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            newPosition += (transform.forward * movementSpeed * Time.deltaTime);
+            newPosition += (transform.forward * movementSpeed * Time.unscaledDeltaTime);
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            newPosition += (transform.forward * -movementSpeed * Time.deltaTime);
+            newPosition += (transform.forward * -movementSpeed * Time.unscaledDeltaTime);
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            newPosition += (transform.right * movementSpeed * Time.deltaTime);
+            newPosition += (transform.right * movementSpeed * Time.unscaledDeltaTime);
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            newPosition += (transform.right * -movementSpeed * Time.deltaTime);
+            newPosition += (transform.right * -movementSpeed * Time.unscaledDeltaTime);
         }
 
-        // Kamera durch Bildschirmrand-Scrolling bewegen
         if (Input.mousePosition.x <= edgeThickness)
         {
-            newPosition += transform.right * -edgeScrollSpeed * Time.deltaTime;
+            newPosition += transform.right * -edgeScrollSpeed * Time.unscaledDeltaTime;
         }
         if (Input.mousePosition.x >= Screen.width - edgeThickness)
         {
-            newPosition += transform.right * edgeScrollSpeed * Time.deltaTime;
+            newPosition += transform.right * edgeScrollSpeed * Time.unscaledDeltaTime;
         }
         if (Input.mousePosition.y <= edgeThickness)
         {
-            newPosition += transform.forward * -edgeScrollSpeed * Time.deltaTime;
+            newPosition += transform.forward * -edgeScrollSpeed * Time.unscaledDeltaTime;
         }
         if (Input.mousePosition.y >= Screen.height - edgeThickness)
         {
-            newPosition += transform.forward * edgeScrollSpeed * Time.deltaTime;
+            newPosition += transform.forward * edgeScrollSpeed * Time.unscaledDeltaTime;
         }
 
-        // Kamera-Rotation mit Tasten
         if (Input.GetKey(KeyCode.N) || Input.GetKey(KeyCode.PageUp))
         {
-        float rotationY = Mathf.Clamp(newRotation.eulerAngles.y + rotationAmount, startRotation.eulerAngles.y + 45f, startRotation.eulerAngles.y - 45f);
-        newRotation = Quaternion.Euler(newRotation.eulerAngles.x, rotationY, newRotation.eulerAngles.z);
+            float rotationY = Mathf.Clamp(newRotation.eulerAngles.y + rotationAmount, startRotation.eulerAngles.y + 45f, startRotation.eulerAngles.y - 45f);
+            newRotation = Quaternion.Euler(newRotation.eulerAngles.x, rotationY, newRotation.eulerAngles.z);
         }
         else if (Input.GetKey(KeyCode.M) || Input.GetKey(KeyCode.PageDown))
         {
-        float rotationY = Mathf.Clamp(newRotation.eulerAngles.y - rotationAmount, startRotation.eulerAngles.y - 45f, startRotation.eulerAngles.y + 45f);
-        newRotation = Quaternion.Euler(newRotation.eulerAngles.x, rotationY, newRotation.eulerAngles.z);
+            float rotationY = Mathf.Clamp(newRotation.eulerAngles.y - rotationAmount, startRotation.eulerAngles.y - 45f, startRotation.eulerAngles.y + 45f);
+            newRotation = Quaternion.Euler(newRotation.eulerAngles.x, rotationY, newRotation.eulerAngles.z);
         }
         else
         {
-        newRotation = Quaternion.Lerp(newRotation, startRotation, Time.deltaTime * movementTime);
+            newRotation = Quaternion.Lerp(newRotation, startRotation, Time.unscaledDeltaTime * movementTime);
         }
 
-        //zoom mit tasten
         if (Input.GetKey(KeyCode.Home))
         {
             newZoom += zoomAmount;
@@ -154,20 +156,16 @@ public class CameraController : MonoBehaviour
             newZoom -= zoomAmount;
         }
 
-
-        
         newPosition.x = Mathf.Clamp(newPosition.x, minPosition.x, maxPosition.x);
         newPosition.y = Mathf.Clamp(newPosition.y, minPosition.y, maxPosition.y);
         newPosition.z = Mathf.Clamp(newPosition.z, minPosition.z, maxPosition.z);
 
-        
-        transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementTime);
-        transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * movementTime);
+        transform.position = Vector3.Lerp(transform.position, newPosition, Time.unscaledDeltaTime * movementTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.unscaledDeltaTime * movementTime);
 
-        
         newZoom.y = Mathf.Clamp(newZoom.y, minZoom, maxZoom);
         newZoom.z = Mathf.Clamp(newZoom.z, -maxZoom, -minZoom);
-        Vector3 targetPosition = Vector3.Lerp(cameraTransform.localPosition, newZoom, Time.deltaTime * movementTime);
+        Vector3 targetPosition = Vector3.Lerp(cameraTransform.localPosition, newZoom, Time.unscaledDeltaTime * movementTime);
         cameraTransform.localPosition = targetPosition;
     }
 }

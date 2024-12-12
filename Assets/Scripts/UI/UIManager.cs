@@ -23,14 +23,27 @@ public class UIManager : MonoBehaviour
 
     public Button pause;  
     public Button unpause;
-    private bool isPaused = false; 
+    public bool isPaused = false; 
     private bool toggle = true;    
+    // public Animator animatorGold;
+    public Animator[] animatorsToChange;
 
     public Slider hpSlider;
     public TMP_Text hpSliderText;
     public static int towerRepairCost;
     public TMP_Text towerRepairCostText;
     public GameObject[] towerInfoUI;
+
+
+    // Time Manager
+
+    private float[] timeScales = { 0.5f, 1f, 2f, 5f, 10f };
+    private int currentTimeScaleIndex = 1;
+    private bool timePaused;
+    public TMP_Text currentTimeScaleIndexText;
+    public GameObject pauseIcon;
+    public GameObject resumeIcon;
+
 
     
 
@@ -74,17 +87,100 @@ public class UIManager : MonoBehaviour
     {
         if (isPaused)
         {
+            if(!timePaused)
+            {
             Time.timeScale = 1f; // Spiel fortsetzen
+            }
             isPaused = false;
             toggle = !toggle;
+            
+            foreach (Animator animator in animatorsToChange)
+            {
+            animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+            }
         }
         else
         {
             Time.timeScale = 0f; // Spiel pausieren
             isPaused = true;
             toggle = !toggle;
+
+            foreach (Animator animator in animatorsToChange)
+            {
+            animator.updateMode = AnimatorUpdateMode.Normal;
+            }
         }
     }
+
+
+    #region Time Management
+
+
+    public void PauseTime()
+    {
+        if (!timePaused)
+        {
+        Time.timeScale = 0f;
+        timePaused = true;
+        pauseIcon.SetActive(false);
+        resumeIcon.SetActive(true);
+        }
+        else
+        {
+        Time.timeScale = timeScales[currentTimeScaleIndex];
+        timePaused = false;
+        pauseIcon.SetActive(true);
+        resumeIcon.SetActive(false);
+        }
+    }
+
+    public void SpeedUpTime()
+    {
+        if (currentTimeScaleIndex < timeScales.Length - 1)
+        {
+            currentTimeScaleIndex++;
+            currentTimeScaleIndexText.text = timeScales[currentTimeScaleIndex].ToString() + "x";
+            if(!timePaused)
+            {
+            Time.timeScale = timeScales[currentTimeScaleIndex];
+            }
+           
+        }
+    }
+
+    public void SlowDownTime()
+    {
+        if (currentTimeScaleIndex > 0)
+        {
+            currentTimeScaleIndex--;
+            currentTimeScaleIndexText.text = timeScales[currentTimeScaleIndex].ToString() + "x";
+                        if(!timePaused)
+            {
+            Time.timeScale = timeScales[currentTimeScaleIndex];
+            }
+        }
+    }
+
+    public void ResetTimeScale()
+    {
+            currentTimeScaleIndex = 1;
+            Time.timeScale = timeScales[currentTimeScaleIndex];
+            currentTimeScaleIndexText.text = timeScales[currentTimeScaleIndex].ToString() + "x";
+            if(timePaused)
+            {
+                PauseTime();
+            }
+    }
+
+
+
+
+
+
+
+
+
+    #endregion
 
 
     public void ActivateDefenderUI()

@@ -58,7 +58,7 @@ public class MessageSystem : MonoBehaviour
         // Beginne mit dem Verblassen nach der Verzögerung
         while (elapsedTime < (duration - delayBeforeFade))
         {
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime;
             float alpha = Mathf.Lerp(1f, 0f, elapsedTime / (duration - delayBeforeFade)); // Fade beginnt nach 2 Sekunden
             messageText.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
             yield return null;
