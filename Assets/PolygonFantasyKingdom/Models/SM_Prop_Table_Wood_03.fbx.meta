@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 4554bcc804706db43b6d6841beb3f465
-timeCreated: 1573516005
+guid: 26c83b67f03c7d2479fc3cc426e0b49b
+timeCreated: 1582059859
 licenseType: Store
 ModelImporter:
   serializedVersion: 21
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: SM_Bld_Walkway_Wood_Railing_Pillar_01
+    4300000: SM_Prop_Table_Wood_03
     9500000: //RootNode
   materials:
     importMaterials: 0
@@ -35,22 +35,22 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importVisibility: 0
+    importVisibility: 1
     importBlendShapes: 0
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 0
     keepQuads: 0
-    weldVertices: 0
+    weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88

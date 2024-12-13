@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 4554bcc804706db43b6d6841beb3f465
-timeCreated: 1573516005
+guid: 07af2c340c070b14a87484e9ac481c10
+timeCreated: 1573516002
 licenseType: Store
 ModelImporter:
   serializedVersion: 21
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: SM_Bld_Walkway_Wood_Railing_Pillar_01
+    4300000: SM_Bld_Walkway_Wood_Support_01
     9500000: //RootNode
   materials:
     importMaterials: 0
