@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public bool attackersTurn = false;
     [SerializeField] public bool defendersTurn = true;
-    [SerializeField] private int currentTurn = 1;
+    [SerializeField] public int currentTurn = 1;
     public int maxTurnCount;
 
 
