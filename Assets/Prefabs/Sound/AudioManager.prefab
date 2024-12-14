@@ -59,16 +59,16 @@ MonoBehaviour:
   musicMixer: {fileID: -8651801749233867576, guid: de32485de7f40e6449350a56d56b28c9, type: 2}
   _gameSFX: []
   _uiSFX:
-  - {fileID: 8300000, guid: 280b467f4bb728743946c802f769d034, type: 3}
-  - {fileID: 8300000, guid: 91580b9bf72ded242811628c0906eeb6, type: 3}
+  - {fileID: 8300000, guid: 7c16acdee48d0da4ba13492542002ab0, type: 3}
+  - {fileID: 8300000, guid: 577520f59290a3047be1ff4b5c57b9eb, type: 3}
   - {fileID: 8300000, guid: ea9eaa5165c5b994a9127d25c4fbd262, type: 3}
   - {fileID: 8300000, guid: 6424ff63a1f797c4b95cb1260695c57d, type: 3}
   - {fileID: 8300000, guid: 91580b9bf72ded242811628c0906eeb6, type: 3}
   - {fileID: 8300000, guid: f6272ab8a381c5e4bb85c50a654fe6bb, type: 3}
   - {fileID: 8300000, guid: ea9eaa5165c5b994a9127d25c4fbd262, type: 3}
   - {fileID: 8300000, guid: da059b3ea9da6e445878e7ad5badc7d3, type: 3}
-  - {fileID: 8300000, guid: 5dc901bd0178c664585a0f8417a9e7c2, type: 3}
-  - {fileID: 8300000, guid: 5dc901bd0178c664585a0f8417a9e7c2, type: 3}
+  - {fileID: 8300000, guid: 7c16acdee48d0da4ba13492542002ab0, type: 3}
+  - {fileID: 8300000, guid: 7c16acdee48d0da4ba13492542002ab0, type: 3}
   - {fileID: 8300000, guid: 6177931be4df7c24f88d983ef7872462, type: 3}
   - {fileID: 8300000, guid: 91580b9bf72ded242811628c0906eeb6, type: 3}
   - {fileID: 8300000, guid: 9612d5c2e347b9c45b58b8299abbd832, type: 3}
@@ -76,10 +76,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ea9eaa5165c5b994a9127d25c4fbd262, type: 3}
   - {fileID: 8300000, guid: 91580b9bf72ded242811628c0906eeb6, type: 3}
   - {fileID: 8300000, guid: cf3cbc8d7dc5a7942b2df721cdab657f, type: 3}
-  - {fileID: 8300000, guid: 5dc901bd0178c664585a0f8417a9e7c2, type: 3}
+  - {fileID: 8300000, guid: 7c16acdee48d0da4ba13492542002ab0, type: 3}
   - {fileID: 8300000, guid: 113b2c590101b7b4fa48d1ecc0310e9a, type: 3}
   - {fileID: 8300000, guid: 2ff2a84cb57e68942b1b64d03d0bc05a, type: 3}
   - {fileID: 8300000, guid: 2ff2a84cb57e68942b1b64d03d0bc05a, type: 3}
-  - {fileID: 8300000, guid: 5dc901bd0178c664585a0f8417a9e7c2, type: 3}
+  - {fileID: 8300000, guid: 7c16acdee48d0da4ba13492542002ab0, type: 3}
   soundFXObject2D: {fileID: 250859827671696850, guid: 9a0274ea5a6564245a3a1ca1dd362467, type: 3}
   soundFXObject3D: {fileID: -8037317786793764081, guid: f1891282a06f54a4fb3caaab7b60c0b8, type: 3}

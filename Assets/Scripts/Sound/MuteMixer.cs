@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class MuteMixer : MonoBehaviour
 {
-    public AudioManager crossfadeAudio; // Referenz zum CrossfadeAudio-Skript
+    AudioManager audioManager; // Referenz zum CrossfadeAudio-Skript
 
     void Update()
     {
         // Beispiel: Drücke "1", um Track mit Index 1 abzuspielen
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (crossfadeAudio != null)
+            if (audioManager != null)
             {
-                //crossfadeAudio.CrossfadeToClip(1);
+                audioManager.CrossfadeToClip(1);
             }
             else
             {

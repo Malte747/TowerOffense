@@ -6,6 +6,9 @@ using UnityEngine.Rendering;
 
 public class AudioManager : MonoBehaviour
 {
+    [Header("GameManager")]
+    private GameObject GameManager;
+
     [SerializeField] AudioMixer _mixer;
 
     [Header("Music")]
@@ -64,6 +67,8 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+
+
         SpawnAudioSources();
 
         if (audioClips.Count > 0)
@@ -224,6 +229,44 @@ public class AudioManager : MonoBehaviour
         if (soundIndex >= 0 && soundIndex < _uiSFX.Count)
         {
             PlaySoundFXUIClip(_uiSFX[soundIndex], transform, 1f);
+        }
+    }
+
+    public void ChangeTrackOnRound()
+    {
+        GameObject.Find("GameManager");
+
+        //Defender Turn Music
+        if (GameManager.GetComponent<GameManager>().defendersTurn == true)
+        {
+            if(GameManager.GetComponent<GameManager>().maxTurnCount * 0.5 >= GameManager.GetComponent<GameManager>().currentTurn)
+            {
+                CrossfadeToClip(1);
+            }
+            else if((GameManager.GetComponent<GameManager>().maxTurnCount * 0.8 >= GameManager.GetComponent<GameManager>().currentTurn))
+            {
+                CrossfadeToClip(2);
+            }
+            else
+            {
+                CrossfadeToClip(3);
+            }
+        }
+        //Attacker Turn Music
+        else
+        {
+            if (GameManager.GetComponent<GameManager>().maxTurnCount * 0.5 >= GameManager.GetComponent<GameManager>().currentTurn)
+            {
+                CrossfadeToClip(4);
+            }
+            else if ((GameManager.GetComponent<GameManager>().maxTurnCount * 0.8 >= GameManager.GetComponent<GameManager>().currentTurn))
+            {
+                CrossfadeToClip(5);
+            }
+            else
+            {
+                CrossfadeToClip(6);
+            }
         }
     }
 
