@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 public class AudioManager : MonoBehaviour
 {
     [Header("GameManager")]
-    private GameObject GameManager;
+     GameManager gameManager;
 
     [SerializeField] AudioMixer _mixer;
 
@@ -68,7 +68,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-
+         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         SpawnAudioSources();
 
@@ -235,16 +235,15 @@ public class AudioManager : MonoBehaviour
 
     public void ChangeTrackOnRound()
     {
-        GameObject.Find("GameManager");
 
         //Defender Turn Music
-        if (GameManager.GetComponent<GameManager>().defendersTurn == true)
+        if (gameManager.defendersTurn == true)
         {
-            if(GameManager.GetComponent<GameManager>().maxTurnCount * 0.5 >= GameManager.GetComponent<GameManager>().currentTurn)
+            if(gameManager.maxTurnCount * 0.5 >= gameManager.currentTurn)
             {
                 CrossfadeToClip(1);
             }
-            else if (GameManager.GetComponent<GameManager>().maxTurnCount - 2 >= GameManager.GetComponent<GameManager>().currentTurn)
+            else if (gameManager.maxTurnCount - 2 >= gameManager.currentTurn)
             {
                 CrossfadeToClip(2);
                 Debug.Log("RoundMusicChange");
@@ -257,11 +256,11 @@ public class AudioManager : MonoBehaviour
         //Attacker Turn Music
         else
         {
-            if (GameManager.GetComponent<GameManager>().maxTurnCount * 0.5 >= GameManager.GetComponent<GameManager>().currentTurn)
+            if (gameManager.maxTurnCount * 0.5 >= gameManager.currentTurn)
             {
                 CrossfadeToClip(4);
             }
-            else if (GameManager.GetComponent<GameManager>().maxTurnCount - 2 >= GameManager.GetComponent<GameManager>().currentTurn)
+            else if (gameManager.maxTurnCount - 2 >= gameManager.currentTurn)
             {
                 CrossfadeToClip(5);
             }

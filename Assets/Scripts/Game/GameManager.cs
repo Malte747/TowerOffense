@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     PlaceEnemies placeEnemies;
     TowerGridPlacement towerGridPlacement;
     SequentialActivator sequentialActivator;
+    AudioManager audioManager;
 
 
 
@@ -121,6 +122,7 @@ public class GameManager : MonoBehaviour
         sequentialActivator = GameObject.Find("UiManager").GetComponent<SequentialActivator>();
         towerGridPlacement = GameObject.Find("TowerGridPlacement").GetComponent<TowerGridPlacement>();
         placeEnemies = GameObject.Find("EnemyPlacementPlane").GetComponent<PlaceEnemies>();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     public void GameStart()
@@ -194,6 +196,7 @@ public class GameManager : MonoBehaviour
             uiManager.ActivateDefenderUI();
             roundTextAttackObject.SetActive(false);
             DefendersTurn();
+            audioManager.ChangeTrackOnRound();
         }
         else if (defendersTurn)
         {
@@ -202,6 +205,7 @@ public class GameManager : MonoBehaviour
             uiManager.ActivateAttackerUI();
             roundTextDefenseObject.SetActive(false);
             AttackersTurn();
+            audioManager.ChangeTrackOnRound();
         }
         else
         {
@@ -654,6 +658,7 @@ private IEnumerator UpdateIncomeText()
         imageAttacker.SetActive(false);
         imageDefender.SetActive(true);
         victoryScreen.SetActive(true);
+        audioManager.CrossfadeToClip(7);
 
     }
 
@@ -669,6 +674,7 @@ private IEnumerator UpdateIncomeText()
         imageAttacker.SetActive(true);
         imageDefender.SetActive(false);
         victoryScreen.SetActive(true);
+        audioManager.CrossfadeToClip(7);
 
     }
 
@@ -680,6 +686,7 @@ private IEnumerator UpdateIncomeText()
     public void ExitToMainMenuDuringGame()
     {
         gameInProgress = false;
+        audioManager.CrossfadeToClip(0); 
     }
 
 
