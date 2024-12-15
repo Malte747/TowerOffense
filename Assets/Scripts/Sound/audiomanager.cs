@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour
     private AudioSource audioSourceB;
     private AudioSource activeSource;
     private bool isFading = false;
-    private bool loopFading = false;
+    //private bool loopFading = false;
     private int currentTrackIndex = 0;
 
     public const string volumeParameter = "MasterVolume"; // Der Name des Lautst�rkeparameters im Mixer
@@ -51,6 +51,7 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
+        LoadVolume();
         if (instance == null)
         {
             instance = this;
@@ -86,20 +87,20 @@ public class AudioManager : MonoBehaviour
     // Crossfade zwischen aktiver Quelle und der neuen Quelle
     public void CrossfadeToClip(int clipIndex)
     {
-        Debug.Log("4");
+        Debug.Log("MusicChange");
         if (isFading || clipIndex < 0 || clipIndex >= audioClips.Count)
         {
             Debug.LogWarning("Ung�ltiger Clip-Index oder ein Fade l�uft bereits!");
             return;
         }
-        Debug.Log("5");
+        //Debug.Log("5");
         StartCoroutine(FadeToClip(clipIndex));
     }
 
     private IEnumerator FadeToClip(int clipIndex)
     {
         isFading = true;
-        Debug.Log("6");
+        //Debug.Log("6");
 
         // Clip f�r die n�chste Quelle festlegen
         AudioSource newSource = (activeSource == audioSourceA) ? audioSourceB : audioSourceA;
@@ -114,13 +115,13 @@ public class AudioManager : MonoBehaviour
         // Lautst�rke der beiden Quellen interpolieren
         while (elapsedTime < fadeDuration)
         {
-            Debug.Log("7");
+            //Debug.Log("7");
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / fadeDuration;
 
             activeSource.volume = Mathf.Lerp(1f, 0f, t);
             newSource.volume = Mathf.Lerp(0f, 1f, t);
-            Debug.Log(elapsedTime + " " + fadeDuration);
+            //Debug.Log(elapsedTime + " " + fadeDuration);
             yield return null;
         }
 
@@ -131,7 +132,7 @@ public class AudioManager : MonoBehaviour
         activeSource = newSource;
 
         isFading = false;
-        Debug.Log("8");
+        //Debug.Log("8");
         yield return null;
     }
 
@@ -243,9 +244,10 @@ public class AudioManager : MonoBehaviour
             {
                 CrossfadeToClip(1);
             }
-            else if((GameManager.GetComponent<GameManager>().maxTurnCount * 0.8 >= GameManager.GetComponent<GameManager>().currentTurn))
+            else if (GameManager.GetComponent<GameManager>().maxTurnCount - 2 >= GameManager.GetComponent<GameManager>().currentTurn)
             {
                 CrossfadeToClip(2);
+                Debug.Log("RoundMusicChange");
             }
             else
             {
@@ -259,7 +261,7 @@ public class AudioManager : MonoBehaviour
             {
                 CrossfadeToClip(4);
             }
-            else if ((GameManager.GetComponent<GameManager>().maxTurnCount * 0.8 >= GameManager.GetComponent<GameManager>().currentTurn))
+            else if (GameManager.GetComponent<GameManager>().maxTurnCount - 2 >= GameManager.GetComponent<GameManager>().currentTurn)
             {
                 CrossfadeToClip(5);
             }
@@ -272,6 +274,7 @@ public class AudioManager : MonoBehaviour
 
     void LoadVolume()
     {
+        //Debug.Log("VolumeLoad");
         float musicVolume = PlayerPrefs.GetFloat(MUSIC_KEY, 1f);
         float sfxVolume = PlayerPrefs.GetFloat(SFX_KEY, 1f);
 
