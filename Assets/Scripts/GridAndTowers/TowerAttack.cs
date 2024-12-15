@@ -40,7 +40,6 @@ public class TowerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        attackRange = attackRange * 10;
         grid = GameObject.Find("Grid").GetComponent<Grid>();
         health = GetComponent<Health>();
         projectileStartPos = transform.position + projectileStartPos;
@@ -137,7 +136,7 @@ public class TowerAttack : MonoBehaviour
 
     void VictimFound(Vector3 pos)
     {
-        //Debug.Log("foundVictim");
+        //Debug.Log("Found Victim " + Vector3.Distance(pos, transform.position) + " Units away");
         nextVictim = EnemyBibleScript.EnemyBible[pos];
         //Mark for Testing
         outline = null;

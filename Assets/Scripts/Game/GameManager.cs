@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
     {
         uiManager = FindObjectOfType<UIManager>();
         sequentialActivator = GameObject.Find("UiManager").GetComponent<SequentialActivator>();
-        towerGridPlacement = GameObject.Find("GridScripts 3").GetComponent<TowerGridPlacement>();
+        towerGridPlacement = GameObject.Find("TowerGridPlacement").GetComponent<TowerGridPlacement>();
         placeEnemies = GameObject.Find("EnemyPlacementPlane").GetComponent<PlaceEnemies>();
     }
 
