@@ -10,11 +10,11 @@ NavMeshProjectSettings:
   - name: Not Walkable
     cost: 1
   - name: Jump
-    cost: 2
+    cost: 1
   - name: Damage
-    cost: 10
+    cost: 2
   - name: Occupied
-    cost: 20
+    cost: 5
   - name: 
     cost: 1
   - name: 
