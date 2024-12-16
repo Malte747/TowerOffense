@@ -37,12 +37,33 @@ public class TowerAttack : MonoBehaviour
     [Tooltip("If this is a Range Unit assign a projectile here")]
     [SerializeField] private GameObject projectile;
     [SerializeField] private Vector3 projectileStartPos;
+
+    public enum Animation
+    {
+        Balista,
+        Tower
+    }
+    [SerializeField] Animation animation = Animation.Tower;
+
+    [SerializeField] ScriptableObject towerAnimationStuff;
+    
+
+    private float projectileCorrection;
+    private int projectileSpeeed;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         grid = GameObject.Find("Grid").GetComponent<Grid>();
         health = GetComponent<Health>();
         projectileStartPos = transform.position + projectileStartPos;
+
+        if (animation == Animation.Balista)
+        {
+
+        }
     }
 
     // Update is called once per frame
@@ -169,7 +190,7 @@ public class TowerAttack : MonoBehaviour
         {
             //Mark for Testing
             //if (outline == null) outline = nextVictim.AddComponent<Outline>();
-
+            StartAnimation();
             health = nextVictim.GetComponent<Health>();
             health.health -= damage;
         }
@@ -179,6 +200,7 @@ public class TowerAttack : MonoBehaviour
     {
         if (nextVictim != null)
         { 
+            StartAnimation();
             GameObject arrow = Instantiate(projectile, projectileStartPos, Quaternion.identity);
             ProjectileTower _projectileTower = arrow.GetComponent<ProjectileTower>();
             _projectileTower.damage = damage;
@@ -188,6 +210,15 @@ public class TowerAttack : MonoBehaviour
             _projectileTower.p2 = (projectileStartPos + _projectileTower.p3) / 2 + Vector3.up * height;
             _projectileTower.victim = nextVictim;
             //Debug.Log("Shot Arrow");
+        }
+    }
+
+    void StartAnimation()
+    {
+        if (animation == Animation.Balista)
+        {
+            Animator balistaAnimator = GetComponentInChildren<Animator>();
+            balistaAnimator.SetTrigger("ShootBalista");
         }
     }
 }

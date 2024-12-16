@@ -17,7 +17,7 @@ public class ProjectileTower : MonoBehaviour
     public bool aoe;
     public int aoeSize;
 
-    public float speed = 1f;
+    public float speed;
 
     void Start()
     {
