@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: 4
-  attackRange: 7
+  attackRange: 70
   damage: 20
   attackCooldown: 1
   damageDelay: 0.5
@@ -1039,7 +1039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: 4
-  attackRange: 7
+  attackRange: 70
   damage: 20
   attackCooldown: 1
   damageDelay: 0.5

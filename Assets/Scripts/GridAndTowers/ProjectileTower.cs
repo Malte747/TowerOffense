@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class ProjectileTower : MonoBehaviour
 {
-    public Vector3 p1;
-    public Vector3 p2;
-    public Vector3 p3;
+    [HideInInspector] public Vector3 p1;
+    [HideInInspector] public Vector3 p2;
+    [HideInInspector] public Vector3 p3;
 
-    public GameObject victim;
-    public int damage;
+    [HideInInspector] public GameObject victim;
+    [HideInInspector] public int damage;
 
     private Vector3 lastPosition;
     float t;
+
+    public bool aoe;
+    public int aoeSize;
 
     public float speed = 1f;
 
@@ -37,7 +40,8 @@ public class ProjectileTower : MonoBehaviour
 
         if (transform.position == p3)
         {
-            Damage();
+            if(!aoe) Damage(victim);
+            else DamageAoe();
         }
     }
 
@@ -54,13 +58,22 @@ public class ProjectileTower : MonoBehaviour
         return point;
     }
 
-    void Damage()
+    void Damage(GameObject target)
     {
         //Debug.Log("Hit");
-        if (victim != null)
+        if (target != null)
         {
-            Health health = victim.GetComponent<Health>();
+            Health health = target.GetComponent<Health>();
             health.health -= damage;
+        }
+        if(!aoe) Destroy(gameObject);
+    }
+
+    void DamageAoe()
+    {
+        foreach (Vector3 targetPos in EnemyBibleScript.EnemyBible.Keys)
+        {
+            if (Vector3.Distance(victim.transform.position, targetPos) <= aoeSize) Damage(EnemyBibleScript.EnemyBible[targetPos]);
         }
         Destroy(gameObject);
     }
