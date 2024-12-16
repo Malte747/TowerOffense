@@ -27,6 +27,7 @@ public class GridPlacementSystem : MonoBehaviour
         cellIndicator.transform.position = grid.CellToWorld(gridPosition + TowerGridPlacement.towerRotationCorrection);
         cellIndicator.transform.eulerAngles = new Vector3(cellIndicator.transform.eulerAngles.x, TowerGridPlacement.towerRotation, cellIndicator.transform.eulerAngles.z);
         rotationSave = cellIndicator.transform.rotation;
+        //Debug.Log(cellIndicator.transform.position);
 
         //if (attackerHasWon) 
         {
