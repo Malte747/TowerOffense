@@ -47,6 +47,11 @@ public class GridMouseInput : MonoBehaviour
             mouseOverTower = false;
             }  
         }
+        else
+        {
+            mouseOverGrid = false;
+            mouseOverTower = false;
+        }
         return lastPos;
         
     }
