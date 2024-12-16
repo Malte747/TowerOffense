@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4681931244378288276}
   - component: {fileID: 342139605528485433}
   - component: {fileID: 2276093748435939458}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Tower Range NavMesh Modifier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -610,7 +610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3647315434395575687, guid: ac53148c011de35498acc294be7e3d08, type: 3}
       propertyPath: m_Name
-      value: 1x1 WoodTower Prefab
+      value: T1 1x1 Tower(Wood)
       objectReference: {fileID: 0}
     - target: {fileID: 3647315434395575687, guid: ac53148c011de35498acc294be7e3d08, type: 3}
       propertyPath: m_Layer
@@ -826,7 +826,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 3c9f9b6f979957a4f90455a1c6499a38, type: 2}
     - target: {fileID: 3647315434395575687, guid: 59f1f3166b9a16f49a001843964bd865, type: 3}
       propertyPath: m_Name
-      value: T1 1x1 BalistaWood
+      value: 'T1 1x1 Balista(Wood) '
       objectReference: {fileID: 0}
     - target: {fileID: 3647315434395575687, guid: 59f1f3166b9a16f49a001843964bd865, type: 3}
       propertyPath: m_Layer
@@ -1030,7 +1030,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3647315434395575687, guid: e9f951205d042dd4eb012b3b576924e0, type: 3}
       propertyPath: m_Name
-      value: 1x1 WoodWall Prefab
+      value: T1 1x1 Wall(Wood)
       objectReference: {fileID: 0}
     - target: {fileID: 3647315434395575687, guid: e9f951205d042dd4eb012b3b576924e0, type: 3}
       propertyPath: m_Layer
@@ -1167,7 +1167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3647315434395575687, guid: 718c1bdaa7c123d4fbde252ade0bc9e3, type: 3}
       propertyPath: m_Name
-      value: 1x1 StoneTower Prefab
+      value: T2 1x1 Tower(Stone)
       objectReference: {fileID: 0}
     - target: {fileID: 3647315434395575687, guid: 718c1bdaa7c123d4fbde252ade0bc9e3, type: 3}
       propertyPath: m_Layer
@@ -1287,7 +1287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3647315434395575687, guid: 7dd11e0e216e22a4fb5c6ec311bdbafe, type: 3}
       propertyPath: m_Name
-      value: 1x1 StoneWall Prefab
+      value: T2 1x1 Wall(Stone)
       objectReference: {fileID: 0}
     - target: {fileID: 3647315434395575687, guid: 7dd11e0e216e22a4fb5c6ec311bdbafe, type: 3}
       propertyPath: m_Layer
@@ -4992,7 +4992,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 3c9f9b6f979957a4f90455a1c6499a38, type: 2}
     - target: {fileID: 5118707114311981384, guid: f03e0ae003f6f374f86b689af0ddb08a, type: 3}
       propertyPath: m_Name
-      value: 3x2 Mine Prefab
+      value: T1 2x2 Mine
       objectReference: {fileID: 0}
     - target: {fileID: 5118707114311981384, guid: f03e0ae003f6f374f86b689af0ddb08a, type: 3}
       propertyPath: m_Layer
