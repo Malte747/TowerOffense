@@ -47,7 +47,7 @@ MonoBehaviour:
   sceneCamera: {fileID: 0}
   placementLayermask:
     serializedVersion: 2
-    m_Bits: 961
+    m_Bits: 2033
 --- !u!1 &3284549935587087356
 GameObject:
   m_ObjectHideFlags: 0
