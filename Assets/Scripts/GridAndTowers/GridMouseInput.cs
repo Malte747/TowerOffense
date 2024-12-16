@@ -42,9 +42,9 @@ public class GridMouseInput : MonoBehaviour
             }
             else
             {
-            lastPos = new Vector3(hit.point.x , 0, hit.point.z);
-            mouseOverGrid = false;
-            mouseOverTower = false;
+                lastPos = new Vector3(hit.point.x , 0, hit.point.z);
+                mouseOverGrid = false;
+                mouseOverTower = false;
             }  
         }
         else

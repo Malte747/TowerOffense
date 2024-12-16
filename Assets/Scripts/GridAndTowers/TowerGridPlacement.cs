@@ -88,11 +88,13 @@ public class TowerGridPlacement : MonoBehaviour
         if(!GridMouseInput.mouseOverGrid && placingTowers || EventSystem.current.IsPointerOverGameObject() && placingTowers)
         {
             Cursor.visible = true;
+            
             indicator.transform.parent.gameObject.SetActive(false);
         }
         else if(placingTowers) 
         {
             Cursor.visible = false;
+            
             indicator.transform.parent.gameObject.SetActive(true);
         }
 

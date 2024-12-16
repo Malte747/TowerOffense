@@ -587,7 +587,7 @@ GameObject:
   - component: {fileID: 3701208054913437076}
   - component: {fileID: 1586135879937451633}
   - component: {fileID: 36088120328456925}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Tower Range NavMesh Modifier
   m_TagString: Untagged
   m_Icon: {fileID: 0}

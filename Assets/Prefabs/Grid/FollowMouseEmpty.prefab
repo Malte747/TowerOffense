@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 7677883618898420808}
   - component: {fileID: 9222678133000071922}
   - component: {fileID: 7720853662582872887}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CellIndicator
   m_TagString: GridTag
   m_Icon: {fileID: 0}
