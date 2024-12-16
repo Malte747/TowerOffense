@@ -137,6 +137,7 @@ public class PlaceEnemies : MonoBehaviour
 
     public void ResetGameUnits()
     {
+        Debug.Log("reset units");
         foreach (Vector3 pos in EnemyBibleScript.EnemyBible.Keys)
         {
             Destroy(EnemyBibleScript.EnemyBible[pos]);

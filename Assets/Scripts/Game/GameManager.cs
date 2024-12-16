@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
     public GameObject imageAttacker;
     public GameObject winnerTextAttacker;
     public GameObject winnerTextDefender;
-
+    bool resettingUnits = false;
 
 
 
@@ -720,10 +720,18 @@ private IEnumerator UpdateIncomeText()
         sequentialActivator.ResetUITierButtons();
         uiManager.ResetNavigation();
         towerGridPlacement.ResetGameTowers();   
-        placeEnemies.ResetGameUnits();
+        //placeEnemies.ResetGameUnits();
+        resettingUnits = true;
         ResetIngameValues();
         
     }
 
-
+    void LateUpdate()
+    {
+        if(resettingUnits)
+        {
+            placeEnemies.ResetGameUnits();
+            resettingUnits = false;
+        }
+    }
 }
