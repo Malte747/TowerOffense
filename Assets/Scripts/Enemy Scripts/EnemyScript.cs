@@ -252,6 +252,7 @@ public class EnemyScript : MonoBehaviour
     {
         GameObject yeet = Instantiate(projectile, projectileStartPos, Quaternion.identity);
         Projectile script = yeet.GetComponent<Projectile>();
+        script.gotShotBy = gameObject;
         if (nextVictim != null)
         {
             if ((target == Targets.Towers && nextVictim.CompareTag("Tower"))
@@ -285,10 +286,12 @@ public class EnemyScript : MonoBehaviour
                     || (target == Targets.Mines && nextVictim.CompareTag("Mine")))
             {
                 health.health -= buffedDamage;
+                if (nextVictim.CompareTag("MainTower") && !health.attackedMainTower.Contains(gameObject)) health.attackedMainTower.Add(gameObject);
             }
             else
             {
                 health.health -= baseDamage;
+                if (nextVictim.CompareTag("MainTower") && !health.attackedMainTower.Contains(gameObject)) health.attackedMainTower.Add(gameObject);
             }
         }
         Debug.Log("attack");

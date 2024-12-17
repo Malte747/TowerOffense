@@ -10,6 +10,8 @@ public class Health : MonoBehaviour
     public int health;
     [HideInInspector] public int maxHealth;
     [HideInInspector] public int healthLastCheck;
+    //[HideInInspector] 
+    public List<GameObject> attackedMainTower = new List<GameObject>();
 
     private TowerHealthBar _towerHealthBar;
     Animator animator;
@@ -58,6 +60,8 @@ public class Health : MonoBehaviour
                 GetComponent<EnemyScript>().enabled = false;
                 GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
                 animator.SetTrigger("death");
+                Health towerHealth = GameObject.Find("MainTower Prefab(Clone)").GetComponent<Health>();
+                towerHealth.attackedMainTower.Remove(gameObject);
                  Destroy(gameObject, 3.6f);
             }
             

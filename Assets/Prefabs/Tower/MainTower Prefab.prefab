@@ -223,12 +223,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: 4
   attackRange: 70
-  damage: 20
+  damage: 5
   attackCooldown: 1
   damageDelay: 0.5
   isRangeUnit: 1
   projectile: {fileID: 109498624868919209, guid: e8be9f5ca7dfec44caa505b8f70e9cfc, type: 3}
   projectileStartPos: {x: 0, y: 0, z: 0}
+  animation: 1
+  towerAnimationStuff: {fileID: 0}
 --- !u!1 &2324020160402269710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,12 +1042,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: 4
   attackRange: 70
-  damage: 20
+  damage: 5
   attackCooldown: 1
   damageDelay: 0.5
   isRangeUnit: 1
   projectile: {fileID: 109498624868919209, guid: e8be9f5ca7dfec44caa505b8f70e9cfc, type: 3}
   projectileStartPos: {x: 0, y: 0, z: 0}
+  animation: 1
+  towerAnimationStuff: {fileID: 0}
 --- !u!1 &8765416124214331734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1205,6 +1209,7 @@ MonoBehaviour:
   health: 400
   maxHealth: 0
   healthLastCheck: 0
+  attackedMainTower: []
 --- !u!114 &6409709768739672625
 MonoBehaviour:
   m_ObjectHideFlags: 0

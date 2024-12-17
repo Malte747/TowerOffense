@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 //using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class TowerAttack : MonoBehaviour
@@ -12,7 +13,6 @@ public class TowerAttack : MonoBehaviour
     float aoeSize = 5;
     Outline outline;
     private Grid grid;
-    Health health;
 
     public enum Targets
     {
@@ -57,7 +57,6 @@ public class TowerAttack : MonoBehaviour
     void Start()
     {
         grid = GameObject.Find("Grid").GetComponent<Grid>();
-        health = GetComponent<Health>();
         projectileStartPos = transform.position + projectileStartPos;
 
         if (animation == Animation.Balista)
@@ -99,6 +98,10 @@ public class TowerAttack : MonoBehaviour
         int groupSize = 0;
         foreach (Vector3 pos in EnemyBibleScript.EnemyBible.Keys)
         {
+            if (target == Targets.MainTower)
+            {
+                break;
+            }
             if (IsEnemyInRange(pos))
             { 
                 if (target == Targets.Closest)
@@ -142,23 +145,20 @@ public class TowerAttack : MonoBehaviour
                         VictimFound(pos);
                     }
                 }
-                else if (target == Targets.MainTower)
-                {
-                    Vector3 MainTowerPos = new Vector3(0, 0, transform.position.z);
-                    if (Vector3.Distance(MainTowerPos, pos) <= distance)
-                    {
-                        VictimFound(pos);
-                        distance = Vector3.Distance(MainTowerPos, pos);
-                    }
-                }
             }
+        }
+        if (target == Targets.MainTower)
+        {
+            //Greift Listeneintrag 0 an
+            Health health = GetComponentInParent<Health>();
+            if(health.attackedMainTower.Count > 0) VictimFound(health.attackedMainTower[0].transform.position);
         }
     }
 
     void VictimFound(Vector3 pos)
     {
         //Debug.Log("Found Victim " + Vector3.Distance(pos, transform.position) + " Units away");
-        nextVictim = EnemyBibleScript.EnemyBible[pos];
+        if(EnemyBibleScript.EnemyBible.ContainsKey(pos) ) nextVictim = EnemyBibleScript.EnemyBible[pos];
         //Mark for Testing
         outline = null;
     }

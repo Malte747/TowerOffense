@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -10,6 +11,8 @@ public class Projectile : MonoBehaviour
 
     public GameObject victim;
     public int damage;
+
+    [HideInInspector] public GameObject gotShotBy;
 
 private Vector3 lastPosition;
     float t; 
@@ -57,6 +60,7 @@ void Start()
             health = victim.GetComponent<Health>();
             {
                 health.health -= damage;
+                if (victim.CompareTag("MainTower") && !health.attackedMainTower.Contains(gotShotBy)) health.attackedMainTower.Add(gotShotBy);
             }
         } 
         Destroy(gameObject);
