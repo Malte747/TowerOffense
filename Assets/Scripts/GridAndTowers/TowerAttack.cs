@@ -69,19 +69,22 @@ public class TowerAttack : MonoBehaviour
     void LateUpdate()
     {
         t += Time.deltaTime;
-        if (nextVictim != null && IsEnemyInRange(nextVictim.transform.position) && nextVictim.GetComponent<EnemyScript>().enabled)
+        if (nextVictim != null && nextVictim.GetComponent<EnemyScript>().enabled)
         {
-            if (t >= attackCooldown)
+            if (IsEnemyInRange(nextVictim.transform.position) || target == Targets.MainTower) 
             {
-                t = 0;
-                if (isRangeUnit)
+                if (t >= attackCooldown)
                 {
-                    Invoke("ShootProjectile", damageDelay);
-                    //Debug.Log("Huuuge Projectile");
+                    t = 0;
+                    if (isRangeUnit)
+                    {
+                        Invoke("ShootProjectile", damageDelay);
+                        //Debug.Log("Huuuge Projectile");
 
+                    }
+                    else Invoke("Damage", damageDelay);
                 }
-                else Invoke("Damage", damageDelay);
-            }            
+            }
         }
         else
         {
@@ -96,62 +99,61 @@ public class TowerAttack : MonoBehaviour
         float zPos = -300f;
         float hp = Mathf.Infinity;
         int groupSize = 0;
-        foreach (Vector3 pos in EnemyBibleScript.EnemyBible.Keys)
-        {
-            if (target == Targets.MainTower)
-            {
-                break;
-            }
-            if (IsEnemyInRange(pos))
-            { 
-                if (target == Targets.Closest)
-                {
-                    if (Vector3.Distance(transform.position, pos) <= distance)
-                    {
-                        VictimFound(pos);
-                        distance = Vector3.Distance(transform.position, pos);
-                    }
-                }
-                else if (target == Targets.First)
-                {
-                    if (pos.z > zPos)
-                    {
-                        VictimFound(pos);
-                        zPos = pos.z;
-                    }
-                }
-                else if (target == Targets.LowHP)
-                {
-                    Health health;
-                    GameObject possibleVictim = EnemyBibleScript.EnemyBible[pos];
-                    health = possibleVictim.GetComponent<Health>();
-                    if (health.health < hp)
-                    {
-                        hp = health.health;
-                        VictimFound(pos);
-                    }
-                }
-                else if (target == Targets.BiggestGroup)
-                {
-                    //Debug.Log("group");
-                    List<Vector3> group = new List<Vector3>();
-                    foreach (Vector3 nearPos in EnemyBibleScript.EnemyBible.Keys)
-                    {
-                        if (Vector3.Distance(pos, nearPos) <= aoeSize) group.Add(nearPos);
-                    }
-                    if (group.Count > groupSize)
-                    {
-                        groupSize = group.Count;
-                        VictimFound(pos);
-                    }
-                }
-            }
-        }
         if (target == Targets.MainTower)
         {
             //Greift Listeneintrag 0 an
             Health health = GetComponentInParent<Health>();
-            if(health.attackedMainTower.Count > 0) VictimFound(health.attackedMainTower[0].transform.position);
+            if (health.attackedMainTower.Count > 0) VictimFound(health.attackedMainTower[0].transform.position);
+        }
+        else
+        {
+            foreach (Vector3 pos in EnemyBibleScript.EnemyBible.Keys)
+            {
+                if (IsEnemyInRange(pos))
+                {
+                    if (target == Targets.Closest)
+                    {
+                        if (Vector3.Distance(transform.position, pos) <= distance)
+                        {
+                            VictimFound(pos);
+                            distance = Vector3.Distance(transform.position, pos);
+                        }
+                    }
+                    else if (target == Targets.First)
+                    {
+                        if (pos.z > zPos)
+                        {
+                            VictimFound(pos);
+                            zPos = pos.z;
+                        }
+                    }
+                    else if (target == Targets.LowHP)
+                    {
+                        Health health;
+                        GameObject possibleVictim = EnemyBibleScript.EnemyBible[pos];
+                        health = possibleVictim.GetComponent<Health>();
+                        if (health.health < hp)
+                        {
+                            hp = health.health;
+                            VictimFound(pos);
+                        }
+                    }
+                    else if (target == Targets.BiggestGroup)
+                    {
+                        //Debug.Log("group");
+                        List<Vector3> group = new List<Vector3>();
+                        foreach (Vector3 nearPos in EnemyBibleScript.EnemyBible.Keys)
+                        {
+                            if (Vector3.Distance(pos, nearPos) <= aoeSize) group.Add(nearPos);
+                        }
+                        if (group.Count > groupSize)
+                        {
+                            groupSize = group.Count;
+                            VictimFound(pos);
+                        }
+                    }
+                }
+            }
         }
     }
 

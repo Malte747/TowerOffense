@@ -10,8 +10,7 @@ public class Health : MonoBehaviour
     public int health;
     [HideInInspector] public int maxHealth;
     [HideInInspector] public int healthLastCheck;
-    //[HideInInspector] 
-    public List<GameObject> attackedMainTower = new List<GameObject>();
+    [HideInInspector] public List<GameObject> attackedMainTower = new List<GameObject>();
 
     private TowerHealthBar _towerHealthBar;
     Animator animator;
