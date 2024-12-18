@@ -183,7 +183,11 @@ public class GameManager : MonoBehaviour
 
     public void EndTrun()
     {
-        if(maxTurnCount == currentTurn && attackersTurn)
+        if(uiManager.timePaused)
+        {
+            uiManager.TimePausedMessage();
+        }
+        else if(maxTurnCount == currentTurn && attackersTurn)
         {
             EndGameDefenderWin();
         }
@@ -206,6 +210,7 @@ public class GameManager : MonoBehaviour
             roundTextDefenseObject.SetActive(false);
             AttackersTurn();
             audioManager.ChangeTrackOnRound();
+            uiManager.PauseTime();
         }
         else
         {

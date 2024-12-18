@@ -39,7 +39,7 @@ public class UIManager : MonoBehaviour
 
     private float[] timeScales = { 0.5f, 1f, 2f, 5f, 10f };
     private int currentTimeScaleIndex = 1;
-    private bool timePaused;
+    public bool timePaused;
     public TMP_Text currentTimeScaleIndexText;
     public GameObject pauseIcon;
     public GameObject resumeIcon;
@@ -325,7 +325,10 @@ public class UIManager : MonoBehaviour
     {
         messageSystem.ShowMessage("Unsere Truppen sind im Kampf!"); 
     }
-
+    public void TimePausedMessage()
+    {
+        messageSystem.ShowMessage("Die Zeit ist noch angehalten!"); 
+    }
 
 
     #endregion
