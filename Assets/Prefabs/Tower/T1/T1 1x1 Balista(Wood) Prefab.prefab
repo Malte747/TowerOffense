@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2564742190340688334}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Moving Details
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -440,6 +440,7 @@ MonoBehaviour:
   health: 150
   maxHealth: 0
   healthLastCheck: 0
+  attackedMainTower: []
 --- !u!114 &1316378967969799111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,7 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36e6995d135fa34d96aff9691c0ee54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: 0
+  target: 1
   attackRange: 45
   damage: 18
   attackCooldown: 2
@@ -461,6 +462,7 @@ MonoBehaviour:
   projectile: {fileID: 109498624868919209, guid: e8be9f5ca7dfec44caa505b8f70e9cfc, type: 3}
   projectileStartPos: {x: 4.62, y: 13.67, z: 6.62}
   animation: 0
+  towerAnimationStuff: {fileID: 0}
 --- !u!114 &7829610398277998020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,7 +652,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5, y: 0, z: 5}
-  m_LocalScale: {x: 100, y: 0.1, z: 100}
+  m_LocalScale: {x: 50, y: 0.1, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7658227451962457627}
@@ -790,6 +792,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Walkway_Wood_Support_01 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1512812304392670, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512812304392670, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
+      propertyPath: m_TagString
+      value: Tower
+      objectReference: {fileID: 0}
     - target: {fileID: 4641323633145650, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.7354
@@ -863,6 +873,14 @@ PrefabInstance:
     - target: {fileID: 1512812304392670, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
       propertyPath: m_Name
       value: SM_Bld_Walkway_Wood_Support_01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512812304392670, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512812304392670, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
+      propertyPath: m_TagString
+      value: Tower
       objectReference: {fileID: 0}
     - target: {fileID: 4641323633145650, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
       propertyPath: m_LocalScale.x
@@ -938,6 +956,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Walkway_Wood_Support_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1512812304392670, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512812304392670, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
+      propertyPath: m_TagString
+      value: Tower
+      objectReference: {fileID: 0}
     - target: {fileID: 4641323633145650, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.7354002
@@ -1011,6 +1037,14 @@ PrefabInstance:
     - target: {fileID: 1265701944021426, guid: 1dc7234c85986e543ae17fc601f758d6, type: 3}
       propertyPath: m_Name
       value: SM_Bld_Walkway_Wood_Railing_Pillar_01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265701944021426, guid: 1dc7234c85986e543ae17fc601f758d6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265701944021426, guid: 1dc7234c85986e543ae17fc601f758d6, type: 3}
+      propertyPath: m_TagString
+      value: Tower
       objectReference: {fileID: 0}
     - target: {fileID: 4193920035565940, guid: 1dc7234c85986e543ae17fc601f758d6, type: 3}
       propertyPath: m_LocalScale.x
@@ -1086,6 +1120,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Sign_Wood_03 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1588419836231922, guid: 98d1c0fb8c14f684ba730de310ba6677, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588419836231922, guid: 98d1c0fb8c14f684ba730de310ba6677, type: 3}
+      propertyPath: m_TagString
+      value: Tower
+      objectReference: {fileID: 0}
     - target: {fileID: 4225288164573004, guid: 98d1c0fb8c14f684ba730de310ba6677, type: 3}
       propertyPath: m_LocalScale.x
       value: 7.2218013
@@ -1156,9 +1198,65 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2564742190340688334}
     m_Modifications:
+    - target: {fileID: 1224680718205098, guid: fa45baf3a225cbe42b9b9cd43829e3ee, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224680718205098, guid: fa45baf3a225cbe42b9b9cd43829e3ee, type: 3}
+      propertyPath: m_TagString
+      value: Tower
+      objectReference: {fileID: 0}
     - target: {fileID: 1389711316614572, guid: fa45baf3a225cbe42b9b9cd43829e3ee, type: 3}
       propertyPath: m_Name
       value: SM_Wep_Ballista_Mounted_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1389711316614572, guid: fa45baf3a225cbe42b9b9cd43829e3ee, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1389711316614572, guid: fa45baf3a225cbe42b9b9cd43829e3ee, type: 3}
+      propertyPath: m_TagString
+      value: Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450476989632966, guid: fa45baf3a225cbe42b9b9cd43829e3ee, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450476989632966, guid: fa45baf3a225cbe42b9b9cd43829e3ee, type: 3}
+      propertyPath: m_TagString
+      value: Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576065899574900, guid: fa45baf3a225cbe42b9b9cd43829e3ee, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576065899574900, guid: fa45baf3a225cbe42b9b9cd43829e3ee, type: 3}
+      propertyPath: m_TagString
+      value: Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 1629898995025790, guid: fa45baf3a225cbe42b9b9cd43829e3ee, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1629898995025790, guid: fa45baf3a225cbe42b9b9cd43829e3ee, type: 3}
+      propertyPath: m_TagString
+      value: Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888813559026432, guid: fa45baf3a225cbe42b9b9cd43829e3ee, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888813559026432, guid: fa45baf3a225cbe42b9b9cd43829e3ee, type: 3}
+      propertyPath: m_TagString
+      value: Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 1920612275663488, guid: fa45baf3a225cbe42b9b9cd43829e3ee, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1920612275663488, guid: fa45baf3a225cbe42b9b9cd43829e3ee, type: 3}
+      propertyPath: m_TagString
+      value: Tower
       objectReference: {fileID: 0}
     - target: {fileID: 4071784136182596, guid: fa45baf3a225cbe42b9b9cd43829e3ee, type: 3}
       propertyPath: m_LocalScale.x
@@ -1279,6 +1377,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Walkway_Wood_Support_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1512812304392670, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512812304392670, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
+      propertyPath: m_TagString
+      value: Tower
+      objectReference: {fileID: 0}
     - target: {fileID: 4641323633145650, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.7353997
@@ -1352,6 +1458,14 @@ PrefabInstance:
     - target: {fileID: 1588419836231922, guid: 98d1c0fb8c14f684ba730de310ba6677, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Sign_Wood_03 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588419836231922, guid: 98d1c0fb8c14f684ba730de310ba6677, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588419836231922, guid: 98d1c0fb8c14f684ba730de310ba6677, type: 3}
+      propertyPath: m_TagString
+      value: Tower
       objectReference: {fileID: 0}
     - target: {fileID: 4225288164573004, guid: 98d1c0fb8c14f684ba730de310ba6677, type: 3}
       propertyPath: m_LocalScale.x
@@ -1427,6 +1541,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Walkway_Wood_Support_01 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1512812304392670, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512812304392670, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
+      propertyPath: m_TagString
+      value: Tower
+      objectReference: {fileID: 0}
     - target: {fileID: 4641323633145650, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.7354004
@@ -1500,6 +1622,14 @@ PrefabInstance:
     - target: {fileID: 1588419836231922, guid: 98d1c0fb8c14f684ba730de310ba6677, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Sign_Wood_03 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588419836231922, guid: 98d1c0fb8c14f684ba730de310ba6677, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588419836231922, guid: 98d1c0fb8c14f684ba730de310ba6677, type: 3}
+      propertyPath: m_TagString
+      value: Tower
       objectReference: {fileID: 0}
     - target: {fileID: 4225288164573004, guid: 98d1c0fb8c14f684ba730de310ba6677, type: 3}
       propertyPath: m_LocalScale.x
@@ -1575,6 +1705,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Walkway_Wood_Support_01 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1512812304392670, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512812304392670, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
+      propertyPath: m_TagString
+      value: Tower
+      objectReference: {fileID: 0}
     - target: {fileID: 4641323633145650, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.7354
@@ -1648,6 +1786,14 @@ PrefabInstance:
     - target: {fileID: 1265701944021426, guid: 1dc7234c85986e543ae17fc601f758d6, type: 3}
       propertyPath: m_Name
       value: SM_Bld_Walkway_Wood_Railing_Pillar_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265701944021426, guid: 1dc7234c85986e543ae17fc601f758d6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265701944021426, guid: 1dc7234c85986e543ae17fc601f758d6, type: 3}
+      propertyPath: m_TagString
+      value: Tower
       objectReference: {fileID: 0}
     - target: {fileID: 4193920035565940, guid: 1dc7234c85986e543ae17fc601f758d6, type: 3}
       propertyPath: m_LocalScale.x
@@ -1723,6 +1869,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Walkway_Wood_Railing_Pillar_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1265701944021426, guid: 1dc7234c85986e543ae17fc601f758d6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265701944021426, guid: 1dc7234c85986e543ae17fc601f758d6, type: 3}
+      propertyPath: m_TagString
+      value: Tower
+      objectReference: {fileID: 0}
     - target: {fileID: 4193920035565940, guid: 1dc7234c85986e543ae17fc601f758d6, type: 3}
       propertyPath: m_LocalScale.x
       value: 8.7216015
@@ -1796,6 +1950,14 @@ PrefabInstance:
     - target: {fileID: 1512812304392670, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
       propertyPath: m_Name
       value: SM_Bld_Walkway_Wood_Support_01 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512812304392670, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512812304392670, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
+      propertyPath: m_TagString
+      value: Tower
       objectReference: {fileID: 0}
     - target: {fileID: 4641323633145650, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
       propertyPath: m_LocalScale.x
@@ -1871,6 +2033,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Walkway_Wood_Support_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1512812304392670, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512812304392670, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
+      propertyPath: m_TagString
+      value: Tower
+      objectReference: {fileID: 0}
     - target: {fileID: 4641323633145650, guid: 58a80c7b0c82f9e4a8689790a3d0e5d5, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.7354
@@ -1944,6 +2114,14 @@ PrefabInstance:
     - target: {fileID: 1855512109005366, guid: 4f049eabdbb23924d899ef940ecf043a, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Table_Wood_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855512109005366, guid: 4f049eabdbb23924d899ef940ecf043a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855512109005366, guid: 4f049eabdbb23924d899ef940ecf043a, type: 3}
+      propertyPath: m_TagString
+      value: Tower
       objectReference: {fileID: 0}
     - target: {fileID: 4701135276013236, guid: 4f049eabdbb23924d899ef940ecf043a, type: 3}
       propertyPath: m_LocalScale.x
@@ -2019,6 +2197,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Table_Wood_03 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1855512109005366, guid: 4f049eabdbb23924d899ef940ecf043a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855512109005366, guid: 4f049eabdbb23924d899ef940ecf043a, type: 3}
+      propertyPath: m_TagString
+      value: Tower
+      objectReference: {fileID: 0}
     - target: {fileID: 4701135276013236, guid: 4f049eabdbb23924d899ef940ecf043a, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.2701242
@@ -2093,6 +2279,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Walkway_Wood_Railing_Pillar_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1265701944021426, guid: 1dc7234c85986e543ae17fc601f758d6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265701944021426, guid: 1dc7234c85986e543ae17fc601f758d6, type: 3}
+      propertyPath: m_TagString
+      value: Tower
+      objectReference: {fileID: 0}
     - target: {fileID: 4193920035565940, guid: 1dc7234c85986e543ae17fc601f758d6, type: 3}
       propertyPath: m_LocalScale.x
       value: 8.7216
@@ -2166,6 +2360,14 @@ PrefabInstance:
     - target: {fileID: 1588419836231922, guid: 98d1c0fb8c14f684ba730de310ba6677, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Sign_Wood_03 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588419836231922, guid: 98d1c0fb8c14f684ba730de310ba6677, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588419836231922, guid: 98d1c0fb8c14f684ba730de310ba6677, type: 3}
+      propertyPath: m_TagString
+      value: Tower
       objectReference: {fileID: 0}
     - target: {fileID: 4225288164573004, guid: 98d1c0fb8c14f684ba730de310ba6677, type: 3}
       propertyPath: m_LocalScale.x

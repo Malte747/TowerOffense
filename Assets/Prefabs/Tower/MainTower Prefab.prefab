@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36e6995d135fa34d96aff9691c0ee54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: 4
+  target: 5
   attackRange: 70
   damage: 5
   attackCooldown: 1
@@ -1040,7 +1040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36e6995d135fa34d96aff9691c0ee54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: 4
+  target: 5
   attackRange: 70
   damage: 5
   attackCooldown: 1

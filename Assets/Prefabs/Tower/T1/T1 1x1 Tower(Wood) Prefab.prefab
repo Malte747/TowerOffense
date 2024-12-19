@@ -408,6 +408,7 @@ MonoBehaviour:
   health: 100
   maxHealth: 0
   healthLastCheck: 0
+  attackedMainTower: []
 --- !u!114 &1316378967969799111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,7 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36e6995d135fa34d96aff9691c0ee54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: 0
+  target: 1
   attackRange: 30
   damage: 9
   attackCooldown: 0.9
@@ -428,6 +429,8 @@ MonoBehaviour:
   isRangeUnit: 1
   projectile: {fileID: 109498624868919209, guid: e8be9f5ca7dfec44caa505b8f70e9cfc, type: 3}
   projectileStartPos: {x: 5, y: 14, z: 1.5}
+  animation: 1
+  towerAnimationStuff: {fileID: 0}
 --- !u!114 &7829610398277998020
 MonoBehaviour:
   m_ObjectHideFlags: 0

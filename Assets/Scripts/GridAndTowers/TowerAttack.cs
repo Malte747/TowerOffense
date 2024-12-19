@@ -16,6 +16,7 @@ public class TowerAttack : MonoBehaviour
 
     public enum Targets
     {
+        IndicatorTower,
         Closest,
         First,
         LowHP,
@@ -59,6 +60,13 @@ public class TowerAttack : MonoBehaviour
         grid = GameObject.Find("Grid").GetComponent<Grid>();
         projectileStartPos = transform.position + projectileStartPos;
 
+        if (target != Targets.MainTower)
+        {
+            Transform rangeIndicator = gameObject.transform.GetChild(1);
+            int rangeNumber = (attackRange * 2) + 10;
+            rangeIndicator.localScale = new Vector3(rangeNumber, 0.01f, rangeNumber);
+        }
+
         if (animation == Animation.Balista)
         {
 
@@ -69,7 +77,7 @@ public class TowerAttack : MonoBehaviour
     void LateUpdate()
     {
         t += Time.deltaTime;
-        if (nextVictim != null && nextVictim.GetComponent<EnemyScript>().enabled)
+        if (nextVictim != null && nextVictim.GetComponent<EnemyScript>().enabled && target != Targets.IndicatorTower)
         {
             if (IsEnemyInRange(nextVictim.transform.position) || target == Targets.MainTower) 
             {
