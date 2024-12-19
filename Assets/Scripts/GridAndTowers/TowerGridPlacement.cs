@@ -290,7 +290,7 @@ public class TowerGridPlacement : MonoBehaviour
     public void ClickOnTower()
     {
         UnselectTower();
-        clickedTowerParent = GridMouseInput.clickedTower.transform.parent.parent.gameObject;
+        clickedTowerParent = GridMouseInput.clickedTower.transform.root.gameObject;
         towerKnowsWhereItIs = clickedTowerParent.GetComponent<TowerKnowsWhereItIs>();
         if(towerKnowsWhereItIs == null) towerKnowsWhereItIs = clickedTowerParent.GetComponentInParent<TowerKnowsWhereItIs>();
         //Debug.Log("Cells: " + towerKnowsWhereItIs.MyCells.Count);
