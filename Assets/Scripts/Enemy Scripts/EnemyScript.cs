@@ -169,7 +169,7 @@ public class EnemyScript : MonoBehaviour
             GetClosestinFoundTowers();
         }
 
-
+        transform.GetChild(1).rotation = new Quaternion(0, 0, 0, 1);
     }
 
     void CheckGridPositions()
@@ -243,7 +243,7 @@ public class EnemyScript : MonoBehaviour
         if (animator != null) animator.SetTrigger("attack");
         else Debug.LogWarning("no animator found");
 
-        if (isRangeUnit) Projectile();
+        if (isRangeUnit) Invoke("Projectile", damageDelay);
         else Invoke("Damage", damageDelay);
 
     }
