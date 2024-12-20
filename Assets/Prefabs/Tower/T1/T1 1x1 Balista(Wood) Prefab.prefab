@@ -361,8 +361,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7658227451962457627}
   - component: {fileID: 5325795371308844204}
+  - component: {fileID: 6051744627244190066}
   - component: {fileID: 2050483745034317072}
-  - component: {fileID: 3001106908410715817}
   - component: {fileID: 1316378967969799111}
   - component: {fileID: 7829610398277998020}
   - component: {fileID: 6913131116089323627}
@@ -408,6 +408,22 @@ MonoBehaviour:
   m_Center: {x: 5, y: 1, z: 5}
   m_Area: 4
   m_AffectedAgents: ffffffff
+--- !u!114 &6051744627244190066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3647315434395575687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b0e2c0e959aaf94885e7cdeed7bd73e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 150
+  healthLastCheck: 0
+  attackedMainTower: []
+  TowerStats: {fileID: 11400000, guid: ea207c3a89a57d14b8760aec3d5459c0, type: 2}
 --- !u!114 &2050483745034317072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,26 +437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyCells: []
-  goldCost: 60
-  supplyCost: 2
-  xSize: 1
-  zSize: 1
---- !u!114 &3001106908410715817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3647315434395575687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60ecf182658ebf94d9311861d7b3d135, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 150
-  maxHealth: 0
-  healthLastCheck: 0
-  attackedMainTower: []
+  TowerStats: {fileID: 11400000, guid: ea207c3a89a57d14b8760aec3d5459c0, type: 2}
 --- !u!114 &1316378967969799111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,16 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36e6995d135fa34d96aff9691c0ee54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: 1
-  attackRange: 45
-  damage: 18
-  attackCooldown: 2
-  damageDelay: 0.5
-  isRangeUnit: 1
-  projectile: {fileID: 109498624868919209, guid: e8be9f5ca7dfec44caa505b8f70e9cfc, type: 3}
-  projectileStartPos: {x: 4.62, y: 13.67, z: 6.62}
-  animation: 0
-  towerAnimationStuff: {fileID: 0}
+  TowerStats: {fileID: 11400000, guid: ea207c3a89a57d14b8760aec3d5459c0, type: 2}
 --- !u!114 &7829610398277998020
 MonoBehaviour:
   m_ObjectHideFlags: 0

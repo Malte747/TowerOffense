@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TowerKnowsWhereItIs : MonoBehaviour
 {
-    public List<Vector3Int> MyCells;
+    [SerializeField] public TowerStats TowerStats;
 
-    public int goldCost, supplyCost, xSize, zSize;
+    public List<Vector3Int> MyCells;
 }

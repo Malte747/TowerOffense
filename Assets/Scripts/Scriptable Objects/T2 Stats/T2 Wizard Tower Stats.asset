@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1dd767de1da5f4c83f14c8fed5c98c, type: 3}
+  m_Name: T2 Wizard Tower Stats
+  m_EditorClassIdentifier: 
+  health: 150
+  goldCost: 100
+  supplyCost: 3
+  xSize: 1
+  zSize: 1
+  goldProduced: 0
+  animationTriggerString: 
+  target: 4
+  attackRange: 35
+  damage: 8
+  attackCooldown: 1.5
+  damageDelay: 1.4
+  isRangeUnit: 1
+  projectile: {fileID: 3183979848658258574, guid: 50e7518db2ae4554e8728789f3094beb, type: 3}
+  projectileStartPos: {x: 5, y: 11.5, z: 3.3}
+  projectileCorrection: 4
+  speed: 1
+  aoe: 1
+  lingeringAoe: 0
+  aoeSize: 5

@@ -9,15 +9,11 @@ public class ProjectileTower : MonoBehaviour
     [HideInInspector] public Vector3 p3;
 
     [HideInInspector] public GameObject victim;
-    [HideInInspector] public int damage;
+
+    [HideInInspector] public TowerStats TowerStats;
 
     private Vector3 lastPosition;
     float t;
-
-    public bool aoe;
-    public int aoeSize;
-
-    public float speed;
 
     void Start()
     {
@@ -31,7 +27,7 @@ public class ProjectileTower : MonoBehaviour
             p3 = victim.transform.position;
         }
 
-        t += speed * Time.deltaTime;
+        t += TowerStats.speed * Time.deltaTime;
         t = Mathf.Clamp01(t);
 
         transform.position = CalculateQuadraticBezierPoint(t, p1, p2, p3);
@@ -40,7 +36,7 @@ public class ProjectileTower : MonoBehaviour
 
         if (transform.position == p3)
         {
-            if(!aoe) Damage(victim);
+            if(!TowerStats.aoe) Damage(victim);
             else DamageAoe();
         }
     }
@@ -64,16 +60,16 @@ public class ProjectileTower : MonoBehaviour
         if (target != null)
         {
             Health health = target.GetComponent<Health>();
-            health.health -= damage;
+            health.health -= TowerStats.damage;
         }
-        if(!aoe) Destroy(gameObject);
+        if(!TowerStats.aoe) Destroy(gameObject);
     }
 
     void DamageAoe()
     {
         foreach (Vector3 targetPos in EnemyBibleScript.EnemyBible.Keys)
         {
-            if (Vector3.Distance(victim.transform.position, targetPos) <= aoeSize) Damage(EnemyBibleScript.EnemyBible[targetPos]);
+            if (Vector3.Distance(victim.transform.position, targetPos) <= TowerStats.aoeSize) Damage(EnemyBibleScript.EnemyBible[targetPos]);
         }
         Destroy(gameObject);
     }

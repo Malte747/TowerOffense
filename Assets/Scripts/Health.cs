@@ -12,7 +12,6 @@ public class Health : MonoBehaviour
     [HideInInspector] public int healthLastCheck;
     [HideInInspector] public List<GameObject> attackedMainTower = new List<GameObject>();
 
-    private TowerHealthBar _towerHealthBar;
     Animator animator;
 
     // Start is called before the first frame update
@@ -20,7 +19,6 @@ public class Health : MonoBehaviour
     {
         maxHealth = health;
         healthLastCheck = health;
-        _towerHealthBar = GetComponent<TowerHealthBar>();
     }
     // Update is called once per frame
     void Update()
@@ -29,87 +27,32 @@ public class Health : MonoBehaviour
         {
             Death();
         }
-        else if (health < healthLastCheck && _towerHealthBar != null)
-        {
-            healthLastCheck = health;
-            _towerHealthBar.UpdateHealthBar(maxHealth, health);
-        }
     }
 
     public void Death()
     {
-        if (gameObject.CompareTag("MainTower"))
-        {
-            GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-            gameManager.EndGameAttackerWin();
-            GridPlacementSystem.attackerHasWon = true;
-        }
-        else
-        { 
-            RemoveEntries(gameObject);
-            if (gameObject.CompareTag("Tower") || gameObject.CompareTag("Mine") || gameObject.CompareTag("Wall"))
-            {
-                NavMeshBaking baking = GameObject.Find("NavMesh").GetComponent<NavMeshBaking>();
-                baking.StartCoroutine("BakeNavMesh");
-                Destroy(gameObject);
-            }
-            else
-            {
-                animator = transform.GetChild(1).GetComponent<Animator>();
-                GetComponent<EnemyScript>().enabled = false;
-                GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
-                animator.SetTrigger("death");
-                Health towerHealth = GameObject.Find("MainTower Prefab(Clone)").GetComponent<Health>();
-                towerHealth.attackedMainTower.Remove(gameObject);
-                 Destroy(gameObject, 3.6f);
-            }
-            
-        }
-        
+
+        RemoveEntries(gameObject);
+        animator = transform.GetChild(1).GetComponent<Animator>();
+        GetComponent<EnemyScript>().enabled = false;
+        GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+        animator.SetTrigger("death");
+        HealthTowers towerHealth = GameObject.Find("MainTower Prefab(Clone)").GetComponent<HealthTowers>();
+        towerHealth.attackedMainTower.Remove(gameObject);
+        Destroy(gameObject, 3.6f);             
     }
 
     void RemoveEntries(GameObject targetObject)
     {
-        if (gameObject.CompareTag("Tower") || gameObject.CompareTag("Mine") || gameObject.CompareTag("Wall"))
+         var keysToRemove = EnemyBibleScript.EnemyBible
+        .Where(entry => entry.Value == targetObject)
+        .Select(entry => entry.Key)
+        .ToList();
+
+        // Remove each of those keys from the dictionary
+        foreach (var key in keysToRemove)
         {
-            var keysToRemove = TowerGridPlacement.TowerBible
-            .Where(entry => entry.Value == targetObject)
-            .Select(entry => entry.Key)
-            .ToList();
-
-            //Remove Gold Income if Mine
-            if(gameObject.CompareTag("Mine"))
-            {
-                Mine mine = gameObject.GetComponent<Mine>();
-                mine.MineIsDying();
-            }
-
-            // Remove each of those keys from the dictionary
-            foreach (var key in keysToRemove)
-            {
-                TowerGridPlacement.TowerBible.Remove(key);
-            }
-        }
-        else 
-        {
-            var keysToRemove = EnemyBibleScript.EnemyBible
-           .Where(entry => entry.Value == targetObject)
-           .Select(entry => entry.Key)
-           .ToList();
-
-            // Remove each of those keys from the dictionary
-            foreach (var key in keysToRemove)
-            {
-                EnemyBibleScript.EnemyBible.Remove(key);
-            }
-        }
-        
-
-    }
-    public void RepairTower()
-    {
-        health = maxHealth;
-        healthLastCheck = maxHealth;
-        _towerHealthBar.UpdateHealthBar(maxHealth, health);
+             EnemyBibleScript.EnemyBible.Remove(key);
+        }      
     }
 }

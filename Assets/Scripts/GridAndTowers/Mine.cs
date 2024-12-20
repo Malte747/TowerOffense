@@ -5,18 +5,18 @@ using UnityEngine;
 public class Mine : MonoBehaviour
 {
     private GameManager gameManager;
-    [SerializeField] private int goldProduced;
-        
+    public TowerStats towerStats;
+
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        gameManager.GainIncomeDefender(goldProduced);
+        gameManager.GainIncomeDefender(towerStats.goldProduced);
     }
 
     // Update is called once per frame
     public void MineIsDying()
     {
-        gameManager.GainIncomeDefender(- goldProduced);
+        gameManager.GainIncomeDefender(- towerStats.goldProduced);
     }
 }

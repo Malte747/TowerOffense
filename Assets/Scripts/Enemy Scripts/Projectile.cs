@@ -54,10 +54,10 @@ void Start()
 
     void Damage()
     {
-        Health health;
+        HealthTowers health;
         if (victim != null)
         {
-            health = victim.GetComponent<Health>();
+            health = victim.GetComponent<HealthTowers>();
             {
                 health.health -= damage;
                 if (victim.CompareTag("MainTower") && !health.attackedMainTower.Contains(gotShotBy)) health.attackedMainTower.Add(gotShotBy);

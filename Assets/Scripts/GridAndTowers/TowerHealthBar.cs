@@ -8,14 +8,14 @@ public class TowerHealthBar : MonoBehaviour
     [SerializeField] private RectTransform _healthBarCanvas;
     private Slider _healthBarSlider;
 
-    private Health _health;
+    private HealthTowers _health;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        _health = GetComponent<Health>();
+        _health = GetComponent<HealthTowers>();
         _healthBarSlider = _healthBarCanvas.GetComponentInChildren<Slider>();
     }
 

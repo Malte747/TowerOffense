@@ -110,6 +110,7 @@ MonoBehaviour:
   - {fileID: 3647315434395575687, guid: 718c1bdaa7c123d4fbde252ade0bc9e3, type: 3}
   - {fileID: 3647315434395575687, guid: 7dd11e0e216e22a4fb5c6ec311bdbafe, type: 3}
   - {fileID: 3647315434395575687, guid: 59f1f3166b9a16f49a001843964bd865, type: 3}
+  - {fileID: 3647315434395575687, guid: 0c2088759c4a78a419c11da2aba1ac8d, type: 3}
   IndicatorTowers:
   - {fileID: 0}
   - {fileID: 0}

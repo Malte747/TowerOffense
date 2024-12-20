@@ -277,10 +277,10 @@ public class EnemyScript : MonoBehaviour
 
     void Damage()
     {
-        Health health;
+        HealthTowers health;
         if (nextVictim != null)
         {
-            health = nextVictim.GetComponent<Health>();
+            health = nextVictim.GetComponent<HealthTowers>();
             if ((target == Targets.Towers && nextVictim.CompareTag("Tower"))
                     || (target == Targets.Walls && nextVictim.CompareTag("Wall"))
                     || (target == Targets.Mines && nextVictim.CompareTag("Mine")))

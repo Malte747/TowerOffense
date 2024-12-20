@@ -329,10 +329,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7658227451962457627}
   - component: {fileID: 5325795371308844204}
+  - component: {fileID: -3854620860280219267}
   - component: {fileID: 2050483745034317072}
-  - component: {fileID: 3001106908410715817}
-  - component: {fileID: 7829610398277998020}
   - component: {fileID: 1127290771040551294}
+  - component: {fileID: 7829610398277998020}
   - component: {fileID: 6913131116089323627}
   m_Layer: 6
   m_Name: T2 1x1 Tower(Stone) Prefab
@@ -376,6 +376,22 @@ MonoBehaviour:
   m_Center: {x: 5, y: 1, z: 5}
   m_Area: 4
   m_AffectedAgents: ffffffff
+--- !u!114 &-3854620860280219267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3647315434395575687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b0e2c0e959aaf94885e7cdeed7bd73e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 150
+  healthLastCheck: 0
+  attackedMainTower: []
+  TowerStats: {fileID: 11400000, guid: 78d4029b903eea940ba910d5a9c404a9, type: 2}
 --- !u!114 &2050483745034317072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,12 +404,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d4648e735d0564a9bd3f7b18818e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TowerStats: {fileID: 11400000, guid: 78d4029b903eea940ba910d5a9c404a9, type: 2}
   MyCells: []
-  goldCost: 90
-  supplyCost: 3
-  xSize: 1
-  zSize: 1
---- !u!114 &3001106908410715817
+--- !u!114 &1127290771040551294
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -402,12 +415,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3647315434395575687}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60ecf182658ebf94d9311861d7b3d135, type: 3}
+  m_Script: {fileID: 11500000, guid: b36e6995d135fa34d96aff9691c0ee54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 150
-  maxHealth: 0
-  healthLastCheck: 0
+  TowerStats: {fileID: 11400000, guid: 78d4029b903eea940ba910d5a9c404a9, type: 2}
 --- !u!114 &7829610398277998020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,26 +432,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBarCanvas: {fileID: 3833114945708485631}
---- !u!114 &1127290771040551294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3647315434395575687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b36e6995d135fa34d96aff9691c0ee54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: 2
-  attackRange: 40
-  damage: 15
-  attackCooldown: 1
-  damageDelay: 0.2
-  isRangeUnit: 1
-  projectile: {fileID: 109498624868919209, guid: e8be9f5ca7dfec44caa505b8f70e9cfc, type: 3}
-  projectileStartPos: {x: 5, y: 12.5, z: 3.5}
 --- !u!65 &6913131116089323627
 BoxCollider:
   m_ObjectHideFlags: 0

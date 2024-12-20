@@ -20,11 +20,12 @@ public class TowerGridPlacement : MonoBehaviour
     public static int towerRotation;
     public static Vector3Int towerRotationCorrection;
     private UIManager _uiManager;
-    private Health health;
+    private HealthTowers healthTowers;
 
     [SerializeField] private GameObject MainTowerPrefab;
 
     TowerKnowsWhereItIs towerKnowsWhereItIs;
+    TowerStats towerStats;
 
     [SerializeField]
     private Grid grid;
@@ -74,7 +75,7 @@ public class TowerGridPlacement : MonoBehaviour
             //Debug.Log("No Tower Selected.");
             indicatorColor.SetColor("_BaseColor", new Color(0.8392157f, 0.03921568f, 0.06320632f, 0.5f));
         }
-        else if (!hitTower  && towerKnowsWhereItIs.goldCost  <= gameManager.defenderGold  && towerKnowsWhereItIs.supplyCost + gameManager.defenderSupply <= gameManager.maxSupply)
+        else if (!hitTower  && towerStats.goldCost  <= gameManager.defenderGold  && towerStats.supplyCost + gameManager.defenderSupply <= gameManager.maxSupply)
         {
             //Debug.Log("Position is free.");
             indicatorColor.SetColor("_BaseColor", new Color(0.09215922f, 0.838f, 0.04049486f, 0.5f));
@@ -180,7 +181,7 @@ public class TowerGridPlacement : MonoBehaviour
 
         if (!gameManager.defendersTurn) StopPlacingTowers();
 
-        if(health != null && health.health < health.healthLastCheck)
+        if(healthTowers != null && healthTowers.health < healthTowers.healthLastCheck)
         {
             TowerInfoUIHPChange();
         }
@@ -191,13 +192,15 @@ public class TowerGridPlacement : MonoBehaviour
     public void PlaceTower(int number)
     {
         towerKnowsWhereItIs = Towers[number].GetComponent<TowerKnowsWhereItIs>();
-        if (!hitTower && towerKnowsWhereItIs.goldCost <= gameManager.defenderGold && towerKnowsWhereItIs.supplyCost + gameManager.defenderSupply <= gameManager.maxSupply)
+        towerStats = towerKnowsWhereItIs.TowerStats;
+        if (!hitTower && towerStats.goldCost <= gameManager.defenderGold && towerStats.supplyCost + gameManager.defenderSupply <= gameManager.maxSupply)
         {
-            gameManager.TurretPayment(towerKnowsWhereItIs.goldCost);
-            gameManager.TurretSupplyPayment(towerKnowsWhereItIs.supplyCost);
+            gameManager.TurretPayment(towerStats.goldCost);
+            gameManager.TurretSupplyPayment(towerStats.supplyCost);
             // OccupyCell(GridPlacementSystem.gridPosition);
             PlacedTower = Instantiate(Towers[number], grid.CellToWorld(GridPlacementSystem.gridPosition + towerRotationCorrection), GridPlacementSystem.rotationSave);
             towerKnowsWhereItIs = PlacedTower.GetComponent<TowerKnowsWhereItIs>();
+            towerStats = towerKnowsWhereItIs.TowerStats;
 
             GameObject NavMesh = GameObject.Find("NavMesh");
             if (NavMesh != null)
@@ -217,11 +220,11 @@ public class TowerGridPlacement : MonoBehaviour
                 }
             }
         }
-        else if(towerKnowsWhereItIs.goldCost > gameManager.defenderGold)
+        else if(towerStats.goldCost > gameManager.defenderGold)
         {
             _uiManager.NotEnoughGoldMessage();
         }
-        else if (towerKnowsWhereItIs.supplyCost + gameManager.defenderSupply > gameManager.maxSupply)
+        else if (towerStats.supplyCost + gameManager.defenderSupply > gameManager.maxSupply)
         {
             _uiManager.NotEnoughSupplyMessage();
         }
@@ -255,10 +258,9 @@ public class TowerGridPlacement : MonoBehaviour
         placingTowers = true;
         towerKnowsWhereItIs = Towers[number].GetComponent<TowerKnowsWhereItIs>();
         towerNumberUI = number;
-        xSize = towerKnowsWhereItIs.xSize;
-        xSizeSaved = towerKnowsWhereItIs.xSize;
-        zSize = towerKnowsWhereItIs.zSize;
-        zSizeSaved = towerKnowsWhereItIs.zSize;
+        towerStats = towerKnowsWhereItIs.TowerStats;
+        xSize = towerStats.xSize;
+        zSize = towerStats.zSize;
 
         indicator.transform.localScale = new Vector3(xSize, 1, zSize);
 
@@ -292,9 +294,10 @@ public class TowerGridPlacement : MonoBehaviour
         UnselectTower();
         clickedTowerParent = GridMouseInput.clickedTower.transform.root.gameObject;
         towerKnowsWhereItIs = clickedTowerParent.GetComponent<TowerKnowsWhereItIs>();
-        if(towerKnowsWhereItIs == null) towerKnowsWhereItIs = clickedTowerParent.GetComponentInParent<TowerKnowsWhereItIs>();
+        towerStats = towerKnowsWhereItIs.TowerStats;
+        if (towerKnowsWhereItIs == null) towerKnowsWhereItIs = clickedTowerParent.GetComponentInParent<TowerKnowsWhereItIs>();
         //Debug.Log("Cells: " + towerKnowsWhereItIs.MyCells.Count);
-        health = clickedTowerParent.GetComponent<Health>();
+        healthTowers = clickedTowerParent.GetComponent<HealthTowers>();
         TowerInfoUI();
         meshes = clickedTowerParent.transform.GetChild(0).gameObject;
         if (meshes.GetComponent<Outline>() != null)
@@ -329,28 +332,29 @@ public class TowerGridPlacement : MonoBehaviour
     {
         _uiManager.ShowTowerInfoUI();
         TowerInfoUIHPChange();
-        if (towerKnowsWhereItIs != null) _uiManager.SetTowerRepairCost(towerKnowsWhereItIs.goldCost);
+        if (towerKnowsWhereItIs != null) _uiManager.SetTowerRepairCost(towerStats.goldCost);
         //Bild Change
     }
 
     public void TowerInfoUIHPChange()
     {
-        _uiManager.SetTowerHPSliderUIValues(health.maxHealth, health.health);
+        TowerStats towerstats = healthTowers.TowerStats;
+        _uiManager.SetTowerHPSliderUIValues(towerstats.health, healthTowers.health);
     }
 
     public void TowerUIButtons(bool repair)
     {
-        if (health != null && repair)
+        if (healthTowers != null && repair)
         {
             if (UIManager.towerRepairCost <= gameManager.defenderGold)
             {
                 gameManager.TurretPayment(UIManager.towerRepairCost);
-                health.RepairTower();
+                healthTowers.RepairTower();
             }
         }
-        else if (health != null && !repair) 
+        else if (healthTowers != null && !repair) 
         { 
-            health.Death();
+            healthTowers.Death();
         }
     }
 

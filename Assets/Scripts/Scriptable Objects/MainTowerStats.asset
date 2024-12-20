@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1dd767de1da5f4c83f14c8fed5c98c, type: 3}
+  m_Name: MainTowerStats
+  m_EditorClassIdentifier: 
+  health: 400
+  goldCost: 120
+  supplyCost: 0
+  xSize: 0
+  zSize: 0
+  goldProduced: 0
+  animationTriggerString: ShootBalista
+  target: 5
+  attackRange: 70
+  damage: 11
+  attackCooldown: 2.5
+  damageDelay: 0.1
+  isRangeUnit: 1
+  projectile: {fileID: 109498624868919209, guid: e6ec9d04c260f97489a32ef4e19725d0, type: 3}
+  projectileStartPos: {x: 4.1411934, y: 212.46, z: 1659.8641}
+  projectileCorrection: 0
+  speed: 4
+  aoe: 0
+  lingeringAoe: 0
+  aoeSize: 0
