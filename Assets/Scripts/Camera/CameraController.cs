@@ -6,6 +6,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     UIManager uiManager;
+    GameManager gameManager;
 
     public Transform cameraTransform;
     public float normalSpeed;
@@ -15,6 +16,8 @@ public class CameraController : MonoBehaviour
     public float rotationAmount;
     public float maxZoom;
     public float minZoom;
+    public float movementDuration;
+    private bool isMoving = false;
     [SerializeField] public Vector3 zoomAmount;
 
     [SerializeField] public Vector3 newPosition;
@@ -26,6 +29,9 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] private Quaternion startRotation;
 
+    [SerializeField] public Vector3 targetPositionDefender;
+    [SerializeField] public Vector3 targetPositionAttacker;
+
     public float edgeScrollSpeed = 10f;
     public float edgeThickness = 10f;
 
@@ -35,6 +41,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         uiManager = FindObjectOfType<UIManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         newPosition = transform.position;
         startRotation = transform.rotation;
@@ -46,7 +53,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if (uiManager != null && uiManager.isPaused) return;
+        if (gameManager.gameInProgress == false||isMoving || (uiManager != null && uiManager.isPaused)) return;
 
         HandleMouseInput();
         HandleMovementInput();
@@ -167,5 +174,38 @@ public class CameraController : MonoBehaviour
         newZoom.z = Mathf.Clamp(newZoom.z, -maxZoom, -minZoom);
         Vector3 targetPosition = Vector3.Lerp(cameraTransform.localPosition, newZoom, Time.unscaledDeltaTime * movementTime);
         cameraTransform.localPosition = targetPosition;
+    }
+
+
+
+    public void MoveCameraToDefenderPosition()
+    {
+        StartCoroutine(MoveCameraCoroutine(targetPositionDefender, movementDuration));
+    }
+
+    public void MoveCameraToAttackerPosition()
+    {
+        StartCoroutine(MoveCameraCoroutine(targetPositionAttacker, movementDuration));
+    }
+
+
+    private IEnumerator MoveCameraCoroutine(Vector3 targetPosition, float duration)
+    {
+    isMoving = true;
+    Vector3 initialPosition = transform.position;
+    float elapsedTime = 0f;
+
+    while (elapsedTime < duration)
+    {
+        float progress = Mathf.SmoothStep(0, 1, elapsedTime / duration);
+        transform.position = Vector3.Lerp(initialPosition, targetPosition, progress);
+        elapsedTime += Time.unscaledDeltaTime;
+
+        yield return null;
+    }
+
+    transform.position = targetPosition;
+    newPosition = transform.position;
+    isMoving = false;
     }
 }

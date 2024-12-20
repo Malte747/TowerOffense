@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     TowerGridPlacement towerGridPlacement;
     SequentialActivator sequentialActivator;
     AudioManager audioManager;
+    CameraController cameraController;
 
 
 
@@ -123,6 +124,7 @@ public class GameManager : MonoBehaviour
         towerGridPlacement = GameObject.Find("TowerGridPlacement").GetComponent<TowerGridPlacement>();
         placeEnemies = GameObject.Find("EnemyPlacementPlane").GetComponent<PlaceEnemies>();
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        cameraController = GameObject.Find("Camera Rig").GetComponent<CameraController>();
     }
 
     public void GameStart()
@@ -159,6 +161,7 @@ public class GameManager : MonoBehaviour
             SetIncomeText(attackerGoldIncome);
             roundTextAttackObject.SetActive(true);
             uiManager.ResetTimeScale();
+            cameraController.MoveCameraToAttackerPosition();
             
         }
     }
@@ -176,6 +179,8 @@ public class GameManager : MonoBehaviour
             SetIncomeText(defenderGoldIncome);
             roundTextDefenseObject.SetActive(true);
             uiManager.ResetTimeScale();
+            cameraController.MoveCameraToDefenderPosition();
+            
            
             
         }
