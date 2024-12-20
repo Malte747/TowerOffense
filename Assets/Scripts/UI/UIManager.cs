@@ -25,9 +25,9 @@ public class UIManager : MonoBehaviour
     public Button unpause;
     public bool isPaused = false; 
     private bool toggle = true;    
+
     // public Animator animatorGold;
     public Animator[] animatorsToChange;
-
     public Slider hpSlider;
     public TMP_Text hpSliderText;
     public static int towerRepairCost;
@@ -44,6 +44,10 @@ public class UIManager : MonoBehaviour
     public GameObject pauseIcon;
     public GameObject resumeIcon;
 
+    //Menu UI
+
+    public GameObject resumeGame;
+
 
     
 
@@ -51,6 +55,8 @@ public class UIManager : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         messageSystem = GetComponent<MessageSystem>();
+
+        ActivateResumeGameButton();
     }
 
     void Update()
@@ -176,6 +182,17 @@ public class UIManager : MonoBehaviour
             }
     }
 
+    public void ResetTimeScaleResumeAttacker()
+    {
+            currentTimeScaleIndex = 1;
+            Time.timeScale = timeScales[currentTimeScaleIndex];
+            currentTimeScaleIndexText.text = timeScales[currentTimeScaleIndex].ToString() + "x";
+            Time.timeScale = 0f;
+            timePaused = true;
+            pauseIcon.SetActive(false);
+            resumeIcon.SetActive(true);
+    }
+
 
 
 
@@ -238,6 +255,24 @@ public class UIManager : MonoBehaviour
                 obj.SetActive(false); 
             }
         }
+    }
+
+    public void ActivateResumeGameButton()
+    {
+        if(gameManager.gameInMemory == true)
+        {
+        resumeGame.SetActive(true);
+        }
+        else
+        {
+        resumeGame.SetActive(false);
+        }
+    }
+
+
+    public void CloseTheGame()
+    {
+        Application.Quit();
     }
 
     #region TowerSelection...Ein Malte und Tom Project

@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     
     public int startGoldIncome;
     public bool gameInProgress = false;
+    public bool gameInMemory = false;
     public int towerRepairCostMultiplier;
 
 
@@ -142,6 +143,7 @@ public class GameManager : MonoBehaviour
         
 
         gameInProgress = true;
+        gameInMemory = true;
 
         DefendersTurn();
     }
@@ -659,6 +661,7 @@ private IEnumerator UpdateIncomeText()
     private void EndGameDefenderWin()
     {
         gameInProgress = false;
+        gameInMemory = false;
         uiManager.StartOrStopGameUI();
         uiManager.StopAdditionalGameUI();
         ResetGame();
@@ -675,6 +678,7 @@ private IEnumerator UpdateIncomeText()
     public void EndGameAttackerWin()
     {
         gameInProgress = false;
+        gameInMemory = false;
         uiManager.StartOrStopGameUI();
         uiManager.StopAdditionalGameUI();
         ResetGame();
@@ -691,6 +695,18 @@ private IEnumerator UpdateIncomeText()
     public void ResumeGame()
     {
         gameInProgress = true;
+        uiManager.TogglePause();
+
+        if(defendersTurn)
+        {
+            uiManager.ActivateDefenderUI();
+            uiManager.ResetTimeScale();
+        }
+        else if (attackersTurn)
+        {
+            uiManager.ActivateAttackerUI();
+            uiManager.ResetTimeScaleResumeAttacker();
+        }
     }
 
     public void ExitToMainMenuDuringGame()
