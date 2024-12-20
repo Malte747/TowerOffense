@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 //  SCRIPT SUMMARY: enemy brain for movement & attacking
 /*
@@ -70,18 +72,29 @@ public class EnemyScript : MonoBehaviour
     private Vector3 projectileStartPos;
     private GameObject GameManager;
 
+    // income animation
+    public GameObject incomeAnimationCanvas;
+    public TMP_Text incomeText;
+
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         GameManager = GameObject.Find("GameManager");
         GameManager.GetComponent<GameManager>().GainIncomeAttacker(income);
+        
 
         animator = gameObject.transform.GetChild(1).GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         grid = GameObject.Find("Grid").GetComponent<Grid>();
-
+        
         if(damageDelay == 0) damageDelay = 0.01f;
+
+        StartCoroutine(StartIncomeAnimationCoroutine());
+
     }
 
     // Update is called once per frame
@@ -339,4 +352,20 @@ public class EnemyScript : MonoBehaviour
                     }
                 }
     }
+
+
+private IEnumerator StartIncomeAnimationCoroutine()
+{
+    while (!agent.enabled)
+    {
+        yield return null;
+    }
+
+    incomeText.text = "+" + income;
+    incomeAnimationCanvas.SetActive(true);
+
+    yield return new WaitForSeconds(1f);
+
+    Destroy(incomeAnimationCanvas);
+}
 }
