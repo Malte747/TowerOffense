@@ -35,6 +35,7 @@ public class UIManager : MonoBehaviour
     public GameObject[] towerInfoUI;
 
 
+
     // Time Manager
 
     private float[] timeScales = { 0.5f, 1f, 2f, 5f, 10f };
@@ -375,5 +376,6 @@ public class UIManager : MonoBehaviour
 
 
     #endregion
+
 
 }

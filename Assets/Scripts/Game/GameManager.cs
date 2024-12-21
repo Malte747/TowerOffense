@@ -113,6 +113,10 @@ public class GameManager : MonoBehaviour
     private Queue<int> spendingIncomeQueue = new Queue<int>();
     private bool isUpdatingIncome = false; 
   
+
+  // UI Animation
+
+      public Animator UICanvasAnimator;
     
 
 
@@ -146,6 +150,7 @@ public class GameManager : MonoBehaviour
         gameInMemory = true;
 
         DefendersTurn();
+        StartRoundUIAnimation();
     }
 
 
@@ -208,6 +213,7 @@ public class GameManager : MonoBehaviour
             roundTextAttackObject.SetActive(false);
             DefendersTurn();
             audioManager.ChangeTrackOnRound();
+            ChangeRoundUIAnimation();
         }
         else if (defendersTurn)
         {
@@ -218,6 +224,7 @@ public class GameManager : MonoBehaviour
             AttackersTurn();
             audioManager.ChangeTrackOnRound();
             uiManager.PauseTime();
+            ChangeRoundUIAnimation();
         }
         else
         {
@@ -477,6 +484,28 @@ private IEnumerator UpdateIncomeText()
 
     #endregion
    
+    #region UiAnimation
+
+    public void StartRoundUIAnimation()
+    {
+        UICanvasAnimator.SetTrigger("RoundStart");
+
+    }
+
+    public void EndRoundUIAnimation()
+    {
+        UICanvasAnimator.SetTrigger("RoundEnd");
+        
+    }
+
+    public void ChangeRoundUIAnimation()
+    {
+        UICanvasAnimator.SetTrigger("RoundChange");
+        
+    }
+
+    #endregion
+
     #region TextUpdates
     public void SetGoldValue(int newValue)
     {
@@ -660,6 +689,18 @@ private IEnumerator UpdateIncomeText()
 
     private void EndGameDefenderWin()
     {
+        cameraController.MoveCameraToDefenderPosition();
+        EndRoundUIAnimation();
+        uiManager.ResetTimeScale();
+
+        StartCoroutine(DelayedEndGameDefenderWin());
+
+    }
+
+    private IEnumerator DelayedEndGameDefenderWin()
+    {
+        yield return new WaitForSecondsRealtime(3f);
+
         gameInProgress = false;
         gameInMemory = false;
         uiManager.StartOrStopGameUI();
@@ -675,8 +716,21 @@ private IEnumerator UpdateIncomeText()
 
     }
 
+
     public void EndGameAttackerWin()
     {
+        cameraController.MoveCameraToDefenderPosition();
+        EndRoundUIAnimation();
+        uiManager.ResetTimeScale();
+       
+        StartCoroutine(DelayedEndGameAttackerWin());
+    }
+
+    private IEnumerator DelayedEndGameAttackerWin()
+    {
+
+        yield return new WaitForSecondsRealtime(3f);
+    
         gameInProgress = false;
         gameInMemory = false;
         uiManager.StartOrStopGameUI();
@@ -689,8 +743,8 @@ private IEnumerator UpdateIncomeText()
         imageDefender.SetActive(false);
         victoryScreen.SetActive(true);
         audioManager.CrossfadeToClip(7);
-
     }
+
 
     public void ResumeGame()
     {

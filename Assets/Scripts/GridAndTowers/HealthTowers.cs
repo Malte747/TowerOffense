@@ -8,6 +8,7 @@ using System.Linq;
 public class HealthTowers : MonoBehaviour
 {
     public int health;
+    private bool hasDied = false;
     [HideInInspector] public int healthLastCheck;
     [HideInInspector] public List<GameObject> attackedMainTower = new List<GameObject>();
 
@@ -25,7 +26,7 @@ public class HealthTowers : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health <= 0)
+        if (health <= 0 && !hasDied)
         {
             Death();
         }
@@ -38,6 +39,8 @@ public class HealthTowers : MonoBehaviour
 
     public void Death()
     {
+        if (hasDied) return;
+        hasDied = true;
         if (gameObject.CompareTag("MainTower"))
         {
             GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
