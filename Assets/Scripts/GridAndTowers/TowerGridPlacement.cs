@@ -330,9 +330,10 @@ public class TowerGridPlacement : MonoBehaviour
 
     public void TowerInfoUI()
     {
+        TowerStats towerstats = healthTowers.TowerStats;
         _uiManager.ShowTowerInfoUI();
         TowerInfoUIHPChange();
-        if (towerKnowsWhereItIs != null) _uiManager.SetTowerRepairCost(towerStats.goldCost);
+        if (towerKnowsWhereItIs != null) _uiManager.SetTowerRepairCost(towerStats.goldCost, towerstats.health, healthTowers.health);
         //Bild Change
     }
 

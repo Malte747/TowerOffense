@@ -288,12 +288,20 @@ public class UIManager : MonoBehaviour
         hpSliderText.text = $"{ hpSlider.value}/{ hpSlider.maxValue}";
     }
 
-    public void SetTowerRepairCost(int towerPrice)
+    public void SetTowerRepairCost(int towerPrice, int maxHP, int currentHP)
     {
-        towerRepairCost = towerPrice * gameManager.towerRepairCostMultiplier / 100;
-        if(towerRepairCost > 0)
+        
+        float towerRepairCostFloat = ((float)towerPrice / maxHP) * ((float)gameManager.towerRepairCostMultiplier / 100f) * (maxHP - currentHP);
+        towerRepairCost = Mathf.RoundToInt(towerRepairCostFloat);
+        Debug.Log("reapir cost:" + towerRepairCost);
+        if(towerRepairCost >= 1)
         {
         towerRepairCostText.text = towerRepairCost.ToString();
+        }
+        else if(towerRepairCost < 1 && towerRepairCost > 0)
+        {
+            towerRepairCost = 1;
+            towerRepairCostText.text = towerRepairCost.ToString();
         }
         else
         {
