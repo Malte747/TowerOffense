@@ -436,8 +436,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d4648e735d0564a9bd3f7b18818e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyCells: []
   TowerStats: {fileID: 11400000, guid: ea207c3a89a57d14b8760aec3d5459c0, type: 2}
+  MyCells: []
 --- !u!114 &1316378967969799111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,6 +451,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TowerStats: {fileID: 11400000, guid: ea207c3a89a57d14b8760aec3d5459c0, type: 2}
+  turningGameObject: {fileID: 0}
+  correctionObject: {fileID: 0}
 --- !u!114 &7829610398277998020
 MonoBehaviour:
   m_ObjectHideFlags: 0

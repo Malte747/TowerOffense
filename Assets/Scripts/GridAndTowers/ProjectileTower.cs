@@ -15,6 +15,8 @@ public class ProjectileTower : MonoBehaviour
     private Vector3 lastPosition;
     float t;
 
+    [SerializeField] private GameObject projectileEffect;
+
     void Start()
     {
         lastPosition = transform.position;
@@ -62,7 +64,7 @@ public class ProjectileTower : MonoBehaviour
             Health health = target.GetComponent<Health>();
             health.health -= TowerStats.damage;
         }
-        if(!TowerStats.aoe) Destroy(gameObject);
+        if(!TowerStats.aoe) DestroyProjectile();
     }
 
     void DamageAoe()
@@ -71,7 +73,7 @@ public class ProjectileTower : MonoBehaviour
         {
             if (Vector3.Distance(victim.transform.position, targetPos) <= TowerStats.aoeSize) Damage(EnemyBibleScript.EnemyBible[targetPos]);
         }
-        Destroy(gameObject);
+        DestroyProjectile();
     }
 
     void RotateTowardsMovementDirection()
@@ -85,5 +87,14 @@ public class ProjectileTower : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
         }
         lastPosition = transform.position;
+    }
+
+    private void DestroyProjectile()
+    {
+        if (projectileEffect != null)
+        {
+            Instantiate(projectileEffect, transform.position, Quaternion.identity);
+        }
+        Destroy(gameObject);
     }
 }

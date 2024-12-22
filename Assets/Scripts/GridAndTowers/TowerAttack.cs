@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 //using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class TowerAttack : MonoBehaviour
@@ -10,12 +11,15 @@ public class TowerAttack : MonoBehaviour
     private Grid grid;
 
     [SerializeField] TowerStats TowerStats;
-    
+    private Vector3 projectileStartPos;
+    [SerializeField] private GameObject turningGameObject;
+    [SerializeField] private GameObject correctionObject;
+
     // Start is called before the first frame update
     void Start()
     {
         grid = GameObject.Find("Grid").GetComponent<Grid>();
-        TowerStats.projectileStartPos = transform.position + TowerStats.projectileStartPos;
+        projectileStartPos = transform.position + TowerStats.projectileStartPos;
 
         if (TowerStats.target != TowerStats.Targets.MainTower)
         {
@@ -44,11 +48,16 @@ public class TowerAttack : MonoBehaviour
                     t = 0;
                     if (TowerStats.isRangeUnit)
                     {
-                        Invoke("ShootProjectile", TowerStats.damageDelay);
                         //Debug.Log("Huuuge Projectile");
-
+                        StartAnimation();
+                        Invoke("ShootProjectile", TowerStats.damageDelay);
+                            
                     }
-                    else Invoke("Damage", TowerStats.damageDelay);
+                    else 
+                    {
+                        StartAnimation();
+                        Invoke("Damage", TowerStats.damageDelay); 
+                    }
                 }
             }
         }
@@ -56,7 +65,12 @@ public class TowerAttack : MonoBehaviour
         {
             SelectTarget();
             //Debug.Log("finding Target");
-        }      
+        }    
+        
+        if (TowerStats.needsCorrection)
+        {
+            if (correctionObject != null) correctionObject.transform.localPosition = TowerStats.characterPosition; 
+        }
     }
 
     void SelectTarget()
@@ -156,7 +170,6 @@ public class TowerAttack : MonoBehaviour
         {
             //Mark for Testing
             //if (outline == null) outline = nextVictim.AddComponent<Outline>();
-            StartAnimation();
             health = nextVictim.GetComponent<Health>();
             health.health -= TowerStats.damage;
         }
@@ -166,15 +179,14 @@ public class TowerAttack : MonoBehaviour
     {
         if (nextVictim != null)
         { 
-            StartAnimation();
-            GameObject arrow = Instantiate(TowerStats.projectile, TowerStats.projectileStartPos, Quaternion.identity);
+            GameObject arrow = Instantiate(TowerStats.projectile, projectileStartPos, Quaternion.identity);
             ProjectileTower _projectileTower = arrow.GetComponent<ProjectileTower>();
             _projectileTower.TowerStats = TowerStats;
-            _projectileTower.p1 = TowerStats.projectileStartPos;
+            _projectileTower.p1 = projectileStartPos;
             _projectileTower.p3 = nextVictim.transform.position;
             float height = 0;
             if (TowerStats.projectileCorrection != 0) height = (Vector3.Distance(_projectileTower.p1, _projectileTower.p3) / TowerStats.projectileCorrection);
-            _projectileTower.p2 = (TowerStats.projectileStartPos + _projectileTower.p3) / 2 + Vector3.up * height;
+            _projectileTower.p2 = (projectileStartPos + _projectileTower.p3) / 2 + Vector3.up * height;
             _projectileTower.victim = nextVictim;
             //Debug.Log("Shot Arrow");
         }
@@ -183,6 +195,8 @@ public class TowerAttack : MonoBehaviour
     void StartAnimation()
     {
         {
+            Vector3 targetPosition = new Vector3(nextVictim.transform.position.x, turningGameObject.transform.position.y, nextVictim.transform.position.z);
+            turningGameObject.transform.LookAt(targetPosition);
             GameObject _parent = gameObject.transform.root.gameObject;
             Animator[] towerAnimators = _parent.GetComponentsInChildren<Animator>();
             foreach (Animator animator in towerAnimators) animator.SetTrigger(TowerStats.animationTriggerString);   

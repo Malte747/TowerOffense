@@ -19,6 +19,8 @@ MonoBehaviour:
   zSize: 0
   goldProduced: 0
   animationTriggerString: ShootBalista
+  needsCorrection: 0
+  characterPosition: {x: 0, y: 0, z: 0}
   target: 5
   attackRange: 70
   damage: 11
@@ -26,7 +28,7 @@ MonoBehaviour:
   damageDelay: 0.1
   isRangeUnit: 1
   projectile: {fileID: 109498624868919209, guid: e6ec9d04c260f97489a32ef4e19725d0, type: 3}
-  projectileStartPos: {x: 4.1411934, y: 212.46, z: 1659.8641}
+  projectileStartPos: {x: 0, y: 0, z: 0}
   projectileCorrection: 0
   speed: 4
   aoe: 0
