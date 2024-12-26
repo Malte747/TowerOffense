@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1dd767de1da5f4c83f14c8fed5c98c, type: 3}
   m_Name: T2 Tower(Stone) Stats
   m_EditorClassIdentifier: 
-  health: 150
-  goldCost: 90
+  health: 70
+  goldCost: 60
   supplyCost: 3
   xSize: 1
   zSize: 1
+  goldProduced: 0
+  animationTriggerString: 
   target: 1
   attackRange: 45
-  damage: 15
+  damage: 20
   attackCooldown: 1.1
   damageDelay: 0.5
   isRangeUnit: 1
@@ -30,4 +32,3 @@ MonoBehaviour:
   aoe: 0
   lingeringAoe: 0
   aoeSize: 0
-  shootTriggerName: 

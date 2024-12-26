@@ -19,7 +19,7 @@ public class HealthTowers : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        TowerStats.health = health;
+        health = TowerStats.health ;
         healthLastCheck = health;
         _towerHealthBar = GetComponent<TowerHealthBar>();
     }

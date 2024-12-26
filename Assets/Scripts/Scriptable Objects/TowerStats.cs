@@ -23,14 +23,8 @@ public class TowerStats : ScriptableObject
     [Tooltip("Select Animations for the Tower.")]
     public string animationTriggerString;
 
-    [Tooltip("Does Mixermo do weird shit?.")]
-    public bool needsCorrection;
-    [Tooltip("Where does the Character Stand on The Tower?.")]
-    public Vector3 characterPosition;
 
-
-
-    public enum Targets
+public enum Targets
     {
         IndicatorTower,
         Closest,

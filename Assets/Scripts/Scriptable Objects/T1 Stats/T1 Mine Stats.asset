@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: T1 Mine Stats
   m_EditorClassIdentifier: 
   health: 100
-  goldCost: 70
+  goldCost: 30
   supplyCost: 5
   xSize: 2
   zSize: 2
