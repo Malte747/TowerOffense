@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1dd767de1da5f4c83f14c8fed5c98c, type: 3}
   m_Name: T1 Wall(Wood) Stats 1
   m_EditorClassIdentifier: 
-  health: 30
-  goldCost: 5
+  health: 50
+  goldCost: 40
   supplyCost: 1
   xSize: 1
   zSize: 1

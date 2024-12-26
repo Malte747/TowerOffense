@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: MainTowerStats
   m_EditorClassIdentifier: 
   health: 400
-  goldCost: 200
+  goldCost: 120
   supplyCost: 0
   xSize: 0
   zSize: 0
   goldProduced: 0
   animationTriggerString: ShootBalista
+  needsCorrection: 0
+  characterPosition: {x: 0, y: 0, z: 0}
   target: 5
   attackRange: 70
   damage: 11
@@ -26,7 +28,7 @@ MonoBehaviour:
   damageDelay: 0.1
   isRangeUnit: 1
   projectile: {fileID: 109498624868919209, guid: e6ec9d04c260f97489a32ef4e19725d0, type: 3}
-  projectileStartPos: {x: 19.32557, y: 991.4803, z: 7746.0264}
+  projectileStartPos: {x: 0, y: 0, z: 0}
   projectileCorrection: 0
   speed: 4
   aoe: 0

@@ -49,7 +49,7 @@ public class GameSettings : MonoBehaviour
     {
         if (value < 1)
         {
-        if (pair.identifier == "RepairMultiplier" || pair.identifier == "StartGold" || pair.identifier == "StartGoldAttacker" || pair.identifier == "StartGoldDefender")
+        if (pair.identifier == "RepairMultiplier")
         {
         value = 0;
         }
@@ -77,7 +77,7 @@ public class GameSettings : MonoBehaviour
         {
             if (inputValue < 1)
             {
-                if (pair.identifier == "RepairMultiplier" || pair.identifier == "StartGold" || pair.identifier == "StartGoldAttacker" || pair.identifier == "StartGoldDefender")
+                if (pair.identifier == "RepairMultiplier")
                 {
                     inputValue = 0;
                     UpdateInputField(pair, inputValue);
@@ -167,14 +167,14 @@ public class GameSettings : MonoBehaviour
             {
                 if (p.identifier == "StartGoldDefender" || p.identifier == "StartGoldAttacker" && value > sliderMax)
                 {
-                    p.slider.value = Mathf.Clamp(startGoldValue, 0, sliderMax);
+                    p.slider.value = Mathf.Clamp(startGoldValue, 1, sliderMax);
                     UpdateInputField(p, value);
                     UpdateImageColors(p, false);
                     
                 }
                 else if (p.identifier == "StartGoldDefender" || p.identifier == "StartGoldAttacker" && value <= sliderMax)
                 {
-                    p.slider.value = Mathf.Clamp(startGoldValue, 0, sliderMax);
+                    p.slider.value = Mathf.Clamp(startGoldValue, 1, sliderMax);
                     UpdateInputField(p, p.slider.value);
                     UpdateImageColors(p, false);
                     

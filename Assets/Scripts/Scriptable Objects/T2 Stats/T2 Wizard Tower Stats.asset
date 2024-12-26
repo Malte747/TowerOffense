@@ -12,21 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1dd767de1da5f4c83f14c8fed5c98c, type: 3}
   m_Name: T2 Wizard Tower Stats
   m_EditorClassIdentifier: 
-  health: 80
-  goldCost: 80
+  health: 150
+  goldCost: 100
   supplyCost: 3
   xSize: 1
   zSize: 1
   goldProduced: 0
-  animationTriggerString: 
+  animationTriggerString: MagicAttack
+  needsCorrection: 1
+  characterPosition: {x: -1.4, y: 15.8, z: 15}
   target: 4
   attackRange: 35
-  damage: 8
-  attackCooldown: 1.5
-  damageDelay: 1.4
+  damage: 16
+  attackCooldown: 3
+  damageDelay: 1
   isRangeUnit: 1
   projectile: {fileID: 3183979848658258574, guid: 50e7518db2ae4554e8728789f3094beb, type: 3}
-  projectileStartPos: {x: 5, y: 11.5, z: 3.3}
+  projectileStartPos: {x: 5, y: 14.2, z: 5}
   projectileCorrection: 4
   speed: 1
   aoe: 1
