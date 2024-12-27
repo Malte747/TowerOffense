@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1dd767de1da5f4c83f14c8fed5c98c, type: 3}
   m_Name: T2 Wizard Tower Stats
   m_EditorClassIdentifier: 
-  health: 150
-  goldCost: 100
+  health: 80
+  goldCost: 80
   supplyCost: 3
   xSize: 1
   zSize: 1

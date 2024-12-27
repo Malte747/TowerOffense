@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1dd767de1da5f4c83f14c8fed5c98c, type: 3}
   m_Name: T1 Tower(Wood) Stats
   m_EditorClassIdentifier: 
-  health: 100
-  goldCost: 50
+  health: 50
+  goldCost: 35
   supplyCost: 2
   xSize: 1
   zSize: 1
+  goldProduced: 0
+  animationTriggerString: 
+  needsCorrection: 0
+  characterPosition: {x: 0, y: 0, z: 0}
   target: 1
   attackRange: 30
   damage: 9
@@ -30,4 +34,3 @@ MonoBehaviour:
   aoe: 0
   lingeringAoe: 0
   aoeSize: 0
-  shootTriggerName: 
