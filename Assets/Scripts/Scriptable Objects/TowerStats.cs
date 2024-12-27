@@ -37,7 +37,8 @@ public class TowerStats : ScriptableObject
         First,
         LowHP,
         BiggestGroup,
-        MainTower
+        MainTower,
+        AoeArea
     }
     [Header("Attack Stats")]
     [Tooltip("Select which units this tower will attack. It will try to avoid the others.")]

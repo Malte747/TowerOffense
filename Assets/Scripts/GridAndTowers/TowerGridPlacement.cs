@@ -6,6 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.XR;
 
 public class TowerGridPlacement : MonoBehaviour
 {
@@ -300,6 +301,7 @@ public class TowerGridPlacement : MonoBehaviour
         healthTowers = clickedTowerParent.GetComponent<HealthTowers>();
         TowerInfoUI();
         meshes = clickedTowerParent.transform.GetChild(0).gameObject;
+        if (meshes.transform.GetChild(0).gameObject.name == "Moving Details") meshes = meshes.transform.GetChild(1).gameObject;
         if (meshes.GetComponent<Outline>() != null)
         {
             meshes.GetComponent<Outline>().enabled = true;

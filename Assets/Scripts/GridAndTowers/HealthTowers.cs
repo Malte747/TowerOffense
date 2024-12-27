@@ -41,6 +41,7 @@ public class HealthTowers : MonoBehaviour
     {
         if (hasDied) return;
         hasDied = true;
+        StartCoroutine("DeathAnimation");
         if (gameObject.CompareTag("MainTower"))
         {
             GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -56,6 +57,11 @@ public class HealthTowers : MonoBehaviour
             
         }
         
+    }
+
+    IEnumerator DeathAnimation()
+    {
+        return null;
     }
 
     void RemoveEntries(GameObject targetObject)

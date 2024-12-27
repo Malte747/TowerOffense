@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 //using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
@@ -27,19 +28,21 @@ public class TowerAttack : MonoBehaviour
             int rangeNumber = (TowerStats.attackRange * 2) + 10;
             rangeIndicator.localScale = new Vector3(rangeNumber, 0.01f, rangeNumber);
         }
-            
 
-        if (TowerStats.target == TowerStats.Targets.MainTower)
+        if (TowerStats.target == TowerStats.Targets.AoeArea)
         {
-
+            AoeDamageZone zoneDamage = gameObject.AddComponent<AoeDamageZone>();
+            zoneDamage.towerStats = TowerStats;
         }
+
+
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
         t += Time.deltaTime;
-        if (nextVictim != null && nextVictim.GetComponent<EnemyScript>().enabled && TowerStats.target != TowerStats.Targets.IndicatorTower)
+        if (nextVictim != null && nextVictim.GetComponent<EnemyScript>().enabled && TowerStats.target != TowerStats.Targets.IndicatorTower && TowerStats.target != TowerStats.Targets.AoeArea)
         {
             if (IsEnemyInRange(nextVictim.transform.position) || TowerStats.target == TowerStats.Targets.MainTower) 
             {
@@ -195,8 +198,11 @@ public class TowerAttack : MonoBehaviour
     void StartAnimation()
     {
         {
-            Vector3 targetPosition = new Vector3(nextVictim.transform.position.x, turningGameObject.transform.position.y, nextVictim.transform.position.z);
-            turningGameObject.transform.LookAt(targetPosition);
+            if (turningGameObject != null)
+            {
+                Vector3 targetPosition = new Vector3(nextVictim.transform.position.x, turningGameObject.transform.position.y, nextVictim.transform.position.z);
+                turningGameObject.transform.LookAt(targetPosition);
+            }
             GameObject _parent = gameObject.transform.root.gameObject;
             Animator[] towerAnimators = _parent.GetComponentsInChildren<Animator>();
             foreach (Animator animator in towerAnimators) animator.SetTrigger(TowerStats.animationTriggerString);   
