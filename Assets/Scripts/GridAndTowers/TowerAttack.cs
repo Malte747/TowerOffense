@@ -22,13 +22,6 @@ public class TowerAttack : MonoBehaviour
         grid = GameObject.Find("Grid").GetComponent<Grid>();
         projectileStartPos = transform.position + TowerStats.projectileStartPos;
 
-        if (TowerStats.target != TowerStats.Targets.MainTower)
-        {
-            Transform rangeIndicator = gameObject.transform.GetChild(1);
-            int rangeNumber = (TowerStats.attackRange * 2) + 10;
-            rangeIndicator.localScale = new Vector3(rangeNumber, 0.01f, rangeNumber);
-        }
-
         if (TowerStats.target == TowerStats.Targets.AoeArea)
         {
             AoeDamageZone zoneDamage = gameObject.AddComponent<AoeDamageZone>();
