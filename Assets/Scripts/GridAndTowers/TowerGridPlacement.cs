@@ -17,7 +17,7 @@ public class TowerGridPlacement : MonoBehaviour
     public GameObject indicator;
     public GameManager gameManager;
     public static bool placingTowers;
-    int xSizeDirection, zSizeDirection, xAdjustment, zAdjustment, xSizeSaved, zSizeSaved;
+    int xSizeDirection, zSizeDirection, xAdjustment, zAdjustment;
     public static int towerRotation;
     public static Vector3Int towerRotationCorrection;
     private UIManager _uiManager;
@@ -138,8 +138,8 @@ public class TowerGridPlacement : MonoBehaviour
             if (towerRotation >= 360) towerRotation = 0;
             if (towerRotation == 0)
             {
-                xSize = xSizeSaved;
-                zSize = zSizeSaved;
+                xSize = towerStats.xSize;
+                zSize = towerStats.zSize;
                 xSizeDirection = +1;
                 zSizeDirection = +1;
                 xAdjustment = 1;
@@ -149,8 +149,8 @@ public class TowerGridPlacement : MonoBehaviour
         }
         else if (towerRotation == 90)
         {
-            xSize = zSizeSaved;
-            zSize = -xSizeSaved;
+            xSize = towerStats.zSize;
+            zSize = -towerStats.xSize;
             xSizeDirection = 1;
             zSizeDirection = -1;    
             xAdjustment = 1;
@@ -159,8 +159,8 @@ public class TowerGridPlacement : MonoBehaviour
         }
         else if (towerRotation == 180)
         {
-            xSize = -xSizeSaved;
-            zSize = -zSizeSaved;
+            xSize = -towerStats.xSize;
+            zSize = -towerStats.zSize;
             xSizeDirection = -1;
             zSizeDirection = -1;
             xAdjustment = 0;
@@ -169,8 +169,8 @@ public class TowerGridPlacement : MonoBehaviour
         }
         else if (towerRotation == 270)
         {
-            xSize = -zSizeSaved;
-            zSize = xSizeSaved;
+            xSize = -towerStats.zSize;
+            zSize = towerStats.xSize;
             xSizeDirection = -1;
             zSizeDirection = 1;
             xAdjustment = 0;

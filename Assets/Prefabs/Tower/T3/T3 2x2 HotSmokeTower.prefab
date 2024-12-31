@@ -1467,6 +1467,7 @@ MonoBehaviour:
   health: 150
   healthLastCheck: 0
   attackedMainTower: []
+  test: {fileID: 3647315434395575687, guid: 5deab6a02b4ecd4408f243d78a26eee5, type: 3}
   TowerStats: {fileID: 11400000, guid: 9d46953cee95bb642a7da93098086c47, type: 2}
 --- !u!114 &2050483745034317072
 MonoBehaviour:
@@ -2673,7 +2674,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8.52, y: 1.5199995, z: 0.024499893}
-  m_LocalScale: {x: 0.6, y: 0.2176596, z: 0.6}
+  m_LocalScale: {x: 0.8702061, y: 0.31568116, z: 0.8702061}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2564742190340688334}
@@ -2697,7 +2698,7 @@ ParticleSystem:
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
-  autoRandomSeed: 1
+  autoRandomSeed: 0
   startDelay:
     serializedVersion: 2
     minMaxState: 0
@@ -3105,7 +3106,7 @@ ParticleSystem:
         m_RotationOrder: 0
     randomizeRotationDirection: 1
     gravitySource: 0
-    maxNumParticles: 500
+    maxNumParticles: 800
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0

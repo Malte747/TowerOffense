@@ -11,6 +11,7 @@ public class HealthTowers : MonoBehaviour
     private bool hasDied = false;
     [HideInInspector] public int healthLastCheck;
     [HideInInspector] public List<GameObject> attackedMainTower = new List<GameObject>();
+    public GameObject test;
 
     private TowerHealthBar _towerHealthBar;
 
@@ -53,15 +54,18 @@ public class HealthTowers : MonoBehaviour
             RemoveEntries(gameObject);
             NavMeshBaking baking = GameObject.Find("NavMesh").GetComponent<NavMeshBaking>();
             baking.StartCoroutine("BakeNavMesh");
+            GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+            gameManager.TurretSupplyPayment(-TowerStats.supplyCost);
+            Instantiate(test, transform.position, Quaternion.identity);
             Destroy(gameObject);
-            
         }
         
     }
 
     IEnumerator DeathAnimation()
     {
-        return null;
+        
+        yield return null;
     }
 
     void RemoveEntries(GameObject targetObject)

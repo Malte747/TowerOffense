@@ -12,7 +12,7 @@ public class TowerKnowsWhereItIs : MonoBehaviour
     void Start()
 
     {
-        if (TowerStats.target != TowerStats.Targets.MainTower)
+        if (TowerStats.target != TowerStats.Targets.MainTower && gameObject.CompareTag("Tower")) 
         {
             Transform rangeIndicator = gameObject.transform.GetChild(1);
             int rangeNumber = (TowerStats.attackRange * 2) + 10;
