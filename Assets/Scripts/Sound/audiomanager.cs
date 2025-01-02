@@ -24,7 +24,6 @@ public class AudioManager : MonoBehaviour
     private AudioSource activeSource;
     private bool isFading = false;
     //private bool loopFading = false;
-    private int currentTrackIndex = 0;
 
     public const string volumeParameter = "MasterVolume"; // Der Name des Lautst�rkeparameters im Mixer
     private bool isMuted = false; // Zustand des Mutes
@@ -61,6 +60,7 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
 
         LoadVolume();
     }
@@ -105,7 +105,14 @@ public class AudioManager : MonoBehaviour
         // Clip f�r die n�chste Quelle festlegen
         AudioSource newSource = (activeSource == audioSourceA) ? audioSourceB : audioSourceA;
         newSource.clip = audioClips[clipIndex];
-        newSource.loop = true;
+        if (audioClips[7])
+        {
+            newSource.loop = false;
+        }
+        else
+        {
+            newSource.loop = true;
+        }
         newSource.Play();
 
         float elapsedTime = 0f;
