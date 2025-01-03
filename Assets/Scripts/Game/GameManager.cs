@@ -98,7 +98,6 @@ public class GameManager : MonoBehaviour
     public Animator goldIncomeTextAnimator;
     public Animator attackerRoundTextAnimator;
     public Animator defenderRoundTextAnimator;
-    
 
     private float animationDuration = 1.0f;
     private int lastSpending;
@@ -118,7 +117,7 @@ public class GameManager : MonoBehaviour
   // UI Animation
 
       public Animator UICanvasAnimator;
-      public Animator PauseButtonAnimator;
+    
 
 
 
@@ -170,7 +169,6 @@ public class GameManager : MonoBehaviour
             roundTextAttackObject.SetActive(true);
             uiManager.ResetTimeScale();
             cameraController.MoveCameraToAttackerPosition();
-            
             
         }
     }
@@ -227,7 +225,6 @@ public class GameManager : MonoBehaviour
             audioManager.ChangeTrackOnRound();
             uiManager.PauseTime();
             ChangeRoundUIAnimation();
-            PauseButtonAnimationBoolTrue();
         }
         else
         {
@@ -235,24 +232,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void CheckIfTurnIsOver()
-    {
-        if(EnemyBibleScript.EnemyBible.Count == 0 && attackerGold < 5)
-        {
-            StartCoroutine(TurnIsOver());
-        }
-    }
-    
-    private IEnumerator TurnIsOver()
-    {
-        yield return new WaitForSecondsRealtime(3f);
-
-        if(attackersTurn && EnemyBibleScript.EnemyBible.Count == 0)
-        {
-            EndTrun();
-        }
-    }
-    
 
     #region GoldAnimation
     public void EnqueueGoldUpdate(int newGoldValue, int spending)
@@ -523,16 +502,6 @@ private IEnumerator UpdateIncomeText()
     {
         UICanvasAnimator.SetTrigger("RoundChange");
         
-    }
-
-    private void PauseButtonAnimationBoolTrue()
-    {
-        PauseButtonAnimator.SetBool("PauseButton", true);
-    }
-
-    public void PauseButtonAnimationBoolFalse()
-    {
-        PauseButtonAnimator.SetBool("PauseButton", false);
     }
 
     #endregion
