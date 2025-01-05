@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: T1 Balista Stats
   m_EditorClassIdentifier: 
   health: 50
-  goldCost: 40
-  supplyCost: 2
+  goldCost: 45
+  supplyCost: 4
   xSize: 1
   zSize: 1
   goldProduced: 0
@@ -23,7 +23,7 @@ MonoBehaviour:
   characterPosition: {x: 0, y: 0, z: 0}
   target: 1
   attackRange: 60
-  damage: 100
+  damage: 75
   attackCooldown: 5
   damageDelay: 0.1
   isRangeUnit: 1

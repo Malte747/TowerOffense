@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1dd767de1da5f4c83f14c8fed5c98c, type: 3}
   m_Name: T3 HotSmokeTowerStats
   m_EditorClassIdentifier: 
-  health: 200
+  health: 120
   goldCost: 100
   supplyCost: 5
   xSize: 2

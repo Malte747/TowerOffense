@@ -250,6 +250,10 @@ PrefabInstance:
       propertyPath: health
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 1697327694870662928, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
+      propertyPath: m_Speed
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 5196856078492085104, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: m_Name
       value: Range Tier 3
