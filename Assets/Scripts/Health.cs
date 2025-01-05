@@ -7,6 +7,7 @@ using System.Linq;
 
 public class Health : MonoBehaviour
 {
+    GameManager gameManager;
     public int health;
     [HideInInspector] public int maxHealth;
     [HideInInspector] public int healthLastCheck;
@@ -17,6 +18,8 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         maxHealth = health;
         healthLastCheck = health;
     }
@@ -39,6 +42,7 @@ public class Health : MonoBehaviour
         animator.SetTrigger("death");
         HealthTowers towerHealth = GameObject.Find("MainTower Prefab(Clone)").GetComponent<HealthTowers>();
         towerHealth.attackedMainTower.Remove(gameObject);
+        gameManager.CheckIfTurnIsOver();
         Destroy(gameObject, 3.6f);             
     }
 
