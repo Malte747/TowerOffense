@@ -87,7 +87,7 @@ public class AudioManager : MonoBehaviour
     // Crossfade zwischen aktiver Quelle und der neuen Quelle
     public void CrossfadeToClip(int clipIndex)
     {
-        Debug.Log("MusicChange");
+        //Debug.Log("MusicChange");
         if (isFading || clipIndex < 0 || clipIndex >= audioClips.Count)
         {
             Debug.LogWarning("Ung�ltiger Clip-Index oder ein Fade l�uft bereits!");
@@ -105,25 +105,27 @@ public class AudioManager : MonoBehaviour
         // Clip f�r die n�chste Quelle festlegen
         AudioSource newSource = (activeSource == audioSourceA) ? audioSourceB : audioSourceA;
         newSource.clip = audioClips[clipIndex];
-        if (audioClips[7])
+        if (clipIndex == 7)
         {
             newSource.loop = false;
+            Debug.Log("Sound1");
         }
         else
         {
             newSource.loop = true;
+            Debug.Log("Sound2");
         }
         newSource.Play();
 
         float elapsedTime = 0f;
 
+    
 
-
-        // Lautst�rke der beiden Quellen interpolieren
+        // Lautstaerke der beiden Quellen interpolieren
         while (elapsedTime < fadeDuration)
         {
             //Debug.Log("7");
-            elapsedTime += Time.unscaledTime;
+            elapsedTime += Time.unscaledDeltaTime;
             float t = elapsedTime / fadeDuration;
 
             activeSource.volume = Mathf.Lerp(1f, 0f, t);
@@ -143,7 +145,7 @@ public class AudioManager : MonoBehaviour
         yield return null;
     }
 
-
+        //Das wonach es klingt
     public void SpawnAudioSources()
     {
         if (audioSourceA == null)
@@ -186,7 +188,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-
+        //Für 2D Audio in der UI
     public void PlaySoundFXUIClip(AudioClip audioClip, Transform spawnTransform, float volume)
     {
         AudioSource audioSource = Instantiate(soundFXObject2D, spawnTransform.position, Quaternion.identity);
@@ -204,7 +206,7 @@ public class AudioManager : MonoBehaviour
         Destroy(audioSource.gameObject, clipLength + 1);
 
     }
-
+        //Für 3D Sound in Game
     public void PlaySoundFXGameClip(AudioClip audioClip, Transform spawnTransform, float volume)
     {
         AudioSource audioSource = Instantiate(soundFXObject3D, spawnTransform.position, Quaternion.identity);
@@ -253,7 +255,7 @@ public class AudioManager : MonoBehaviour
             else if (gameManager.maxTurnCount - 2 >= gameManager.currentTurn)
             {
                 CrossfadeToClip(2);
-                Debug.Log("RoundMusicChange");
+                //Debug.Log("RoundMusicChange");
             }
             else
             {
