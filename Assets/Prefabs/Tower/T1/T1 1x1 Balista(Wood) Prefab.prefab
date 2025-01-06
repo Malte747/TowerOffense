@@ -423,7 +423,7 @@ MonoBehaviour:
   health: 150
   healthLastCheck: 0
   attackedMainTower: []
-  test: {fileID: 3647315434395575687, guid: 5deab6a02b4ecd4408f243d78a26eee5, type: 3}
+  deathObject: {fileID: 3647315434395575687, guid: 5deab6a02b4ecd4408f243d78a26eee5, type: 3}
   TowerStats: {fileID: 11400000, guid: ea207c3a89a57d14b8760aec3d5459c0, type: 2}
 --- !u!114 &2050483745034317072
 MonoBehaviour:
@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TowerStats: {fileID: 11400000, guid: ea207c3a89a57d14b8760aec3d5459c0, type: 2}
-  turningGameObject: {fileID: 0}
+  turningGameObject: {fileID: 2720516455807310656}
   correctionObject: {fileID: 0}
 --- !u!114 &7829610398277998020
 MonoBehaviour:
@@ -1357,6 +1357,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 840969414143273289}
   m_SourcePrefab: {fileID: 100100000, guid: fa45baf3a225cbe42b9b9cd43829e3ee, type: 3}
+--- !u!1 &2720516455807310656 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1888813559026432, guid: fa45baf3a225cbe42b9b9cd43829e3ee, type: 3}
+  m_PrefabInstance: {fileID: 2722288058325289024}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2720919247226968454 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1450476989632966, guid: fa45baf3a225cbe42b9b9cd43829e3ee, type: 3}

@@ -1116,7 +1116,7 @@ MonoBehaviour:
   health: 150
   healthLastCheck: 0
   attackedMainTower: []
-  test: {fileID: 3647315434395575687, guid: 5deab6a02b4ecd4408f243d78a26eee5, type: 3}
+  deathObject: {fileID: 3647315434395575687, guid: 5deab6a02b4ecd4408f243d78a26eee5, type: 3}
   TowerStats: {fileID: 11400000, guid: 17b6e0417fbb5c443a4d095f873921ae, type: 2}
 --- !u!114 &1316378967969799111
 MonoBehaviour:

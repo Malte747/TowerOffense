@@ -19,7 +19,6 @@ public class DuplicateMaterialForChildren : MonoBehaviour
         if (renderers.Length > 0)
         {
             // Duplicate the first renderer's material as a template
-            originalMaterial = renderers[0].material;
             temporaryMaterial = new Material(originalMaterial);
 
             temporaryMaterial.SetFloat("_Surface", 1f);
@@ -35,7 +34,7 @@ public class DuplicateMaterialForChildren : MonoBehaviour
     void Update()
     {
         fadeTimer += Time.deltaTime;
-        if (fadeTimer < fadeDuration && fadeTimer > 0f)
+        if (fadeTimer < fadeDuration && fadeTimer < fadeDuration -1f)
         {
             // Calculate the new alpha value
             float alpha = Mathf.Lerp(1, 0, fadeTimer / fadeDuration);
@@ -45,7 +44,7 @@ public class DuplicateMaterialForChildren : MonoBehaviour
             color.a = alpha;
             temporaryMaterial.color = color;
         }
-        else if (fadeTimer > fadeDuration)
+        else //if (fadeTimer > fadeDuration)
         {
             Destroy(gameObject);
         }

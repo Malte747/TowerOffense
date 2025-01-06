@@ -15,8 +15,8 @@ MonoBehaviour:
   health: 120
   goldCost: 100
   supplyCost: 5
-  xSize: 2
-  zSize: 2
+  xSize: 3
+  zSize: 3
   goldProduced: 0
   animationTriggerString: 
   needsCorrection: 0

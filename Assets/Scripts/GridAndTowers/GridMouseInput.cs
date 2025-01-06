@@ -26,12 +26,14 @@ public class GridMouseInput : MonoBehaviour
         {
             if (hit.collider.CompareTag("GridTag"))
             {
+                //Debug.Log("HitGrid");
                 lastPos = new Vector3(hit.point.x , 0.0f, hit.point.z);
                 mouseOverGrid = true;
                 mouseOverTower = false;
             }
             else if (hit.collider.CompareTag("Tower") || hit.collider.CompareTag("Mine") || hit.collider.CompareTag("Wall") || hit.collider.CompareTag("MainTower"))
             {
+                //Debug.Log("HitTower");
                 lastPos = new Vector3(hit.point.x , 0.0f, hit.point.z);
                 mouseOverGrid = true;
                 mouseOverTower = true;
@@ -42,6 +44,7 @@ public class GridMouseInput : MonoBehaviour
             }
             else
             {
+                //Debug.Log("HitElse");
                 lastPos = new Vector3(hit.point.x , 0, hit.point.z);
                 mouseOverGrid = false;
                 mouseOverTower = false;
@@ -49,9 +52,11 @@ public class GridMouseInput : MonoBehaviour
         }
         else
         {
+            //Debug.Log("HitNothing");
             mouseOverGrid = false;
             mouseOverTower = false;
         }
+        //Debug.Log(lastPos);
         return lastPos;
         
     }
