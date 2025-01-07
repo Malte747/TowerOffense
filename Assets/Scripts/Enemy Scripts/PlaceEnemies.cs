@@ -36,7 +36,7 @@ public class PlaceEnemies : MonoBehaviour
             RaycastHit hit;
             
             if (Physics.Raycast(ray, out hit, 1000, planeLayer) 
-                    && unit.GetComponent<EnemyScript>().supplyCost + manager.attackerSupply <= manager.maxSupply
+                    && unit.GetComponent<EnemyScript>().supplyCost + manager.attackerSupply <= manager.attackerMaxSupply
                     && manager.attackersTurn && unit.GetComponent<EnemyScript>().cost <= manager.attackerGold)
             {
                 indicatorEmpty.transform.position = hit.point;
@@ -75,7 +75,7 @@ public class PlaceEnemies : MonoBehaviour
                     {
                         _uiManager.NotEnoughGoldMessage();
                     }
-                    if(unit.GetComponent<EnemyScript>().supplyCost + manager.attackerSupply > manager.maxSupply)
+                    if(unit.GetComponent<EnemyScript>().supplyCost + manager.attackerSupply > manager.attackerMaxSupply)
                     {
                         _uiManager.NotEnoughSupplyMessage();
                     }
@@ -94,7 +94,7 @@ public class PlaceEnemies : MonoBehaviour
                     {
                         _uiManager.NotEnoughGoldMessage();
                     }
-                    if (unit.GetComponent<EnemyScript>().supplyCost + manager.attackerSupply > manager.maxSupply)
+                    if (unit.GetComponent<EnemyScript>().supplyCost + manager.attackerSupply > manager.attackerMaxSupply)
                     {
                         _uiManager.NotEnoughSupplyMessage();
                     }
@@ -113,7 +113,7 @@ public class PlaceEnemies : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, planeLayer)
                 && unit.GetComponent<EnemyScript>().cost <= manager.attackerGold
-                && unit.GetComponent<EnemyScript>().supplyCost + manager.attackerSupply <= manager.maxSupply)
+                && unit.GetComponent<EnemyScript>().supplyCost + manager.attackerSupply <= manager.attackerMaxSupply)
             {
                 Instantiate(unit, hit.point, Quaternion.identity);
                 manager.UnitPayment(unit.GetComponent<EnemyScript>().cost);

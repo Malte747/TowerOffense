@@ -76,7 +76,7 @@ public class TowerGridPlacement : MonoBehaviour
             //Debug.Log("No Tower Selected.");
             indicatorColor.SetColor("_BaseColor", new Color(0.8392157f, 0.03921568f, 0.06320632f, 0.5f));
         }
-        else if (!hitTower  && towerStats.goldCost  <= gameManager.defenderGold  && towerStats.supplyCost + gameManager.defenderSupply <= gameManager.maxSupply)
+        else if (!hitTower  && towerStats.goldCost  <= gameManager.defenderGold  && towerStats.supplyCost + gameManager.defenderSupply <= gameManager.defenderMaxSupply)
         {
             //Debug.Log("Position is free.");
             indicatorColor.SetColor("_BaseColor", new Color(0.09215922f, 0.838f, 0.04049486f, 0.5f));
@@ -194,7 +194,7 @@ public class TowerGridPlacement : MonoBehaviour
     {
         towerKnowsWhereItIs = Towers[number].GetComponent<TowerKnowsWhereItIs>();
         towerStats = towerKnowsWhereItIs.TowerStats;
-        if (!hitTower && towerStats.goldCost <= gameManager.defenderGold && towerStats.supplyCost + gameManager.defenderSupply <= gameManager.maxSupply)
+        if (!hitTower && towerStats.goldCost <= gameManager.defenderGold && towerStats.supplyCost + gameManager.defenderSupply <= gameManager.defenderMaxSupply)
         {
             gameManager.TurretPayment(towerStats.goldCost);
             gameManager.TurretSupplyPayment(towerStats.supplyCost);
@@ -225,7 +225,7 @@ public class TowerGridPlacement : MonoBehaviour
         {
             _uiManager.NotEnoughGoldMessage();
         }
-        else if (towerStats.supplyCost + gameManager.defenderSupply > gameManager.maxSupply)
+        else if (towerStats.supplyCost + gameManager.defenderSupply > gameManager.defenderMaxSupply)
         {
             _uiManager.NotEnoughSupplyMessage();
         }

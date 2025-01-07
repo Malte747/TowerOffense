@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     [Header("Attacker Stats")]
     public int attackerStartGold;
     [SerializeField] private int attackerGoldIncome;
+    public int attackerMaxSupply;
     
 
 
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
     [Header("Defender Stats")]
     public int defenderStartGold;
     [SerializeField] private int defenderGoldIncome;
+    public int defenderMaxSupply;
     
 
 
@@ -141,7 +143,10 @@ public class GameManager : MonoBehaviour
         defenderGold = defenderStartGold;
         defenderGoldIncome = startGoldIncome;
 
-        SetMaxSupplyValue(maxSupply);
+        attackerMaxSupply = maxSupply;
+        defenderMaxSupply = maxSupply;
+
+        SetMaxSupplyValue(defenderMaxSupply);
         SetCurrentTurnValue(currentTurn);
         SetMaxTurnCountValue(maxTurnCount);
         
@@ -166,6 +171,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine(AnimateGoldTextRoundStartAttack());
             SetSupplyValue(attackerSupply);
             SetIncomeText(attackerGoldIncome);
+            SetMaxSupplyValue(attackerMaxSupply);
             roundTextAttackObject.SetActive(true);
             uiManager.ResetTimeScale();
             cameraController.MoveCameraToAttackerPosition();
@@ -184,6 +190,7 @@ public class GameManager : MonoBehaviour
             goldIncomeTextAnimator.SetTrigger("IncomeAnimation");
             SetSupplyValue(defenderSupply);
             SetIncomeText(defenderGoldIncome);
+            SetMaxSupplyValue(defenderMaxSupply);
             roundTextDefenseObject.SetActive(true);
             uiManager.ResetTimeScale();
             cameraController.MoveCameraToDefenderPosition();
@@ -665,6 +672,19 @@ private IEnumerator UpdateIncomeText()
         SetCurrentIncomeValue(defenderGoldIncome);
 
     }
+
+    public void GainMaxSupplyAttacker(int moreSupply)
+    {
+        attackerMaxSupply = attackerMaxSupply + moreSupply;
+        SetMaxSupplyValue(attackerMaxSupply);
+    }
+
+        public void GainMaxSupplyDefender(int moreSupply)
+    {
+        defenderMaxSupply = defenderMaxSupply + moreSupply;
+        SetMaxSupplyValue(defenderMaxSupply);
+    }
+
 
 
 
