@@ -16,21 +16,19 @@ public class Mine : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        gameManager.GainIncomeDefender(towerStats.goldProduced);
-
-        StartIncomeAnimation(towerStats.goldProduced);
     }
 
-    // Update is called once per frame
-    public void MineIsDying()
+    public void MineMakesMoney()
     {
-        gameManager.GainIncomeDefender(- towerStats.goldProduced);
+        gameManager.GainIncomeDefender(towerStats.goldProduced);
+        StartCoroutine(StartIncomeAnimation(towerStats.goldProduced));
     }
 
-    private void StartIncomeAnimation(int goldProduced)
+    private IEnumerator StartIncomeAnimation(int goldProduced)
     {
         incomeText.text = "+" + goldProduced;
         incomeAnimationCanvas.SetActive(true);
-        Destroy(incomeAnimationCanvas, 1f);
+        yield return new WaitForSeconds(1f);
+        incomeAnimationCanvas.SetActive(false);
     }
 }

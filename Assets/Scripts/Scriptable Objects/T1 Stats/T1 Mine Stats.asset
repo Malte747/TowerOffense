@@ -17,7 +17,7 @@ MonoBehaviour:
   supplyCost: 5
   xSize: 2
   zSize: 2
-  goldProduced: 20
+  goldProduced: 10
   animationTriggerString: 
   needsCorrection: 0
   characterPosition: {x: 0, y: 0, z: 0}

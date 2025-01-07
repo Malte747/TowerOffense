@@ -76,12 +76,13 @@ public class HealthTowers : MonoBehaviour
         .Select(entry => entry.Key)
         .ToList();
 
-        //Remove Gold Income if Mine
-        if(gameObject.CompareTag("Mine"))
+        //Remove Supply if House
+        /*if(gameObject.CompareTag("SupplyHouse"))
         {
-            Mine mine = gameObject.GetComponent<Mine>();
-            mine.MineIsDying();
+            // supplyHouse = gameObject.GetComponent<//>();
+            // function delete supply
         }
+        */
 
         // Remove each of those keys from the dictionary
         foreach (var key in keysToRemove)
