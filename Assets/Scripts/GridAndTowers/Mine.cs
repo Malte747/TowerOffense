@@ -15,6 +15,7 @@ public class Mine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        incomeText = incomeAnimationCanvas.GetComponentInChildren<TMP_Text>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 

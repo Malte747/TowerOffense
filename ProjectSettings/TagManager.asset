@@ -11,6 +11,7 @@ TagManager:
   - TierButtonActive
   - TierButtonInactive
   - MainTower
+  - SupplyHouse
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Grid
   - MainTower
   - UnitPlacement
-  - 
+  - SupplyHouse
   - 
   - 
   - 

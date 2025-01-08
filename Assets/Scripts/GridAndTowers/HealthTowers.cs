@@ -17,12 +17,15 @@ public class HealthTowers : MonoBehaviour
 
     [SerializeField] public TowerStats TowerStats;
 
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     private void Start()
     {
         health = TowerStats.health;
         healthLastCheck = health;
         _towerHealthBar = GetComponent<TowerHealthBar>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
     // Update is called once per frame
     void Update()
@@ -43,9 +46,14 @@ public class HealthTowers : MonoBehaviour
         if (hasDied) return;
         hasDied = true;
         StartCoroutine("DeathAnimation");
+
+        //Unselect Tower in UI upon Death
+        TowerGridPlacement towerGridPlacement = GameObject.Find("TowerGridPlacement").GetComponent<TowerGridPlacement>();
+        if (towerGridPlacement == null) Debug.LogError("Couldn't find TowerGridPlacement to Unselect Tower in UI upon Death");
+        else towerGridPlacement.UnselectTower();
+
         if (gameObject.CompareTag("MainTower"))
         {
-            GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
             gameManager.EndGameAttackerWin();
             GridPlacementSystem.attackerHasWon = true;
         }
@@ -54,7 +62,6 @@ public class HealthTowers : MonoBehaviour
             RemoveEntries(gameObject);
             NavMeshBaking baking = GameObject.Find("NavMesh").GetComponent<NavMeshBaking>();
             baking.StartCoroutine("BakeNavMesh");
-            GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
             gameManager.TurretSupplyPayment(-TowerStats.supplyCost);
             GameObject spawnedDeathObject = Instantiate(deathObject, transform.position, Quaternion.identity);
             spawnedDeathObject.transform.localScale = new Vector3(TowerStats.xSize, 1, TowerStats.zSize);
@@ -77,12 +84,11 @@ public class HealthTowers : MonoBehaviour
         .ToList();
 
         //Remove Supply if House
-        /*if(gameObject.CompareTag("SupplyHouse"))
+        if(gameObject.CompareTag("SupplyHouse"))
         {
-            // supplyHouse = gameObject.GetComponent<//>();
-            // function delete supply
+             SupplyHouse supplyHouse = gameObject.GetComponent<SupplyHouse>();
+             gameManager.GainMaxSupplyDefender(-TowerStats.supplyProduced);
         }
-        */
 
         // Remove each of those keys from the dictionary
         foreach (var key in keysToRemove)

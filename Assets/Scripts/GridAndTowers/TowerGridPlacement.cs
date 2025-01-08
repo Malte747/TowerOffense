@@ -310,7 +310,7 @@ public class TowerGridPlacement : MonoBehaviour
         {
             Outline outline = meshes.AddComponent<Outline>();
             outline.enabled = true;
-            meshes.GetComponent<Outline>().OutlineWidth = 3.0f;
+            meshes.GetComponent<Outline>().OutlineWidth = towerStats.outlineSize;
         }
         MeshRenderer towerBoden = towerKnowsWhereItIs.gameObject.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>();
         towerBoden.renderingLayerMask = 2;

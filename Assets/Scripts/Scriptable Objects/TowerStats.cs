@@ -14,10 +14,14 @@ public class TowerStats : ScriptableObject
     public int xSize;
     [Tooltip("Amount of Tiles in the Z axis")]
     public int zSize;
+    [Tooltip("How big the Outline around the Tower is")]
+    public float outlineSize = 2f;
 
-    [Header("Mine Stats")]
+    [Header("Production Stats")]
     [Tooltip("Amount of Gold this Mine adds to the Gold gained each round")]
     public int goldProduced;
+    [Tooltip("Amount of Supply this House adds to the Supply maximun of the defender")]
+    public int supplyProduced;
 
     [Header("Animation Infos")]
     [Tooltip("Select Animations for the Tower.")]

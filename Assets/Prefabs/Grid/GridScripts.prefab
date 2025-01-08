@@ -47,7 +47,7 @@ MonoBehaviour:
   sceneCamera: {fileID: 0}
   placementLayermask:
     serializedVersion: 2
-    m_Bits: 2033
+    m_Bits: 6129
 --- !u!1 &3284549935587087356
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a271fdcfb9a607499632c569016e00a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indicatorColor: {fileID: 2100000, guid: 3c9f9b6f979957a4f90455a1c6499a38, type: 2}
+  indicatorColor: {fileID: 2100000, guid: 6134a93c0438a664bbe7c8a18619bce9, type: 2}
   indicator: {fileID: 0}
   gameManager: {fileID: 0}
   MainTowerPrefab: {fileID: 8765416124214331734, guid: dd72e76fb4bc0004095cf820a0f694d8, type: 3}
@@ -112,7 +112,15 @@ MonoBehaviour:
   - {fileID: 3647315434395575687, guid: 59f1f3166b9a16f49a001843964bd865, type: 3}
   - {fileID: 3647315434395575687, guid: 0c2088759c4a78a419c11da2aba1ac8d, type: 3}
   - {fileID: 3647315434395575687, guid: 7aa96cc4f45146d4b82279143411bcd5, type: 3}
+  - {fileID: 5118707114311981384, guid: 23d314322f425cc4293d5b1f6e3e216e, type: 3}
+  - {fileID: 5118707114311981384, guid: 777b48dd70ae06d4d92aef0b5945e0da, type: 3}
+  - {fileID: 3647315434395575687, guid: 7548f989acea48c4abdbf3e7b72efaee, type: 3}
   IndicatorTowers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
