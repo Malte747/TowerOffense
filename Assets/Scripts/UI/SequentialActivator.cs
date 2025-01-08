@@ -16,7 +16,8 @@ public class SequentialActivator : MonoBehaviour
 
     public int Tier2Price = 10;
     public int Tier3Price = 100;
-    public int upgradePrice = 30;
+    public int upgradePriceStart = 30;
+    public int upgradePrice;
 
     //Text
     [Header("text")]
@@ -34,6 +35,7 @@ public class SequentialActivator : MonoBehaviour
         tierTextDefense.text = "Upgraden zu Tier 2";
         goldPriceTextAttack.text = upgradePrice.ToString();
         goldPriceTextDefense.text = Tier2Price.ToString();
+        upgradePrice = upgradePriceStart;
 
     }
 
@@ -198,8 +200,10 @@ public void ResetUITierButtons()
     // Zurücksetzen der Texte
     tierTextAttack.text = "Upgraden zu Tier 2";
     tierTextDefense.text = "Upgraden zu Tier 2";
+    upgradePrice = upgradePriceStart;
     goldPriceTextAttack.text = upgradePrice.ToString();
     goldPriceTextDefense.text = Tier2Price.ToString();
+
 
     // Zurücksetzen der Indizes
     currentIndex = 0;

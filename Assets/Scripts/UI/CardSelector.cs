@@ -15,7 +15,7 @@ public class CardSelector : MonoBehaviour
     {
         public GameObject prefab;
         public int tier;
-        public float spawnChance;
+        public float spawnChance; // Wahrscheinlichkeit, dass diese Karte ausgewählt wird
         public string cardName; // Eindeutiger Name/Identifier für die Karte
     }
 
@@ -27,13 +27,12 @@ public class CardSelector : MonoBehaviour
 
     private List<GameObject> spawnedCards = new List<GameObject>();
 
-    private Vector3[] spawnPositions = new Vector3[]
+    private Vector3[] spawnPositions = new Vector3[] 
     {
         new Vector3(401, 530, 0),
         new Vector3(960, 530, 0),
         new Vector3(1519, 530, 0)
     };
-
 
     void Start()
     {
@@ -42,19 +41,19 @@ public class CardSelector : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-
     // Aufrufen der Karten
     public void CallCards()
     {
-        if(sequentialActivator.upgradePrice > gameManager.attackerGold)
+        if (sequentialActivator.upgradePrice > gameManager.attackerGold)
         {
-            return; 
+            return;
         }
 
         sequentialActivator.BuyUpgradeAttack();
         uiManager.StartCardSelector();
         DeleteCards(); // Lösche vorherige Karten
 
+        // Nur Karten mit dem Tier <= currentTier auswählen
         List<Card> validCards = cards.FindAll(card => card.tier <= currentTier);
 
         if (validCards.Count < spawnPositions.Length)
@@ -63,29 +62,60 @@ public class CardSelector : MonoBehaviour
             return;
         }
 
-        ShuffleList(validCards);
+        // Karten ohne Wiederholungen spawnieren
+        List<Card> selectedCards = new List<Card>();
 
         for (int i = 0; i < spawnPositions.Length; i++)
         {
-            GameObject cardPrefab = validCards[i].prefab;
+            Card selectedCard = SelectCardBasedOnChance(validCards, selectedCards);
+            GameObject cardPrefab = selectedCard.prefab;
             GameObject spawnedCard = Instantiate(cardPrefab, spawnPositions[i], Quaternion.identity, canvasTransform);
             spawnedCards.Add(spawnedCard);
+            selectedCards.Add(selectedCard); // Karte zum 'selectedCards' hinzufügen, um Wiederholungen zu vermeiden
         }
     }
 
-    // Zufälliges Mischen der Kartenliste
-    private void ShuffleList(List<Card> list)
+    // Auswahl einer Karte basierend auf der spawnChance und Vermeidung von Duplikaten
+    private Card SelectCardBasedOnChance(List<Card> validCards, List<Card> selectedCards)
     {
-        for (int i = list.Count - 1; i > 0; i--)
+        // Filtern der bereits ausgewählten Karten
+        List<Card> availableCards = new List<Card>(validCards);
+        foreach (Card selectedCard in selectedCards)
         {
-            int randomIndex = Random.Range(0, i + 1);
-            Card temp = list[i];
-            list[i] = list[randomIndex];
-            list[randomIndex] = temp;
+            availableCards.Remove(selectedCard); // Entfernen der bereits ausgewählten Karten
         }
+
+        if (availableCards.Count == 0)
+        {
+            Debug.LogError("Keine verfügbaren Karten zum Spawnen.");
+            return null;
+        }
+
+        // Berechnung der Gesamt-Wahrscheinlichkeit
+        float totalChance = 0f;
+        foreach (Card card in availableCards)
+        {
+            totalChance += card.spawnChance;
+        }
+
+        // Zufallswert generieren
+        float randomValue = Random.Range(0f, totalChance);
+        float accumulatedChance = 0f;
+
+        foreach (Card card in availableCards)
+        {
+            accumulatedChance += card.spawnChance;
+            if (randomValue <= accumulatedChance)
+            {
+                return card; // Rückgabe der ausgewählten Karte
+            }
+        }
+
+        // Falls keine Karte ausgewählt wurde, gebe die letzte zurück (Sicherheitsnetz)
+        return availableCards[availableCards.Count - 1];
     }
 
-    // Lösche alle derzeitigen Karten
+    // Löscht alle derzeitigen Karten
     public void DeleteCards()
     {
         foreach (GameObject card in spawnedCards)
@@ -127,9 +157,12 @@ public class CardSelector : MonoBehaviour
         cards.Clear();
         cards.AddRange(cardsBackup);
         currentTier = 1;
+        currentTier = 1;
         Debug.Log("Alle Karten wurden zurückgesetzt.");
+    }
 
-
-
+    public void TierUp()
+    {
+        currentTier++;
     }
 }

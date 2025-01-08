@@ -28,7 +28,16 @@ public class CardEffects : MonoBehaviour
     public void Tier2Upgrade()
     {
         sequentialActivator.BuyTierUpgradeAttack();
+        cardSelector.TierUp();
         cardSelector.RemoveCardFromPool("Tier2Upgrade");
+         
+    }
+
+    public void Tier3Upgrade()
+    {
+        sequentialActivator.BuyTierUpgradeAttack();
+        cardSelector.TierUp();
+        cardSelector.RemoveCardFromPool("Tier3Upgrade");
          
     }
 
