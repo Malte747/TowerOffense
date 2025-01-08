@@ -17,6 +17,7 @@ public class Mine : MonoBehaviour
     {
         incomeText = incomeAnimationCanvas.GetComponentInChildren<TMP_Text>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        MineMakesMoney();
     }
 
     public void MineMakesMoney()

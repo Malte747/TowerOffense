@@ -194,6 +194,7 @@ public class GameManager : MonoBehaviour
             roundTextDefenseObject.SetActive(true);
             uiManager.ResetTimeScale();
             cameraController.MoveCameraToDefenderPosition();
+            Invoke("GenerateMineIncome", 3f);
             
            
             
@@ -500,6 +501,23 @@ private IEnumerator UpdateIncomeText()
 
     currentIncomeText.text = "+ " + incomeValue.ToString();
 }
+
+    //Finds all mines in the Dictonary and starts their MineMakesMoney() method
+ public void GenerateMineIncome()
+ {
+     List<GameObject> taggedObjects = new List<GameObject>();
+
+     foreach (GameObject obj in TowerGridPlacement.TowerBible.Values)
+     {
+         if (obj != null && obj.CompareTag("Mine") && !taggedObjects.Contains(obj))
+         {
+             taggedObjects.Add(obj);
+             //Debug.Log(taggedObjects.Count);
+             Mine mineScript = obj.GetComponent<Mine>();
+             mineScript.MineMakesMoney();
+         }
+     }
+ }
 
 
 
