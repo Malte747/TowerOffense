@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     SequentialActivator sequentialActivator;
     AudioManager audioManager;
     CameraController cameraController;
+    CardSelector cardSelector;
 
 
 
@@ -132,6 +133,7 @@ public class GameManager : MonoBehaviour
         placeEnemies = GameObject.Find("EnemyPlacementPlane").GetComponent<PlaceEnemies>();
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         cameraController = GameObject.Find("Camera Rig").GetComponent<CameraController>();
+        cardSelector = GameObject.Find("GameManager").GetComponent<CardSelector>();
     }
 
     public void GameStart()
@@ -870,6 +872,7 @@ private IEnumerator UpdateIncomeText()
         //placeEnemies.ResetGameUnits();
         resettingUnits = true;
         ResetIngameValues();
+        cardSelector.ResetAllCards();
         
     }
 

@@ -16,6 +16,7 @@ public class SequentialActivator : MonoBehaviour
 
     public int Tier2Price = 10;
     public int Tier3Price = 100;
+    public int upgradePrice = 30;
 
     //Text
     [Header("text")]
@@ -31,7 +32,7 @@ public class SequentialActivator : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         tierTextAttack.text = "Upgraden zu Tier 2";
         tierTextDefense.text = "Upgraden zu Tier 2";
-        goldPriceTextAttack.text = Tier2Price.ToString();
+        goldPriceTextAttack.text = upgradePrice.ToString();
         goldPriceTextDefense.text = Tier2Price.ToString();
 
     }
@@ -64,28 +65,14 @@ public class SequentialActivator : MonoBehaviour
 
     public void BuyTierUpgradeAttack()
     {
-        if(currentIndexAttack + 2 <= objectsToActivateAttack.Count)
-        {
-             if(currentIndexAttack == 0 && gameManager.attackerGold >= Tier2Price)
-            {
-                gameManager.UnitPayment(Tier2Price);
                 ActivateNextObjectAttack();
-                tierTextAttack.text = "Upgraden zu Tier 3";
-                goldPriceTextAttack.text = Tier3Price.ToString();
+    }
 
-            }
-            else if(currentIndexAttack == 1 && gameManager.attackerGold  >= Tier3Price)
-            {
-                gameManager.UnitPayment(Tier3Price);
-                ActivateNextObjectAttack();
-                tierTextAttack.text = "Max Tier";
-                goldPriceTextAttack.text = "-";
-            }
-            else
-            {
-                Debug.Log("Not enough Gold");
-            }
-        }
+    public void BuyUpgradeAttack()
+    {
+        gameManager.UnitPayment(upgradePrice);
+        upgradePrice = upgradePrice + 20;
+        goldPriceTextAttack.text = upgradePrice.ToString();
     }
 
 
@@ -116,6 +103,7 @@ public class SequentialActivator : MonoBehaviour
 
         public void ActivateNextObjectAttack()
     {
+    /*
         // Deaktiviert alle Objekte in der Liste
         foreach (var obj in objectsToActivateAttack)
         {
@@ -125,12 +113,11 @@ public class SequentialActivator : MonoBehaviour
         {
             SetButtonsInteractable(obj, false);
         }
+    */
+        
+        currentIndexAttack = currentIndexAttack + 1;
 
-        // Inkrementiere den Index, und wenn das Ende der Liste erreicht ist, starte von vorn
-        currentIndexAttack = (currentIndexAttack + 1) % objectsToActivateAttack.Count;
-
-        // Aktiviere das nächste Objekt in der Liste
-        objectsToActivateAttack[currentIndexAttack].SetActive(true);
+       // objectsToActivateAttack[currentIndexAttack].SetActive(true);
 
             for (int i = 0; i <= currentIndexAttack; i++)
         {
@@ -211,7 +198,7 @@ public void ResetUITierButtons()
     // Zurücksetzen der Texte
     tierTextAttack.text = "Upgraden zu Tier 2";
     tierTextDefense.text = "Upgraden zu Tier 2";
-    goldPriceTextAttack.text = Tier2Price.ToString();
+    goldPriceTextAttack.text = upgradePrice.ToString();
     goldPriceTextDefense.text = Tier2Price.ToString();
 
     // Zurücksetzen der Indizes

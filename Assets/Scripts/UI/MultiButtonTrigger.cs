@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class MultiButtonTrigger : MonoBehaviour
 {
+    UIManager uiManager;
     [System.Serializable]
     public struct KeyButtonPair
     {
@@ -29,6 +30,7 @@ public class MultiButtonTrigger : MonoBehaviour
 
     void Start()
     {
+        uiManager = GameObject.Find("UiManager").GetComponent<UIManager>();
         // Standardmäßig das erste Menü als aktiv setzen (z. B. das Hauptmenü)
         if (menus.Count > 0)
         {
@@ -48,7 +50,7 @@ public class MultiButtonTrigger : MonoBehaviour
         // Überprüfe die Tasten für das aktive Menü
         foreach (var pair in buttonMapping)
         {
-            if (Input.GetKeyDown(pair.Key))
+            if (Input.GetKeyDown(pair.Key) && uiManager.isPaused == false && uiManager.cardSelectionInProgress == false)
             {
                 HandleButtonPress(pair.Value);
             }

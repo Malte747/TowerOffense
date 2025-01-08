@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9145123453110784212}
   - component: {fileID: 363030609527304405}
   - component: {fileID: 3312278497822602383}
+  - component: {fileID: 5839520108187526385}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -51,11 +52,24 @@ MonoBehaviour:
   maxTurnCount: 10
   attackerStartGold: 100
   attackerGoldIncome: 0
+  attackerMaxSupply: 0
   defenderStartGold: 50
   defenderGoldIncome: 0
+  defenderMaxSupply: 0
   startGoldIncome: 10
   gameInProgress: 0
+  gameInMemory: 0
   towerRepairCostMultiplier: 0
+  attackerGold: 0
+  defenderGold: 0
+  attackerSupply: 0
+  defenderSupply: 0
+  maxSupply: 20
+  victoryScreen: {fileID: 0}
+  imageDefender: {fileID: 0}
+  imageAttacker: {fileID: 0}
+  winnerTextAttacker: {fileID: 0}
+  winnerTextDefender: {fileID: 0}
   goldText: {fileID: 0}
   currentIncomeText: {fileID: 0}
   supplyText: {fileID: 0}
@@ -70,6 +84,8 @@ MonoBehaviour:
   goldIncomeTextAnimator: {fileID: 0}
   attackerRoundTextAnimator: {fileID: 0}
   defenderRoundTextAnimator: {fileID: 0}
+  UICanvasAnimator: {fileID: 0}
+  PauseButtonAnimator: {fileID: 0}
 --- !u!114 &3312278497822602383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,17 +104,17 @@ MonoBehaviour:
     background: {fileID: 0}
     border: {fileID: 0}
     identifier: StartGoldIncome
-    shortGame: 50
-    mediumGame: 50
-    longGame: 50
+    shortGame: 200
+    mediumGame: 150
+    longGame: 150
   - slider: {fileID: 0}
     inputField: {fileID: 0}
     background: {fileID: 0}
     border: {fileID: 0}
     identifier: StartGold
-    shortGame: 150
-    mediumGame: 100
-    longGame: 100
+    shortGame: 0
+    mediumGame: 0
+    longGame: 0
   - slider: {fileID: 0}
     inputField: {fileID: 0}
     background: {fileID: 0}
@@ -120,24 +136,51 @@ MonoBehaviour:
     background: {fileID: 0}
     border: {fileID: 0}
     identifier: StartGoldAttacker
-    shortGame: 150
-    mediumGame: 100
-    longGame: 100
+    shortGame: 0
+    mediumGame: 0
+    longGame: 0
   - slider: {fileID: 0}
     inputField: {fileID: 0}
     background: {fileID: 0}
     border: {fileID: 0}
     identifier: StartGoldDefender
-    shortGame: 150
-    mediumGame: 100
-    longGame: 100
+    shortGame: 0
+    mediumGame: 0
+    longGame: 0
   - slider: {fileID: 0}
     inputField: {fileID: 0}
     background: {fileID: 0}
     border: {fileID: 0}
     identifier: RepairMultiplier
-    shortGame: 30
-    mediumGame: 30
-    longGame: 30
+    shortGame: 75
+    mediumGame: 75
+    longGame: 75
   gameManager: {fileID: 363030609527304405}
   repairCalculationInfoText: {fileID: 0}
+--- !u!114 &5839520108187526385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607305795470544464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28bcb715d634500489f397231c8c01c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardPrefabs:
+  - prefab: {fileID: 251591928943294585, guid: 3c731b6d1de9e3642ba73755ca05277c, type: 3}
+    tier: 1
+    spawnChance: 1
+  - prefab: {fileID: 5178374813386493665, guid: e0ab7a50fd3f2b447996c748207ba675, type: 3}
+    tier: 1
+    spawnChance: 1
+  - prefab: {fileID: 7675062849656339059, guid: 6fb80f9d1cfc64749b64f9e5a63e3798, type: 3}
+    tier: 1
+    spawnChance: 1
+  - prefab: {fileID: 7945180777871222806, guid: 972e9c094b866414e9ecd2215f6f3369, type: 3}
+    tier: 1
+    spawnChance: 1
+  canvasTransform: {fileID: 0}
+  currentTier: 1

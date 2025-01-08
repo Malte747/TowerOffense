@@ -48,6 +48,8 @@ public class UIManager : MonoBehaviour
     //Menu UI
 
     public GameObject resumeGame;
+    public GameObject cardSelector;
+    public bool cardSelectionInProgress;
 
 
     
@@ -62,7 +64,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && gameManager.gameInProgress)
+        if (Input.GetKeyDown(KeyCode.Escape) && gameManager.gameInProgress && !cardSelectionInProgress)
         {
 
             
@@ -377,5 +379,24 @@ public class UIManager : MonoBehaviour
 
     #endregion
 
+    #region CardSelector
 
+
+    public void StartCardSelector()
+    {
+        cardSelector.SetActive(true);
+        cardSelectionInProgress = true;
+    }
+    public void EndCardSelector()
+    {
+        cardSelector.SetActive(false);
+        cardSelectionInProgress = false;
+    }
+
+
+
+
+
+
+    #endregion
 }
