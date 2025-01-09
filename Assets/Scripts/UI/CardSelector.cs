@@ -34,6 +34,11 @@ public class CardSelector : MonoBehaviour
         new Vector3(1519, 530, 0)
     };
 
+    // Farmer Revolt
+
+    public GameObject FarmerPrefab; 
+    public GameObject[] FarmerSpawnPoints; 
+
     void Start()
     {
         uiManager = GameObject.Find("UiManager").GetComponent<UIManager>();
@@ -48,7 +53,8 @@ public class CardSelector : MonoBehaviour
         {
             return;
         }
-
+        
+        uiManager.TogglePause();
         sequentialActivator.BuyUpgradeAttack();
         uiManager.StartCardSelector();
         DeleteCards(); // Lösche vorherige Karten
@@ -165,4 +171,38 @@ public class CardSelector : MonoBehaviour
     {
         currentTier++;
     }
+
+
+    public void SpawnFarmerPrefabs(int numberOfPrefabsToSpawn)
+    {
+    if (FarmerSpawnPoints.Length == 0)
+    {
+        Debug.LogError("Keine Spawnpunkte definiert!");
+        return;
+    }
+
+    if (numberOfPrefabsToSpawn > FarmerSpawnPoints.Length)
+    {
+        Debug.LogError("Zu viele Prefabs angegeben! Es gibt nicht genügend einzigartige Spawnpunkte.");
+        return;
+    }
+
+    // Erstelle eine Liste der verfügbaren Spawnpunkte
+    List<GameObject> availableSpawnPoints = new List<GameObject>(FarmerSpawnPoints);
+
+    for (int i = 0; i < numberOfPrefabsToSpawn; i++)
+    {
+        // Wähle einen zufälligen Index aus der verfügbaren Liste
+        int randomIndex = Random.Range(0, availableSpawnPoints.Count);
+
+        // Spawne das FarmerPrefab an der Position und Rotation des ausgewählten Spawnpunkts
+        Instantiate(FarmerPrefab, availableSpawnPoints[randomIndex].transform.position, availableSpawnPoints[randomIndex].transform.rotation);
+
+        // Entferne den verwendeten Spawnpunkt aus der Liste
+        availableSpawnPoints.RemoveAt(randomIndex);
+    }
+
+    Debug.Log($"{numberOfPrefabsToSpawn} Farmer wurden zufällig an einzigartigen Positionen gespawnt.");
+    }
+
 }

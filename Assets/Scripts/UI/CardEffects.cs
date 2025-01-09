@@ -41,5 +41,28 @@ public class CardEffects : MonoBehaviour
          
     }
 
+    public void SupplyUpgrade(int SupplyIncease)
+    {
+        gameManager.GainMaxSupplyAttacker(SupplyIncease);
+    }
+
+    public void IncomeUpgrade(int IncomeIncease)
+    {
+        gameManager.GainIncomeAttacker(IncomeIncease);
+    }
+
+    public void GoldUpgrade(int GoldIncease)
+    {
+        gameManager.UnitPayment(-GoldIncease);
+    }
+
+    public void FarmerRevolt(int farmers)
+    {
+        cardSelector.SpawnFarmerPrefabs(farmers);
+    }
+    
+
+
+
 
 }
