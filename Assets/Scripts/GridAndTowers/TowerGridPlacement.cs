@@ -48,6 +48,7 @@ public class TowerGridPlacement : MonoBehaviour
         placingTowers = false;
         clickedTowerParent = gameObject;
         _uiManager = GameObject.Find("UiManager").GetComponent<UIManager>();
+        BuildSoundList(); //Liste Für TowerPlaceSFX
     }
 
     void Update()
@@ -202,6 +203,9 @@ public class TowerGridPlacement : MonoBehaviour
             PlacedTower = Instantiate(Towers[number], grid.CellToWorld(GridPlacementSystem.gridPosition + towerRotationCorrection), GridPlacementSystem.rotationSave);
             towerKnowsWhereItIs = PlacedTower.GetComponent<TowerKnowsWhereItIs>();
             towerStats = towerKnowsWhereItIs.TowerStats;
+
+            //Sound wird abgespielt
+            towerSFX.PlayTowerSound(TowerPlaceSound[number]); //Spielt die gewünschte SFX Nummer
 
             GameObject NavMesh = GameObject.Find("NavMesh");
             if (NavMesh != null)
@@ -378,5 +382,29 @@ public class TowerGridPlacement : MonoBehaviour
     }
 
 
+    #endregion
+
+    #region Sound
+    private AudioManager towerSFX; // Referenz zum AudioManager Script 
+
+    public  List <int> TowerPlaceSound;
+
+    private void BuildSoundList()
+    {
+        towerSFX = GameObject.Find("AudioManager").GetComponent<AudioManager>(); //Nimmt den Audio Manager in das Script
+
+        //Platziert eine Listen Platz für TowerIndex Nummer mit passendem Sound im Audiomanager.
+        TowerPlaceSound.Add(6);
+        TowerPlaceSound.Add(3);
+        TowerPlaceSound.Add(10);
+        TowerPlaceSound.Add(7);
+        TowerPlaceSound.Add(4);
+        TowerPlaceSound.Add(11);
+        TowerPlaceSound.Add(14);
+        TowerPlaceSound.Add(16);
+        TowerPlaceSound.Add(17);
+        TowerPlaceSound.Add(18);
+        TowerPlaceSound.Add(5);
+    }
     #endregion
 }

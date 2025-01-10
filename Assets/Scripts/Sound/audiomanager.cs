@@ -35,7 +35,9 @@ public class AudioManager : MonoBehaviour
     [Header("SFX")]
 
     [Header("Game")]
-    [SerializeField] private List<AudioClip> _gameSFX;
+    [SerializeField] private List<AudioClip> _towerSFX;
+    [SerializeField] private List<AudioClip> _unitSFX;
+    [SerializeField] private List<AudioClip> _generalSFX;
 
     [Header("UI")]
     [SerializeField] private List<AudioClip> _uiSFX;
@@ -225,13 +227,30 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    public void PlayGameSound(int soundIndex)
+    public void PlayTowerSound(int soundIndex)
     {
-        if (soundIndex >= 0 && soundIndex < _gameSFX.Count)
+        if (soundIndex >= 0 && soundIndex < _towerSFX.Count)
         {
-            PlaySoundFXGameClip(_gameSFX[soundIndex], transform, 1f);
+            PlaySoundFXGameClip(_towerSFX[soundIndex], transform, 1f);
         }
     }
+
+    public void PlayUnitSound(int soundIndex)
+    {
+        if (soundIndex >= 0 && soundIndex < _unitSFX.Count)
+        {
+            PlaySoundFXGameClip(_unitSFX[soundIndex], transform, 1f);
+        }
+    }
+
+    public void PlayGeneralSound(int soundIndex)
+    {
+        if (soundIndex >= 0 && soundIndex < _generalSFX.Count)
+        {
+            PlaySoundFXGameClip(_generalSFX[soundIndex], transform, 1f);
+        }
+    }
+
 
 
     public void PlayUISound(int soundIndex)

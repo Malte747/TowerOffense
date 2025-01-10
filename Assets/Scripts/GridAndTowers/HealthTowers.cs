@@ -18,6 +18,7 @@ public class HealthTowers : MonoBehaviour
     [SerializeField] public TowerStats TowerStats;
 
     private GameManager gameManager;
+    private AudioManager towerSFX; // Referenz zum AudioManager Script 
 
     // Start is called before the first frame update
     private void Start()
@@ -26,6 +27,7 @@ public class HealthTowers : MonoBehaviour
         healthLastCheck = health;
         _towerHealthBar = GetComponent<TowerHealthBar>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        towerSFX = GameObject.Find("AudioManager").GetComponent<AudioManager>(); //Nimmt den Audio Manager in das Script
     }
     // Update is called once per frame
     void Update()
@@ -46,6 +48,9 @@ public class HealthTowers : MonoBehaviour
         if (hasDied) return;
         hasDied = true;
         StartCoroutine("DeathAnimation");
+
+        //An der stelle, an welcher SFX ausgelöst werden sollen platzieren
+        towerSFX.PlayTowerSound(1); //Spielt die gewünschte SFX Nummer
 
         //Unselect Tower in UI upon Death
         TowerGridPlacement towerGridPlacement = GameObject.Find("TowerGridPlacement").GetComponent<TowerGridPlacement>();

@@ -58,7 +58,36 @@ MonoBehaviour:
   fadeDuration: 2
   loopFadeDuration: 5
   musicMixer: {fileID: -8651801749233867576, guid: de32485de7f40e6449350a56d56b28c9, type: 2}
-  _gameSFX: []
+  _towerSFX:
+  - {fileID: 8300000, guid: 68b0c0f3ea89f9d478fbf98d93c398d1, type: 3}
+  - {fileID: 8300000, guid: 5e340ba836cf3b04a98d9ce26761e787, type: 3}
+  - {fileID: 8300000, guid: 5e340ba836cf3b04a98d9ce26761e787, type: 3}
+  - {fileID: 8300000, guid: 2ce2901585477c64bb351d9b86b21381, type: 3}
+  - {fileID: 8300000, guid: 2ce2901585477c64bb351d9b86b21381, type: 3}
+  - {fileID: 8300000, guid: 2ce2901585477c64bb351d9b86b21381, type: 3}
+  - {fileID: 8300000, guid: 2ce2901585477c64bb351d9b86b21381, type: 3}
+  - {fileID: 8300000, guid: 2ce2901585477c64bb351d9b86b21381, type: 3}
+  - {fileID: 8300000, guid: 68b0c0f3ea89f9d478fbf98d93c398d1, type: 3}
+  - {fileID: 8300000, guid: 68b0c0f3ea89f9d478fbf98d93c398d1, type: 3}
+  - {fileID: 8300000, guid: 2ce2901585477c64bb351d9b86b21381, type: 3}
+  - {fileID: 8300000, guid: 2ce2901585477c64bb351d9b86b21381, type: 3}
+  - {fileID: 8300000, guid: 68b0c0f3ea89f9d478fbf98d93c398d1, type: 3}
+  - {fileID: 8300000, guid: 68b0c0f3ea89f9d478fbf98d93c398d1, type: 3}
+  - {fileID: 8300000, guid: 2af11a0e203e42d428987cbb8eb60846, type: 3}
+  - {fileID: 8300000, guid: 68b0c0f3ea89f9d478fbf98d93c398d1, type: 3}
+  - {fileID: 8300000, guid: 2ce2901585477c64bb351d9b86b21381, type: 3}
+  - {fileID: 8300000, guid: 2ce2901585477c64bb351d9b86b21381, type: 3}
+  - {fileID: 8300000, guid: 2ce2901585477c64bb351d9b86b21381, type: 3}
+  - {fileID: 8300000, guid: 68b0c0f3ea89f9d478fbf98d93c398d1, type: 3}
+  - {fileID: 8300000, guid: 68b0c0f3ea89f9d478fbf98d93c398d1, type: 3}
+  - {fileID: 8300000, guid: 68b0c0f3ea89f9d478fbf98d93c398d1, type: 3}
+  - {fileID: 8300000, guid: 68b0c0f3ea89f9d478fbf98d93c398d1, type: 3}
+  - {fileID: 8300000, guid: 68b0c0f3ea89f9d478fbf98d93c398d1, type: 3}
+  - {fileID: 8300000, guid: 68b0c0f3ea89f9d478fbf98d93c398d1, type: 3}
+  - {fileID: 8300000, guid: 68b0c0f3ea89f9d478fbf98d93c398d1, type: 3}
+  - {fileID: 8300000, guid: 68b0c0f3ea89f9d478fbf98d93c398d1, type: 3}
+  _unitSFX: []
+  _generalSFX: []
   _uiSFX:
   - {fileID: 8300000, guid: 7c16acdee48d0da4ba13492542002ab0, type: 3}
   - {fileID: 8300000, guid: 577520f59290a3047be1ff4b5c57b9eb, type: 3}

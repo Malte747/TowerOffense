@@ -2,21 +2,20 @@ using UnityEngine;
 
 public class MuteMixer : MonoBehaviour
 {
-    AudioManager audioManager; // Referenz zum CrossfadeAudio-Skript
+    public AudioManager uiSFX; // Referenz zum AudioManager Script 
+
+
+    private void Start()
+    {
+        uiSFX = GameObject.Find("AudioManager").GetComponent<AudioManager>(); //Nimmt den Audio Manager das Script
+    }
+
 
     void Update()
     {
-        // Beispiel: Drücke "1", um Track mit Index 1 abzuspielen
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            if (audioManager != null)
-            {
-                audioManager.CrossfadeToClip(1);
-            }
-            else
-            {
-                Debug.LogWarning("CrossfadeAudio-Skript ist nicht zugewiesen!");
-            }
-        }
+
+        //An der stelle, an welcher SFX ausgelöst werden sollen platzieren
+        uiSFX.PlayUISound(Random.Range( 0, 1)); //Spielt die gewünschte SFX Nummer
+
     }
 }
