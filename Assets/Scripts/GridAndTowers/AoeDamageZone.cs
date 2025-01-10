@@ -15,6 +15,7 @@ public class AoeDamageZone : MonoBehaviour
 
     void Damage()
     {
+        bool didDamage = false;
         foreach (Vector3 pos in EnemyBibleScript.EnemyBible.Keys)
         {
             if(Vector3.Distance(transform.position, pos) <= towerStats.attackRange) 
@@ -24,9 +25,15 @@ public class AoeDamageZone : MonoBehaviour
                     GameObject nextVictim = EnemyBibleScript.EnemyBible[pos];
                     Health health = nextVictim.GetComponent<Health>();
                     health.health -= towerStats.damage;
+                    didDamage = true;
+
                 }
             }
 
+        }
+        if (didDamage)
+        {
+            //Sound
         }
     }
 }
