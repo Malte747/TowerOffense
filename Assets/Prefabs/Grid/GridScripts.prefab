@@ -113,9 +113,11 @@ MonoBehaviour:
   - {fileID: 3647315434395575687, guid: 0c2088759c4a78a419c11da2aba1ac8d, type: 3}
   - {fileID: 3647315434395575687, guid: 7aa96cc4f45146d4b82279143411bcd5, type: 3}
   - {fileID: 5118707114311981384, guid: 23d314322f425cc4293d5b1f6e3e216e, type: 3}
+  - {fileID: 5118707114311981384, guid: 9ad61e494fe2c3f45880725f94780761, type: 3}
   - {fileID: 5118707114311981384, guid: 777b48dd70ae06d4d92aef0b5945e0da, type: 3}
   - {fileID: 3647315434395575687, guid: 7548f989acea48c4abdbf3e7b72efaee, type: 3}
   IndicatorTowers:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

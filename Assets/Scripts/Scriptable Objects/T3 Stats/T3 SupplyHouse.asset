@@ -17,8 +17,9 @@ MonoBehaviour:
   supplyCost: 0
   xSize: 2
   zSize: 2
+  outlineSize: 2
   goldProduced: 0
-  supplyProduced: 30
+  supplyProduced: 35
   animationTriggerString: 
   needsCorrection: 0
   characterPosition: {x: 0, y: 0, z: 0}
