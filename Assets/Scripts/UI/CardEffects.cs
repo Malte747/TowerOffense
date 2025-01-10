@@ -73,6 +73,14 @@ public class CardEffects : MonoBehaviour
         sequentialActivator.LowerUpgradePrice(percent);
         cardSelector.RemoveCardFromPool("LowerUpgradePriceT3");
     }
+
+    public void WallLooseHPPercent(int percentage)
+    {
+        cardSelector.TowersLooseHP(percentage, "Wall");
+        
+
+
+    }
     
     
 
