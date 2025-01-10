@@ -18,7 +18,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3411859582668008015, guid: 3c731b6d1de9e3642ba73755ca05277c, type: 3}
       propertyPath: m_text
-      value: "Erschafft 10 Bauern \ndie mit dir in den \nKampf ziehen"
+      value: '5 Bauern ziehen
+
+        mit dir in den Kampf '
       objectReference: {fileID: 0}
     - target: {fileID: 3617735964140955883, guid: 3c731b6d1de9e3642ba73755ca05277c, type: 3}
       propertyPath: m_IsActive
@@ -142,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6746487331897051788, guid: 3c731b6d1de9e3642ba73755ca05277c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6746487331897051788, guid: 3c731b6d1de9e3642ba73755ca05277c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName

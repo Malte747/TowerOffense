@@ -30,11 +30,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4367516999459906024, guid: 3c731b6d1de9e3642ba73755ca05277c, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 126
+      value: 123
       objectReference: {fileID: 0}
     - target: {fileID: 4367516999459906024, guid: 3c731b6d1de9e3642ba73755ca05277c, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 126
+      value: 133
       objectReference: {fileID: 0}
     - target: {fileID: 6636631043000299068, guid: 3c731b6d1de9e3642ba73755ca05277c, type: 3}
       propertyPath: m_Pivot.x
@@ -199,7 +199,7 @@ PrefabInstance:
     - target: {fileID: 8032935470475645606, guid: 3c731b6d1de9e3642ba73755ca05277c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d0e9695c0153948809694226675d9b29, type: 3}
+      objectReference: {fileID: 21300000, guid: 0bb9dda66f02346938e16c8fe9d6b054, type: 3}
     - target: {fileID: 8168222826139767024, guid: 3c731b6d1de9e3642ba73755ca05277c, type: 3}
       propertyPath: m_text
       value: Mehr Zelte

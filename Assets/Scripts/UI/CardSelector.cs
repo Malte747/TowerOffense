@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class CardSelector : MonoBehaviour
 {
-
     UIManager uiManager;
     GameManager gameManager;
     SequentialActivator sequentialActivator;
-
 
     [System.Serializable]
     public class Card
@@ -17,6 +15,7 @@ public class CardSelector : MonoBehaviour
         public int tier;
         public float spawnChance; // Wahrscheinlichkeit, dass diese Karte ausgewählt wird
         public string cardName; // Eindeutiger Name/Identifier für die Karte
+        public int spawnFromRoll; // Der minimale rollCount, ab dem diese Karte spawnen kann
     }
 
     public List<Card> cards; // Aktuelle Karten im Pool
@@ -24,20 +23,19 @@ public class CardSelector : MonoBehaviour
 
     public Transform canvasTransform;
     public int currentTier = 1;
+    public int rollCount = 0; // Zählt die Anzahl der Aufrufe von CallCards()
 
     private List<GameObject> spawnedCards = new List<GameObject>();
 
-    private Vector3[] spawnPositions = new Vector3[] 
+    private Vector3[] spawnPositions = new Vector3[]
     {
         new Vector3(401, 530, 0),
         new Vector3(960, 530, 0),
         new Vector3(1519, 530, 0)
     };
 
-    // Farmer Revolt
-
-    public GameObject FarmerPrefab; 
-    public GameObject[] FarmerSpawnPoints; 
+    public GameObject FarmerPrefab;
+    public GameObject[] FarmerSpawnPoints;
 
     void Start()
     {
@@ -53,14 +51,16 @@ public class CardSelector : MonoBehaviour
         {
             return;
         }
-        
+
+        rollCount++; // Erhöhe den rollCount bei jedem Aufruf
+
         uiManager.TogglePause();
         sequentialActivator.BuyUpgradeAttack();
         uiManager.StartCardSelector();
         DeleteCards(); // Lösche vorherige Karten
 
-        // Nur Karten mit dem Tier <= currentTier auswählen
-        List<Card> validCards = cards.FindAll(card => card.tier <= currentTier);
+        // Nur Karten auswählen, die den aktuellen tier und den rollCount erfüllen
+        List<Card> validCards = cards.FindAll(card => card.tier <= currentTier && card.spawnFromRoll <= rollCount);
 
         if (validCards.Count < spawnPositions.Length)
         {
@@ -74,21 +74,23 @@ public class CardSelector : MonoBehaviour
         for (int i = 0; i < spawnPositions.Length; i++)
         {
             Card selectedCard = SelectCardBasedOnChance(validCards, selectedCards);
-            GameObject cardPrefab = selectedCard.prefab;
-            GameObject spawnedCard = Instantiate(cardPrefab, spawnPositions[i], Quaternion.identity, canvasTransform);
-            spawnedCards.Add(spawnedCard);
-            selectedCards.Add(selectedCard); // Karte zum 'selectedCards' hinzufügen, um Wiederholungen zu vermeiden
+            if (selectedCard != null)
+            {
+                GameObject cardPrefab = selectedCard.prefab;
+                GameObject spawnedCard = Instantiate(cardPrefab, spawnPositions[i], Quaternion.identity, canvasTransform);
+                spawnedCards.Add(spawnedCard);
+                selectedCards.Add(selectedCard); // Karte zum 'selectedCards' hinzufügen, um Wiederholungen zu vermeiden
+            }
         }
     }
 
     // Auswahl einer Karte basierend auf der spawnChance und Vermeidung von Duplikaten
     private Card SelectCardBasedOnChance(List<Card> validCards, List<Card> selectedCards)
     {
-        // Filtern der bereits ausgewählten Karten
         List<Card> availableCards = new List<Card>(validCards);
         foreach (Card selectedCard in selectedCards)
         {
-            availableCards.Remove(selectedCard); // Entfernen der bereits ausgewählten Karten
+            availableCards.Remove(selectedCard);
         }
 
         if (availableCards.Count == 0)
@@ -97,14 +99,12 @@ public class CardSelector : MonoBehaviour
             return null;
         }
 
-        // Berechnung der Gesamt-Wahrscheinlichkeit
         float totalChance = 0f;
         foreach (Card card in availableCards)
         {
             totalChance += card.spawnChance;
         }
 
-        // Zufallswert generieren
         float randomValue = Random.Range(0f, totalChance);
         float accumulatedChance = 0f;
 
@@ -113,11 +113,10 @@ public class CardSelector : MonoBehaviour
             accumulatedChance += card.spawnChance;
             if (randomValue <= accumulatedChance)
             {
-                return card; // Rückgabe der ausgewählten Karte
+                return card;
             }
         }
 
-        // Falls keine Karte ausgewählt wurde, gebe die letzte zurück (Sicherheitsnetz)
         return availableCards[availableCards.Count - 1];
     }
 
@@ -154,16 +153,14 @@ public class CardSelector : MonoBehaviour
     {
         if (cardsBackup == null || cardsBackup.Count == 0)
         {
-            // Wenn noch keine Backup-Liste vorhanden ist, erstellen wir eine
             cardsBackup = new List<Card>(cards);
             Debug.Log("Karten wurden gesichert.");
         }
 
-        // Karten wiederherstellen, falls sie entfernt wurden
         cards.Clear();
         cards.AddRange(cardsBackup);
         currentTier = 1;
-        currentTier = 1;
+        rollCount = 0; // Setze den rollCount zurück
         Debug.Log("Alle Karten wurden zurückgesetzt.");
     }
 
@@ -172,37 +169,29 @@ public class CardSelector : MonoBehaviour
         currentTier++;
     }
 
-
     public void SpawnFarmerPrefabs(int numberOfPrefabsToSpawn)
     {
-    if (FarmerSpawnPoints.Length == 0)
-    {
-        Debug.LogError("Keine Spawnpunkte definiert!");
-        return;
+        if (FarmerSpawnPoints.Length == 0)
+        {
+            Debug.LogError("Keine Spawnpunkte definiert!");
+            return;
+        }
+
+        if (numberOfPrefabsToSpawn > FarmerSpawnPoints.Length)
+        {
+            Debug.LogError("Zu viele Prefabs angegeben! Es gibt nicht genügend einzigartige Spawnpunkte.");
+            return;
+        }
+
+        List<GameObject> availableSpawnPoints = new List<GameObject>(FarmerSpawnPoints);
+
+        for (int i = 0; i < numberOfPrefabsToSpawn; i++)
+        {
+            int randomIndex = Random.Range(0, availableSpawnPoints.Count);
+            Instantiate(FarmerPrefab, availableSpawnPoints[randomIndex].transform.position, availableSpawnPoints[randomIndex].transform.rotation);
+            availableSpawnPoints.RemoveAt(randomIndex);
+        }
+
+        Debug.Log($"{numberOfPrefabsToSpawn} Farmer wurden zufällig an einzigartigen Positionen gespawnt.");
     }
-
-    if (numberOfPrefabsToSpawn > FarmerSpawnPoints.Length)
-    {
-        Debug.LogError("Zu viele Prefabs angegeben! Es gibt nicht genügend einzigartige Spawnpunkte.");
-        return;
-    }
-
-    // Erstelle eine Liste der verfügbaren Spawnpunkte
-    List<GameObject> availableSpawnPoints = new List<GameObject>(FarmerSpawnPoints);
-
-    for (int i = 0; i < numberOfPrefabsToSpawn; i++)
-    {
-        // Wähle einen zufälligen Index aus der verfügbaren Liste
-        int randomIndex = Random.Range(0, availableSpawnPoints.Count);
-
-        // Spawne das FarmerPrefab an der Position und Rotation des ausgewählten Spawnpunkts
-        Instantiate(FarmerPrefab, availableSpawnPoints[randomIndex].transform.position, availableSpawnPoints[randomIndex].transform.rotation);
-
-        // Entferne den verwendeten Spawnpunkt aus der Liste
-        availableSpawnPoints.RemoveAt(randomIndex);
-    }
-
-    Debug.Log($"{numberOfPrefabsToSpawn} Farmer wurden zufällig an einzigartigen Positionen gespawnt.");
-    }
-
 }

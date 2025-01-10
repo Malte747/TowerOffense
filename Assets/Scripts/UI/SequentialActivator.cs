@@ -22,7 +22,6 @@ public class SequentialActivator : MonoBehaviour
     //Text
     [Header("text")]
     
-    [SerializeField] public TMP_Text tierTextAttack;
     [SerializeField] public TMP_Text goldPriceTextAttack;
     [SerializeField] public TMP_Text tierTextDefense;    
     [SerializeField] public TMP_Text goldPriceTextDefense;
@@ -31,7 +30,7 @@ public class SequentialActivator : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        tierTextAttack.text = "Upgraden zu Tier 2";
+      
         tierTextDefense.text = "Upgraden zu Tier 2";
         goldPriceTextAttack.text = upgradePrice.ToString();
         goldPriceTextDefense.text = Tier2Price.ToString();
@@ -73,7 +72,7 @@ public class SequentialActivator : MonoBehaviour
     public void BuyUpgradeAttack()
     {
         gameManager.UnitPayment(upgradePrice);
-        upgradePrice = upgradePrice + 20;
+        upgradePrice = upgradePrice + 10;
         goldPriceTextAttack.text = upgradePrice.ToString();
     }
 
@@ -198,7 +197,6 @@ public void ResetUITierButtons()
     }
     
     // Zurücksetzen der Texte
-    tierTextAttack.text = "Upgraden zu Tier 2";
     tierTextDefense.text = "Upgraden zu Tier 2";
     upgradePrice = upgradePriceStart;
     goldPriceTextAttack.text = upgradePrice.ToString();
