@@ -60,6 +60,20 @@ public class CardEffects : MonoBehaviour
     {
         cardSelector.SpawnFarmerPrefabs(farmers);
     }
+
+    public void LowerUpgradePricePercentage(int percentage)
+    {
+        int percent = 100 - percentage;
+        sequentialActivator.LowerUpgradePrice(percent);
+    }
+
+    public void LowerUpgradePricePercentageOnce(int percentage)
+    {
+        int percent = 100 - percentage;
+        sequentialActivator.LowerUpgradePrice(percent);
+        cardSelector.RemoveCardFromPool("LowerUpgradePriceT3");
+    }
+    
     
 
 

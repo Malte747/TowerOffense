@@ -59,7 +59,7 @@ public class CardSelector : MonoBehaviour
         uiManager.StartCardSelector();
         DeleteCards(); // Lösche vorherige Karten
 
-        // Nur Karten auswählen, die den aktuellen tier und den rollCount erfüllen
+        // Nur Karten auswählen, die den aktuellen Tier und den rollCount erfüllen
         List<Card> validCards = cards.FindAll(card => card.tier <= currentTier && card.spawnFromRoll <= rollCount);
 
         if (validCards.Count < spawnPositions.Length)
@@ -68,7 +68,12 @@ public class CardSelector : MonoBehaviour
             return;
         }
 
-        // Karten ohne Wiederholungen spawnieren
+        StartCoroutine(SpawnCardsWithDelay(validCards));
+    }
+
+    // Coroutine zum verzögerten Spawnen der Karten
+    private IEnumerator SpawnCardsWithDelay(List<Card> validCards)
+    {
         List<Card> selectedCards = new List<Card>();
 
         for (int i = 0; i < spawnPositions.Length; i++)
@@ -79,8 +84,11 @@ public class CardSelector : MonoBehaviour
                 GameObject cardPrefab = selectedCard.prefab;
                 GameObject spawnedCard = Instantiate(cardPrefab, spawnPositions[i], Quaternion.identity, canvasTransform);
                 spawnedCards.Add(spawnedCard);
-                selectedCards.Add(selectedCard); // Karte zum 'selectedCards' hinzufügen, um Wiederholungen zu vermeiden
+                selectedCards.Add(selectedCard);
             }
+
+            // Warte 0,2 Sekunden (unscaled time)
+            yield return new WaitForSecondsRealtime(0.1f);
         }
     }
 

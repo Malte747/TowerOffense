@@ -76,6 +76,12 @@ public class SequentialActivator : MonoBehaviour
         goldPriceTextAttack.text = upgradePrice.ToString();
     }
 
+    public void LowerUpgradePrice(int percentage)
+    {
+        upgradePrice = upgradePrice * percentage / 100;
+        goldPriceTextAttack.text = upgradePrice.ToString();
+    }
+
 
     public void ActivateNextObject()
     {
