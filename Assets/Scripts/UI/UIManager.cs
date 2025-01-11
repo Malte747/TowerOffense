@@ -51,13 +51,19 @@ public class UIManager : MonoBehaviour
     public GameObject cardSelector;
     public bool cardSelectionInProgress;
 
+    //How To Play
 
+    public Button PlayButton;
+    public Toggle hTPToggle;
+    public bool HowToPlayWantsToBeSeen = false;
+    public GameObject hTPScreen;
     
 
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         messageSystem = GetComponent<MessageSystem>();
+        hTPToggle.onValueChanged.AddListener(delegate { ToggleChanged(); });
 
         ActivateResumeGameButton();
     }
@@ -397,6 +403,34 @@ public class UIManager : MonoBehaviour
 
 
 
+
+    #endregion
+
+    #region HowToPlay
+
+    public void CheckIfHowToPlayWantsToBeSeen()
+    {
+        if(HowToPlayWantsToBeSeen == true)
+        {
+            PlayButton.onClick.Invoke();
+        }
+        else
+        {
+            hTPScreen.SetActive(true);
+        }
+    }
+
+    public void ToggleChanged()
+    {
+        // Ändere den Bool basierend auf dem Toggle-Zustand
+        UpdateBool(hTPToggle.isOn);
+    }
+
+    private void UpdateBool(bool isOn)
+    {
+        HowToPlayWantsToBeSeen = isOn;
+        Debug.Log("myBool ist jetzt: " + HowToPlayWantsToBeSeen);
+    }
 
     #endregion
 }
