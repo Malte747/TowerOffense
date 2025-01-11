@@ -22,52 +22,49 @@ public class PlaceEnemies : MonoBehaviour
     }
     void Update()
     {
-        if(!manager.attackersTurn)
+        if(!manager.attackersTurn) //Deactivates placing because Attackers Turn
         {
-            foreach (GameObject unit in indicatorUnits)
-            {
-                unit.SetActive(false);
-            }
-            placingUnit = false;
+            StopPlacingUnits();
         }
-        if (placingUnit)
+        if (placingUnit) 
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             
             if (Physics.Raycast(ray, out hit, 1000, planeLayer) 
                     && unit.GetComponent<EnemyScript>().supplyCost + manager.attackerSupply <= manager.attackerMaxSupply
-                    && manager.attackersTurn && unit.GetComponent<EnemyScript>().cost <= manager.attackerGold)
+                    && manager.attackersTurn && unit.GetComponent<EnemyScript>().cost <= manager.attackerGold) //Check is Unit is allowed to be placed
             {
                 indicatorEmpty.transform.position = hit.point;
                 indicatorColor.SetColor("_BaseColor", new Color(0.09215922f, 0.838f, 0.04049486f, 0.5f));
-                
-                    if (Input.GetMouseButtonDown(0) && !EnemyBibleScript.EnemyBible.ContainsKey(hit.point))
-                    {
-                        Instantiate(unit, hit.point, Quaternion.identity);
-                        manager.UnitPayment(unit.GetComponent<EnemyScript>().cost);
-                        manager.UnitSupplyPayment(unit.GetComponent<EnemyScript>().supplyCost);
-                        if (!Input.GetKey(KeyCode.LeftShift))
-                        {
-                            placingUnit = false;
-                            foreach (GameObject unit in indicatorUnits)
-                            {
-                                unit.SetActive(false);
-                            }
-                        }
+                Debug.Log("Grün");
 
+                if (Input.GetMouseButtonDown(0) && !EnemyBibleScript.EnemyBible.ContainsKey(hit.point))
+                {
+                    Instantiate(unit, hit.point, Quaternion.identity);
+                    manager.UnitPayment(unit.GetComponent<EnemyScript>().cost);
+                    manager.UnitSupplyPayment(unit.GetComponent<EnemyScript>().supplyCost);
+                    if (!Input.GetKey(KeyCode.LeftShift))
+                    {
+                        StopPlacingUnits();
                     }
-                
-                
-                    
-                
-                
-                
+
+                }
+                else if (Input.GetMouseButtonDown(1))
+                {
+                    StopPlacingUnits();
+                }
+
+
+
+
+
             }
-            else if (Physics.Raycast(ray, out hit, 1000))
+            else if (Physics.Raycast(ray, out hit, 1000)) //Raycast hits something other than UnitPlacementLayer
             {
                 indicatorColor.SetColor("_BaseColor", new Color(0.8392157f, 0.03921568f, 0.06320632f, 0.5f));
                 indicatorEmpty.transform.position = hit.point;
+                Debug.Log("Rot");
 
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -85,8 +82,12 @@ public class PlaceEnemies : MonoBehaviour
                     }
                     
                 }
+                else if (Input.GetMouseButtonDown(1))
+                {
+                    StopPlacingUnits();
+                }
             }
-            else
+            else //Raycast hits nothing -> Error Messages
             {
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -102,6 +103,10 @@ public class PlaceEnemies : MonoBehaviour
                     {
                         _uiManager.CannotBuildHereMessage();
                     }
+                }
+                else if (Input.GetMouseButtonDown(1))
+                {
+                    StopPlacingUnits();
                 }
             }
         }
@@ -121,6 +126,15 @@ public class PlaceEnemies : MonoBehaviour
             }
         }
         */
+    }
+
+    void StopPlacingUnits()
+    {
+        placingUnit = false;
+        foreach (GameObject unit in indicatorUnits)
+         {
+             unit.SetActive(false);
+         }
     }
 
     public void ChangeUnit(int unitNumber)

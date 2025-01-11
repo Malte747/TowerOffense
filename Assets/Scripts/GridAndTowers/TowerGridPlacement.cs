@@ -47,14 +47,23 @@ public class TowerGridPlacement : MonoBehaviour
         indicator.SetActive(false);
         placingTowers = false;
         clickedTowerParent = gameObject;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _uiManager = GameObject.Find("UiManager").GetComponent<UIManager>();
         BuildSoundList(); //Liste Für TowerPlaceSFX
     }
 
     void Update()
     {
-        #region Grid Check 
+        if (!gameManager.defendersTurn) StopPlacingTowers();
 
+        if (healthTowers != null && healthTowers.health < healthTowers.healthLastCheck)
+        {
+            TowerInfoUIHPChange();
+        }
+
+        if (!gameManager.defendersTurn) return;
+
+        #region Grid Check 
         hitTower = false;
         for (int i = 1; i <= Mathf.Abs(xSize); i++)
         {
@@ -181,12 +190,6 @@ public class TowerGridPlacement : MonoBehaviour
 
         #endregion
 
-        if (!gameManager.defendersTurn) StopPlacingTowers();
-
-        if(healthTowers != null && healthTowers.health < healthTowers.healthLastCheck)
-        {
-            TowerInfoUIHPChange();
-        }
     }
 
     #region Place Towers 
