@@ -17,9 +17,19 @@ public class ProjectileTower : MonoBehaviour
 
     [SerializeField] private GameObject projectileEffect;
     [SerializeField] private GameObject lingeringAoeObject;
+
+    private AudioManager generalSFX; // Referenz zum AudioManager Script
+
+    [SerializeField] private int soundNumber1,soundNumber2,impactSoundNumber1,impactSoundNumber2;
+
     void Start()
     {
         lastPosition = transform.position;
+
+        generalSFX = GameObject.Find("AudioManager").GetComponent<AudioManager>(); //Nimmt den Audio Manager in das Script
+        //An der stelle, an welcher SFX ausgelöst werden sollen platzieren
+        generalSFX.PlayGeneralSound(Random.Range(soundNumber1, soundNumber2)); //Spielt die gewünschte SFX Nummer
+
     }
     void Update()
     {
@@ -104,6 +114,10 @@ public class ProjectileTower : MonoBehaviour
             lingeringZone.GetComponent<CellDoesDamage>().towerStats = TowerStats;
             lingeringZone.GetComponent<CellDoesDamage>().cellPosition = cellPosition;
         }
+
+        //Spielt Impact Sound
+        generalSFX.PlayGeneralSound(Random.Range(impactSoundNumber1, impactSoundNumber2));
+        //generalSFX.Invoke(nameof(PlayGeneralSound(Random.Range(impactSoundNumber1, impactSoundNumber2))), 1);
         Destroy(gameObject);
     }
 }

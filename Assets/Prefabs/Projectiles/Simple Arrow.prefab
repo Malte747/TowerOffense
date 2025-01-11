@@ -50,6 +50,10 @@ MonoBehaviour:
   p3: {x: 0, y: 0, z: 0}
   victim: {fileID: 0}
   damage: 0
+  soundNumber1: 0
+  soundNumber2: 2
+  impactSoundNumber1: 4
+  impactSoundNumber2: 6
   gotShotBy: {fileID: 0}
   speed: 1
 --- !u!1001 &2079508245801584199

@@ -128,13 +128,13 @@ public class PlaceEnemies : MonoBehaviour
         */
     }
 
-    void StopPlacingUnits()
+    public void StopPlacingUnits() //Info: Wird vom Button aus gecalled wenn die Upgrade Karten gecalled werden
     {
         placingUnit = false;
         foreach (GameObject unit in indicatorUnits)
-         {
-             unit.SetActive(false);
-         }
+        {
+            unit.SetActive(false);
+        }
     }
 
     public void ChangeUnit(int unitNumber)

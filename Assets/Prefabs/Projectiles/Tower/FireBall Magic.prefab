@@ -139,3 +139,8 @@ MonoBehaviour:
   victim: {fileID: 0}
   TowerStats: {fileID: 0}
   projectileEffect: {fileID: 886914414428803424, guid: 81cb4418178d50d47b70d9bf3423cd57, type: 3}
+  lingeringAoeObject: {fileID: 0}
+  soundNumber1: 2
+  soundNumber2: 4
+  impactSoundNumber1: 6
+  impactSoundNumber2: 9

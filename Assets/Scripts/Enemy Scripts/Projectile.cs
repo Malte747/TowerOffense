@@ -12,6 +12,9 @@ public class Projectile : MonoBehaviour
     public GameObject victim;
     public int damage;
 
+    private AudioManager generalSFX; // Referenz zum AudioManager Script
+    [SerializeField] private int soundNumber1, soundNumber2, impactSoundNumber1, impactSoundNumber2; //Tabellennummer für SFX
+
     [HideInInspector] public GameObject gotShotBy;
 
 private Vector3 lastPosition;
@@ -22,7 +25,11 @@ private Vector3 lastPosition;
 void Start()
 {
     lastPosition = transform.position;
-}
+
+        generalSFX = GameObject.Find("AudioManager").GetComponent<AudioManager>(); //Nimmt den Audio Manager in das Script
+        //An der stelle, an welcher SFX ausgelöst werden sollen platzieren
+        generalSFX.PlayGeneralSound(Random.Range(soundNumber1, soundNumber2)); //Spielt die gewünschte SFX Nummer
+    }
     void Update()
     {
         
@@ -62,7 +69,9 @@ void Start()
                 health.health -= damage;
                 if (victim.CompareTag("MainTower") && !health.attackedMainTower.Contains(gotShotBy)) health.attackedMainTower.Add(gotShotBy);
             }
-        } 
+        }
+        //Spielt Impact Sound
+        generalSFX.PlayGeneralSound(Random.Range(impactSoundNumber1, impactSoundNumber2));
         Destroy(gameObject);
     }
 
