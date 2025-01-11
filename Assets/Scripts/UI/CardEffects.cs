@@ -78,10 +78,25 @@ public class CardEffects : MonoBehaviour
     {
         cardSelector.TowersLooseHP(percentage, "Wall");
         
-
-
     }
     
+    public void DestroyRandomWalls(int amount)
+     {
+        cardSelector.DestroyBuilding(amount, "Wall");
+
+     }
+
+    public void DestroyRandomMines(int amount)
+     {
+        cardSelector.DestroyBuilding(amount, "Mine");
+
+     }
+
+    public void DestroyRandomTowers(int amount)
+     {
+        cardSelector.DestroyBuilding(amount, "Tower");
+
+     }
     
 
 

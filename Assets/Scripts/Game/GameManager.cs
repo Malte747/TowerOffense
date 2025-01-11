@@ -177,6 +177,7 @@ public class GameManager : MonoBehaviour
             roundTextAttackObject.SetActive(true);
             uiManager.ResetTimeScale();
             cameraController.MoveCameraToAttackerPosition();
+            audioManager.PlayUISound(13); 
             
         }
     }
@@ -196,6 +197,7 @@ public class GameManager : MonoBehaviour
             roundTextDefenseObject.SetActive(true);
             uiManager.ResetTimeScale();
             cameraController.MoveCameraToDefenderPosition();
+            audioManager.PlayUISound(12); 
             Invoke("GenerateMineIncome", 3f);
             
            
@@ -781,6 +783,7 @@ private IEnumerator UpdateIncomeText()
         imageAttacker.SetActive(false);
         imageDefender.SetActive(true);
         victoryScreen.SetActive(true);
+        audioManager.PlayUISound(19);
         audioManager.CrossfadeToClip(7);
 
     }
@@ -811,6 +814,7 @@ private IEnumerator UpdateIncomeText()
         imageAttacker.SetActive(true);
         imageDefender.SetActive(false);
         victoryScreen.SetActive(true);
+        audioManager.PlayUISound(20); 
         audioManager.CrossfadeToClip(7);
     }
 
