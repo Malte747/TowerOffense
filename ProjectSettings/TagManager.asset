@@ -12,6 +12,7 @@ TagManager:
   - TierButtonInactive
   - MainTower
   - SupplyHouse
+  - LingeringDamage
   layers:
   - Default
   - TransparentFX

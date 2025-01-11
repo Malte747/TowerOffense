@@ -10,8 +10,9 @@ using UnityEngine.XR;
 
 public class TowerGridPlacement : MonoBehaviour
 {
-    //public List<Vector3Int> Occupied;
     public static Dictionary<Vector3, GameObject> TowerBible = new Dictionary<Vector3, GameObject>();
+
+    public static Dictionary<Vector3Int, GameObject> cellsWithLingeringAoe = new Dictionary<Vector3Int, GameObject>();
 
     public Material indicatorColor;
     public GameObject indicator;
@@ -208,7 +209,7 @@ public class TowerGridPlacement : MonoBehaviour
             towerStats = towerKnowsWhereItIs.TowerStats;
 
             //Sound wird abgespielt
-            towerSFX.PlayTowerSound(TowerPlaceSound[number]); //Spielt die gewünschte SFX Nummer
+            if(TowerPlaceSound.Count > number) towerSFX.PlayTowerSound(TowerPlaceSound[number]); //Spielt die gewünschte SFX Nummer
 
             GameObject NavMesh = GameObject.Find("NavMesh");
             if (NavMesh != null)

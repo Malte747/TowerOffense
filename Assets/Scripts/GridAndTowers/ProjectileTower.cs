@@ -16,7 +16,7 @@ public class ProjectileTower : MonoBehaviour
     float t;
 
     [SerializeField] private GameObject projectileEffect;
-
+    [SerializeField] private GameObject lingeringAoeObject;
     void Start()
     {
         lastPosition = transform.position;
@@ -92,8 +92,17 @@ public class ProjectileTower : MonoBehaviour
     private void DestroyProjectile()
     {
         if (projectileEffect != null)
-        {
+        { 
             Instantiate(projectileEffect, transform.position, Quaternion.identity);
+        }
+        if (TowerStats.lingeringAoe)
+        {
+            Grid grid = GameObject.Find("Grid").GetComponent<Grid>();
+            Vector3Int cellPosition = grid.WorldToCell(new Vector3(transform.position.x, 0, transform.position.z));
+            GameObject lingeringZone = Instantiate(lingeringAoeObject, grid.CellToWorld(cellPosition), Quaternion.identity);
+            //Debug.Log(cellPosition);
+            lingeringZone.GetComponent<CellDoesDamage>().towerStats = TowerStats;
+            lingeringZone.GetComponent<CellDoesDamage>().cellPosition = cellPosition;
         }
         Destroy(gameObject);
     }

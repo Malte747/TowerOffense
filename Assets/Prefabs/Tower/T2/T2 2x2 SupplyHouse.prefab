@@ -511,9 +511,9 @@ GameObject:
   - component: {fileID: 6416956774828367993}
   - component: {fileID: 6443349763918914857}
   - component: {fileID: 6433546662416805499}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SM_Bld_Preset_House_05_Glass_Optimized
-  m_TagString: Untagged
+  m_TagString: SupplyHouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -595,9 +595,9 @@ GameObject:
   - component: {fileID: 6443324083109920169}
   - component: {fileID: 6435229671088920825}
   - component: {fileID: 6484844371265318845}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SM_Bld_Preset_House_05_Optimized
-  m_TagString: Untagged
+  m_TagString: SupplyHouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -805,9 +805,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5775098891640569107}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: House T2 2x2
-  m_TagString: Untagged
+  m_TagString: SupplyHouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -42,7 +42,8 @@ public class TowerStats : ScriptableObject
         LowHP,
         BiggestGroup,
         MainTower,
-        AoeArea
+        AoeArea,
+        CellDoesDamage
     }
     [Header("Attack Stats")]
     [Tooltip("Select which units this tower will attack. It will try to avoid the others.")]
@@ -69,8 +70,12 @@ public class TowerStats : ScriptableObject
     public int speed;
     [Tooltip("Does the Projectile do Aoe Damage")]
     public bool aoe;
-    [Tooltip("Does the Projectile crerate a Zone of Aoe Damage")]
-    public bool lingeringAoe;
     [Tooltip("Size of the Aoe Damage")]
     public int aoeSize;
+    [Tooltip("Does the Projectile crerate a Zone of Aoe Damage")]
+    public bool lingeringAoe;
+    [Tooltip("Duaration of the CellDamage")]
+    public int lingeringAoeDuration;
+    [Tooltip("Damage of the CellDamage")]
+    public int lingeringAoeDamage;
 }

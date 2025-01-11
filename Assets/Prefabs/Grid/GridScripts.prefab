@@ -116,6 +116,7 @@ MonoBehaviour:
   - {fileID: 5118707114311981384, guid: 9ad61e494fe2c3f45880725f94780761, type: 3}
   - {fileID: 5118707114311981384, guid: 777b48dd70ae06d4d92aef0b5945e0da, type: 3}
   - {fileID: 3647315434395575687, guid: 7548f989acea48c4abdbf3e7b72efaee, type: 3}
+  - {fileID: 105868477381129354, guid: 9d07fde7e6b48bc42831dc12ac402c89, type: 3}
   IndicatorTowers:
   - {fileID: 0}
   - {fileID: 0}
@@ -129,6 +130,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  TowerPlaceSound: 
 --- !u!1 &4745229804335225613
 GameObject:
   m_ObjectHideFlags: 0

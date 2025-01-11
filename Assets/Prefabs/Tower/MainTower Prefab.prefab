@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36e6995d135fa34d96aff9691c0ee54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TowerStats: {fileID: 11400000, guid: 46f37463b9e48f1408e49cc5f2abec67, type: 2}
+  towerStats: {fileID: 11400000, guid: 46f37463b9e48f1408e49cc5f2abec67, type: 2}
   turningGameObject: {fileID: 4931397309654121723}
   correctionObject: {fileID: 0}
 --- !u!1 &2324020160402269710
@@ -386,7 +386,7 @@ RectTransform:
   m_Father: {fileID: 267053626628096681}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1033,7 +1033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36e6995d135fa34d96aff9691c0ee54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TowerStats: {fileID: 11400000, guid: 46f37463b9e48f1408e49cc5f2abec67, type: 2}
+  towerStats: {fileID: 11400000, guid: 46f37463b9e48f1408e49cc5f2abec67, type: 2}
   turningGameObject: {fileID: 683424227945858515}
   correctionObject: {fileID: 0}
 --- !u!1 &8765416124214331734
@@ -1179,7 +1179,7 @@ MonoBehaviour:
   health: 400
   healthLastCheck: 0
   attackedMainTower: []
-  test: {fileID: 3647315434395575687, guid: 5deab6a02b4ecd4408f243d78a26eee5, type: 3}
+  deathObject: {fileID: 0}
   TowerStats: {fileID: 11400000, guid: 46f37463b9e48f1408e49cc5f2abec67, type: 2}
 --- !u!114 &5638260760014479153
 MonoBehaviour:

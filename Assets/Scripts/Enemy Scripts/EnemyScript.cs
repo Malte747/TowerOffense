@@ -147,7 +147,8 @@ public class EnemyScript : MonoBehaviour
         // stop moving if theres a tower in the way
         if (TowerGridPlacement.TowerBible.ContainsKey(grid.WorldToCell(transform.position)))
         {
-            agent.enabled = false;
+            TowerGridPlacement.TowerBible.TryGetValue((grid.WorldToCell(transform.position)), out GameObject spikesCheck);
+            if (!spikesCheck.CompareTag("LingeringDamage")) agent.enabled = false;
             //Quaternion targetRotation = Quaternion.LookRotation(new Vector3(nextVictim.transform.GetChild(0).position.x - transform.position.x, 0, nextVictim.transform.GetChild(0).position.z - transform.position.z), Vector3.up);
             //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 5 * Time.deltaTime);
         }
@@ -199,7 +200,8 @@ public class EnemyScript : MonoBehaviour
                 Vector3 checkPosition = currentPosOnGrid + offset;
                 if (TowerGridPlacement.TowerBible.ContainsKey(checkPosition) && !foundTowers.Contains(TowerGridPlacement.TowerBible[checkPosition]))
                 {
-                    foundTowers.Add(TowerGridPlacement.TowerBible[checkPosition]);
+                    TowerGridPlacement.TowerBible.TryGetValue(checkPosition, out GameObject spikesCheck);
+                    if(!spikesCheck.CompareTag("LingeringDamage")) foundTowers.Add(TowerGridPlacement.TowerBible[checkPosition]);
                 }
             }
         }

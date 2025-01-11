@@ -268,9 +268,9 @@ GameObject:
   - component: {fileID: 1799626242206003528}
   - component: {fileID: 1790948168703313112}
   - component: {fileID: 1758766107307612528}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SM_Bld_Preset_Tavern_01_Optimized
-  m_TagString: Untagged
+  m_TagString: SupplyHouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -376,9 +376,9 @@ GameObject:
   - component: {fileID: 1774023652345421726}
   - component: {fileID: 1799665034173124486}
   - component: {fileID: 1791614663423109098}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SM_Bld_Preset_Tavern_01_Glass_Optimized
-  m_TagString: Untagged
+  m_TagString: SupplyHouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -459,9 +459,9 @@ GameObject:
   - component: {fileID: 1773955981452957284}
   - component: {fileID: 1799670956632992800}
   - component: {fileID: 1790760688056898132}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SM_Bld_Preset_Tavern_01_Stairs_Optimized
-  m_TagString: Untagged
+  m_TagString: SupplyHouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -542,9 +542,9 @@ GameObject:
   - component: {fileID: 1774233517268489362}
   - component: {fileID: 1799549348838797984}
   - component: {fileID: 1790845394524902360}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SM_Bld_Preset_Tavern_01_Base_Optimized
-  m_TagString: Untagged
+  m_TagString: SupplyHouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -698,9 +698,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 545719671144091333}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: House T3 3x3
-  m_TagString: Untagged
+  m_TagString: SupplyHouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -904,9 +904,9 @@ GameObject:
   - component: {fileID: 7310929127448073215}
   - component: {fileID: 7300731629370504157}
   - component: {fileID: 7342625702526277087}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SM_Bld_Preset_Church_01_B_Optimized
-  m_TagString: Untagged
+  m_TagString: SupplyHouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1010,9 +1010,9 @@ GameObject:
   - component: {fileID: 7281671639272180067}
   - component: {fileID: 7310820148908596151}
   - component: {fileID: 7300519357369706161}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SM_Bld_Preset_Church_01_B_Glass_Optimized
-  m_TagString: Untagged
+  m_TagString: SupplyHouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1169,9 +1169,9 @@ GameObject:
   - component: {fileID: 8012962330107124467}
   - component: {fileID: 8005028367758777019}
   - component: {fileID: 8045569371988991313}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SM_Bld_Preset_House_Archway_01_Optimized
-  m_TagString: Untagged
+  m_TagString: SupplyHouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1278,9 +1278,9 @@ GameObject:
   - component: {fileID: 8019284021569108693}
   - component: {fileID: 8012717029727205271}
   - component: {fileID: 8003045341352403199}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SM_Bld_Preset_House_Archway_01_Glass_Optimized
-  m_TagString: Untagged
+  m_TagString: SupplyHouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1361,9 +1361,9 @@ GameObject:
   - component: {fileID: 8022571274784726473}
   - component: {fileID: 8015484805768018023}
   - component: {fileID: 8004951791014659937}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SM_Bld_Preset_House_Archway_01_Base_Optimized
-  m_TagString: Untagged
+  m_TagString: SupplyHouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1444,9 +1444,9 @@ GameObject:
   - component: {fileID: 8019424556004035309}
   - component: {fileID: 8012344198123217123}
   - component: {fileID: 8003058920379272883}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SM_Bld_Preset_House_Archway_01_Wing_01_Optimized
-  m_TagString: Untagged
+  m_TagString: SupplyHouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1527,9 +1527,9 @@ GameObject:
   - component: {fileID: 8019241947737197443}
   - component: {fileID: 8013020145106705785}
   - component: {fileID: 8004721536892475939}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SM_Bld_Preset_House_Archway_01_Wing_02_Optimized
-  m_TagString: Untagged
+  m_TagString: SupplyHouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

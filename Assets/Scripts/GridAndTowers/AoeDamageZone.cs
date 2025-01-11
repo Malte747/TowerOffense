@@ -8,7 +8,7 @@ public class AoeDamageZone : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("Damage", 0,towerStats.attackCooldown);
+        InvokeRepeating(nameof(Damage), 0,towerStats.attackCooldown);
     }
 
     // Update is called once per frame

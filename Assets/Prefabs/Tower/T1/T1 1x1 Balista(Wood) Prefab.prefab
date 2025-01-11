@@ -451,7 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36e6995d135fa34d96aff9691c0ee54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TowerStats: {fileID: 11400000, guid: ea207c3a89a57d14b8760aec3d5459c0, type: 2}
+  towerStats: {fileID: 11400000, guid: ea207c3a89a57d14b8760aec3d5459c0, type: 2}
   turningGameObject: {fileID: 2720516455807310656}
   correctionObject: {fileID: 0}
 --- !u!114 &7829610398277998020

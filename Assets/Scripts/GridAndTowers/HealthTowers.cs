@@ -63,13 +63,16 @@ public class HealthTowers : MonoBehaviour
             GridPlacementSystem.attackerHasWon = true;
         }
         else
-        { 
+        {
             RemoveEntries(gameObject);
             NavMeshBaking baking = GameObject.Find("NavMesh").GetComponent<NavMeshBaking>();
             baking.StartCoroutine("BakeNavMesh");
             gameManager.TurretSupplyPayment(-TowerStats.supplyCost);
-            GameObject spawnedDeathObject = Instantiate(deathObject, transform.position, Quaternion.identity);
-            spawnedDeathObject.transform.localScale = new Vector3(TowerStats.xSize, 1, TowerStats.zSize);
+            if (deathObject != null)
+            { 
+                GameObject spawnedDeathObject = Instantiate(deathObject, transform.position, Quaternion.identity);
+                spawnedDeathObject.transform.localScale = new Vector3(TowerStats.xSize, 1, TowerStats.zSize);
+            }
             Destroy(gameObject);
         }
         

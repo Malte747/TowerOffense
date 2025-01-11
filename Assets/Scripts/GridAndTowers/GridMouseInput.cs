@@ -31,7 +31,7 @@ public class GridMouseInput : MonoBehaviour
                 mouseOverGrid = true;
                 mouseOverTower = false;
             }
-            else if (hit.collider.CompareTag("Tower") || hit.collider.CompareTag("Mine") || hit.collider.CompareTag("Wall") || hit.collider.CompareTag("MainTower") || hit.collider.CompareTag("SupplyHouse"))
+            else if (hit.collider.CompareTag("Tower") || hit.collider.CompareTag("Mine") || hit.collider.CompareTag("Wall") || hit.collider.CompareTag("MainTower") || hit.collider.CompareTag("SupplyHouse") || hit.collider.CompareTag("LingeringDamage"))
             {
                 //Debug.Log("HitTower");
                 lastPos = new Vector3(hit.point.x , 0.0f, hit.point.z);
