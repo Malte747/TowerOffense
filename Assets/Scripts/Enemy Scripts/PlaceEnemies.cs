@@ -12,6 +12,7 @@ public class PlaceEnemies : MonoBehaviour
     public Material indicatorColor;
     public GameObject indicatorEmpty;
     private UIManager _uiManager;
+    private float placeTimer;
 
     private void Start()
     {
@@ -37,10 +38,10 @@ public class PlaceEnemies : MonoBehaviour
             {
                 indicatorEmpty.transform.position = hit.point;
                 indicatorColor.SetColor("_BaseColor", new Color(0.09215922f, 0.838f, 0.04049486f, 0.5f));
-                Debug.Log("Grün");
 
-                if (Input.GetMouseButtonDown(0) && !EnemyBibleScript.EnemyBible.ContainsKey(hit.point))
+                if (Input.GetMouseButton(0) && !EnemyBibleScript.EnemyBible.ContainsKey(hit.point) && Time.unscaledTime > placeTimer + 0.1f)
                 {
+                    placeTimer = Time.unscaledTime;
                     Instantiate(unit, hit.point, Quaternion.identity);
                     manager.UnitPayment(unit.GetComponent<EnemyScript>().cost);
                     manager.UnitSupplyPayment(unit.GetComponent<EnemyScript>().supplyCost);
@@ -64,7 +65,6 @@ public class PlaceEnemies : MonoBehaviour
             {
                 indicatorColor.SetColor("_BaseColor", new Color(0.8392157f, 0.03921568f, 0.06320632f, 0.5f));
                 indicatorEmpty.transform.position = hit.point;
-                Debug.Log("Rot");
 
                 if (Input.GetMouseButtonDown(0))
                 {
