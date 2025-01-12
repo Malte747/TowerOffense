@@ -87,6 +87,14 @@ public class PlaceEnemies : MonoBehaviour
                     StopPlacingUnits();
                 }
             }
+            else if (!manager.attackersTurn)
+            {
+                placingUnit = false;
+                foreach (GameObject unit in indicatorUnits)
+                {
+                    unit.SetActive(false);
+                }
+            }
             else //Raycast hits nothing -> Error Messages
             {
                 if (Input.GetMouseButtonDown(0))
