@@ -57,6 +57,7 @@ public class UIManager : MonoBehaviour
     public Toggle hTPToggle;
     public bool HowToPlayWantsToBeSeen = false;
     public GameObject hTPScreen;
+    private bool hTPOpen = false;
     
 
     void Start()
@@ -70,7 +71,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && gameManager.gameInProgress && !cardSelectionInProgress)
+        if (Input.GetKeyDown(KeyCode.Escape) && gameManager.gameInProgress && !cardSelectionInProgress && !hTPOpen)
         {
 
             
@@ -430,6 +431,18 @@ public class UIManager : MonoBehaviour
     {
         HowToPlayWantsToBeSeen = isOn;
         Debug.Log("myBool ist jetzt: " + HowToPlayWantsToBeSeen);
+    }
+
+    public void OpenhTP()
+    {
+        if(hTPOpen)
+        {
+            hTPOpen = false;
+        }
+        else 
+        {
+            hTPOpen = true;
+        }
     }
 
     #endregion
