@@ -156,7 +156,13 @@ public class EnemyScript : MonoBehaviour
         {
             agent.enabled = true;
         }
-        
+
+        // attack towers that aren't a target but are in the way. it's nothing personal :(
+        if (!agent.enabled && Vector3.Distance(transform.position, agent.destination) > attackRange * 8)
+        {
+            CheckGridPositions();
+            GetClosestinFoundTowers();
+        }
 
         // always move to & try to attack the current victim
         if (nextVictim != null)
@@ -176,14 +182,9 @@ public class EnemyScript : MonoBehaviour
         }
 
 
-        // attack towers that aren't a target but are in the way. it's nothing personal :(
-        if (!agent.enabled && Vector3.Distance(transform.position, agent.destination) > attackRange * 8)
-        {
-            CheckGridPositions();
-            GetClosestinFoundTowers();
-        }
+        
 
-        transform.GetChild(1).rotation = new Quaternion(0, 0, 0, 1);
+        transform.GetChild(1).localRotation = new Quaternion(0, 0, 0, 1);
     }
 
     void CheckGridPositions()
