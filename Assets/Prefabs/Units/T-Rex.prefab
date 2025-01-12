@@ -53,7 +53,7 @@ MonoBehaviour:
   supplyCost: 1
   income: 5
   target: 0
-  sightRange: 4
+  sightRange: 10
   attackRange: 1.5
   baseDamage: 100
   buffedDamage: 0
@@ -61,8 +61,8 @@ MonoBehaviour:
   damageDelay: 0.17
   isRangeUnit: 0
   projectile: {fileID: 0}
-  incomeAnimationCanvas: {fileID: 0}
-  incomeText: {fileID: 0}
+  incomeAnimationCanvas: {fileID: 872051715812815921, guid: 54cbb2a89557d99478582ae03790e639, type: 3}
+  incomeText: {fileID: 6200648363080665526, guid: 54cbb2a89557d99478582ae03790e639, type: 3}
 --- !u!195 &1697327694870662928
 NavMeshAgent:
   m_ObjectHideFlags: 0
