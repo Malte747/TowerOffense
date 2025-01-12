@@ -27,12 +27,8 @@ public class CardSelector : MonoBehaviour
 
     private List<GameObject> spawnedCards = new List<GameObject>();
 
-    private Vector3[] spawnPositions = new Vector3[]
-    {
-        new Vector3(401, 530, 0),
-        new Vector3(960, 530, 0),
-        new Vector3(1519, 530, 0)
-    };
+    // NEU: Liste von Spawnpunkten, die im Inspector hinzugefügt werden
+    public List<GameObject> cardSpawnPoints;
 
     public GameObject FarmerPrefab;
     public GameObject[] FarmerSpawnPoints;
@@ -62,7 +58,7 @@ public class CardSelector : MonoBehaviour
         // Nur Karten auswählen, die den aktuellen Tier und den rollCount erfüllen
         List<Card> validCards = cards.FindAll(card => card.tier <= currentTier && card.spawnFromRoll <= rollCount);
 
-        if (validCards.Count < spawnPositions.Length)
+        if (validCards.Count < cardSpawnPoints.Count)
         {
             Debug.LogError("Nicht genügend Karten verfügbar, um alle Positionen zu füllen.");
             return;
@@ -76,13 +72,17 @@ public class CardSelector : MonoBehaviour
     {
         List<Card> selectedCards = new List<Card>();
 
-        for (int i = 0; i < spawnPositions.Length; i++)
+        for (int i = 0; i < cardSpawnPoints.Count; i++)
         {
             Card selectedCard = SelectCardBasedOnChance(validCards, selectedCards);
             if (selectedCard != null)
             {
                 GameObject cardPrefab = selectedCard.prefab;
-                GameObject spawnedCard = Instantiate(cardPrefab, spawnPositions[i], Quaternion.identity, canvasTransform);
+                GameObject spawnPoint = cardSpawnPoints[i];
+
+                // Karte an der Position des Spawnpunkts spawnen
+                GameObject spawnedCard = Instantiate(cardPrefab, spawnPoint.transform.position, Quaternion.identity, canvasTransform);
+
                 spawnedCards.Add(spawnedCard);
                 selectedCards.Add(selectedCard);
             }
