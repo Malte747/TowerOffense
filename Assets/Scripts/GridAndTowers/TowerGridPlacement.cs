@@ -62,7 +62,93 @@ public class TowerGridPlacement : MonoBehaviour
             TowerInfoUIHPChange();
         }
 
+
+        #region Mouse Inputs
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                if (placingTowers)
+                {
+                    PlaceTower(towerNumberUI);
+                    if (!Input.GetKey(KeyCode.LeftShift))
+                    {
+                        StopPlacingTowers();
+                    }
+                }
+                else if (GridMouseInput.mouseOverTower && !placingTowers)
+                {
+                    ClickOnTower();
+                }
+                else if (!GridMouseInput.mouseOverTower && !placingTowers)
+                {
+                    UnselectTower();
+                }
+            }
+        }
+
+        #endregion
+
+
         if (!gameManager.defendersTurn) return;
+
+
+        #region Mouse Inputs(Only Defenders Turn) 
+
+        if (Input.GetMouseButtonDown(1) && placingTowers)
+        {
+            StopPlacingTowers();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Tab) && placingTowers)
+        {
+            towerRotation += 90;
+            if (towerRotation >= 360) towerRotation = 0;
+            if (towerRotation == 0)
+            {
+                xSize = towerStats.xSize;
+                zSize = towerStats.zSize;
+                xSizeDirection = +1;
+                zSizeDirection = +1;
+                xAdjustment = 1;
+                zAdjustment = 1;
+                towerRotationCorrection = new Vector3Int(0, 0, 0);
+            }
+        }
+        else if (towerRotation == 90)
+        {
+            xSize = towerStats.zSize;
+            zSize = -towerStats.xSize;
+            xSizeDirection = 1;
+            zSizeDirection = -1;
+            xAdjustment = 1;
+            zAdjustment = 0;
+            towerRotationCorrection = new Vector3Int(0, 0, 1);
+        }
+        else if (towerRotation == 180)
+        {
+            xSize = -towerStats.xSize;
+            zSize = -towerStats.zSize;
+            xSizeDirection = -1;
+            zSizeDirection = -1;
+            xAdjustment = 0;
+            zAdjustment = 0;
+            towerRotationCorrection = new Vector3Int(1, 0, 1);
+        }
+        else if (towerRotation == 270)
+        {
+            xSize = -towerStats.zSize;
+            zSize = towerStats.xSize;
+            xSizeDirection = -1;
+            zSizeDirection = 1;
+            xAdjustment = 0;
+            zAdjustment = 1;
+            towerRotationCorrection = new Vector3Int(1, 0, 0);
+        }
+
+        #endregion
+
 
         #region Grid Check 
         hitTower = false;
@@ -112,85 +198,6 @@ public class TowerGridPlacement : MonoBehaviour
         }
 
         #endregion
-
-        #region Mouse Inputs
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            if(!EventSystem.current.IsPointerOverGameObject())
-            {
-            if(placingTowers)
-            {
-                PlaceTower(towerNumberUI);
-                if (!Input.GetKey(KeyCode.LeftShift))
-                {
-                    StopPlacingTowers();
-                }
-            }
-            else if (GridMouseInput.mouseOverTower && !placingTowers)
-            {
-                ClickOnTower();
-            }
-            else if (!GridMouseInput.mouseOverTower && !placingTowers)
-            {
-                UnselectTower();
-            }
-            }
-        }
-
-            if (Input.GetMouseButtonDown(1) && placingTowers)
-        {    
-            StopPlacingTowers();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Tab) && placingTowers)
-        {
-            towerRotation += 90;
-            if (towerRotation >= 360) towerRotation = 0;
-            if (towerRotation == 0)
-            {
-                xSize = towerStats.xSize;
-                zSize = towerStats.zSize;
-                xSizeDirection = +1;
-                zSizeDirection = +1;
-                xAdjustment = 1;
-                zAdjustment = 1;
-                towerRotationCorrection = new Vector3Int(0, 0, 0);
-            }
-        }
-        else if (towerRotation == 90)
-        {
-            xSize = towerStats.zSize;
-            zSize = -towerStats.xSize;
-            xSizeDirection = 1;
-            zSizeDirection = -1;    
-            xAdjustment = 1;
-            zAdjustment = 0;
-            towerRotationCorrection = new Vector3Int(0, 0, 1);
-        }
-        else if (towerRotation == 180)
-        {
-            xSize = -towerStats.xSize;
-            zSize = -towerStats.zSize;
-            xSizeDirection = -1;
-            zSizeDirection = -1;
-            xAdjustment = 0;
-            zAdjustment = 0;
-            towerRotationCorrection = new Vector3Int(1, 0, 1);
-        }
-        else if (towerRotation == 270)
-        {
-            xSize = -towerStats.zSize;
-            zSize = towerStats.xSize;
-            xSizeDirection = -1;
-            zSizeDirection = 1;
-            xAdjustment = 0;
-            zAdjustment = 1;
-            towerRotationCorrection = new Vector3Int(1, 0, 0);
-        }
-
-        #endregion
-
     }
 
     #region Place Towers 
@@ -305,7 +312,7 @@ public class TowerGridPlacement : MonoBehaviour
         towerKnowsWhereItIs = clickedTowerParent.GetComponent<TowerKnowsWhereItIs>();
         towerStats = towerKnowsWhereItIs.TowerStats;
         if (towerKnowsWhereItIs == null) towerKnowsWhereItIs = clickedTowerParent.GetComponentInParent<TowerKnowsWhereItIs>();
-        //Debug.Log("Cells: " + towerKnowsWhereItIs.MyCells.Count);
+        Debug.Log("Cells: " + towerKnowsWhereItIs.MyCells.Count);
         healthTowers = clickedTowerParent.GetComponent<HealthTowers>();
         TowerInfoUI();
         meshes = clickedTowerParent.transform.GetChild(0).gameObject;
@@ -333,8 +340,11 @@ public class TowerGridPlacement : MonoBehaviour
                 meshes.GetComponent<Outline>().enabled = false;
             }
             _uiManager.HideTowerInfoUI();
-            MeshRenderer towerBoden = towerKnowsWhereItIs.gameObject.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>();
-            towerBoden.renderingLayerMask = 0;
+            if (towerKnowsWhereItIs != null) 
+            { 
+                MeshRenderer towerBoden = towerKnowsWhereItIs.gameObject.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>();
+                towerBoden.renderingLayerMask = 0;
+            }
         }
     }
 

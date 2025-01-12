@@ -35,6 +35,6 @@ MonoBehaviour:
   speed: 4
   aoe: 0
   aoeSize: 0
-  lingeringAoe: 1
+  lingeringAoe: 0
   lingeringAoeDuration: 20
   lingeringAoeDamage: 5

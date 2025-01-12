@@ -208,11 +208,12 @@ public class CardSelector : MonoBehaviour
 
     #region Gamba Methods Tower
 
+    //Finds all Tag matching Buildings in the dictonary and destroys a specific amount of them
     public void DestroyBuilding(int amount, string tagString)
     {
         List<GameObject> taggedObjects = new List<GameObject>();
 
-        foreach (GameObject obj in TowerGridPlacement.TowerBible.Values)
+        foreach (GameObject obj in TowerGridPlacement.TowerBible.Values) //Collects all Towers of that type in a List
         {
             if (obj != null && obj.CompareTag(tagString) && !taggedObjects.Contains(obj))
             {
@@ -220,7 +221,7 @@ public class CardSelector : MonoBehaviour
                 //Debug.Log(taggedObjects.Count);
             }
         }
-        if (taggedObjects.Count > 0)
+        if (taggedObjects.Count >= amount) //If enough Buildings are fund, destroys the specific amount
         {
             for (int i = 0; i < amount; i++)
             {
@@ -229,7 +230,7 @@ public class CardSelector : MonoBehaviour
                 buildingToDestroy.GetComponent<HealthTowers>().Death();
             }
         }
-        else if (taggedObjects.Count > 0)
+        else if (taggedObjects.Count > 0) //If there are not enough Buildings found, but not Zero, desrtoys all Buildings of that type
         {
             foreach (GameObject buildingToDestroy in taggedObjects)
             {
