@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1dd767de1da5f4c83f14c8fed5c98c, type: 3}
   m_Name: T3 Wall(Metal) Stats
   m_EditorClassIdentifier: 
-  health: 150
-  goldCost: 20
+  health: 130
+  goldCost: 150
   supplyCost: 4
   xSize: 1
   zSize: 1
+  outlineSize: 2
   goldProduced: 0
   supplyProduced: 0
   animationTriggerString: 
@@ -33,5 +34,7 @@ MonoBehaviour:
   projectileCorrection: 0
   speed: 0
   aoe: 0
-  lingeringAoe: 0
   aoeSize: 0
+  lingeringAoe: 0
+  lingeringAoeDuration: 0
+  lingeringAoeDamage: 0
