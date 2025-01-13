@@ -14,6 +14,7 @@ public class Health : MonoBehaviour
     [HideInInspector] public List<GameObject> attackedMainTower = new List<GameObject>();
 
     Animator animator;
+    bool damn;
 
     // Start is called before the first frame update
     private void Start()
@@ -22,6 +23,7 @@ public class Health : MonoBehaviour
 
         maxHealth = health;
         healthLastCheck = health;
+        damn = false;
     }
     // Update is called once per frame
     void Update()
@@ -43,6 +45,11 @@ public class Health : MonoBehaviour
         HealthTowers towerHealth = GameObject.Find("MainTower Prefab(Clone)").GetComponent<HealthTowers>();
         towerHealth.attackedMainTower.Remove(gameObject);
         gameManager.CheckIfTurnIsOver();
+        if(!damn)
+        {
+            GameObject.Find("EnemyPlacementPlane").GetComponent<PlaceEnemies>().combinedIncomePerSec -= GetComponent<EnemyScript>().incomePerSec;
+            damn = true;
+        }
         Destroy(gameObject, 3.6f);             
     }
 
