@@ -877,6 +877,7 @@ private IEnumerator UpdateIncomeText()
         resettingUnits = true;
         ResetIngameValues();
         cardSelector.ResetAllCards();
+        placeEnemies.combinedIncomePerSec = 0;
         
     }
 

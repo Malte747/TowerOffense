@@ -22,6 +22,7 @@ public class PlaceEnemies : MonoBehaviour
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         _uiManager = GameObject.Find("UiManager").GetComponent<UIManager>();
+        combinedIncomePerSec = 0;
     }
     void Update()
     {
