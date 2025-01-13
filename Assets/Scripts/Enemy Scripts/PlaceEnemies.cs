@@ -12,7 +12,9 @@ public class PlaceEnemies : MonoBehaviour
     public Material indicatorColor;
     public GameObject indicatorEmpty;
     private UIManager _uiManager;
-    private float placeTimer;
+    private float placeTimer, t2 = 0;
+    public int combinedIncomePerSec = 0;
+
 
     private void Start()
     {
@@ -23,6 +25,12 @@ public class PlaceEnemies : MonoBehaviour
     }
     void Update()
     {
+        t2 += Time.deltaTime;
+        if (t2>=1)
+        {
+            t2 = 0;
+            manager.GainIncomeAttacker(combinedIncomePerSec);
+        }
         if(!manager.attackersTurn) //Deactivates placing because Attackers Turn
         {
             StopPlacingUnits();

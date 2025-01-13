@@ -40,7 +40,7 @@ public class EnemyScript : MonoBehaviour
         Walls,
         Mines
     }
-    public int cost, supplyCost, income;
+    public int cost, supplyCost, income, incomePerSec;
     [Tooltip("Select which towers this unit will attack. It will try to avoid the others.")]
     public Targets target = Targets.MainTower;
     [Tooltip("Unit sees all towers within x tiles")]
@@ -62,7 +62,7 @@ public class EnemyScript : MonoBehaviour
 
     private Grid grid;
     NavMeshAgent agent;
-    float t = 1f, cooldown = 0f;
+    float t = 1f, t2 = 0, cooldown = 0f;
     Vector3 currentPosOnGrid;
     List<GameObject> foundTowers = new List<GameObject>();
     GameObject nextVictim;
@@ -86,7 +86,10 @@ public class EnemyScript : MonoBehaviour
         GameManager = GameObject.Find("GameManager");
         GameManager.GetComponent<GameManager>().GainIncomeAttacker(income);
         
-
+        if(incomePerSec != 0)
+        {
+            GameObject.Find("EnemyPlacementPlane").GetComponent<PlaceEnemies>().combinedIncomePerSec += incomePerSec;
+        }
         animator = gameObject.transform.GetChild(1).GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         grid = GameObject.Find("Grid").GetComponent<Grid>();
@@ -103,9 +106,10 @@ public class EnemyScript : MonoBehaviour
         EnemyBibleScript.EnemyBible.Add(transform.position, gameObject);
         projectileStartPos = transform.GetChild(0).transform.position;
         t += Time.deltaTime;
+        t2 += Time.deltaTime;
         cooldown -= Time.deltaTime;
         if (agent.enabled) destination = agent.destination;
-
+        
 
         float distanceToLastFrame = Vector3.Distance(transform.position, lastPosition);
         lastPosition = transform.position;
