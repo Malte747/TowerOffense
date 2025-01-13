@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1dd767de1da5f4c83f14c8fed5c98c, type: 3}
   m_Name: T3 SupplyHouse
   m_EditorClassIdentifier: 
-  health: 150
-  goldCost: 100
+  health: 120
+  goldCost: 75
   supplyCost: 0
-  xSize: 2
-  zSize: 2
+  xSize: 3
+  zSize: 3
   outlineSize: 2
   goldProduced: 0
-  supplyProduced: 35
+  supplyProduced: 50
   animationTriggerString: 
   needsCorrection: 0
   characterPosition: {x: 0, y: 0, z: 0}
@@ -34,5 +34,7 @@ MonoBehaviour:
   projectileCorrection: 0
   speed: 0
   aoe: 0
-  lingeringAoe: 0
   aoeSize: 0
+  lingeringAoe: 0
+  lingeringAoeDuration: 0
+  lingeringAoeDamage: 0
