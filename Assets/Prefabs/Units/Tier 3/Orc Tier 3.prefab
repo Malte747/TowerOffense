@@ -346,7 +346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: cost
-      value: 15
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: income
@@ -354,7 +354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: baseDamage
-      value: 7
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: incomeText
@@ -386,7 +386,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: buffedDamage
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: attackCooldown
