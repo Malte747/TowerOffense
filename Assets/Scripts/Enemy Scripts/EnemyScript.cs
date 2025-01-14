@@ -86,8 +86,23 @@ public class EnemyScript : MonoBehaviour
     List<GameObject> SummonUnitList = new List<GameObject>();
     float summonUnitsCooldown = 0;
 
+    // prevent units spawning on top of other units or towers
+    private void Awake()
+    {
+        if(EnemyBibleScript.EnemyBible.ContainsKey(transform.position) || TowerGridPlacement.TowerBible.ContainsKey(transform.position))
+        {
+            RespectPersonalSpace();
+        }
+    }
 
-
+    void RespectPersonalSpace()
+    {
+        transform.position += new Vector3(0, 0, -1);
+        if (EnemyBibleScript.EnemyBible.ContainsKey(transform.position) || TowerGridPlacement.TowerBible.ContainsKey(transform.position))
+        {
+            RespectPersonalSpace();
+        }
+    }
 
     // Start is called before the first frame update
     void Start()

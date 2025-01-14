@@ -48,7 +48,7 @@ public class PlaceEnemies : MonoBehaviour
                 indicatorEmpty.transform.position = hit.point;
                 indicatorColor.SetColor("_BaseColor", new Color(0.09215922f, 0.838f, 0.04049486f, 0.5f));
 
-                if (Input.GetMouseButton(0) && !EnemyBibleScript.EnemyBible.ContainsKey(hit.point) && Time.unscaledTime > placeTimer + 0.1f)
+                if (Input.GetMouseButton(0) && Time.unscaledTime > placeTimer + 0.1f)
                 {
                     placeTimer = Time.unscaledTime;
                     Instantiate(unit, hit.point, Quaternion.identity);
