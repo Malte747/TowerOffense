@@ -307,6 +307,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
+      propertyPath: animationSummonDelay
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: secondsBetweenSpawns
       value: 10
       objectReference: {fileID: 0}
@@ -482,7 +486,7 @@ PrefabInstance:
     - target: {fileID: 9545102, guid: aea27ca7a35042c419065833e8daf224, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: 09e37ef12050e234e934d1a10ffe017c, type: 2}
+      objectReference: {fileID: 22100000, guid: 2c358698c58b0384abd17e3132cc1153, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

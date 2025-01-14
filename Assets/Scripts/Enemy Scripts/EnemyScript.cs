@@ -63,6 +63,7 @@ public class EnemyScript : MonoBehaviour
     public int minUnits, maxUnits, secondsBetweenSpawns;
     public GameObject[] possibleUnits;
     public float spawnRadius = 10f;
+    public float animationSummonDelay = 2f;
   
 
 
@@ -84,7 +85,7 @@ public class EnemyScript : MonoBehaviour
 
     // Necromancer
     List<GameObject> SummonUnitList = new List<GameObject>();
-    float summonUnitsCooldown = 0;
+    float summonUnitsCooldown = 5;
 
     // prevent units spawning on top of other units or towers
     private void Awake()
@@ -112,13 +113,20 @@ public class EnemyScript : MonoBehaviour
 
         if (target == Targets.SummonsUnits)
         {
+            float maxCost = -Mathf.Infinity;
             foreach (GameObject unit in possibleUnits)
             {
-                for (int i = 0; i < unit.GetComponent<EnemyScript>().cost; i++)
+                if(unit.GetComponent<EnemyScript>().cost > maxCost)
+                {
+                    maxCost = unit.GetComponent<EnemyScript>().cost;
+                }
+            }
+            foreach (GameObject unit in possibleUnits)
+            {
+                for (int i = 0; i < maxCost + 1 - unit.GetComponent<EnemyScript>().cost; i++)
                 {
                     SummonUnitList.Add(unit);
                 }
-                
             }
         }
         if (incomePerSec != 0)
@@ -162,14 +170,26 @@ public class EnemyScript : MonoBehaviour
             // Necromancer
             else if (target == Targets.SummonsUnits)
             {
+                animator.ResetTrigger("attack");
                 if (summonUnitsCooldown <= 0)
                 {
                     SummonUnits();
-                    summonUnitsCooldown = secondsBetweenSpawns;
+                    summonUnitsCooldown = secondsBetweenSpawns + animationSummonDelay;
                 }
-                    
+                else if (summonUnitsCooldown > secondsBetweenSpawns) 
+                {
+                    agent.enabled = false;
+                    summonUnitsCooldown -= Time.deltaTime;
+                }
+                else if (summonUnitsCooldown <= animationSummonDelay)
+                {
+                    agent.enabled = false;
+                    summonUnitsCooldown -= Time.deltaTime;
+                    animator.SetTrigger("attack");
+                }
                 else
                 {
+                    agent.enabled = true;
                     MoveForwards();
                     summonUnitsCooldown -= Time.deltaTime;
                 }
