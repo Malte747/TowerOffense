@@ -1,9 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
-using TMPro;
 
 //  SCRIPT SUMMARY: enemy brain for movement & attacking
 /*
@@ -38,7 +38,8 @@ public class EnemyScript : MonoBehaviour
         MainTower,
         Towers,
         Walls,
-        Mines
+        Mines,
+        SummonsUnits
     }
     public int cost, supplyCost, income, incomePerSec;
     [Tooltip("Select which towers this unit will attack. It will try to avoid the others.")]
@@ -58,6 +59,11 @@ public class EnemyScript : MonoBehaviour
     [Tooltip("If this is a Range Unit assign a projectile here")]
     [SerializeField] private GameObject projectile;
 
+    [Header("Necromancer Only")]
+    public int minUnits, maxUnits, secondsBetweenSpawns;
+    public GameObject[] possibleUnits;
+    public float spawnRadius = 10f;
+  
 
 
     private Grid grid;
@@ -76,6 +82,9 @@ public class EnemyScript : MonoBehaviour
     public GameObject incomeAnimationCanvas;
     public TMP_Text incomeText;
 
+    // Necromancer
+    List<GameObject> SummonUnitList = new List<GameObject>();
+    float summonUnitsCooldown = 0;
 
 
 
@@ -85,16 +94,27 @@ public class EnemyScript : MonoBehaviour
     {
         GameManager = GameObject.Find("GameManager");
         GameManager.GetComponent<GameManager>().GainIncomeAttacker(income);
-        
-        if(incomePerSec != 0)
+
+        if (target == Targets.SummonsUnits)
+        {
+            foreach (GameObject unit in possibleUnits)
+            {
+                for (int i = 0; i < unit.GetComponent<EnemyScript>().cost; i++)
+                {
+                    SummonUnitList.Add(unit);
+                }
+                
+            }
+        }
+        if (incomePerSec != 0)
         {
             GameObject.Find("EnemyPlacementPlane").GetComponent<PlaceEnemies>().combinedIncomePerSec += incomePerSec;
         }
         animator = gameObject.transform.GetChild(1).GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         grid = GameObject.Find("Grid").GetComponent<Grid>();
-        
-        if(damageDelay == 0) damageDelay = 0.01f;
+
+        if (damageDelay == 0) damageDelay = 0.01f;
 
         StartCoroutine(StartIncomeAnimationCoroutine());
 
@@ -109,14 +129,14 @@ public class EnemyScript : MonoBehaviour
         t2 += Time.deltaTime;
         cooldown -= Time.deltaTime;
         if (agent.enabled) destination = agent.destination;
-        
+
 
         float distanceToLastFrame = Vector3.Distance(transform.position, lastPosition);
         lastPosition = transform.position;
         if (animator != null) animator.SetFloat("speed", distanceToLastFrame / Time.deltaTime);
 
         // update the agent's destination once every second 
-        if (t >= Random.Range(60,100)/100)
+        if (t >= Random.Range(60, 100) / 100)
         {
             t = 0;
             // if unit targets the main tower just try to move forwards while taking the least amount of damage 
@@ -124,12 +144,28 @@ public class EnemyScript : MonoBehaviour
             {
                 MoveForwards();
             }
+            // Necromancer
+            else if (target == Targets.SummonsUnits)
+            {
+                if (summonUnitsCooldown <= 0)
+                {
+                    SummonUnits();
+                    summonUnitsCooldown = secondsBetweenSpawns;
+                }
+                    
+                else
+                {
+                    MoveForwards();
+                    summonUnitsCooldown -= Time.deltaTime;
+                }
+                   
+            }
             // if unit targets eveything move to the closest tower or keep moving forwards if there are none
             else if (target == Targets.Everything)
             {
                 CheckGridPositions();
                 GetClosestinFoundTowers();
-                
+
                 if (nextVictim == null)
                 {
                     MoveForwards();
@@ -162,14 +198,14 @@ public class EnemyScript : MonoBehaviour
         }
 
         // attack towers that aren't a target but are in the way. it's nothing personal :(
-        if (!agent.enabled && Vector3.Distance(transform.position, agent.destination) > attackRange * 8)
+        if (!agent.enabled && Vector3.Distance(transform.position, agent.destination) > attackRange * 8 && target != Targets.SummonsUnits)
         {
             CheckGridPositions();
             GetClosestinFoundTowers();
         }
 
         // always move to & try to attack the current victim
-        if (nextVictim != null)
+        if (nextVictim != null && target != Targets.SummonsUnits)
         {
             if (agent.enabled == true && agent.destination != null)
             {
@@ -186,7 +222,7 @@ public class EnemyScript : MonoBehaviour
         }
 
 
-        
+
 
         transform.GetChild(1).localRotation = new Quaternion(0, 0, 0, 1);
     }
@@ -206,7 +242,7 @@ public class EnemyScript : MonoBehaviour
                 if (TowerGridPlacement.TowerBible.ContainsKey(checkPosition) && !foundTowers.Contains(TowerGridPlacement.TowerBible[checkPosition]))
                 {
                     TowerGridPlacement.TowerBible.TryGetValue(checkPosition, out GameObject spikesCheck);
-                    if(!spikesCheck.CompareTag("LingeringDamage")) foundTowers.Add(TowerGridPlacement.TowerBible[checkPosition]);
+                    if (!spikesCheck.CompareTag("LingeringDamage")) foundTowers.Add(TowerGridPlacement.TowerBible[checkPosition]);
                 }
             }
         }
@@ -331,18 +367,18 @@ public class EnemyScript : MonoBehaviour
         float distance = Mathf.Infinity;
         Vector3Int closestPos = Vector3Int.zero;
         foreach (GameObject tower in foundTowers)
+        {
+            TowerKnowsWhereItIs towerScript = tower.GetComponent<TowerKnowsWhereItIs>();
+            foreach (Vector3Int pos in towerScript.MyCells)
             {
-                TowerKnowsWhereItIs towerScript = tower.GetComponent<TowerKnowsWhereItIs>();
-                foreach (Vector3Int pos in towerScript.MyCells)
+                if (Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5)) < distance)
                 {
-                    if (Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5)) < distance)
-                    {
-                        distance = Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5));
-                        nextVictim = tower;
-                        MoveToGridPos(pos);
-                    }
+                    distance = Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5));
+                    nextVictim = tower;
+                    MoveToGridPos(pos);
                 }
             }
+        }
     }
 
     void GetClosestCell(GameObject tower)
@@ -350,29 +386,49 @@ public class EnemyScript : MonoBehaviour
         float distance = Mathf.Infinity;
         TowerKnowsWhereItIs towerScript = tower.GetComponent<TowerKnowsWhereItIs>();
         foreach (Vector3Int pos in towerScript.MyCells)
-                {
-                    if (Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5)) < distance)
-                    {
-                        distance = Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5));
-                        nextVictim = tower;
-                        MoveToGridPos(pos);
-                    }
-                }
+        {
+            if (Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5)) < distance)
+            {
+                distance = Vector3.Distance(transform.position, grid.CellToWorld(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z))) + new Vector3(5, 0, 5));
+                nextVictim = tower;
+                MoveToGridPos(pos);
+            }
+        }
     }
 
 
-private IEnumerator StartIncomeAnimationCoroutine()
-{
-    while (!agent.enabled)
+    private IEnumerator StartIncomeAnimationCoroutine()
     {
-        yield return null;
+        while (!agent.enabled)
+        {
+            yield return null;
+        }
+
+        incomeText.text = "+" + income;
+        incomeAnimationCanvas.SetActive(true);
+
+        yield return new WaitForSeconds(1f);
+
+        Destroy(incomeAnimationCanvas);
     }
 
-    incomeText.text = "+" + income;
-    incomeAnimationCanvas.SetActive(true);
+    void SummonUnits()
+    {
+        int random = Random.Range(minUnits, maxUnits);
+        for (int i = 0; i <= random; i++)
+        {
+            // randomize unit
+            int random2 = Random.Range(0, SummonUnitList.Count);
+            GameObject spawnUnit = SummonUnitList[random2];
 
-    yield return new WaitForSeconds(1f);
+            // randomize position
+            float randomX = Random.Range(-spawnRadius, spawnRadius);
+            float randomZ = Random.Range(-spawnRadius, spawnRadius);
+            Vector3 spawnPos = transform.position + new Vector3(randomX, 0, randomZ);
 
-    Destroy(incomeAnimationCanvas);
-}
+            // spawn unit
+            Instantiate(spawnUnit, spawnPos, Quaternion.identity);
+        }
+    }
+
 }
