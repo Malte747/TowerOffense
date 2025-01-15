@@ -25,6 +25,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
+      propertyPath: dwarf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: income
       value: 0
       objectReference: {fileID: 0}
@@ -80,6 +84,10 @@ PrefabInstance:
       propertyPath: incomeAnimationCanvas
       value: 
       objectReference: {fileID: 3466148275838664177}
+    - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
+      propertyPath: canvasAnimatorForDwarf
+      value: 
+      objectReference: {fileID: 3404026264435765492}
     - target: {fileID: 8314551243890678352, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29.576855
@@ -275,6 +283,11 @@ PrefabInstance:
 --- !u!224 &2164089035250431603 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 523542545463400696, guid: fa5a50f695feff54e94eb70ebcce334f, type: 3}
+  m_PrefabInstance: {fileID: 1822722723182096011}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3404026264435765492 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3924354306010390143, guid: fa5a50f695feff54e94eb70ebcce334f, type: 3}
   m_PrefabInstance: {fileID: 1822722723182096011}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &3466148275838664177 stripped

@@ -82,6 +82,8 @@ public class EnemyScript : MonoBehaviour
     // income animation
     public GameObject incomeAnimationCanvas;
     public TMP_Text incomeText;
+    public bool dwarf;
+    public Animator canvasAnimatorForDwarf;
 
     // Necromancer
     List<GameObject> SummonUnitList = new List<GameObject>();
@@ -434,6 +436,8 @@ public class EnemyScript : MonoBehaviour
 
     private IEnumerator StartIncomeAnimationCoroutine()
     {
+        if( !dwarf)
+        {
         while (!agent.enabled)
         {
             yield return null;
@@ -445,6 +449,19 @@ public class EnemyScript : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         Destroy(incomeAnimationCanvas);
+        }
+        else if(dwarf)
+        {
+        yield return new WaitForSeconds(1f);
+        incomeText.text = "+" + incomePerSec;
+        incomeAnimationCanvas.SetActive(true);
+        while (agent.enabled)
+        {
+            yield return new WaitForSeconds(1f);
+            canvasAnimatorForDwarf.SetTrigger("dwarf");
+        }
+
+        }
     }
 
     void SummonUnits()
