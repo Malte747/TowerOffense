@@ -12,7 +12,7 @@ public class TowerGridPlacement : MonoBehaviour
 {
     public static Dictionary<Vector3, GameObject> TowerBible = new Dictionary<Vector3, GameObject>();
 
-    public static Dictionary<Vector3Int, GameObject> cellsWithLingeringAoe = new Dictionary<Vector3Int, GameObject>();
+    public static Dictionary<Vector3, GameObject> cellsWithLingeringAoe = new Dictionary<Vector3, GameObject>();
 
     public Material indicatorColor;
     public GameObject indicator;
@@ -312,7 +312,7 @@ public class TowerGridPlacement : MonoBehaviour
         towerKnowsWhereItIs = clickedTowerParent.GetComponent<TowerKnowsWhereItIs>();
         towerStats = towerKnowsWhereItIs.TowerStats;
         if (towerKnowsWhereItIs == null) towerKnowsWhereItIs = clickedTowerParent.GetComponentInParent<TowerKnowsWhereItIs>();
-        Debug.Log("Cells: " + towerKnowsWhereItIs.MyCells.Count);
+        //Debug.Log("Cells: " + towerKnowsWhereItIs.MyCells.Count);
         healthTowers = clickedTowerParent.GetComponent<HealthTowers>();
         TowerInfoUI();
         meshes = clickedTowerParent.transform.GetChild(0).gameObject;

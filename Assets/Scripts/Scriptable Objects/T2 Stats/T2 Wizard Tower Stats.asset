@@ -17,7 +17,9 @@ MonoBehaviour:
   supplyCost: 3
   xSize: 1
   zSize: 1
+  outlineSize: 2
   goldProduced: 0
+  supplyProduced: 0
   animationTriggerString: MagicAttack
   needsCorrection: 1
   characterPosition: {x: -1.4, y: 15.8, z: 15}
@@ -32,5 +34,7 @@ MonoBehaviour:
   projectileCorrection: 4
   speed: 1
   aoe: 1
-  lingeringAoe: 0
   aoeSize: 5
+  lingeringAoe: 0
+  lingeringAoeDuration: 0
+  lingeringAoeDamage: 0

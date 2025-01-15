@@ -5,25 +5,33 @@ using UnityEngine;
 public class CellDoesDamage : MonoBehaviour
 {
     private Grid grid;
-    public Vector3Int cellPosition;
-    public float duration;
-    public TowerStats towerStats;
+    [HideInInspector] public Vector3 fieldPosition;
+    private Vector3Int cellPosition;
+    [HideInInspector] public float duration;
+    [HideInInspector] public TowerStats towerStats;
+
 
     // Start is called before the first frame update
     void Start()
     {
         grid = GameObject.Find("Grid").GetComponent<Grid>();
-
-        if (TowerGridPlacement.cellsWithLingeringAoe.ContainsKey(cellPosition) && towerStats.target != TowerStats.Targets.CellDoesDamage) //If there would be 2 lingeringAoe on the same cell the one with lower damage gets deleted
+        cellPosition = grid.WorldToCell(fieldPosition);
+        if (towerStats.lingeringAoe)
         {
-            Debug.Log("a");
-            TowerGridPlacement.cellsWithLingeringAoe.TryGetValue(cellPosition, out GameObject otherAoe);
-            TowerStats otherAoeStats = otherAoe.GetComponent<HealthTowers>().TowerStats;
-            if (otherAoe.GetComponent<CellDoesDamage>().duration * otherAoeStats.lingeringAoeDamage > duration * towerStats.lingeringAoeDamage) Destroy(gameObject);
-            else Destroy(otherAoe);
+            if (TowerGridPlacement.cellsWithLingeringAoe.ContainsKey(fieldPosition) && towerStats.target != TowerStats.Targets.CellDoesDamage) //If there would be 2 lingeringAoe on the same cell the one with lower damage gets deleted
+            {
+                Debug.Log("a");
+                TowerGridPlacement.cellsWithLingeringAoe.TryGetValue(fieldPosition, out GameObject otherAoe);
+                TowerStats otherAoeStats = otherAoe.GetComponent<HealthTowers>().TowerStats;
+                if (otherAoe.GetComponent<CellDoesDamage>().duration * otherAoeStats.lingeringAoeDamage > duration * towerStats.lingeringAoeDamage) Destroy(gameObject);
+                else
+                { 
+                    Destroy(otherAoe);
+                    TowerGridPlacement.cellsWithLingeringAoe.Add(fieldPosition, gameObject);
+                }
+            }
         }
-        else if (towerStats.target != TowerStats.Targets.CellDoesDamage) TowerGridPlacement.cellsWithLingeringAoe.Add(cellPosition, gameObject);
-        if (towerStats.target == TowerStats.Targets.CellDoesDamage) duration = Mathf.Infinity;
+        if (!towerStats.lingeringAoe) duration = Mathf.Infinity;
         else duration = towerStats.lingeringAoeDuration;
         InvokeRepeating(nameof(Damage), 0, 0.5f); //Deals damage Once every Second
     }
@@ -34,7 +42,7 @@ public class CellDoesDamage : MonoBehaviour
         duration -= Time.deltaTime;
         if (duration <= 0)
         {
-            TowerGridPlacement.cellsWithLingeringAoe.Remove(cellPosition);
+            TowerGridPlacement.cellsWithLingeringAoe.Remove(fieldPosition);
             Debug.Log("Deleted Zone");
             Destroy(gameObject);
         }
@@ -43,20 +51,40 @@ public class CellDoesDamage : MonoBehaviour
     void Damage()
     {
         bool didDamage = false;
-        foreach (Vector3 pos in EnemyBibleScript.EnemyBible.Keys)
+        if (!towerStats.lingeringAoe)
         {
-            if (grid.WorldToCell(pos) == cellPosition)
+            foreach (Vector3 pos in EnemyBibleScript.EnemyBible.Keys)
             {
-                if (EnemyBibleScript.EnemyBible.ContainsKey(pos))
+                if (grid.WorldToCell(pos) == cellPosition)
                 {
-                    GameObject nextVictim = EnemyBibleScript.EnemyBible[pos];
-                    Health health = nextVictim.GetComponent<Health>();
-                    health.health -= towerStats.lingeringAoeDamage;
-                    didDamage = true;
+                    if (EnemyBibleScript.EnemyBible.ContainsKey(pos))
+                    {
+                        GameObject nextVictim = EnemyBibleScript.EnemyBible[pos];
+                        Health health = nextVictim.GetComponent<Health>();
+                        health.health -= towerStats.lingeringAoeDamage;
+                        didDamage = true;
 
+                    }
                 }
             }
         }
+        else if (towerStats.lingeringAoe)
+        {
+            foreach (Vector3 pos in EnemyBibleScript.EnemyBible.Keys)
+            {
+                if (Vector3.Distance(transform.position, pos) < towerStats.aoeSize)
+                {
+                    if (EnemyBibleScript.EnemyBible.ContainsKey(pos))
+                    {
+                        GameObject nextVictim = EnemyBibleScript.EnemyBible[pos];
+                        Health health = nextVictim.GetComponent<Health>();
+                        health.health -= towerStats.lingeringAoeDamage;
+                        didDamage = true;
+                    }
+                }
+            }
+        }
+
         if (didDamage)
         {
             //Sound

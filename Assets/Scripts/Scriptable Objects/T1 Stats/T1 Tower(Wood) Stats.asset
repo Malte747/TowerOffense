@@ -17,7 +17,9 @@ MonoBehaviour:
   supplyCost: 2
   xSize: 1
   zSize: 1
+  outlineSize: 2
   goldProduced: 0
+  supplyProduced: 0
   animationTriggerString: 
   needsCorrection: 0
   characterPosition: {x: 0, y: 0, z: 0}
@@ -32,5 +34,7 @@ MonoBehaviour:
   projectileCorrection: 2
   speed: 2
   aoe: 0
-  lingeringAoe: 0
   aoeSize: 0
+  lingeringAoe: 0
+  lingeringAoeDuration: 0
+  lingeringAoeDamage: 0

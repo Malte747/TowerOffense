@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class ProjectileTower : MonoBehaviour
@@ -39,7 +40,7 @@ public class ProjectileTower : MonoBehaviour
             p3 = victim.transform.position;
         }
 
-        t += TowerStats.speed * Time.deltaTime;
+        t += (TowerStats.speed) * Time.deltaTime;
         t = Mathf.Clamp01(t);
 
         transform.position = CalculateQuadraticBezierPoint(t, p1, p2, p3);
@@ -107,12 +108,17 @@ public class ProjectileTower : MonoBehaviour
         }
         if (TowerStats.lingeringAoe)
         {
-            Grid grid = GameObject.Find("Grid").GetComponent<Grid>();
-            Vector3Int cellPosition = grid.WorldToCell(new Vector3(transform.position.x, 0, transform.position.z));
-            GameObject lingeringZone = Instantiate(lingeringAoeObject, grid.CellToWorld(cellPosition), Quaternion.identity);
-            //Debug.Log(cellPosition);
-            lingeringZone.GetComponent<CellDoesDamage>().towerStats = TowerStats;
-            lingeringZone.GetComponent<CellDoesDamage>().cellPosition = cellPosition;
+            if (lingeringAoeObject == null) Debug.Log("No Lingering Aoe Object assigned");
+            else
+            {
+                Grid grid = GameObject.Find("Grid").GetComponent<Grid>();
+                Vector3 fieldPosition = new Vector3(transform.position.x, 0, transform.position.z);
+                GameObject lingeringZone = Instantiate(lingeringAoeObject, fieldPosition, Quaternion.identity);
+                //Debug.Log(cellPosition);
+                CellDoesDamage cellScript = lingeringZone.GetComponent<CellDoesDamage>();
+                cellScript.towerStats = TowerStats;
+                cellScript.fieldPosition = fieldPosition;
+            }
         }
 
         //Spielt Impact Sound
