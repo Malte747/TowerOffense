@@ -49,21 +49,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 949a8ff9974f6274cab08e182fdfce03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
-  supplyCost: 1
-  income: 5
+  cost: 1000
+  supplyCost: 200
+  income: 200
   incomePerSec: 0
   target: 0
   sightRange: 10
   attackRange: 1.5
-  baseDamage: 100
+  baseDamage: 30
   buffedDamage: 0
   attackCooldown: 1
   damageDelay: 0.17
   isRangeUnit: 0
   projectile: {fileID: 0}
+  minUnits: 0
+  maxUnits: 0
+  secondsBetweenSpawns: 0
+  possibleUnits: []
+  spawnRadius: 10
+  animationSummonDelay: 2
   incomeAnimationCanvas: {fileID: 4047513245495221098}
   incomeText: {fileID: 7078710169972205293}
+  dwarf: 0
+  canvasAnimatorForDwarf: {fileID: 0}
 --- !u!195 &1697327694870662928
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -98,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ecf182658ebf94d9311861d7b3d135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1000
+  health: 3000
   maxHealth: 0
   healthLastCheck: 0
   attackedMainTower: []

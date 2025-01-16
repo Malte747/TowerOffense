@@ -50,6 +50,8 @@ public class UIManager : MonoBehaviour
     public GameObject resumeGame;
     public GameObject cardSelector;
     public bool cardSelectionInProgress;
+    public GameObject tRexButton;
+    public Button tRexButtonInteract;
 
     //How To Play
 
@@ -243,6 +245,7 @@ public class UIManager : MonoBehaviour
         multiButtonTriggerDefense.ResetMenuNavigation();
         attackerUIBlock.SetActive(false);
         defenderUIBlock.SetActive(true);
+        DisableTRex();
     }
 
     public void StartOrStopGameUI()
@@ -400,7 +403,21 @@ public class UIManager : MonoBehaviour
         cardSelectionInProgress = false;
     }
 
+    public void EnableTRex()
+    {
+        
+        tRexButtonInteract.interactable = true;
+        tRexButton.SetActive(true);
+        tRexButton.tag = "TierButtonActive";
 
+    }
+
+    public void DisableTRex()
+    {
+        tRexButtonInteract.interactable = false;
+        tRexButton.SetActive(false);
+        tRexButton.tag = "TierButtonInactive";
+    }
 
 
 

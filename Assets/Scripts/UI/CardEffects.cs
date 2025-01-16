@@ -97,6 +97,12 @@ public class CardEffects : MonoBehaviour
         cardSelector.DestroyBuilding(amount, "Tower");
 
      }
+
+    public void EnableTRex()
+    {
+        uiManager.EnableTRex();
+        cardSelector.RemoveCardFromPool("TRex");
+    }
     
 
 

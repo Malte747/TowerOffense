@@ -118,7 +118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5451853533646645713, guid: 1af5b9a842e5430438faafed006a5e94, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 50
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 5703230332155407236, guid: 1af5b9a842e5430438faafed006a5e94, type: 3}
       propertyPath: m_IsActive
@@ -126,7 +126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6086794529661836245, guid: 1af5b9a842e5430438faafed006a5e94, type: 3}
       propertyPath: m_text
-      value: '+ 50
+      value: '+ 75
 
 '
       objectReference: {fileID: 0}
