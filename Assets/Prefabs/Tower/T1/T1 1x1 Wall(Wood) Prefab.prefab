@@ -419,6 +419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBarCanvas: {fileID: 3833114945708485631}
+  _healthBarSlider: {fileID: 0}
 --- !u!65 &6913131116089323627
 BoxCollider:
   m_ObjectHideFlags: 0

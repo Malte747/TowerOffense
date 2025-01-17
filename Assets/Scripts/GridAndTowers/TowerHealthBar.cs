@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TowerHealthBar : MonoBehaviour
 {
     [SerializeField] private RectTransform _healthBarCanvas;
-    private Slider _healthBarSlider;
+    [SerializeField] private Slider _healthBarSlider;
 
     private HealthTowers _health;
 
@@ -16,15 +16,29 @@ public class TowerHealthBar : MonoBehaviour
     void Start()
     {
         _health = GetComponent<HealthTowers>();
-        _healthBarSlider = _healthBarCanvas.GetComponentInChildren<Slider>();
+        if(_health.TowerStats.target == TowerStats.Targets.MainTower)
+        {
+            _healthBarSlider = GameObject.Find("HealthBar_MainTower").GetComponent<Slider>();
+            Debug.LogWarning(_healthBarSlider);
+        }
+        else
+        {
+            _healthBarSlider = _healthBarCanvas.GetComponentInChildren<Slider>();
+        }
     }
 
 
 
     public void UpdateHealthBar(int maxHealth, float currentHealth)
     {
-        if (currentHealth / maxHealth < 1) { _healthBarCanvas.gameObject.SetActive(true);}
-        else if (currentHealth / maxHealth >= 1) { _healthBarCanvas.gameObject.SetActive(false); }
+        if (currentHealth / maxHealth < 1 && _health.TowerStats.target != TowerStats.Targets.MainTower) 
+        {
+            _healthBarCanvas.gameObject.SetActive(true);
+        }
+        else if (currentHealth / maxHealth >= 1 && _health.TowerStats.target != TowerStats.Targets.MainTower) 
+        { 
+            _healthBarCanvas.gameObject.SetActive(false); 
+        }
         //Debug.Log(currentHealth + " a " + maxHealth + " a " + currentHealth / maxHealth);
         _healthBarSlider.value = currentHealth / maxHealth;
         UIManager uiManager = GameObject.Find("UiManager").GetComponent<UIManager>();

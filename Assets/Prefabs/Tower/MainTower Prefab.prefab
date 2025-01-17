@@ -1069,7 +1069,7 @@ Transform:
   m_GameObject: {fileID: 8765416124214331734}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 20, z: 145}
+  m_LocalPosition: {x: 0, y: 20, z: 146}
   m_LocalScale: {x: 140, y: 50, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1207,8 +1207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Size: {x: 1, y: 1, z: 1.0991049}
-  m_Center: {x: 0, y: 0, z: -0.04955256}
+  m_Size: {x: 1, y: 1, z: 1.2}
+  m_Center: {x: 0, y: 0, z: -0.06}
   m_Area: 4
   m_AffectedAgents: ffffffff
 --- !u!114 &3832949112738537433
@@ -1224,6 +1224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBarCanvas: {fileID: 3830033913236513991}
+  _healthBarSlider: {fileID: 0}
 --- !u!1001 &55708376491733911
 PrefabInstance:
   m_ObjectHideFlags: 0
