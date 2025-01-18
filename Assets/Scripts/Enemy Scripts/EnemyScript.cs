@@ -442,26 +442,31 @@ public class EnemyScript : MonoBehaviour
         {
             yield return null;
         }
-
+        if( incomeAnimationCanvas != null)
+        {
         incomeText.text = "+" + income;
         incomeAnimationCanvas.SetActive(true);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
 
         Destroy(incomeAnimationCanvas);
         }
+        else yield return null;
+        }
         else if(dwarf)
         {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         incomeText.text = "+" + incomePerSec;
         incomeAnimationCanvas.SetActive(true);
         while (agent.enabled)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(3f);
             canvasAnimatorForDwarf.SetTrigger("dwarf");
         }
 
         }
+        
+        
     }
 
     void SummonUnits()

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: T2 1x1 Spikes
   m_EditorClassIdentifier: 
   health: 1
-  goldCost: 40
-  supplyCost: 1
+  goldCost: 20
+  supplyCost: 2
   xSize: 1
   zSize: 1
   outlineSize: 1
@@ -25,7 +25,7 @@ MonoBehaviour:
   characterPosition: {x: 0, y: 0, z: 0}
   target: 7
   attackRange: 0
-  damage: 5
+  damage: 3
   attackCooldown: 0
   damageDelay: 0
   isRangeUnit: 0

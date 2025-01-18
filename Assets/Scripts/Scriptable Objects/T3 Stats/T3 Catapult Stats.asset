@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1dd767de1da5f4c83f14c8fed5c98c, type: 3}
   m_Name: T3 Catapult Stats
   m_EditorClassIdentifier: 
-  health: 250
-  goldCost: 250
-  supplyCost: 25
+  health: 100
+  goldCost: 200
+  supplyCost: 20
   xSize: 2
   zSize: 2
   outlineSize: 2
@@ -24,9 +24,9 @@ MonoBehaviour:
   needsCorrection: 0
   characterPosition: {x: 0, y: 0, z: 0}
   target: 4
-  attackRange: 60
-  damage: 50
-  attackCooldown: 10
+  attackRange: 120
+  damage: 30
+  attackCooldown: 15
   damageDelay: 0.5
   isRangeUnit: 1
   projectile: {fileID: 8462070365142273085, guid: cff056086f81fbb40959b2e4325973af, type: 3}
@@ -37,4 +37,4 @@ MonoBehaviour:
   aoeSize: 15
   lingeringAoe: 1
   lingeringAoeDuration: 8
-  lingeringAoeDamage: 10
+  lingeringAoeDamage: 5

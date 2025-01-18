@@ -673,7 +673,10 @@ private IEnumerator UpdateIncomeText()
     {
         
         defenderSupply = defenderSupply + turretPrice;
+        if(!attackersTurn)
+        {
         SetSupplyValue(defenderSupply);
+        }
         
     }
 

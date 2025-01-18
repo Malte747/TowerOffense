@@ -27,7 +27,7 @@ public class PlaceEnemies : MonoBehaviour
     void Update()
     {
         t2 += Time.deltaTime;
-        if (t2>=1)
+        if (t2>=3)
         {
             t2 = 0;
             manager.GainIncomeAttacker(combinedIncomePerSec);
