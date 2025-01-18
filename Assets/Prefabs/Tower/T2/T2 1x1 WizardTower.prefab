@@ -1146,6 +1146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBarCanvas: {fileID: 3833114945708485631}
+  _healthBarSlider: {fileID: 0}
 --- !u!65 &6913131116089323627
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4348,7 +4349,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2516edcba6fec964787b5492b55edbd1, type: 2}
+  - {fileID: 2100000, guid: 7a3303383159bd44a87b21560ae17085, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
