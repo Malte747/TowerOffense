@@ -92,15 +92,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4958464907473990, guid: 0d42bc61d684259409d481c6f5dd5d5c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4.8
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4958464907473990, guid: 0d42bc61d684259409d481c6f5dd5d5c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4.8
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4958464907473990, guid: 0d42bc61d684259409d481c6f5dd5d5c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 4.8
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4958464907473990, guid: 0d42bc61d684259409d481c6f5dd5d5c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -339,6 +339,14 @@ PrefabInstance:
     - target: {fileID: 1697327694870662928, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: m_Speed
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697327694870662928, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
+      propertyPath: m_Height
+      value: 6.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697327694870662928, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
+      propertyPath: m_Radius
+      value: 2.95
       objectReference: {fileID: 0}
     - target: {fileID: 5196856078492085104, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: m_Name
