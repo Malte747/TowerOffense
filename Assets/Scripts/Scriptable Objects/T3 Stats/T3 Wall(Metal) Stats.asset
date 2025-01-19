@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: T3 Wall(Metal) Stats
   m_EditorClassIdentifier: 
   health: 130
-  goldCost: 150
+  goldCost: 15
   supplyCost: 4
   xSize: 1
   zSize: 1

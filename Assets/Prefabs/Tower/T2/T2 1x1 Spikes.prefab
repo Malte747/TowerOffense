@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6862a41c35472684d82367de76b6e02e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPosition: {x: 0, y: 0, z: 0}
+  fieldPosition: {x: 0, y: 0, z: 0}
   duration: 0
   towerStats: {fileID: 11400000, guid: aaae8651e2e4c844aa29f733be0481a1, type: 2}
 --- !u!114 &4300989715008202057
