@@ -90,6 +90,9 @@ public class EnemyScript : MonoBehaviour
     float summonUnitsCooldown = 5;
 
     // prevent units spawning on top of other units or towers
+
+    private AudioManager unitSFX; // Referenz zum AudioManager Script
+    [SerializeField] private int attackSoundNumber1,attackSoundNumber2,spawnSoundNumber1,spawnSoundNumber2;
     private void Awake()
     {
         if(EnemyBibleScript.EnemyBible.ContainsKey(transform.position) || TowerGridPlacement.TowerBible.ContainsKey(transform.position))
@@ -112,6 +115,8 @@ public class EnemyScript : MonoBehaviour
     {
         GameManager = GameObject.Find("GameManager");
         GameManager.GetComponent<GameManager>().GainIncomeAttacker(income);
+        unitSFX = GameObject.Find("AudioManager").GetComponent<AudioManager>(); //Nimmt den Audio Manager in das Script
+        unitSFX.PlayUnitSound(Random.Range(spawnSoundNumber1,spawnSoundNumber2)); //Spielt die gew�nschte SFX Nummer
 
         if (target == Targets.SummonsUnits)
         {
@@ -332,6 +337,8 @@ public class EnemyScript : MonoBehaviour
 
     void Attack()
     {
+        unitSFX.PlayUnitSound(Random.Range(attackSoundNumber1,attackSoundNumber2)); //Spielt die gew�nschte SFX Nummer
+
         cooldown = attackCooldown;
         if (animator != null) animator.SetTrigger("attack");
         else Debug.LogWarning("no animator found");
@@ -487,5 +494,6 @@ public class EnemyScript : MonoBehaviour
             Instantiate(spawnUnit, spawnPos, Quaternion.identity);
         }
     }
+
 
 }

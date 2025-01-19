@@ -16,15 +16,21 @@ public class Health : MonoBehaviour
     Animator animator;
     bool damn;
 
+    private AudioManager unitSFX; // Referenz zum AudioManager Script
+    [SerializeField] private int deathSoundNumber1,deathSoundNumber2;
+    private bool deathSoundPlayed = false;
+
     // Start is called before the first frame update
     private void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        unitSFX = GameObject.Find("AudioManager").GetComponent<AudioManager>(); //Nimmt den Audio Manager in das Script
 
         maxHealth = health;
         healthLastCheck = health;
         damn = false;
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -36,7 +42,6 @@ public class Health : MonoBehaviour
 
     public void Death()
     {
-
         RemoveEntries(gameObject);
         animator = transform.GetChild(1).GetComponent<Animator>();
         GetComponent<EnemyScript>().enabled = false;
@@ -50,6 +55,13 @@ public class Health : MonoBehaviour
             GameObject.Find("EnemyPlacementPlane").GetComponent<PlaceEnemies>().combinedIncomePerSec -= GetComponent<EnemyScript>().incomePerSec;
             damn = true;
         }
+
+        if (deathSoundPlayed == false)
+        {
+        unitSFX.PlayUnitSound(Random.Range(deathSoundNumber1,deathSoundNumber2)); //Spielt die gew�nschte SFX Nummer
+        deathSoundPlayed = true;
+        }
+
         Destroy(gameObject, 3.6f);             
     }
 

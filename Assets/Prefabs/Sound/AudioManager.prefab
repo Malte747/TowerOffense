@@ -86,7 +86,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 68b0c0f3ea89f9d478fbf98d93c398d1, type: 3}
   - {fileID: 8300000, guid: 68b0c0f3ea89f9d478fbf98d93c398d1, type: 3}
   - {fileID: 8300000, guid: 68b0c0f3ea89f9d478fbf98d93c398d1, type: 3}
-  _unitSFX: []
+  _unitSFX:
+  - {fileID: 8300000, guid: fe5bd40c030df9d449482d6f36f053a6, type: 3}
+  - {fileID: 8300000, guid: fe5bd40c030df9d449482d6f36f053a6, type: 3}
+  - {fileID: 8300000, guid: 356c62c1717d1c643a12cdab625dc6b8, type: 3}
+  - {fileID: 8300000, guid: 356c62c1717d1c643a12cdab625dc6b8, type: 3}
+  - {fileID: 8300000, guid: 356c62c1717d1c643a12cdab625dc6b8, type: 3}
   _generalSFX:
   - {fileID: 8300000, guid: 15ff9789414a0f642a2eefbcb133295e, type: 3}
   - {fileID: 8300000, guid: fe5bd40c030df9d449482d6f36f053a6, type: 3}
