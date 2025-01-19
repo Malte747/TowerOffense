@@ -685,7 +685,10 @@ private IEnumerator UpdateIncomeText()
 
         attackerGoldIncome = attackerGoldIncome + moreIncome;
         incomeBonus = moreIncome;
+        if(attackersTurn)
+        {
         SetCurrentIncomeValue(attackerGoldIncome);
+        }
 
     }
 
