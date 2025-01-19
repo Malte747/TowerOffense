@@ -225,7 +225,7 @@ public class CardSelector : MonoBehaviour
         {
             for (int i = 0; i < amount; i++)
             {
-                GameObject buildingToDestroy = taggedObjects[Random.Range(1, taggedObjects.Count)];
+                GameObject buildingToDestroy = taggedObjects[Random.Range(0, taggedObjects.Count)];
                 taggedObjects.Remove(buildingToDestroy);
                 buildingToDestroy.GetComponent<HealthTowers>().Death();
             }

@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4240886709396190148, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: health
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -4240886709396190148, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: deathSoundNumber1
@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: cost
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: dwarf
@@ -62,11 +62,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: sightRange
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: supplyCost
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: attackRange
