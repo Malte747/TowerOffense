@@ -64,6 +64,7 @@ public class EnemyScript : MonoBehaviour
     public GameObject[] possibleUnits;
     public float spawnRadius = 10f;
     public float animationSummonDelay = 2f;
+    bool spawnedByNecromancer;
   
 
 
@@ -114,7 +115,7 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         GameManager = GameObject.Find("GameManager");
-        GameManager.GetComponent<GameManager>().GainIncomeAttacker(income);
+        if(!spawnedByNecromancer) GameManager.GetComponent<GameManager>().GainIncomeAttacker(income);
         unitSFX = GameObject.Find("AudioManager").GetComponent<AudioManager>(); //Nimmt den Audio Manager in das Script
         unitSFX.PlayUnitSound(Random.Range(spawnSoundNumber1,spawnSoundNumber2)); //Spielt die gew�nschte SFX Nummer
 
@@ -443,7 +444,7 @@ public class EnemyScript : MonoBehaviour
 
     private IEnumerator StartIncomeAnimationCoroutine()
     {
-        if( !dwarf)
+        if( !dwarf && !spawnedByNecromancer)
         {
         while (!agent.enabled)
         {
@@ -491,7 +492,8 @@ public class EnemyScript : MonoBehaviour
             Vector3 spawnPos = transform.position + new Vector3(randomX, 0, randomZ);
 
             // spawn unit
-            Instantiate(spawnUnit, spawnPos, Quaternion.identity);
+            GameObject obj = Instantiate(spawnUnit, spawnPos, Quaternion.identity);
+            obj.GetComponent<EnemyScript>().spawnedByNecromancer = true;
         }
     }
 
