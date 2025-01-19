@@ -171,8 +171,8 @@ public class GameManager : MonoBehaviour
             goldTextAnimator.SetTrigger("GoldAnimation");
             goldIncomeTextAnimator.SetTrigger("IncomeAnimation");
             StartCoroutine(AnimateGoldTextRoundStartAttack());
-            SetSupplyValue(attackerSupply);
             SetIncomeText(attackerGoldIncome);
+            SetSupplyValue(attackerSupply);
             SetMaxSupplyValue(attackerMaxSupply);
             roundTextAttackObject.SetActive(true);
             uiManager.ResetTimeScale();
@@ -504,6 +504,12 @@ private IEnumerator UpdateIncomeText()
     }
 
     currentIncomeText.text = "+ " + incomeValue.ToString();
+    
+    //debug wegen Zwerg
+    if(defendersTurn)
+    {
+        SetIncomeText(defenderGoldIncome);
+    }
 }
 
     //Finds all mines in the Dictonary and starts their MineMakesMoney() method

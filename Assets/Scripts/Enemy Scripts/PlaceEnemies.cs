@@ -30,7 +30,10 @@ public class PlaceEnemies : MonoBehaviour
         if (t2>=3)
         {
             t2 = 0;
+            if(manager.attackersTurn)
+            {
             manager.GainIncomeAttacker(combinedIncomePerSec);
+            }
         }
         if(!manager.attackersTurn) //Deactivates placing because Attackers Turn
         {
