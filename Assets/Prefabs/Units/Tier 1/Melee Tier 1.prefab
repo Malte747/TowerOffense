@@ -119,12 +119,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
+      propertyPath: baseDamage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: incomeText
       value: 
       objectReference: {fileID: 7641832042534994038}
     - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: projectile
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
+      propertyPath: supplyCost
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: attackRange
@@ -137,6 +145,10 @@ PrefabInstance:
     - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: isRangeUnit
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
+      propertyPath: buffedDamage
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7887204192242933192, guid: 0ba3327196ba41441bf6373f90712cb5, type: 3}
       propertyPath: attackCooldown

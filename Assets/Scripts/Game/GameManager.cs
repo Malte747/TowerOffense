@@ -504,7 +504,7 @@ private IEnumerator UpdateIncomeText()
     }
 
     currentIncomeText.text = "+ " + incomeValue.ToString();
-    
+
     //debug wegen Zwerg
     if(defendersTurn)
     {
@@ -716,7 +716,10 @@ private IEnumerator UpdateIncomeText()
         public void GainMaxSupplyDefender(int moreSupply)
     {
         defenderMaxSupply = defenderMaxSupply + moreSupply;
+        if(defendersTurn)
+        {
         SetMaxSupplyValue(defenderMaxSupply);
+        }
     }
 
 
