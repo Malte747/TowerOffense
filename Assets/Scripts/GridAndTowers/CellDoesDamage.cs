@@ -15,7 +15,7 @@ public class CellDoesDamage : MonoBehaviour
     void Start()
     {
         grid = GameObject.Find("Grid").GetComponent<Grid>();
-        cellPosition = grid.WorldToCell(fieldPosition);
+        cellPosition = grid.WorldToCell(transform.position);
         if (towerStats.lingeringAoe)
         {
             if (TowerGridPlacement.cellsWithLingeringAoe.ContainsKey(fieldPosition) && towerStats.target != TowerStats.Targets.CellDoesDamage) //If there would be 2 lingeringAoe on the same cell the one with lower damage gets deleted
@@ -33,7 +33,7 @@ public class CellDoesDamage : MonoBehaviour
         }
         if (!towerStats.lingeringAoe) duration = Mathf.Infinity;
         else duration = towerStats.lingeringAoeDuration;
-        InvokeRepeating(nameof(Damage), 0, 0.5f); //Deals damage Once every Second
+        InvokeRepeating(nameof(Damage), 0, 1f); //Deals damage Once every Second
     }
 
     // Update is called once per frame
@@ -55,15 +55,16 @@ public class CellDoesDamage : MonoBehaviour
         {
             foreach (Vector3 pos in EnemyBibleScript.EnemyBible.Keys)
             {
+                 Debug.Log(grid.WorldToCell(pos)  + "ist bei" + cellPosition);
                 if (grid.WorldToCell(pos) == cellPosition)
                 {
                     if (EnemyBibleScript.EnemyBible.ContainsKey(pos))
                     {
                         GameObject nextVictim = EnemyBibleScript.EnemyBible[pos];
                         Health health = nextVictim.GetComponent<Health>();
-                        health.health -= towerStats.lingeringAoeDamage;
+                        health.health -= towerStats.damage;
                         didDamage = true;
-
+                        Debug.Log("Target found " + nextVictim);
                     }
                 }
             }

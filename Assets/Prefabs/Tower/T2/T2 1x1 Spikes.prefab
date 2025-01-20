@@ -67,7 +67,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 105868477381129354}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
   m_Name: 
@@ -117,10 +117,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b0e2c0e959aaf94885e7cdeed7bd73e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 1
   healthLastCheck: 0
   attackedMainTower: []
-  deathObject: {fileID: 0}
+  deathObject: {fileID: 3647315434395575687, guid: 5deab6a02b4ecd4408f243d78a26eee5, type: 3}
   TowerStats: {fileID: 11400000, guid: aaae8651e2e4c844aa29f733be0481a1, type: 2}
 --- !u!95 &6895314247150449675
 Animator:
