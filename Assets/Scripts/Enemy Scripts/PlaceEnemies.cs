@@ -14,6 +14,7 @@ public class PlaceEnemies : MonoBehaviour
     private UIManager _uiManager;
     private float placeTimer, t2 = 0;
     public int combinedIncomePerSec = 0;
+    float holdTime = 0;
 
 
     private void Start()
@@ -26,6 +27,14 @@ public class PlaceEnemies : MonoBehaviour
     }
     void Update()
     {
+        if(Input.GetMouseButton(0))
+        {
+            holdTime += Time.unscaledDeltaTime;
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            holdTime = 0;
+        }
         t2 += Time.deltaTime;
         if (t2>=3)
         {
@@ -51,7 +60,7 @@ public class PlaceEnemies : MonoBehaviour
                 indicatorEmpty.transform.position = hit.point;
                 indicatorColor.SetColor("_BaseColor", new Color(0.09215922f, 0.838f, 0.04049486f, 0.5f));
 
-                if (Input.GetMouseButton(0) && Time.unscaledTime > placeTimer + 0.1f)
+                if (Input.GetMouseButton(0) && Time.unscaledTime > placeTimer + 0.1f && (holdTime < 0.2f || holdTime >= 0.5f))
                 {
                     placeTimer = Time.unscaledTime;
                     Instantiate(unit, hit.point, Quaternion.identity);
