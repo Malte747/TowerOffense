@@ -48,6 +48,9 @@ MonoBehaviour:
   placementLayermask:
     serializedVersion: 2
     m_Bits: 6129
+  onlyGridLayermask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &3284549935587087356
 GameObject:
   m_ObjectHideFlags: 0

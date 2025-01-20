@@ -17,7 +17,7 @@ MonoBehaviour:
   supplyCost: 2
   xSize: 1
   zSize: 1
-  outlineSize: 1
+  outlineSize: 1.5
   goldProduced: 0
   supplyProduced: 0
   animationTriggerString: 

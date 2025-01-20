@@ -50,7 +50,7 @@ public class TowerGridPlacement : MonoBehaviour
         clickedTowerParent = gameObject;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _uiManager = GameObject.Find("UiManager").GetComponent<UIManager>();
-        BuildSoundList(); //Liste Für TowerPlaceSFX
+        BuildSoundList(); //Liste Fï¿½r TowerPlaceSFX
     }
 
     void Update()
@@ -77,13 +77,9 @@ public class TowerGridPlacement : MonoBehaviour
                         StopPlacingTowers();
                     }
                 }
-                else if (GridMouseInput.mouseOverTower && !placingTowers)
+                else if (!placingTowers)
                 {
                     ClickOnTower();
-                }
-                else if (!GridMouseInput.mouseOverTower && !placingTowers)
-                {
-                    UnselectTower();
                 }
             }
         }
@@ -206,17 +202,17 @@ public class TowerGridPlacement : MonoBehaviour
     {
         towerKnowsWhereItIs = Towers[number].GetComponent<TowerKnowsWhereItIs>();
         towerStats = towerKnowsWhereItIs.TowerStats;
-        if (!hitTower && towerStats.goldCost <= gameManager.defenderGold && towerStats.supplyCost + gameManager.defenderSupply <= gameManager.defenderMaxSupply)
+        if (GridMouseInput.gridBehindTower && placeLocationValid(number,grid.CellToWorld(GridPlacementSystem.gridPosition + towerRotationCorrection) ) && towerStats.goldCost <= gameManager.defenderGold && towerStats.supplyCost + gameManager.defenderSupply <= gameManager.defenderMaxSupply)
         {
+            //Debug.LogWarning(grid.CellToWorld(GridPlacementSystem.gridPosition + towerRotationCorrection));
             gameManager.TurretPayment(towerStats.goldCost);
             gameManager.TurretSupplyPayment(towerStats.supplyCost);
-            // OccupyCell(GridPlacementSystem.gridPosition);
             PlacedTower = Instantiate(Towers[number], grid.CellToWorld(GridPlacementSystem.gridPosition + towerRotationCorrection), GridPlacementSystem.rotationSave);
             towerKnowsWhereItIs = PlacedTower.GetComponent<TowerKnowsWhereItIs>();
             towerStats = towerKnowsWhereItIs.TowerStats;
 
             //Sound wird abgespielt
-            if(TowerPlaceSound.Count > number) towerSFX.PlayTowerSound(TowerPlaceSound[number]); //Spielt die gewünschte SFX Nummer
+            if(TowerPlaceSound.Count > number) towerSFX.PlayTowerSound(TowerPlaceSound[number]); //Spielt die gewï¿½nschte SFX Nummer
 
             GameObject NavMesh = GameObject.Find("NavMesh");
             if (NavMesh != null)
@@ -230,9 +226,9 @@ public class TowerGridPlacement : MonoBehaviour
 
                 for (int i2 = 1; i2 <= Mathf.Abs(zSize); i2++)
                 {
-                    OccupyCell(new Vector3Int(GridPlacementSystem.gridPosition.x + (i * xSizeDirection) - xAdjustment, 0, GridPlacementSystem.gridPosition.z + (i2 * zSizeDirection) - zAdjustment) + towerRotationCorrection);
-                    towerKnowsWhereItIs.MyCells.Add(new Vector3Int(GridPlacementSystem.gridPosition.x + (i * xSizeDirection) - xAdjustment, 0, GridPlacementSystem.gridPosition.z + (i2 * zSizeDirection) - zAdjustment) + towerRotationCorrection);
-                    //Debug.Log("Occupy");
+                    Vector3Int location = new Vector3Int(GridPlacementSystem.gridPosition.x + (i * xSizeDirection) - xAdjustment, 0, GridPlacementSystem.gridPosition.z + (i2 * zSizeDirection) - zAdjustment) + towerRotationCorrection;
+                    OccupyCell(location);
+                    towerKnowsWhereItIs.MyCells.Add(location);
                 }
             }
         }
@@ -253,7 +249,26 @@ public class TowerGridPlacement : MonoBehaviour
     public void OccupyCell(Vector3Int cellNumbers)
     {
         TowerBible.Add(cellNumbers, PlacedTower);
+        //Debug.LogWarning("Took Cell " + cellNumbers);
         
+    }
+
+    public bool placeLocationValid(int number, Vector3 pos)
+    {
+        for (int i = 1; i <= Mathf.Abs(xSize); i++)
+            {
+
+                for (int i2 = 1; i2 <= Mathf.Abs(zSize); i2++)
+                {
+                    Vector3Int location = new Vector3Int(GridPlacementSystem.gridPosition.x + (i * xSizeDirection) - xAdjustment, 0, GridPlacementSystem.gridPosition.z + (i2 * zSizeDirection) - zAdjustment) + towerRotationCorrection;
+                    if(TowerBible.ContainsKey(location)) 
+                    {
+                        Debug.Log("Invalid Position");
+                        return false;
+                    }
+                }
+            }
+        return true;
     }
 
     #endregion
@@ -307,7 +322,8 @@ public class TowerGridPlacement : MonoBehaviour
 
     public void ClickOnTower()
     {
-        UnselectTower();
+        UnselectTower();    
+        if(!GridMouseInput.mouseOverTower) return;
         clickedTowerParent = GridMouseInput.clickedTower.transform.root.gameObject;
         towerKnowsWhereItIs = clickedTowerParent.GetComponent<TowerKnowsWhereItIs>();
         towerStats = towerKnowsWhereItIs.TowerStats;
@@ -407,7 +423,7 @@ public class TowerGridPlacement : MonoBehaviour
     {
         towerSFX = GameObject.Find("AudioManager").GetComponent<AudioManager>(); //Nimmt den Audio Manager in das Script
 
-        //Platziert eine Listen Platz für TowerIndex Nummer mit passendem Sound im Audiomanager.
+        //Platziert eine Listen Platz fï¿½r TowerIndex Nummer mit passendem Sound im Audiomanager.
         TowerPlaceSound.Add(6);
         TowerPlaceSound.Add(3);
         TowerPlaceSound.Add(10);

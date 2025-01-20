@@ -19,7 +19,7 @@ public class TowerHealthBar : MonoBehaviour
         if(_health.TowerStats.target == TowerStats.Targets.MainTower)
         {
             _healthBarSlider = GameObject.Find("HealthBar_MainTower").GetComponent<Slider>();
-            Debug.LogWarning(_healthBarSlider);
+           // Debug.LogWarning(_healthBarSlider);
         }
         else
         {
