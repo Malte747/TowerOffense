@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class ProjectileTower : MonoBehaviour
@@ -28,8 +27,8 @@ public class ProjectileTower : MonoBehaviour
         lastPosition = transform.position;
 
         generalSFX = GameObject.Find("AudioManager").GetComponent<AudioManager>(); //Nimmt den Audio Manager in das Script
-        //An der stelle, an welcher SFX ausgelöst werden sollen platzieren
-        generalSFX.PlayGeneralSound(Random.Range(soundNumber1, soundNumber2)); //Spielt die gewünschte SFX Nummer
+        //An der stelle, an welcher SFX ausgelï¿½st werden sollen platzieren
+        generalSFX.PlayGeneralSound(Random.Range(soundNumber1, soundNumber2)); //Spielt die gewï¿½nschte SFX Nummer
 
     }
     void Update()
