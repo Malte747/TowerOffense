@@ -154,6 +154,10 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(EnemyBibleScript.EnemyBible.ContainsKey(transform.position))
+        {
+            RespectPersonalSpace();
+        }
         EnemyBibleScript.EnemyBible.Add(transform.position, gameObject);
         projectileStartPos = transform.GetChild(0).transform.position;
         t += Time.deltaTime;
