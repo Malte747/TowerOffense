@@ -341,7 +341,12 @@ public class EnemyScript : MonoBehaviour
         unitSFX.PlayUnitSound(Random.Range(attackSoundNumber1,attackSoundNumber2)); //Spielt die gew�nschte SFX Nummer
 
         cooldown = attackCooldown;
-        if (animator != null) animator.SetTrigger("attack");
+        if (animator != null)
+        {
+            animator.SetTrigger("attack");
+            transform.GetChild(1).transform.localPosition = Vector3.zero;
+        }
+        
         else Debug.LogWarning("no animator found");
 
         if (isRangeUnit) Invoke("Projectile", damageDelay);
