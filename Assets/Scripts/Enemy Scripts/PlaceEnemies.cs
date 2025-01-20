@@ -186,5 +186,6 @@ public class PlaceEnemies : MonoBehaviour
             Destroy(EnemyBibleScript.EnemyBible[pos]);
         }
         EnemyBibleScript.EnemyBible.Clear();
+        ChangeUnit(0);
     }
 }
