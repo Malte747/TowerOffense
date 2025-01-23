@@ -643,6 +643,7 @@ GameObject:
   - component: {fileID: 685880877314879759}
   - component: {fileID: 720494433016931405}
   - component: {fileID: 709699025266365749}
+  - component: {fileID: 2834319587586791013}
   - component: {fileID: 678083606790026961}
   m_Layer: 6
   m_Name: SM_Wep_Catapult_01
@@ -722,6 +723,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &2834319587586791013
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688890929665237513}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7c7afdd79eca4044da16dd63f7008e5c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!64 &678083606790026961
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -999,7 +1021,6 @@ GameObject:
   - component: {fileID: 1739400690758909334}
   - component: {fileID: 1753564795009943406}
   - component: {fileID: 1763551637256306054}
-  - component: {fileID: 1835706272888505634}
   - component: {fileID: 1785768355125480850}
   m_Layer: 6
   m_Name: SM_Prop_Cage_Cart_02
@@ -1074,27 +1095,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!95 &1835706272888505634
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742595150057866518}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: dd964a97247e50e4ea52c3a66c09c7f2, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!64 &1785768355125480850
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1465,7 +1465,6 @@ GameObject:
   - component: {fileID: 3538730794067088386}
   - component: {fileID: 3560771417591574266}
   - component: {fileID: 3550784292145746962}
-  - component: {fileID: 3478523287353683126}
   - component: {fileID: 3600589992230478854}
   m_Layer: 6
   m_Name: SM_Prop_Cage_Cart_02 (2)
@@ -1540,27 +1539,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!95 &3478523287353683126
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3535746066880048258}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: dd964a97247e50e4ea52c3a66c09c7f2, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!64 &3600589992230478854
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2060,7 +2038,6 @@ GameObject:
   - component: {fileID: 6554837584332231725}
   - component: {fileID: 6521502910557368021}
   - component: {fileID: 6534025305268950077}
-  - component: {fileID: 6606038048058223769}
   - component: {fileID: 6493261988232373289}
   m_Layer: 6
   m_Name: SM_Prop_Cage_Cart_02 (3)
@@ -2135,27 +2112,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!95 &6606038048058223769
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6555570580433988781}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: dd964a97247e50e4ea52c3a66c09c7f2, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!64 &6493261988232373289
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2686,7 +2642,6 @@ GameObject:
   - component: {fileID: 8198428617314059160}
   - component: {fileID: 8192282151779367264}
   - component: {fileID: 8186515028466090888}
-  - component: {fileID: 8114503516252273452}
   - component: {fileID: 8155295506776814492}
   m_Layer: 6
   m_Name: SM_Prop_Cage_Cart_02 (1)
@@ -2761,27 +2716,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!95 &8114503516252273452
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8199873890917464856}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: dd964a97247e50e4ea52c3a66c09c7f2, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!64 &8155295506776814492
 MeshCollider:
   m_ObjectHideFlags: 0

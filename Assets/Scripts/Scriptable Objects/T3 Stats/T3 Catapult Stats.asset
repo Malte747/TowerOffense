@@ -20,14 +20,14 @@ MonoBehaviour:
   outlineSize: 2
   goldProduced: 0
   supplyProduced: 0
-  animationTriggerString: 
+  animationTriggerString: Shoot
   needsCorrection: 0
   characterPosition: {x: 0, y: 0, z: 0}
   target: 4
   attackRange: 120
   damage: 30
   attackCooldown: 15
-  damageDelay: 0.5
+  damageDelay: 1.5
   isRangeUnit: 1
   projectile: {fileID: 8462070365142273085, guid: cff056086f81fbb40959b2e4325973af, type: 3}
   projectileStartPos: {x: 9.52, y: 24.33, z: 9.83}
