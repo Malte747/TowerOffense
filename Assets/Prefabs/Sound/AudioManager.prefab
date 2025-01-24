@@ -57,6 +57,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 061156c28bf232d48860c3a2e38570e0, type: 3}
   fadeDuration: 2
   loopFadeDuration: 5
+  sfxUIInPlay: 0
+  sfxGeneralInPlay: 0
   musicMixer: {fileID: -8651801749233867576, guid: de32485de7f40e6449350a56d56b28c9, type: 2}
   _towerSFX:
   - {fileID: 8300000, guid: 68b0c0f3ea89f9d478fbf98d93c398d1, type: 3}

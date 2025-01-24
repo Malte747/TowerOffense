@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 public class AudioManager : MonoBehaviour
 {
     [Header("GameManager")]
-     GameManager gameManager;
+    GameManager gameManager;
 
     [SerializeField] AudioMixer _mixer;
 
@@ -17,12 +17,13 @@ public class AudioManager : MonoBehaviour
     public List<AudioClip> audioClips; // Liste der vorab zugewiesenen Audiotracks
     public float fadeDuration = 2.0f; // Dauer des Fades
     public float loopFadeDuration = 5.0f; // Dauer des Fades innerhalb eines Loops
-    float elapsedTime = 0f;
+    //float elapsedTime = 0f;
 
     private AudioSource audioSourceA;
     private AudioSource audioSourceB;
     private AudioSource activeSource;
     private bool isFading = false;
+    public static int sfxUIInPlay = 0, sfxGeneralInPlay = 0;
     //private bool loopFading = false;
 
     public const string volumeParameter = "MasterVolume"; // Der Name des Lautst�rkeparameters im Mixer
@@ -70,7 +71,10 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        sfxUIInPlay = 0;
+        sfxGeneralInPlay = 0;
+
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         SpawnAudioSources();
 
@@ -121,7 +125,7 @@ public class AudioManager : MonoBehaviour
 
         float elapsedTime = 0f;
 
-    
+
 
         // Lautstaerke der beiden Quellen interpolieren
         while (elapsedTime < fadeDuration)
@@ -147,7 +151,7 @@ public class AudioManager : MonoBehaviour
         yield return null;
     }
 
-        //Das wonach es klingt
+    //Das wonach es klingt
     public void SpawnAudioSources()
     {
         if (audioSourceA == null)
@@ -190,12 +194,13 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-        //Für 2D Audio in der UI
+    //Für 2D Audio in der UI
     public void PlaySoundFXUIClip(AudioClip audioClip, Transform spawnTransform, float volume)
     {
         AudioSource audioSource = Instantiate(soundFXObject2D, spawnTransform.position, Quaternion.identity);
 
-
+        //Debug.Log("UISound3");
+        sfxUIInPlay += 1;
 
         audioSource.clip = audioClip;
 
@@ -205,15 +210,15 @@ public class AudioManager : MonoBehaviour
 
         float clipLength = audioSource.clip.length;
 
-        Destroy(audioSource.gameObject, clipLength + 1);
+        StartCoroutine(SFXUIOverflow(clipLength, audioSource.gameObject));
 
     }
-        //Für 3D Sound in Game
+    //Für 3D Sound in Game
     public void PlaySoundFXGameClip(AudioClip audioClip, Transform spawnTransform, float volume)
     {
         AudioSource audioSource = Instantiate(soundFXObject3D, spawnTransform.position, Quaternion.identity);
 
-
+        sfxGeneralInPlay += 1;
 
         audioSource.clip = audioClip;
 
@@ -223,12 +228,13 @@ public class AudioManager : MonoBehaviour
 
         float clipLength = audioSource.clip.length;
 
-        Destroy(audioSource.gameObject, clipLength + 1);
+        StartCoroutine(SFXGeneralOverflow(clipLength, audioSource.gameObject));
 
     }
 
     public void PlayTowerSound(int soundIndex)
     {
+        if (sfxGeneralInPlay >= 40) return;
         if (soundIndex >= 0 && soundIndex < _towerSFX.Count)
         {
             PlaySoundFXGameClip(_towerSFX[soundIndex], transform, 1f);
@@ -237,6 +243,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayUnitSound(int soundIndex)
     {
+        if (sfxGeneralInPlay >= 40) return;
         if (soundIndex >= 0 && soundIndex < _unitSFX.Count)
         {
             PlaySoundFXGameClip(_unitSFX[soundIndex], transform, 1f);
@@ -245,6 +252,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayGeneralSound(int soundIndex)
     {
+        if (sfxGeneralInPlay >= 40) return;
         if (soundIndex >= 0 && soundIndex < _generalSFX.Count)
         {
             PlaySoundFXGameClip(_generalSFX[soundIndex], transform, 1f);
@@ -255,8 +263,13 @@ public class AudioManager : MonoBehaviour
 
     public void PlayUISound(int soundIndex)
     {
+        //Debug.Log("UISound"+ sfxUIInPlay);
+        if (sfxUIInPlay >= 50) return;
+        //Debug.Log("UISound1");
+
         if (soundIndex >= 0 && soundIndex < _uiSFX.Count)
         {
+            //Debug.Log("UISound2");
             PlaySoundFXUIClip(_uiSFX[soundIndex], transform, 1f);
         }
     }
@@ -267,7 +280,7 @@ public class AudioManager : MonoBehaviour
         //Defender Turn Music
         if (gameManager.defendersTurn == true)
         {
-            if(gameManager.maxTurnCount * 0.5 >= gameManager.currentTurn)
+            if (gameManager.maxTurnCount * 0.5 >= gameManager.currentTurn)
             {
                 CrossfadeToClip(1);
             }
@@ -324,5 +337,20 @@ public class AudioManager : MonoBehaviour
             // Lautst�rke auf 0dB zur�cksetzen
             _mixer.SetFloat(volumeParameter, 0f);
         }
+    }
+
+    IEnumerator SFXUIOverflow(float clipLength, GameObject audioSource)
+    {
+        //Debug.Log("UISound4");
+        yield return new WaitForSeconds(clipLength + 1);
+        sfxUIInPlay -= 1;
+        Destroy(audioSource);
+    }
+
+    IEnumerator SFXGeneralOverflow(float clipLength, GameObject audioSource)
+    {
+        yield return new WaitForSeconds(clipLength + 1);
+        sfxGeneralInPlay -= 1;
+        Destroy(audioSource);
     }
 }
