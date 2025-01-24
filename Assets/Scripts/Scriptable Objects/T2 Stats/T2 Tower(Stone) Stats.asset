@@ -20,9 +20,9 @@ MonoBehaviour:
   outlineSize: 2
   goldProduced: 0
   supplyProduced: 0
-  animationTriggerString: 
-  needsCorrection: 0
-  characterPosition: {x: 0, y: 0, z: 0}
+  animationTriggerString: Shoot
+  needsCorrection: 1
+  characterPosition: {x: -2.95, y: 8.92, z: 11.62}
   target: 1
   attackRange: 45
   damage: 20

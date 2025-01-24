@@ -179,8 +179,10 @@ public class TowerAttack : MonoBehaviour
     void ShootProjectile()
     {
         if (nextVictim != null)
-        { 
-            GameObject arrow = Instantiate(towerStats.projectile, projectileStartPos, Quaternion.identity);
+        {
+            Vector3 directionToTarget = nextVictim.transform.position - transform.position;
+            Quaternion rotationToTarget = Quaternion.LookRotation(directionToTarget);
+            GameObject arrow = Instantiate(towerStats.projectile, projectileStartPos, rotationToTarget);
             ProjectileTower _projectileTower = arrow.GetComponent<ProjectileTower>();
             _projectileTower.TowerStats = towerStats;
             _projectileTower.p1 = projectileStartPos;
