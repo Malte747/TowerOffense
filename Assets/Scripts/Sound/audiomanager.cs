@@ -237,7 +237,7 @@ public class AudioManager : MonoBehaviour
         if (sfxGeneralInPlay >= 40) return;
         if (soundIndex >= 0 && soundIndex < _towerSFX.Count)
         {
-            PlaySoundFXGameClip(_towerSFX[soundIndex], transform, 1f);
+           PlaySoundFXGameClip(_towerSFX[soundIndex], transform, 1f);
         }
     }
 
@@ -246,7 +246,7 @@ public class AudioManager : MonoBehaviour
         if (sfxGeneralInPlay >= 40) return;
         if (soundIndex >= 0 && soundIndex < _unitSFX.Count)
         {
-            PlaySoundFXGameClip(_unitSFX[soundIndex], transform, 1f);
+           PlaySoundFXGameClip(_unitSFX[soundIndex], transform, 1f);
         }
     }
 
@@ -255,7 +255,7 @@ public class AudioManager : MonoBehaviour
         if (sfxGeneralInPlay >= 40) return;
         if (soundIndex >= 0 && soundIndex < _generalSFX.Count)
         {
-            PlaySoundFXGameClip(_generalSFX[soundIndex], transform, 1f);
+           PlaySoundFXGameClip(_generalSFX[soundIndex], transform, 1f);
         }
     }
 
@@ -342,14 +342,14 @@ public class AudioManager : MonoBehaviour
     IEnumerator SFXUIOverflow(float clipLength, GameObject audioSource)
     {
         //Debug.Log("UISound4");
-        yield return new WaitForSeconds(clipLength + 1);
+        yield return new WaitForSecondsRealtime(clipLength + 1);
         sfxUIInPlay -= 1;
         Destroy(audioSource);
     }
 
     IEnumerator SFXGeneralOverflow(float clipLength, GameObject audioSource)
     {
-        yield return new WaitForSeconds(clipLength + 1);
+        yield return new WaitForSecondsRealtime(clipLength + 1);
         sfxGeneralInPlay -= 1;
         Destroy(audioSource);
     }
