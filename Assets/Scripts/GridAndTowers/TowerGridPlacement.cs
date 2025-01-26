@@ -192,6 +192,10 @@ public class TowerGridPlacement : MonoBehaviour
             
             indicator.transform.parent.gameObject.SetActive(true);
         }
+        else if (!placingTowers)
+        {
+            Cursor.visible = true;
+        }
 
         #endregion
     }
