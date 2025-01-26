@@ -57,8 +57,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 061156c28bf232d48860c3a2e38570e0, type: 3}
   fadeDuration: 2
   loopFadeDuration: 5
-  sfxUIInPlay: 0
-  sfxGeneralInPlay: 0
   musicMixer: {fileID: -8651801749233867576, guid: de32485de7f40e6449350a56d56b28c9, type: 2}
   _towerSFX:
   - {fileID: 8300000, guid: 68b0c0f3ea89f9d478fbf98d93c398d1, type: 3}
@@ -127,6 +125,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2ff2a84cb57e68942b1b64d03d0bc05a, type: 3}
   - {fileID: 8300000, guid: 2ff2a84cb57e68942b1b64d03d0bc05a, type: 3}
   - {fileID: 8300000, guid: 7c16acdee48d0da4ba13492542002ab0, type: 3}
+  - {fileID: 8300000, guid: dcf1ef8cc1bbea7448337e0071c30f2a, type: 3}
   soundFXObject2D: {fileID: 250859827671696850, guid: 9a0274ea5a6564245a3a1ca1dd362467, type: 3}
   soundFXObject3D: {fileID: -8037317786793764081, guid: f1891282a06f54a4fb3caaab7b60c0b8, type: 3}
 --- !u!114 &70519977707579807
