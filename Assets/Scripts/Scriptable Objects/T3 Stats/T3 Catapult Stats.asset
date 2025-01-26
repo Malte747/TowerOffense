@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: T3 Catapult Stats
   m_EditorClassIdentifier: 
   health: 100
-  goldCost: 200
+  goldCost: 230
   supplyCost: 20
   xSize: 2
   zSize: 2
@@ -25,7 +25,7 @@ MonoBehaviour:
   characterPosition: {x: 0, y: 0, z: 0}
   target: 4
   attackRange: 120
-  damage: 30
+  damage: 15
   attackCooldown: 15
   damageDelay: 1.5
   isRangeUnit: 1
@@ -37,4 +37,4 @@ MonoBehaviour:
   aoeSize: 15
   lingeringAoe: 1
   lingeringAoeDuration: 8
-  lingeringAoeDamage: 5
+  lingeringAoeDamage: 3

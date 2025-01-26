@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 
     GameManager gameManager;
     MessageSystem messageSystem;
+     AudioManager audioManager;
 
     public MultiButtonTrigger multiButtonTriggerAttack;
     public MultiButtonTrigger multiButtonTriggerDefense;
@@ -66,6 +67,7 @@ public class UIManager : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         messageSystem = GetComponent<MessageSystem>();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         hTPToggle.onValueChanged.AddListener(delegate { ToggleChanged(); });
 
         ActivateResumeGameButton();
@@ -360,30 +362,36 @@ public class UIManager : MonoBehaviour
     public void NotEnoughGoldMessage()
     {
         messageSystem.ShowMessage("Nicht genug Gold!"); 
+        audioManager.PlayUISound(22);
     }
 
     public void NotEnoughSupplyMessage()
     {
-        messageSystem.ShowMessage("Nicht genug Supply!"); 
+        messageSystem.ShowMessage("Nicht genug Supply!");
+         audioManager.PlayUISound(22); 
     }
 
     public void CannotBuildHereMessage()
     {
         messageSystem.ShowMessage("Hier kannst du nichts bauen!"); 
+        audioManager.PlayUISound(22);
     }
 
     public void CannotSpwanUnitsHereMessage()
     {
-        messageSystem.ShowMessage("Hier kannst du nichts erschaffen!"); 
+        messageSystem.ShowMessage("Hier kannst du nichts erschaffen!");
+        audioManager.PlayUISound(22);
     }
 
     public void UnitsStillFightingMessage()
     {
-        messageSystem.ShowMessage("Unsere Truppen sind im Kampf!"); 
+        messageSystem.ShowMessage("Unsere Truppen sind im Kampf!");
+        audioManager.PlayUISound(22); 
     }
     public void TimePausedMessage()
     {
-        messageSystem.ShowMessage("Die Zeit ist noch angehalten!"); 
+        messageSystem.ShowMessage("Die Zeit ist noch angehalten!");
+        audioManager.PlayUISound(22); 
     }
 
 

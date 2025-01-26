@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public bool defendersTurn = true;
     [SerializeField] public int currentTurn = 1;
     public int maxTurnCount;
+    private bool canEndTurn = true;
 
 
 
@@ -207,6 +208,8 @@ public class GameManager : MonoBehaviour
 
     public void EndTrun()
     {
+        if(canEndTurn)
+        {
         if(uiManager.timePaused)
         {
             uiManager.TimePausedMessage();
@@ -217,6 +220,7 @@ public class GameManager : MonoBehaviour
         }
         else if (attackersTurn && EnemyBibleScript.EnemyBible.Count == 0)
         {
+            StartCoroutine(EndTurnCooldown());
             attackersTurn = false;
             defendersTurn = true;
             currentTurn++;
@@ -229,6 +233,7 @@ public class GameManager : MonoBehaviour
         }
         else if (defendersTurn)
         {
+            StartCoroutine(EndTurnCooldown());
             defendersTurn = false;
             attackersTurn = true;
             uiManager.ActivateAttackerUI();
@@ -242,6 +247,7 @@ public class GameManager : MonoBehaviour
         else
         {
             uiManager.UnitsStillFightingMessage();
+        }
         }
     }
 
@@ -261,6 +267,13 @@ public class GameManager : MonoBehaviour
         {
             EndTrun();
         }
+    }
+
+    private IEnumerator EndTurnCooldown()
+    {
+        canEndTurn = false; 
+        yield return new WaitForSecondsRealtime(3f); 
+        canEndTurn = true;  
     }
 
 
