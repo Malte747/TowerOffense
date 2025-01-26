@@ -16,7 +16,7 @@ public class TowerHealthBar : MonoBehaviour
     void Start()
     {
         _health = GetComponent<HealthTowers>();
-        if(_health.TowerStats.target == TowerStats.Targets.MainTower)
+        if (gameObject.CompareTag("MainTower"))
         {
             _healthBarSlider = GameObject.Find("HealthBar_MainTower").GetComponent<Slider>();
            // Debug.LogWarning(_healthBarSlider);
