@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TMPro;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -373,8 +374,12 @@ public class TowerGridPlacement : MonoBehaviour
         TowerStats towerstats = healthTowers.TowerStats;
         _uiManager.ShowTowerInfoUI();
         TowerInfoUIHPChange();
-        if (towerKnowsWhereItIs != null) _uiManager.SetTowerRepairCost(towerStats.goldCost, towerstats.health, healthTowers.health);
-        //Bild Change
+        if (towerKnowsWhereItIs != null) 
+        { 
+            _uiManager.SetTowerRepairCost(towerStats.goldCost, towerstats.health, healthTowers.health);
+            _uiManager.SetTowerAllRepairCost();
+            _uiManager.SetTowerImage(towerstats.towerIcon);
+        }
     }
 
     public void TowerInfoUIHPChange()
@@ -383,9 +388,9 @@ public class TowerGridPlacement : MonoBehaviour
         _uiManager.SetTowerHPSliderUIValues(towerstats.health, healthTowers.health);
     }
 
-    public void TowerUIButtons(bool repair)
+    public void TowerUIButtons(int repair)
     {
-        if (healthTowers != null && repair)
+        if (healthTowers != null && repair == 1)
         {
             if (UIManager.towerRepairCost <= gameManager.defenderGold)
             {
@@ -393,8 +398,21 @@ public class TowerGridPlacement : MonoBehaviour
                 healthTowers.RepairTower();
             }
         }
-        else if (healthTowers != null && !repair) 
-        { 
+        else if (healthTowers != null && repair == 2)
+        {
+            gameManager.TurretPayment(UIManager.combinedRepairCost);
+            List<GameObject> taggedObjects = new List<GameObject>();
+            foreach (GameObject obj in TowerGridPlacement.TowerBible.Values)
+            {
+                if (obj != null && !taggedObjects.Contains(obj))
+                {
+                    taggedObjects.Add(obj);
+                    obj.GetComponent<HealthTowers>().RepairTower();
+                }
+            }
+        }
+        else if (healthTowers != null && repair == 3)
+        {
             healthTowers.Death();
         }
     }

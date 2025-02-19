@@ -16,6 +16,8 @@ public class TowerStats : ScriptableObject
     public int zSize;
     [Tooltip("How big the Outline around the Tower is")]
     public float outlineSize = 2f;
+    [Tooltip("Tower Icon")]
+    public Sprite towerIcon;
 
     [Header("Production Stats")]
     [Tooltip("Amount of Gold this Mine adds to the Gold gained each round")]

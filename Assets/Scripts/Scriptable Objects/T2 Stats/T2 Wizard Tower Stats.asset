@@ -18,6 +18,7 @@ MonoBehaviour:
   xSize: 1
   zSize: 1
   outlineSize: 2
+  towerIcon: {fileID: 21300000, guid: 7b0b7499d8e0d954db4396a5579fc831, type: 3}
   goldProduced: 0
   supplyProduced: 0
   animationTriggerString: MagicAttack

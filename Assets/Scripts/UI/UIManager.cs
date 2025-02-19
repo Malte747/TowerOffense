@@ -31,8 +31,9 @@ public class UIManager : MonoBehaviour
     public Animator[] animatorsToChange;
     public Slider hpSlider;
     public TMP_Text hpSliderText;
-    public static int towerRepairCost;
-    public TMP_Text towerRepairCostText;
+    public static int towerRepairCost, combinedRepairCost;
+    public TMP_Text towerRepairCostText, towerRepairAllCostText;
+    public Image towerImage;
     public GameObject[] towerInfoUI;
 
 
@@ -322,6 +323,47 @@ public class UIManager : MonoBehaviour
         {
             towerRepairCostText.text = "FREE";
         }
+    }
+
+    public void SetTowerAllRepairCost()
+    {
+        List<GameObject> taggedObjects = new List<GameObject>();
+        combinedRepairCost = 0;
+        foreach (GameObject obj in TowerGridPlacement.TowerBible.Values)
+        {
+            if (obj != null && !taggedObjects.Contains(obj))
+            {
+                taggedObjects.Add(obj);
+
+                HealthTowers health = obj.GetComponent<HealthTowers>();
+                TowerStats stats = health.TowerStats;
+                int towerPrice = stats.goldCost;
+                int maxHP = stats.health;
+                int currentHP = health.health;
+                float towerRepairCostFloat = ((float)towerPrice / maxHP) * ((float)gameManager.towerRepairCostMultiplier / 100f) * (maxHP - currentHP);
+                combinedRepairCost += Mathf.RoundToInt(towerRepairCostFloat);
+            }
+        }   
+        Debug.Log("Combined reapair cost: " + combinedRepairCost);
+        if (combinedRepairCost >= 1)
+        {
+            towerRepairAllCostText.text = combinedRepairCost.ToString();
+        }
+        else if (combinedRepairCost < 1 && combinedRepairCost > 0)
+        {
+            combinedRepairCost = 1;
+            towerRepairAllCostText.text = combinedRepairCost.ToString();
+        }
+        else
+        {
+            towerRepairAllCostText.text = "FREE";
+        }
+    }
+
+
+    public void SetTowerImage(Sprite image)
+    {
+        towerImage.sprite = image;
     }
 
     public void ShowTowerInfoUI()
