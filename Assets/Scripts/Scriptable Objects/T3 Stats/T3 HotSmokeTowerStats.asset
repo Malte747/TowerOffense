@@ -18,6 +18,7 @@ MonoBehaviour:
   xSize: 2
   zSize: 2
   outlineSize: 2
+  towerType: Tower
   towerIcon: {fileID: 21300000, guid: fd5b5fa8ac4fdbb4cab238eb45d87722, type: 3}
   goldProduced: 0
   supplyProduced: 0

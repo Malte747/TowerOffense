@@ -18,6 +18,7 @@ MonoBehaviour:
   xSize: 2
   zSize: 2
   outlineSize: 2
+  towerType: SupplyHouse
   towerIcon: {fileID: 21300000, guid: eabf81f1fe743f848bf57f6d7af018ff, type: 3}
   goldProduced: 0
   supplyProduced: 15

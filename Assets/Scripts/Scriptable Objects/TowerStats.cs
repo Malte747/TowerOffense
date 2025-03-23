@@ -16,6 +16,8 @@ public class TowerStats : ScriptableObject
     public int zSize;
     [Tooltip("How big the Outline around the Tower is")]
     public float outlineSize = 2f;
+    [Tooltip("Tower Type")]
+    public string towerType = "MainTower";
     [Tooltip("Tower Icon")]
     public Sprite towerIcon;
 

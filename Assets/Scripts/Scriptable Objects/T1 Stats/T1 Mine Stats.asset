@@ -18,6 +18,7 @@ MonoBehaviour:
   xSize: 2
   zSize: 2
   outlineSize: 2
+  towerType: Mine
   towerIcon: {fileID: 21300000, guid: b60ae7bb58f981d4f8cf306c092fee3e, type: 3}
   goldProduced: 10
   supplyProduced: 0

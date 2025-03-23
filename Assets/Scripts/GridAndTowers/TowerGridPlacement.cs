@@ -377,7 +377,7 @@ public class TowerGridPlacement : MonoBehaviour
         if (towerKnowsWhereItIs != null) 
         { 
             _uiManager.SetTowerRepairCost(towerStats.goldCost, towerstats.health, healthTowers.health);
-            _uiManager.SetTowerAllRepairCost();
+            _uiManager.SetTowerAllRepairCost(towerstats.towerType);
             _uiManager.SetTowerImage(towerstats.towerIcon);
         }
     }
@@ -400,14 +400,17 @@ public class TowerGridPlacement : MonoBehaviour
         }
         else if (healthTowers != null && repair == 2)
         {
-            gameManager.TurretPayment(UIManager.combinedRepairCost);
-            List<GameObject> taggedObjects = new List<GameObject>();
-            foreach (GameObject obj in TowerGridPlacement.TowerBible.Values)
-            {
-                if (obj != null && !taggedObjects.Contains(obj))
+            if (UIManager.combinedRepairCost <= gameManager.defenderGold) 
+            { 
+                gameManager.TurretPayment(UIManager.combinedRepairCost);
+                List<GameObject> taggedObjects = new List<GameObject>();
+                foreach (GameObject obj in TowerGridPlacement.TowerBible.Values)
                 {
+                    if (obj != null && obj.CompareTag(healthTowers.TowerStats.towerType) && !taggedObjects.Contains(obj))
+                    {
                     taggedObjects.Add(obj);
                     obj.GetComponent<HealthTowers>().RepairTower();
+                    }
                 }
             }
         }

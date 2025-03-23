@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class UIManager : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class UIManager : MonoBehaviour
     public Slider hpSlider;
     public TMP_Text hpSliderText;
     public static int towerRepairCost, combinedRepairCost;
-    public TMP_Text towerRepairCostText, towerRepairAllCostText;
+    public TMP_Text towerRepairCostText, towerRepairAllCostText, infotext, destroyInfotext;
     public Image towerImage;
     public GameObject[] towerInfoUI;
 
@@ -325,13 +326,13 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void SetTowerAllRepairCost()
+    public void SetTowerAllRepairCost(string type)
     {
         List<GameObject> taggedObjects = new List<GameObject>();
         combinedRepairCost = 0;
         foreach (GameObject obj in TowerGridPlacement.TowerBible.Values)
         {
-            if (obj != null && !taggedObjects.Contains(obj))
+            if (obj != null && obj.CompareTag(type) && !taggedObjects.Contains(obj))
             {
                 taggedObjects.Add(obj);
 
@@ -345,6 +346,27 @@ public class UIManager : MonoBehaviour
             }
         }   
         Debug.Log("Combined reapair cost: " + combinedRepairCost);
+        if(type == "Tower")
+        {
+            infotext.text = "Repariert alle Angreifenden Tower deiner Defensive";
+        }
+        else if (type == "Mine")
+        {
+            infotext.text = "Repariert alle Minen deiner Defensive";
+        }
+        else if (type == "Wall")
+        {
+            infotext.text = "Repariert alle Barrikaden und Mauern deiner Defensive";
+        }
+        else if (type == "SupplyHouse")
+        {
+            infotext.text = "Repariert alle Supply Tower deiner Defensive";
+        }
+        else if (type == "MainTower")
+        {
+            infotext.text = "Repariert alle Main Tower dein... Warte, du hast nur einen. Sei vorsichtig mit ihm!";
+        }
+
         if (combinedRepairCost >= 1)
         {
             towerRepairAllCostText.text = combinedRepairCost.ToString();
@@ -377,16 +399,13 @@ public class UIManager : MonoBehaviour
             towerInfoUI[2].SetActive(false);
             towerInfoUI[3].SetActive(false);
         }
-        else if(TowerGridPlacement.clickedTowerParent.GetComponent<Collider>().CompareTag("MainTower"))
+        else if (TowerGridPlacement.clickedTowerParent.GetComponent<Collider>().CompareTag("MainTower"))
         {
-            Button button = towerInfoUI[3].GetComponent<Button>();
-            button.interactable = false;
-            //Debug.Log("MainTower Clicked");
+            destroyInfotext.text = "Vernichtet den Main Tower. Willst du wirklich die weiße Flagge hissen?";
         }
         else
         {
-            Button button = towerInfoUI[3].GetComponent<Button>();  
-            button.interactable = true;
+            destroyInfotext.text = "Vernichtet den Turm, es werden keine Kosten erstattet";
         }
     }
     public void HideTowerInfoUI()
