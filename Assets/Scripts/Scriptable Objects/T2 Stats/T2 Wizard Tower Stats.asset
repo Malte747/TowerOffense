@@ -26,7 +26,7 @@ MonoBehaviour:
   needsCorrection: 1
   characterPosition: {x: -1.4, y: 15.8, z: 15}
   target: 4
-  attackRange: 35
+  attackRange: 40
   damage: 16
   attackCooldown: 3
   damageDelay: 1

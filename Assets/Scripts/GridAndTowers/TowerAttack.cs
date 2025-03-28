@@ -14,11 +14,14 @@ public class TowerAttack : MonoBehaviour
     private Vector3 projectileStartPos;
     [SerializeField] private GameObject turningGameObject;
     [SerializeField] private GameObject correctionObject;
+    [SerializeField] private Vector3 centerPoint;
 
     // Start is called before the first frame update
     void Start()
     {
-        grid = GameObject.Find("Grid").GetComponent<Grid>();
+        if (towerStats.towerType != "MainTower") centerPoint = gameObject.transform.GetChild(3).gameObject.transform.position;
+        else if (towerStats.towerType == "MainTower") centerPoint = gameObject.transform.position;
+            grid = GameObject.Find("Grid").GetComponent<Grid>();
         projectileStartPos = transform.position + towerStats.projectileStartPos;
 
         if (towerStats.target == TowerStats.Targets.AoeArea)
@@ -94,10 +97,10 @@ public class TowerAttack : MonoBehaviour
                 {
                     if (towerStats.target == TowerStats.Targets.Closest)
                     {
-                        if (Vector3.Distance(transform.position, pos) <= distance)
+                        if (Vector3.Distance(centerPoint, pos) <= distance)
                         {
                             VictimFound(pos);
-                            distance = Vector3.Distance(transform.position, pos);
+                            distance = Vector3.Distance(centerPoint, pos);
                         }
                     }
                     else if (towerStats.target == TowerStats.Targets.First)
@@ -147,7 +150,7 @@ public class TowerAttack : MonoBehaviour
     public bool IsEnemyInRange(Vector3 pos) 
     {
 
-        if (Vector3.Distance(transform.position, pos) <= towerStats.attackRange)
+        if (Vector3.Distance(centerPoint, pos) <= towerStats.attackRange)
         {
             return true;
         }
@@ -180,7 +183,7 @@ public class TowerAttack : MonoBehaviour
     {
         if (nextVictim != null)
         {
-            Vector3 directionToTarget = nextVictim.transform.position - transform.position;
+            Vector3 directionToTarget = nextVictim.transform.position - centerPoint;
             Quaternion rotationToTarget = Quaternion.LookRotation(directionToTarget);
             GameObject arrow = Instantiate(towerStats.projectile, projectileStartPos, rotationToTarget);
             ProjectileTower _projectileTower = arrow.GetComponent<ProjectileTower>();

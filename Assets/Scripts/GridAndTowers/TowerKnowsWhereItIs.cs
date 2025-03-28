@@ -15,7 +15,7 @@ public class TowerKnowsWhereItIs : MonoBehaviour
         if (TowerStats.target != TowerStats.Targets.MainTower && gameObject.CompareTag("Tower")) 
         {
             Transform rangeIndicator = gameObject.transform.GetChild(1);
-            int rangeNumber = (TowerStats.attackRange * 2) + 10;
+            int rangeNumber = (TowerStats.attackRange * 2);
             rangeIndicator.localScale = new Vector3(rangeNumber, 0.01f, rangeNumber);
         }
 

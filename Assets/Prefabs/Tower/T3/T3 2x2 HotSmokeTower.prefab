@@ -1498,6 +1498,7 @@ MonoBehaviour:
   towerStats: {fileID: 11400000, guid: 9d46953cee95bb642a7da93098086c47, type: 2}
   turningGameObject: {fileID: 0}
   correctionObject: {fileID: 0}
+  centerPoint: {x: 0, y: 0, z: 0}
 --- !u!114 &7829610398277998020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2675,7 +2676,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8.52, y: 1.5199995, z: 0.024499893}
-  m_LocalScale: {x: 0.8702061, y: 0.31568116, z: 0.8702061}
+  m_LocalScale: {x: 1.1924435, y: 0.31568116, z: 1.1312679}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2564742190340688334}
