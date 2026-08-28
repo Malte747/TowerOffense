@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     //defenders stats
     [Header("Defender Stats")]
     public int defenderStartGold;
-    [SerializeField] private int defenderGoldIncome;
+    [SerializeField] public int defenderGoldIncome;
     public int defenderMaxSupply;
     
 
@@ -688,9 +688,10 @@ private IEnumerator UpdateIncomeText()
         SetGoldValue(defenderGold);
     }
 
-    public void TurretSupplyPayment(int turretPrice)
+    public void TurretSupplyPayment(int turretPrice, bool giveSupplyBack = false)
     {
-        
+        if (turretPrice < 0) return;
+        if (giveSupplyBack) turretPrice *= -1;
         defenderSupply = defenderSupply + turretPrice;
         if(!attackersTurn)
         {

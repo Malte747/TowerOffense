@@ -1,0 +1,4899 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Menu_Local_de
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: de
+  m_SharedData: {fileID: 11400000, guid: da95b204f46b86741b5a4b96890b55f8, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 9682666446848
+    m_Localized: No translation found for '' in Menu_Local
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682674835456
+    m_Localized: 'Allgemein
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682679029760
+    m_Localized: Angreifer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682679029761
+    m_Localized: Verteidiger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682683224064
+    m_Localized: 'SO WIRD GESPIELT
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682683224065
+    m_Localized: Dein aktuelles Versorgungslimit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682683224066
+    m_Localized: "Dein aktuelles Einkommen, welches du am Anfang jeder Runde erh\xE4lst\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682683224067
+    m_Localized: Dein aktuelles Gold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682687418368
+    m_Localized: 'Tooltipp:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682687418369
+    m_Localized: "\nWenn du beim plazieren die \"SHIFT\" Taste gedr\xFCckt h\xE4lst,
+      kannst du mehrere Dinge hintereinander plazieren."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682687418370
+    m_Localized: 'Tooltipp:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682687418371
+    m_Localized: "\nBenutze die angezeigten Tastenk\xFCrzel auf deiner Tastatur um
+      schneller Truppen oder Tower auszuw\xE4hlen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682687418372
+    m_Localized: "Zeigt dir die \naktulle sowie die maximale Rundenzahl."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682687418373
+    m_Localized: "Mit diesen Reglern \nkannst du die Geschwindigkeit des Spiels steuern."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682687418374
+    m_Localized: 'Allgemein
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682687418375
+    m_Localized: Angreifer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682687418376
+    m_Localized: Verteidiger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682687418377
+    m_Localized: 'SO WIRD GESPIELT
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682687418378
+    m_Localized: Gewinnen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682687418379
+    m_Localized: Upgrades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682687418380
+    m_Localized: Truppen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682695806976
+    m_Localized: "Zerst\xF6re die feindliche Burgmauer um das Spiel zu gewinnen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682695806977
+    m_Localized: "Kaufe Upgrades um deine Angriffe zu verst\xE4rken."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682695806978
+    m_Localized: "Upgrades k\xF6nnen dir Spielentscheidende Vorteile bringen, aber
+      auch viel Gold kosten. Nutze sie weise."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682695806979
+    m_Localized: "Erschaffe Truppen mit Gold um gegnerische Tower zu zerst\xF6ren.\n\nJede
+      plazierte Einheit erh\xF6ht dein Gold Einkommen f\xFCr die n\xE4chsten Runden."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682695806980
+    m_Localized: 'Allgemein
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682695806981
+    m_Localized: Angreifer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682695806982
+    m_Localized: Verteidiger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682695806983
+    m_Localized: 'SO WIRD GESPIELT
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682700001280
+    m_Localized: Tier Upgrades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682700001281
+    m_Localized: Minen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682700001282
+    m_Localized: Tower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682700001283
+    m_Localized: "Er\xF6he deine Tier Stufe um neue, noch m\xE4chtigere Tower, freizuschalten."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682700001284
+    m_Localized: "Minen erh\xF6hen jede Runde, in der sie leben, dauerhaft dein Einkommen
+      f\xFCr die folgenden Runden."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682700001285
+    m_Localized: "Repariere besch\xE4digte Tower, oder rei\xDFe Tower ab die im Weg
+      stehen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682700001286
+    m_Localized: "Baue Tower f\xFCr Gold um deine Burg zu verteidigen. Jeder Tower
+      hat einzigartige Attribute und Effekte.\n\nWenn du deine Burgmauer bis zur
+      letzen Runde verteidigt hast, gewinnst du."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682700001287
+    m_Localized: 'Allgemein
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682704195584
+    m_Localized: Angreifer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682704195585
+    m_Localized: Verteidiger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682704195586
+    m_Localized: 'Allgemein
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682704195587
+    m_Localized: Angreifer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682704195588
+    m_Localized: Verteidiger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682704195589
+    m_Localized: 'SO WIRD GESPIELT
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682704195590
+    m_Localized: Dein aktuelles Versorgungslimit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682704195591
+    m_Localized: "Dein aktuelles Einkommen, welches du am Anfang jeder Runde erh\xE4lst\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682708389888
+    m_Localized: Dein aktuelles Gold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682708389889
+    m_Localized: 'Tooltipp:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682708389890
+    m_Localized: "\nWenn du beim plazieren die \"SHIFT\" Taste gedr\xFCckt h\xE4lst,
+      kannst du mehrere Dinge hintereinander plazieren."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682708389891
+    m_Localized: 'Tooltipp:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682708389892
+    m_Localized: "\nBenutze die angezeigten Tastenk\xFCrzel auf deiner Tastatur um
+      schneller Truppen oder Tower auszuw\xE4hlen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682708389893
+    m_Localized: "Zeigt dir die \naktulle sowie die maximale Rundenzahl."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682708389894
+    m_Localized: "Mit diesen Reglern \nkannst du die Geschwindigkeit des Spiels steuern."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682712584192
+    m_Localized: 'Allgemein
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682712584193
+    m_Localized: Angreifer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682712584194
+    m_Localized: Verteidiger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682712584195
+    m_Localized: 'SO WIRD GESPIELT
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682712584196
+    m_Localized: Gewinnen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682712584197
+    m_Localized: Upgrades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682712584198
+    m_Localized: Truppen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682716778496
+    m_Localized: "Zerst\xF6re die feindliche Burgmauer um das Spiel zu gewinnen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682716778497
+    m_Localized: "Kaufe Upgrades um deine Angriffe zu verst\xE4rken."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682716778498
+    m_Localized: "Upgrades k\xF6nnen dir Spielentscheidende Vorteile bringen, aber
+      auch viel Gold kosten. Nutze sie weise."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682716778499
+    m_Localized: "Erschaffe Truppen mit Gold um gegnerische Tower zu zerst\xF6ren.\n\nJede
+      plazierte Einheit erh\xF6ht dein Gold Einkommen f\xFCr die n\xE4chsten Runden."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682716778500
+    m_Localized: 'Allgemein
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682716778501
+    m_Localized: Angreifer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682716778502
+    m_Localized: Verteidiger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682716778503
+    m_Localized: 'SO WIRD GESPIELT
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682716778504
+    m_Localized: Tier Upgrades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682716778505
+    m_Localized: Minen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682716778506
+    m_Localized: Tower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682720972800
+    m_Localized: "Er\xF6he deine Tier Stufe um neue, noch m\xE4chtigere Tower, freizuschalten."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682720972801
+    m_Localized: "Minen erh\xF6hen jede Runde, in der sie leben, dauerhaft dein Einkommen
+      f\xFCr die folgenden Runden."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682720972802
+    m_Localized: "Repariere besch\xE4digte Tower, oder rei\xDFe Tower ab die im Weg
+      stehen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682720972803
+    m_Localized: "Baue Tower f\xFCr Gold um deine Burg zu verteidigen. Jeder Tower
+      hat einzigartige Attribute und Effekte.\n\nWenn du deine Burgmauer bis zur
+      letzen Runde verteidigt hast, gewinnst du."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682720972804
+    m_Localized: 'Allgemein
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682720972805
+    m_Localized: Angreifer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682720972806
+    m_Localized: Verteidiger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682725167104
+    m_Localized: 'SO WIRD GESPIELT
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682725167105
+    m_Localized: Dein aktuelles Versorgungslimit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682725167106
+    m_Localized: "Dein aktuelles Einkommen, welches du am Anfang jeder Runde erh\xE4lst\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682725167107
+    m_Localized: Dein aktuelles Gold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682725167108
+    m_Localized: 'Tooltipp:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682725167109
+    m_Localized: "\nWenn du beim plazieren die \"SHIFT\" Taste gedr\xFCckt h\xE4lst,
+      kannst du mehrere Dinge hintereinander plazieren."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682725167110
+    m_Localized: 'Tooltipp:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682729361408
+    m_Localized: "\nBenutze die angezeigten Tastenk\xFCrzel auf deiner Tastatur um
+      schneller Truppen oder Tower auszuw\xE4hlen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682729361409
+    m_Localized: "Zeigt dir die \naktulle sowie die maximale Rundenzahl."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682729361410
+    m_Localized: "Mit diesen Reglern \nkannst du die Geschwindigkeit des Spiels steuern."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682729361411
+    m_Localized: 'Allgemein
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682729361412
+    m_Localized: Angreifer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682729361413
+    m_Localized: Verteidiger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682729361414
+    m_Localized: 'SO WIRD GESPIELT
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682729361415
+    m_Localized: Gewinnen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682729361416
+    m_Localized: Upgrades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682729361417
+    m_Localized: Truppen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682737750016
+    m_Localized: "Zerst\xF6re die feindliche Burgmauer um das Spiel zu gewinnen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682737750017
+    m_Localized: "Kaufe Upgrades um deine Angriffe zu verst\xE4rken."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682737750018
+    m_Localized: "Upgrades k\xF6nnen dir Spielentscheidende Vorteile bringen, aber
+      auch viel Gold kosten. Nutze sie weise."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682737750019
+    m_Localized: "Erschaffe Truppen mit Gold um gegnerische Tower zu zerst\xF6ren.\n\nJede
+      plazierte Einheit erh\xF6ht dein Gold Einkommen f\xFCr die n\xE4chsten Runden."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682737750020
+    m_Localized: 'Allgemein
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682737750021
+    m_Localized: Angreifer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682737750022
+    m_Localized: Verteidiger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682741944320
+    m_Localized: 'SO WIRD GESPIELT
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682741944321
+    m_Localized: Tier Upgrades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682741944322
+    m_Localized: Minen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682741944323
+    m_Localized: Tower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682741944324
+    m_Localized: "Er\xF6he deine Tier Stufe um neue, noch m\xE4chtigere Tower, freizuschalten."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682741944325
+    m_Localized: "Minen erh\xF6hen jede Runde, in der sie leben, dauerhaft dein Einkommen
+      f\xFCr die folgenden Runden."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682741944326
+    m_Localized: "Repariere besch\xE4digte Tower, oder rei\xDFe Tower ab die im Weg
+      stehen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682746138624
+    m_Localized: "Baue Tower f\xFCr Gold um deine Burg zu verteidigen. Jeder Tower
+      hat einzigartige Attribute und Effekte.\n\nWenn du deine Burgmauer bis zur
+      letzen Runde verteidigt hast, gewinnst du."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682746138625
+    m_Localized: Nicht erneut anzeigen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682746138626
+    m_Localized: Angreifer gewinnt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682746138627
+    m_Localized: Verteidiger gewinnt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682746138628
+    m_Localized: 'Schnapp dir ein Upgrade!
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682746138629
+    m_Localized: Grafik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682750332928
+    m_Localized: Option A
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682750332929
+    m_Localized: Ultra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682750332930
+    m_Localized: 'Musik
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682750332931
+    m_Localized: SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682754527232
+    m_Localized: Optionen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682754527233
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682754527234
+    m_Localized: Ok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682754527235
+    m_Localized: Abbrechen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682754527236
+    m_Localized: Vorsicht, dein aktuelles Spiel wird nicht gespeichert
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682754527237
+    m_Localized: Verlassen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682758721536
+    m_Localized: 'Malte Lehmann
+
+      Johanna Josupeit
+
+      Tom Engmann
+
+      Philipp
+      Siemoneit
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682758721537
+    m_Localized: Ein Spiel von
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682758721538
+    m_Localized: Verlassen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682758721539
+    m_Localized: Wie wird gespielt?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682758721540
+    m_Localized: "\xDCber das Spiel"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682758721541
+    m_Localized: Optionen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682758721542
+    m_Localized: Fortsetzen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682758721543
+    m_Localized: Voreinstellungen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682762915840
+    m_Localized: Custom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682762915841
+    m_Localized: Lang
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682762915842
+    m_Localized: Mittel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682762915843
+    m_Localized: Kurz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682762915844
+    m_Localized: der Towerkosten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682767110144
+    m_Localized: 'Die Reparatur von einem
+
+      Tower kostet'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682767110145
+    m_Localized: Startgold des Verteidigers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682767110146
+    m_Localized: Startgold des Angreifers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682767110147
+    m_Localized: Erweiterte Einstellungen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682767110148
+    m_Localized: Allgemein
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682767110149
+    m_Localized: Maximales Versorgungslimit, begrenzt die Anzahl von Towern und Einheiten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682771304448
+    m_Localized: Startgold, welches jeder Spieler am Anfang des Spiels bekommt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682771304449
+    m_Localized: "Startwert f\xFCr Einkommen, welches jeder Spieler am Anfang des
+      Spiels bekommt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682771304450
+    m_Localized: Rundenanzahl, bestimmt wie viele Runden gespielt werden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682771304451
+    m_Localized: Erweiterte Einstellungen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682771304452
+    m_Localized: Allgemein
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682771304453
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682771304454
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682771304455
+    m_Localized: B
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682771304456
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682779693056
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682779693057
+    m_Localized: V
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682779693058
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682779693059
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682779693060
+    m_Localized: C
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682779693061
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682783887360
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682783887361
+    m_Localized: X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682783887362
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682783887363
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682783887364
+    m_Localized: Y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682783887365
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682788081664
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682788081665
+    m_Localized: G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682788081666
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682788081667
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682788081668
+    m_Localized: F
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682788081669
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682792275968
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682792275969
+    m_Localized: D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682792275970
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682792275971
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682792275972
+    m_Localized: S
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682796470272
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682796470273
+    m_Localized: A
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682796470274
+    m_Localized: '-'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682796470275
+    m_Localized: Dieser Zauberer beherrscht die Kunst der dunklen Magie.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682800664576
+    m_Localized: Verbannter Hexer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682800664577
+    m_Localized: T
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682800664578
+    m_Localized: "Eiener der auserkohrenen des K\xF6nigs."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682800664579
+    m_Localized: Ritter der Tafel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682800664580
+    m_Localized: R
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682800664581
+    m_Localized: Eine Riesiges Biest, welches Tower fokussiert.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682800664582
+    m_Localized: Ork
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682800664583
+    m_Localized: E
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682804858880
+    m_Localized: Eine Fehrnkampfeinheit der Spitzenklasse.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682804858881
+    m_Localized: Musketier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682804858882
+    m_Localized: W
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682804858883
+    m_Localized: Befreie die Bestie.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682804858884
+    m_Localized: Princess
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682809053184
+    m_Localized: Q
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682809053185
+    m_Localized: B
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682809053186
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682809053187
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682809053188
+    m_Localized: V
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682813247488
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682813247489
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682813247490
+    m_Localized: C
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682813247491
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682813247492
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682813247493
+    m_Localized: X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682821636096
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682821636097
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682821636098
+    m_Localized: Y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682821636099
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682821636100
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682825830400
+    m_Localized: G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682825830401
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682825830402
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682825830403
+    m_Localized: F
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682825830404
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682825830405
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682830024704
+    m_Localized: D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682830024705
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682830024706
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682830024707
+    m_Localized: S
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682830024708
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682834219008
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682834219009
+    m_Localized: A
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682834219010
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682834219011
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682834219012
+    m_Localized: T
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682838413312
+    m_Localized: Er wollte eigentlich nie der Armee beitreten.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682838413313
+    m_Localized: Einfacher Krieger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682838413314
+    m_Localized: R
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682838413315
+    m_Localized: "Trolle lieben frischen Fisch und K\xE4se. Fokussiert Tower."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682842607616
+    m_Localized: Wald Troll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682842607617
+    m_Localized: E
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682842607618
+    m_Localized: Mit seinem schnellem Bogen ist er durchaus eine Gefahr
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682842607619
+    m_Localized: Dieb
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682842607620
+    m_Localized: W
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682846801920
+    m_Localized: Schau ihm besser nicht in die Augen. Fokussiert Tower.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682846801921
+    m_Localized: Raufbold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682846801922
+    m_Localized: Q
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682846801923
+    m_Localized: B
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682846801924
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682850996224
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682850996225
+    m_Localized: V
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682850996226
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682850996227
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682855190528
+    m_Localized: C
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682855190529
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682855190530
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682855190531
+    m_Localized: X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682855190532
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682859384832
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682859384833
+    m_Localized: Y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682859384834
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682859384835
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682859384836
+    m_Localized: G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682863579136
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682863579137
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682863579138
+    m_Localized: F
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682863579139
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682863579140
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682863579141
+    m_Localized: D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682863579142
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682867773440
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682867773441
+    m_Localized: S
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682867773442
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682867773443
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682867773444
+    m_Localized: A
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682871967744
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682871967745
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682871967746
+    m_Localized: T
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682871967747
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682871967748
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682876162048
+    m_Localized: R
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682876162049
+    m_Localized: Zwerg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682876162050
+    m_Localized: E
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682876162051
+    m_Localized: "Kann viel einstecken, teilt daf\xFCr nur begrenzt aus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682876162052
+    m_Localized: Schildmaid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682876162053
+    m_Localized: W
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682876162054
+    m_Localized: Einache Nahkampf Einheit. Manche nennen ihn Kanonenfutter um sich
+      lustig zu machen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682884550656
+    m_Localized: Einfacher Bauer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682884550657
+    m_Localized: Q
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682884550658
+    m_Localized: B
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682888744960
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682888744961
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682888744962
+    m_Localized: V
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682888744963
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682888744964
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682892939264
+    m_Localized: C
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682892939265
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682892939266
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682892939267
+    m_Localized: X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682892939268
+    m_Localized: Y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682897133568
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682897133569
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682897133570
+    m_Localized: G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682897133571
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682897133572
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682897133573
+    m_Localized: F
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682897133574
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682905522176
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682905522177
+    m_Localized: D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682905522178
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682905522179
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682905522180
+    m_Localized: S
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682905522181
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682905522182
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682909716480
+    m_Localized: A
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682909716481
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682909716482
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682909716483
+    m_Localized: T
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682913910784
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682913910785
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682913910786
+    m_Localized: R
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682913910787
+    m_Localized: Experten Einheiten, gegen diese Truppen ist keine Verteidigung gewachsen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682913910788
+    m_Localized: E
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682918105088
+    m_Localized: Fortgeschrittene Einheiten, welche den Feind erzittern lassen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682918105089
+    m_Localized: W
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682918105090
+    m_Localized: Basis Einheiten, mit denen du den Gegner angreifen und dein Einkommen
+      pro Runde erweitern kannst
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682918105091
+    m_Localized: Q
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682918105092
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682918105093
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682918105094
+    m_Localized: B
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682926493696
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682926493697
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682926493698
+    m_Localized: V
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682926493699
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682926493700
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682926493701
+    m_Localized: C
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682930688000
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682930688001
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682930688002
+    m_Localized: X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682930688003
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682934882304
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682934882305
+    m_Localized: Y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682934882306
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682934882307
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682934882308
+    m_Localized: G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682939076608
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682939076609
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682939076610
+    m_Localized: F
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682939076611
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682939076612
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682939076613
+    m_Localized: D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682947465216
+    m_Localized: Fast eine Stadt.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682947465217
+    m_Localized: Wohnsiedlung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682947465218
+    m_Localized: S
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682947465219
+    m_Localized: "Kippt eine schmerzhafte Suppe auf nahe Feinde und f\xFCgt ihnen
+      Schaden \xFCber Zeit zu."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682951659520
+    m_Localized: Hexenkessel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682951659521
+    m_Localized: A
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682951659522
+    m_Localized: "Verf\xFCgt \xFCber extreme Reichweite, l\xE4d allerdings nur langsam
+      nach."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682951659523
+    m_Localized: Katapult
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682955853824
+    m_Localized: T
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682955853825
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682955853826
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682960048128
+    m_Localized: R
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682964242432
+    m_Localized: "Verf\xFCgt \xFCber extreme Reichweite, l\xE4d allerdings nur langsam
+      nach."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682968436736
+    m_Localized: Katapult
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682968436737
+    m_Localized: E
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682968436738
+    m_Localized: Eine extrem robuste Mauer.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682968436739
+    m_Localized: Starke Mauer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682968436740
+    m_Localized: W
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682968436741
+    m_Localized: "Kippt eine schmerzhafte Suppe auf nahe Feinde und f\xFCgt ihnen
+      Schaden \xFCber Zeit zu."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682972631040
+    m_Localized: Hexenkessel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682972631041
+    m_Localized: Q
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682972631042
+    m_Localized: B
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682972631043
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682976825344
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682976825345
+    m_Localized: V
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682976825346
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682976825347
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682976825348
+    m_Localized: C
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682976825349
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682985213952
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682985213953
+    m_Localized: X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682985213954
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682985213955
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682989408256
+    m_Localized: Y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682989408257
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682989408258
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682989408259
+    m_Localized: G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682989408260
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682989408261
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682993602560
+    m_Localized: F
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682993602561
+    m_Localized: Unendlich
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682993602562
+    m_Localized: ACHTUNG, Stacheln piksen sehr doll.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682993602563
+    m_Localized: Stachelfalle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682993602564
+    m_Localized: D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682997796864
+    m_Localized: Ein rieseiges Anwesen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682997796865
+    m_Localized: Villa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682997796866
+    m_Localized: S
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9682997796867
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683001991168
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683001991169
+    m_Localized: A
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683001991170
+    m_Localized: "Dieser Magier schleudert einen Feuerball und verursacht dabei Fl\xE4chenschaden."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683001991171
+    m_Localized: Tower des Magiers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683001991172
+    m_Localized: T
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683001991173
+    m_Localized: "Dieser Magier schleudert einen Feuerball und verursacht dabei Fl\xE4chenschaden."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683010379776
+    m_Localized: Tower des Magiers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683010379777
+    m_Localized: R
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683010379778
+    m_Localized: Unendlich
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683010379779
+    m_Localized: ACHTUNG, Stacheln piksen sehr doll.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683010379780
+    m_Localized: Stachelfalle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683010379781
+    m_Localized: E
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683014574080
+    m_Localized: Blockiert feindliche Einheiten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683014574081
+    m_Localized: Stein Mauer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683018768384
+    m_Localized: W
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683018768385
+    m_Localized: Massiver Turm mit mittlerem Schaden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683018768386
+    m_Localized: Stein Hochsitz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683018768387
+    m_Localized: Q
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683022962688
+    m_Localized: B
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683022962689
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683022962690
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683022962691
+    m_Localized: V
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683022962692
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683022962693
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683031351296
+    m_Localized: C
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683031351297
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683031351298
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683031351299
+    m_Localized: X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683035545600
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683035545601
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683035545602
+    m_Localized: Y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683039739904
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683039739905
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683039739906
+    m_Localized: G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683039739907
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683043934208
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683043934209
+    m_Localized: F
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683043934210
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683043934211
+    m_Localized: Spikes (Aua)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683048128512
+    m_Localized: D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683048128513
+    m_Localized: Ein sehr wohnlich eingerichtetes Haus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683048128514
+    m_Localized: Einfaches Haus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683048128515
+    m_Localized: S
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683052322816
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683052322817
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683052322818
+    m_Localized: A
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683052322819
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683052322820
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683052322821
+    m_Localized: T
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683056517120
+    m_Localized: Feuert mit hoher Reichweite und viel Kraft auf Gegner, hat aber
+      eine lange Nachladezeit.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683056517121
+    m_Localized: Balista
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683060711424
+    m_Localized: R
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683060711425
+    m_Localized: Gold Mine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683060711426
+    m_Localized: E
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683064905728
+    m_Localized: Blockiert feindliche Einheiten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683064905729
+    m_Localized: Einfache Barrikade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683064905730
+    m_Localized: W
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683064905731
+    m_Localized: "Einfacher Bogensch\xFCtzenturm mit geringem Schaden"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683064905732
+    m_Localized: Hochsitz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683064905733
+    m_Localized: Q
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683069100032
+    m_Localized: B
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683069100033
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683069100034
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683069100035
+    m_Localized: V
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683073294336
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683073294337
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683073294338
+    m_Localized: C
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683073294339
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683077488640
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683077488641
+    m_Localized: X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683085877248
+    m_Localized: Mit einer neuen Tier Stufe schaltest du neue Tower frei.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683085877249
+    m_Localized: Y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683085877250
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683085877251
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683090071552
+    m_Localized: G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683090071553
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683090071554
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683094265856
+    m_Localized: F
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683094265857
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683094265858
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683094265859
+    m_Localized: D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683094265860
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683094265861
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683098460160
+    m_Localized: S
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683098460161
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683098460162
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683098460163
+    m_Localized: A
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683102654464
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683102654465
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683102654466
+    m_Localized: T
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683102654467
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683106848768
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683106848769
+    m_Localized: R
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683106848770
+    m_Localized: Experten Tower, mit dieser Verteidigung hat der Angreifer keine
+      Chance mehr
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683106848771
+    m_Localized: E
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683111043072
+    m_Localized: Fortgeschnittene Tower, welche den Feind erzittern lassen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683111043073
+    m_Localized: W
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683115237376
+    m_Localized: Basis Tower und Mienen, mit denen du einfache Truppen abwehren und
+      dein Einkommen pro Runde erweitern kannst
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683115237377
+    m_Localized: Q
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683115237378
+    m_Localized: Der Angreifer hat Gewonnen!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683115237379
+    m_Localized: Der Angreifer hat Gewonnen!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683119431680
+    m_Localized: Der Angreifer hat Gewonnen!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683119431681
+    m_Localized: /
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683119431682
+    m_Localized: Turm einstampfen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683119431683
+    m_Localized: Alle vom Typ Reparieren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683123625984
+    m_Localized: "Repariert den Turm \nvollst\xE4ndig, kostet:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683123625985
+    m_Localized: Turm reparieren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683123625986
+    m_Localized: Tower Stats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683123625987
+    m_Localized: Burgmauer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683127820288
+    m_Localized: /
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683127820289
+    m_Localized: Runde Beenden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683136208896
+    m_Localized: Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683136208897
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683140403200
+    m_Localized: 'beschreibung
+
+      beschreibung
+
+      beschreibung
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683140403201
+    m_Localized: 'beschreibung
+
+      beschreibung
+
+      beschreibung
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683140403202
+    m_Localized: Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683148791808
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683148791809
+    m_Localized: 'beschreibung
+
+      beschreibung
+
+      beschreibung
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683148791810
+    m_Localized: Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683152986112
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683152986113
+    m_Localized: Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683152986114
+    m_Localized: 'beschreibung
+
+      beschreibung
+
+      beschreibung
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683152986115
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683157180416
+    m_Localized: Ok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683157180417
+    m_Localized: Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683161374720
+    m_Localized: Do you want to quit?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683161374721
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683161374722
+    m_Localized: TEXT TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683165569024
+    m_Localized: TEXT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683165569025
+    m_Localized: FULL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683165569026
+    m_Localized: Shop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683165569027
+    m_Localized: Items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683173957632
+    m_Localized: Ranking
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683173957633
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683173957634
+    m_Localized: Messages
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683178151936
+    m_Localized: Mission
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683178151937
+    m_Localized: User name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683178151938
+    m_Localized: N
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683178151939
+    m_Localized: Gold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683178151940
+    m_Localized: BEST
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683182346240
+    m_Localized: Gem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683182346241
+    m_Localized: HOT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683182346242
+    m_Localized: Soul Gem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683186540544
+    m_Localized: OK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683186540545
+    m_Localized: 'Item Description
+
+      Item Description
+
+      Item Description'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683186540546
+    m_Localized: Item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683190734848
+    m_Localized: Angreifer gewinnt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683194929152
+    m_Localized: Verteidiger gewinnt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683194929153
+    m_Localized: "Vernichtet den Turm, es werden \nkeine Kosten erstattet"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683194929154
+    m_Localized: "Repariert alle t\xFCrme deiner Defensive mit diesem Typen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683194929155
+    m_Localized: "Der Angreifer ist \nam Zug"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683199123456
+    m_Localized: "Der Verteidiger ist \nam Zug"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683199123457
+    m_Localized: Upgrade Kaufen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683211706368
+    m_Localized: "Vernichtet den Turm, es werden \nkeine Kosten erstattet"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683211706369
+    m_Localized: "Repariert deine gesamte Defensive \nvollst\xE4ndig, kostet:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683215900672
+    m_Localized: Alle Reparieren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683215900673
+    m_Localized: "Der Angreifer ist \nam Zug"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683215900674
+    m_Localized: "Der Verteidiger ist \nam Zug"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683220094976
+    m_Localized: Upgrade Kaufen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683220094977
+    m_Localized: "Ein Leben f\xFCr Dich Diggah"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683220094978
+    m_Localized: /
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683224289280
+    m_Localized: 'Schnapp dir ein Upgrade!
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683224289281
+    m_Localized: Der Angreifer hat Gewonnen!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683228483584
+    m_Localized: Der Angreifer hat Gewonnen!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683228483585
+    m_Localized: Der Angreifer hat Gewonnen!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683228483586
+    m_Localized: Runde Beenden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683228483587
+    m_Localized: Angreifer gewinnt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683228483588
+    m_Localized: Custom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683228483589
+    m_Localized: Mittel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683232677888
+    m_Localized: Verteidiger gewinnt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683232677889
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683232677890
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683236872192
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683236872193
+    m_Localized: Ein Spiel von
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683236872194
+    m_Localized: 'Malte Lehmann
+
+      Johanna Josupeit
+
+      Tom Engmann
+
+      Philipp
+      Siemoneit
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683236872195
+    m_Localized: Kurz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683241066496
+    m_Localized: Lang
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683241066497
+    m_Localized: Vorsicht, dein aktuelles Spiel wird nicht gespeichert
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683241066498
+    m_Localized: Verlassen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683241066499
+    m_Localized: Burgmauer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683241066500
+    m_Localized: Voreinstellungen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683241066501
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683249455104
+    m_Localized: Gewinnen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683249455105
+    m_Localized: "\nBenutze die angezeigten Tastenk\xFCrzel auf deiner Tastatur um
+      schneller Truppen oder Tower auszuw\xE4hlen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683249455106
+    m_Localized: "Kaufe Upgrades um deine Angriffe zu verst\xE4rken."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683253649408
+    m_Localized: "\nWenn du beim plazieren die \"SHIFT\" Taste gedr\xFCckt h\xE4lst,
+      kannst du mehrere Dinge hintereinander plazieren."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683253649409
+    m_Localized: "Baue Tower f\xFCr Gold um deine Burg zu verteidigen. Jeder Tower
+      hat einzigartige Attribute und Effekte.\n\nWenn du deine Burgmauer bis zur
+      letzen Runde verteidigt hast, gewinnst du."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683253649410
+    m_Localized: Grafik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683253649411
+    m_Localized: Dein aktuelles Versorgungslimit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683257843712
+    m_Localized: 'SO WIRD GESPIELT
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683257843713
+    m_Localized: Nicht erneut anzeigen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683257843714
+    m_Localized: 'SO WIRD GESPIELT
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683257843715
+    m_Localized: Dein aktuelles Gold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683262038016
+    m_Localized: 'SO WIRD GESPIELT
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683262038017
+    m_Localized: Ultra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683262038018
+    m_Localized: Option A
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683262038019
+    m_Localized: Dein aktuelles Gold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683266232320
+    m_Localized: Dein aktuelles Versorgungslimit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683266232321
+    m_Localized: "Er\xF6he deine Tier Stufe um neue, noch m\xE4chtigere Tower, freizuschalten."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683270426624
+    m_Localized: "Repariere besch\xE4digte Tower, oder rei\xDFe Tower ab die im Weg
+      stehen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683270426625
+    m_Localized: "Zeigt dir die \naktulle sowie die maximale Rundenzahl."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683270426626
+    m_Localized: 'Tooltipp:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683270426627
+    m_Localized: Allgemein
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683274620928
+    m_Localized: "\nWenn du beim plazieren die \"SHIFT\" Taste gedr\xFCckt h\xE4lst,
+      kannst du mehrere Dinge hintereinander plazieren."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683274620929
+    m_Localized: Turm reparieren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683274620930
+    m_Localized: "Dein aktuelles Einkommen, welches du am Anfang jeder Runde erh\xE4lst\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683278815232
+    m_Localized: "Upgrades k\xF6nnen dir Spielentscheidende Vorteile bringen, aber
+      auch viel Gold kosten. Nutze sie weise."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683278815233
+    m_Localized: "Minen erh\xF6hen jede Runde, in der sie leben, dauerhaft dein Einkommen
+      f\xFCr die folgenden Runden."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683278815234
+    m_Localized: "\nBenutze die angezeigten Tastenk\xFCrzel auf deiner Tastatur um
+      schneller Truppen oder Tower auszuw\xE4hlen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683283009536
+    m_Localized: SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683283009537
+    m_Localized: Allgemein
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683283009538
+    m_Localized: "Zeigt dir die \naktulle sowie die maximale Rundenzahl."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683287203840
+    m_Localized: Dein aktuelles Gold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683287203841
+    m_Localized: "Upgrades k\xF6nnen dir Spielentscheidende Vorteile bringen, aber
+      auch viel Gold kosten. Nutze sie weise."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683287203842
+    m_Localized: "Zerst\xF6re die feindliche Burgmauer um das Spiel zu gewinnen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683287203843
+    m_Localized: Tower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683291398144
+    m_Localized: Minen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683291398145
+    m_Localized: Upgrades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683291398146
+    m_Localized: Gewinnen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683291398147
+    m_Localized: 'Tooltipp:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683291398148
+    m_Localized: Tower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683295592448
+    m_Localized: 'SO WIRD GESPIELT
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683295592449
+    m_Localized: "Kaufe Upgrades um deine Angriffe zu verst\xE4rken."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683295592450
+    m_Localized: Tier Upgrades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683295592451
+    m_Localized: Upgrades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683299786752
+    m_Localized: 'Tooltipp:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683299786753
+    m_Localized: Erweiterte Einstellungen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683299786754
+    m_Localized: "Er\xF6he deine Tier Stufe um neue, noch m\xE4chtigere Tower, freizuschalten."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683303981056
+    m_Localized: "Dein aktuelles Einkommen, welches du am Anfang jeder Runde erh\xE4lst\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683303981057
+    m_Localized: Dein aktuelles Versorgungslimit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683303981058
+    m_Localized: "Minen erh\xF6hen jede Runde, in der sie leben, dauerhaft dein Einkommen
+      f\xFCr die folgenden Runden."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683303981059
+    m_Localized: "Er\xF6he deine Tier Stufe um neue, noch m\xE4chtigere Tower, freizuschalten."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683308175360
+    m_Localized: "Erschaffe Truppen mit Gold um gegnerische Tower zu zerst\xF6ren.\n\nJede
+      plazierte Einheit erh\xF6ht dein Gold Einkommen f\xFCr die n\xE4chsten Runden."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683312369664
+    m_Localized: 'SO WIRD GESPIELT
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683312369665
+    m_Localized: Turm einstampfen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683312369666
+    m_Localized: "Repariere besch\xE4digte Tower, oder rei\xDFe Tower ab die im Weg
+      stehen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683312369667
+    m_Localized: "Baue Tower f\xFCr Gold um deine Burg zu verteidigen. Jeder Tower
+      hat einzigartige Attribute und Effekte.\n\nWenn du deine Burgmauer bis zur
+      letzen Runde verteidigt hast, gewinnst du."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683316563968
+    m_Localized: "Baue Tower f\xFCr Gold um deine Burg zu verteidigen. Jeder Tower
+      hat einzigartige Attribute und Effekte.\n\nWenn du deine Burgmauer bis zur
+      letzen Runde verteidigt hast, gewinnst du."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683316563969
+    m_Localized: Truppen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683316563970
+    m_Localized: 'SO WIRD GESPIELT
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683320758272
+    m_Localized: Upgrades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683320758273
+    m_Localized: "Mit diesen Reglern \nkannst du die Geschwindigkeit des Spiels steuern."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683320758274
+    m_Localized: "Erschaffe Truppen mit Gold um gegnerische Tower zu zerst\xF6ren.\n\nJede
+      plazierte Einheit erh\xF6ht dein Gold Einkommen f\xFCr die n\xE4chsten Runden."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683320758275
+    m_Localized: "Zerst\xF6re die feindliche Burgmauer um das Spiel zu gewinnen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683324952576
+    m_Localized: Tower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683324952577
+    m_Localized: 'Tooltipp:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683324952578
+    m_Localized: Tier Upgrades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683329146880
+    m_Localized: Gewinnen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683329146881
+    m_Localized: "Minen erh\xF6hen jede Runde, in der sie leben, dauerhaft dein Einkommen
+      f\xFCr die folgenden Runden."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683329146882
+    m_Localized: 'Tooltipp:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683329146883
+    m_Localized: "Repariert den Turm \nvollst\xE4ndig, kostet:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683329146884
+    m_Localized: Erweiterte Einstellungen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683333341184
+    m_Localized: Tower Stats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683333341185
+    m_Localized: "\nWenn du beim plazieren die \"SHIFT\" Taste gedr\xFCckt h\xE4lst,
+      kannst du mehrere Dinge hintereinander plazieren."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683333341186
+    m_Localized: "Upgrades k\xF6nnen dir Spielentscheidende Vorteile bringen, aber
+      auch viel Gold kosten. Nutze sie weise."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683333341187
+    m_Localized: 'SO WIRD GESPIELT
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683337535488
+    m_Localized: "Kaufe Upgrades um deine Angriffe zu verst\xE4rken."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683337535489
+    m_Localized: "\nBenutze die angezeigten Tastenk\xFCrzel auf deiner Tastatur um
+      schneller Truppen oder Tower auszuw\xE4hlen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683337535490
+    m_Localized: "Repariere besch\xE4digte Tower, oder rei\xDFe Tower ab die im Weg
+      stehen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683341729792
+    m_Localized: Abbrechen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683341729793
+    m_Localized: Ok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683341729794
+    m_Localized: /
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683345924096
+    m_Localized: 'SO WIRD GESPIELT
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683350118400
+    m_Localized: Minen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683350118401
+    m_Localized: Minen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683350118402
+    m_Localized: Tier Upgrades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683350118403
+    m_Localized: Truppen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683350118404
+    m_Localized: 'SO WIRD GESPIELT
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683354312704
+    m_Localized: "Mit diesen Reglern \nkannst du die Geschwindigkeit des Spiels steuern."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683354312705
+    m_Localized: "Zerst\xF6re die feindliche Burgmauer um das Spiel zu gewinnen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683354312706
+    m_Localized: "Dein aktuelles Einkommen, welches du am Anfang jeder Runde erh\xE4lst\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683358507008
+    m_Localized: 'Tooltipp:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683358507009
+    m_Localized: "Erschaffe Truppen mit Gold um gegnerische Tower zu zerst\xF6ren.\n\nJede
+      plazierte Einheit erh\xF6ht dein Gold Einkommen f\xFCr die n\xE4chsten Runden."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683358507010
+    m_Localized: "Zeigt dir die \naktulle sowie die maximale Rundenzahl."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683358507011
+    m_Localized: "Mit diesen Reglern \nkannst du die Geschwindigkeit des Spiels steuern."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683358507012
+    m_Localized: 'Musik
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683366895616
+    m_Localized: Truppen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683366895617
+    m_Localized: W
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683366895618
+    m_Localized: F
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683366895619
+    m_Localized: Startgold des Angreifers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683371089920
+    m_Localized: C
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683371089921
+    m_Localized: Q
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683371089922
+    m_Localized: E
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683375284224
+    m_Localized: R
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683375284225
+    m_Localized: R
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683375284226
+    m_Localized: G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683379478528
+    m_Localized: X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683379478529
+    m_Localized: Startgold, welches jeder Spieler am Anfang des Spiels bekommt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683379478530
+    m_Localized: F
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683379478531
+    m_Localized: T
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683383672832
+    m_Localized: B
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683383672833
+    m_Localized: G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683383672834
+    m_Localized: C
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683387867136
+    m_Localized: X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683387867137
+    m_Localized: T
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683392061440
+    m_Localized: E
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683392061441
+    m_Localized: A
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683392061442
+    m_Localized: Y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683392061443
+    m_Localized: F
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683392061444
+    m_Localized: W
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683396255744
+    m_Localized: G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683396255745
+    m_Localized: W
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683396255746
+    m_Localized: T
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683396255747
+    m_Localized: C
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683400450048
+    m_Localized: G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683400450049
+    m_Localized: W
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683400450050
+    m_Localized: G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683400450051
+    m_Localized: V
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683400450052
+    m_Localized: E
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683408838656
+    m_Localized: S
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683408838657
+    m_Localized: D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683413032960
+    m_Localized: V
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683413032961
+    m_Localized: R
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683413032962
+    m_Localized: V
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683413032963
+    m_Localized: D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683417227264
+    m_Localized: Maximales Versorgungslimit, begrenzt die Anzahl von Towern und Einheiten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683417227265
+    m_Localized: A
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683417227266
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683421421568
+    m_Localized: Y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683421421569
+    m_Localized: B
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683421421570
+    m_Localized: Startgold des Verteidigers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683425615872
+    m_Localized: G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683425615873
+    m_Localized: X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683425615874
+    m_Localized: W
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683429810176
+    m_Localized: Fortsetzen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683429810177
+    m_Localized: der Towerkosten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683434004480
+    m_Localized: C
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683434004481
+    m_Localized: F
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683434004482
+    m_Localized: T
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683434004483
+    m_Localized: S
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683434004484
+    m_Localized: F
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683438198784
+    m_Localized: S
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683438198785
+    m_Localized: Q
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683438198786
+    m_Localized: C
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683442393088
+    m_Localized: D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683442393089
+    m_Localized: V
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683442393090
+    m_Localized: B
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683442393091
+    m_Localized: T
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683442393092
+    m_Localized: D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683450781696
+    m_Localized: S
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683450781697
+    m_Localized: C
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683450781698
+    m_Localized: V
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683450781699
+    m_Localized: T
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683454976000
+    m_Localized: Y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683454976001
+    m_Localized: Q
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683454976002
+    m_Localized: W
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683459170304
+    m_Localized: D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683459170305
+    m_Localized: R
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683459170306
+    m_Localized: B
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683463364608
+    m_Localized: B
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683463364609
+    m_Localized: C
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683463364610
+    m_Localized: Q
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683463364611
+    m_Localized: B
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683463364612
+    m_Localized: E
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683471753216
+    m_Localized: Y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683471753217
+    m_Localized: 'Allgemein
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683471753218
+    m_Localized: Angreifer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683471753219
+    m_Localized: Verteidiger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683475947520
+    m_Localized: S
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683475947521
+    m_Localized: X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683475947522
+    m_Localized: A
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683480141824
+    m_Localized: T
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683480141825
+    m_Localized: B
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683484336128
+    m_Localized: D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683484336129
+    m_Localized: R
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683484336130
+    m_Localized: "Startwert f\xFCr Einkommen, welches jeder Spieler am Anfang des
+      Spiels bekommt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683484336131
+    m_Localized: X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683488530432
+    m_Localized: Q
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683488530433
+    m_Localized: S
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683488530434
+    m_Localized: Y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683488530435
+    m_Localized: Verlassen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683492724736
+    m_Localized: A
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683492724737
+    m_Localized: F
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683492724738
+    m_Localized: R
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683496919040
+    m_Localized: Q
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683496919041
+    m_Localized: "\xDCber das Spiel"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683496919042
+    m_Localized: Y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683501113344
+    m_Localized: Q
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683501113345
+    m_Localized: W
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683501113346
+    m_Localized: Optionen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683501113347
+    m_Localized: S
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683501113348
+    m_Localized: Q
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683509501952
+    m_Localized: V
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683509501953
+    m_Localized: S
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683509501954
+    m_Localized: Rundenanzahl, bestimmt wie viele Runden gespielt werden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683513696256
+    m_Localized: 'Die Reparatur von einem
+
+      Tower kostet'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683513696257
+    m_Localized: Wie wird gespielt?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683513696258
+    m_Localized: X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683513696259
+    m_Localized: R
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683513696260
+    m_Localized: V
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683522084864
+    m_Localized: A
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683522084865
+    m_Localized: E
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683522084866
+    m_Localized: V
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683526279168
+    m_Localized: C
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683526279169
+    m_Localized: Y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683526279170
+    m_Localized: Y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683530473472
+    m_Localized: R
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683530473473
+    m_Localized: F
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683530473474
+    m_Localized: B
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683530473475
+    m_Localized: E
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683530473476
+    m_Localized: D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683538862080
+    m_Localized: A
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683538862081
+    m_Localized: D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683538862082
+    m_Localized: W
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683543056384
+    m_Localized: X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683543056385
+    m_Localized: Optionen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683543056386
+    m_Localized: E
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683547250688
+    m_Localized: A
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683547250689
+    m_Localized: A
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683547250690
+    m_Localized: X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683547250691
+    m_Localized: G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683547250692
+    m_Localized: T
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683555639296
+    m_Localized: E
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683555639297
+    m_Localized: G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683555639298
+    m_Localized: F
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683555639299
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683555639300
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683559833600
+    m_Localized: Eine extrem robuste Mauer.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683559833601
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683559833602
+    m_Localized: "Dieser Magier schleudert einen Feuerball und verursacht dabei Fl\xE4chenschaden."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683564027904
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683564027905
+    m_Localized: Ork
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683564027906
+    m_Localized: Ein sehr wohnlich eingerichtetes Haus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683568222208
+    m_Localized: Einfache Barrikade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683572416512
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683572416513
+    m_Localized: "Kann viel einstecken, teilt daf\xFCr nur begrenzt aus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683572416514
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683576610816
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683576610817
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683576610818
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683580805120
+    m_Localized: Wohnsiedlung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683580805121
+    m_Localized: Stachelfalle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683580805122
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683584999424
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683584999425
+    m_Localized: Stein Hochsitz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683584999426
+    m_Localized: '-'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683589193728
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683589193729
+    m_Localized: Verteidiger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683589193730
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683589193731
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683593388032
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683593388033
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683597582336
+    m_Localized: Katapult
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683597582337
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683597582338
+    m_Localized: Schau ihm besser nicht in die Augen. Fokussiert Tower.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683601776640
+    m_Localized: Unendlich
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683601776641
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683605970944
+    m_Localized: Dieb
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683605970945
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683610165248
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683610165249
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683610165250
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683610165251
+    m_Localized: Verteidiger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683614359552
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683614359553
+    m_Localized: Hochsitz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683618553856
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683618553857
+    m_Localized: Blockiert feindliche Einheiten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683618553858
+    m_Localized: Fast eine Stadt.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683622748160
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683622748161
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683622748162
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683626942464
+    m_Localized: Stachelfalle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683626942465
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683631136768
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683631136769
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683631136770
+    m_Localized: Einache Nahkampf Einheit. Manche nennen ihn Kanonenfutter um sich
+      lustig zu machen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683631136771
+    m_Localized: Verbannter Hexer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683639525376
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683639525377
+    m_Localized: Unendlich
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683639525378
+    m_Localized: ACHTUNG, Stacheln piksen sehr doll.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683639525379
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683643719680
+    m_Localized: Tower des Magiers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683643719681
+    m_Localized: Angreifer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683643719682
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683647913984
+    m_Localized: Einfacher Krieger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683647913985
+    m_Localized: Verteidiger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683647913986
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683652108288
+    m_Localized: "Dieser Magier schleudert einen Feuerball und verursacht dabei Fl\xE4chenschaden."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683656302592
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683656302593
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683660496896
+    m_Localized: "Kippt eine schmerzhafte Suppe auf nahe Feinde und f\xFCgt ihnen
+      Schaden \xFCber Zeit zu."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683660496897
+    m_Localized: Ein rieseiges Anwesen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683660496898
+    m_Localized: 'Allgemein
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683664691200
+    m_Localized: Dieser Zauberer beherrscht die Kunst der dunklen Magie.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683664691201
+    m_Localized: Eine Riesiges Biest, welches Tower fokussiert.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683668885504
+    m_Localized: Angreifer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683668885505
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683668885506
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683668885507
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683673079808
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683673079809
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683677274112
+    m_Localized: "Kippt eine schmerzhafte Suppe auf nahe Feinde und f\xFCgt ihnen
+      Schaden \xFCber Zeit zu."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683677274113
+    m_Localized: 'Allgemein
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683677274114
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683681468416
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683681468417
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683685662720
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683685662721
+    m_Localized: 'Allgemein
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683689857024
+    m_Localized: Einfaches Haus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683689857025
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683689857026
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683694051328
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683694051329
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683694051330
+    m_Localized: "Trolle lieben frischen Fisch und K\xE4se. Fokussiert Tower."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683698245632
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683698245633
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683702439936
+    m_Localized: Gold Mine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683702439937
+    m_Localized: Angreifer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683702439938
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683706634240
+    m_Localized: Ritter der Tafel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683706634241
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683710828544
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683710828545
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683710828546
+    m_Localized: Angreifer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683715022848
+    m_Localized: Experten Tower, mit dieser Verteidigung hat der Angreifer keine
+      Chance mehr
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683719217152
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683719217153
+    m_Localized: Balista
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683723411456
+    m_Localized: 'Allgemein
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683723411457
+    m_Localized: Mit seinem schnellem Bogen ist er durchaus eine Gefahr
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683723411458
+    m_Localized: "Verf\xFCgt \xFCber extreme Reichweite, l\xE4d allerdings nur langsam
+      nach."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683723411459
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683727605760
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683727605761
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683731800064
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683731800065
+    m_Localized: Verteidiger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683735994368
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683740188672
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683740188673
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683744382976
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683748577280
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683748577281
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683752771584
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683752771585
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683752771586
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683756965888
+    m_Localized: 'Allgemein
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683756965889
+    m_Localized: "Verf\xFCgt \xFCber extreme Reichweite, l\xE4d allerdings nur langsam
+      nach."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683756965890
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683761160192
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683761160193
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683765354496
+    m_Localized: 'Allgemein
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683765354497
+    m_Localized: Starke Mauer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683769548800
+    m_Localized: Villa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683773743104
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683773743105
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683777937408
+    m_Localized: Einfacher Bauer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683777937409
+    m_Localized: Experten Einheiten, gegen diese Truppen ist keine Verteidigung gewachsen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683777937410
+    m_Localized: Verteidiger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683777937411
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683782131712
+    m_Localized: Verteidiger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683782131713
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683786326016
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683786326017
+    m_Localized: Angreifer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683790520320
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683790520321
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683790520322
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683798908928
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683798908929
+    m_Localized: Tower des Magiers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683803103232
+    m_Localized: Angreifer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683803103233
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683803103234
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683807297536
+    m_Localized: Basis Tower und Mienen, mit denen du einfache Truppen abwehren und
+      dein Einkommen pro Runde erweitern kannst
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683807297537
+    m_Localized: Verteidiger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683811491840
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683811491841
+    m_Localized: Verteidiger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683811491842
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683819880448
+    m_Localized: Angreifer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683819880449
+    m_Localized: Massiver Turm mit mittlerem Schaden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683824074752
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683824074753
+    m_Localized: Raufbold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683828269056
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683828269057
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683828269058
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683832463360
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683832463361
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683836657664
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683836657665
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683840851968
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683840851969
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683840851970
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683845046272
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683845046273
+    m_Localized: Katapult
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683849240576
+    m_Localized: Fortgeschrittene Einheiten, welche den Feind erzittern lassen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683849240577
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683853434880
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683857629184
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683857629185
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683861823488
+    m_Localized: Mit einer neuen Tier Stufe schaltest du neue Tower frei.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683861823489
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683866017792
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683866017793
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683870212096
+    m_Localized: Befreie die Bestie.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683870212097
+    m_Localized: Spikes (Aua)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683874406400
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683878600704
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683878600705
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683878600706
+    m_Localized: Angreifer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683882795008
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683882795009
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683882795010
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683886989312
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683886989313
+    m_Localized: Eine Fehrnkampfeinheit der Spitzenklasse.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683891183616
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683891183617
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683895377920
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683899572224
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683899572225
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683903766528
+    m_Localized: Schildmaid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683903766529
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683907960832
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683907960833
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683912155136
+    m_Localized: Princess
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683912155137
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683916349440
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683916349441
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683920543744
+    m_Localized: Zwerg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683920543745
+    m_Localized: Feuert mit hoher Reichweite und viel Kraft auf Gegner, hat aber
+      eine lange Nachladezeit.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683924738048
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683924738049
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683928932352
+    m_Localized: 'Allgemein
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683928932353
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683933126656
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683933126657
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683933126658
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683937320960
+    m_Localized: Er wollte eigentlich nie der Armee beitreten.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683937320961
+    m_Localized: Verteidiger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683941515264
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683941515265
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683945709568
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683945709569
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683949903872
+    m_Localized: Basis Einheiten, mit denen du den Gegner angreifen und dein Einkommen
+      pro Runde erweitern kannst
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683949903873
+    m_Localized: "Einfacher Bogensch\xFCtzenturm mit geringem Schaden"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683949903874
+    m_Localized: Hexenkessel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683954098176
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683954098177
+    m_Localized: Stein Mauer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683958292480
+    m_Localized: ACHTUNG, Stacheln piksen sehr doll.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683958292481
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683962486784
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683962486785
+    m_Localized: Musketier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683966681088
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683966681089
+    m_Localized: Wald Troll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683970875392
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683970875393
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683970875394
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683975069696
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683975069697
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683979264000
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683979264001
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683983458304
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683983458305
+    m_Localized: 'Allgemein
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683987652608
+    m_Localized: Fortgeschnittene Tower, welche den Feind erzittern lassen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683987652609
+    m_Localized: Header Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683987652610
+    m_Localized: "Info Text \xFCber den Turm oder die Einheit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683991846912
+    m_Localized: Angreifer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683991846913
+    m_Localized: Hexenkessel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683991846914
+    m_Localized: 'Allgemein
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683996041216
+    m_Localized: "Eiener der auserkohrenen des K\xF6nigs."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9683996041217
+    m_Localized: Blockiert feindliche Einheiten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684000235520
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684000235521
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684000235522
+    m_Localized: Mehr Zelte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684004429824
+    m_Localized: 'beschreibung
+
+      beschreibung
+
+      beschreibung
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684008624128
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684008624129
+    m_Localized: Lager ausbauen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684012818432
+    m_Localized: 'beschreibung
+
+      beschreibung
+
+      beschreibung
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684012818433
+    m_Localized: Bauernaufstand
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684012818434
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684021207040
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684021207041
+    m_Localized: Finderlohn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684021207042
+    m_Localized: 'beschreibung
+
+      beschreibung
+
+      beschreibung
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684029595648
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684029595649
+    m_Localized: 'beschreibung
+
+      beschreibung
+
+      beschreibung
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684029595650
+    m_Localized: Minenarbeiten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684033789952
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684033789953
+    m_Localized: 'beschreibung
+
+      beschreibung
+
+      beschreibung
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684037984256
+    m_Localized: Gold anlegen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684037984257
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684042178560
+    m_Localized: Schweigegold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684042178561
+    m_Localized: 'beschreibung
+
+      beschreibung
+
+      beschreibung
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684046372864
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684050567168
+    m_Localized: Bauernrevolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684054761472
+    m_Localized: Gold Tresor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684054761473
+    m_Localized: 'beschreibung
+
+      beschreibung
+
+      beschreibung
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684054761474
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684058955776
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684063150080
+    m_Localized: Bestechungsgold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684063150081
+    m_Localized: 'beschreibung
+
+      beschreibung
+
+      beschreibung
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684067344384
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684067344385
+    m_Localized: 'beschreibung
+
+      beschreibung
+
+      beschreibung
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684067344386
+    m_Localized: Goldnase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684071538688
+    m_Localized: 'beschreibung
+
+      beschreibung
+
+      beschreibung
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684071538689
+    m_Localized: Investitionen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684075732992
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684079927296
+    m_Localized: Mobilisierung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684079927297
+    m_Localized: 'beschreibung
+
+      beschreibung
+
+      beschreibung
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684084121600
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684084121601
+    m_Localized: 'beschreibung
+
+      beschreibung
+
+      beschreibung
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684088315904
+    m_Localized: Hilfe anfordern
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684092510208
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684092510209
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684096704512
+    m_Localized: Bauernkrieg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684096704513
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684100898816
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684105093120
+    m_Localized: 'beschreibung
+
+      beschreibung
+
+      beschreibung
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684105093121
+    m_Localized: Schutzgold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684109287424
+    m_Localized: Schatztruhe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684109287425
+    m_Localized: 'beschreibung
+
+      beschreibung
+
+      beschreibung
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684113481728
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684117676032
+    m_Localized: 'beschreibung
+
+      beschreibung
+
+      beschreibung
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684117676033
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684117676034
+    m_Localized: Gold Bank
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684121870336
+    m_Localized: Goldader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684126064640
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684126064641
+    m_Localized: 'beschreibung
+
+      beschreibung
+
+      beschreibung
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684130258944
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684134453248
+    m_Localized: 'beschreibung
+
+      beschreibung
+
+      beschreibung
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684134453249
+    m_Localized: Alle an die Front!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684138647552
+    m_Localized: Truppen Aufmarsch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684138647553
+    m_Localized: 'beschreibung
+
+      beschreibung
+
+      beschreibung
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684142841856
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684142841857
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684147036160
+    m_Localized: Upgrade Rabatt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684151230464
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684155424768
+    m_Localized: Schlussverkauf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684159619072
+    m_Localized: Ausverkauf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684163813376
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684163813377
+    m_Localized: Alte Ziegel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684168007680
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684172201984
+    m_Localized: 'Sabotage
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684172201985
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684176396288
+    m_Localized: Erdbeben
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684176396289
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684176396290
+    m_Localized: Mine geschlossen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684180590592
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684184784896
+    m_Localized: Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684184784897
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684188979200
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684193173504
+    m_Localized: Turmverhexer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684197367808
+    m_Localized: Ein kleines Loch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684197367809
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684201562112
+    m_Localized: Mine eingebrochen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684205756416
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684209950720
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684214145024
+    m_Localized: Turmzauber
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684218339328
+    m_Localized: Bombe!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684218339329
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684222533632
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684226727936
+    m_Localized: Arbeitesstreik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684226727937
+    m_Localized: Turmageddon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684226727938
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684230922240
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684235116544
+    m_Localized: Abrisskomando
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684239310848
+    m_Localized: Nehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9684243505152
+    m_Localized: Princess
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

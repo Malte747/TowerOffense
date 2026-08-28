@@ -22,6 +22,8 @@ public class ProjectileTower : MonoBehaviour
 
     [SerializeField] private int soundNumber1,soundNumber2,impactSoundNumber1,impactSoundNumber2;
 
+    [SerializeField] private int goldGenOnKill;
+
     void Start()
     {
         lastPosition = transform.position;
@@ -73,8 +75,15 @@ public class ProjectileTower : MonoBehaviour
         {
             Health health = target.GetComponent<Health>();
             health.health -= TowerStats.damage;
+            Debug.LogWarning(health.health);
+            if (health.health <= 0)
+            {
+                GameManager gameManager = FindFirstObjectByType<GameManager>();
+                gameManager.defenderGoldIncome += goldGenOnKill;
+                Debug.LogWarning(gameManager.defenderGoldIncome);
+            }
         }
-        if(!TowerStats.aoe) DestroyProjectile();
+        if (!TowerStats.aoe) DestroyProjectile();
     }
 
     void DamageAoe()

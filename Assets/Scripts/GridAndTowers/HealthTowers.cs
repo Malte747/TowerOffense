@@ -67,7 +67,7 @@ public class HealthTowers : MonoBehaviour
             RemoveEntries(gameObject);
             NavMeshBaking baking = GameObject.Find("NavMesh").GetComponent<NavMeshBaking>();
             baking.StartCoroutine("BakeNavMesh");
-            gameManager.TurretSupplyPayment(-TowerStats.supplyCost);
+            gameManager.TurretSupplyPayment(TowerStats.supplyCost, true);
             if (deathObject != null)
             { 
                 GameObject spawnedDeathObject = Instantiate(deathObject, transform.position, Quaternion.identity);

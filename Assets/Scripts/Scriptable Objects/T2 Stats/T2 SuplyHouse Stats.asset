@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 80
   goldCost: 25
-  supplyCost: 0
+  supplyCost: -999999
   xSize: 2
   zSize: 2
   outlineSize: 2
