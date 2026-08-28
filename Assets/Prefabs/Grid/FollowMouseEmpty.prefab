@@ -2249,6 +2249,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2400650189773638482, guid: 649bede7ee9d7594dace71105033a13e, type: 3}
+      propertyPath: TowerStats
+      value: 
+      objectReference: {fileID: 11400000, guid: cc2684476317fab4d9563a3adcac9e9b, type: 2}
     - target: {fileID: 687991337034018111, guid: 649bede7ee9d7594dace71105033a13e, type: 3}
       propertyPath: m_Layer
       value: 2
@@ -2314,6 +2318,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1316378967969799111, guid: 649bede7ee9d7594dace71105033a13e, type: 3}
+      propertyPath: towerStats
+      value: 
+      objectReference: {fileID: 11400000, guid: cc2684476317fab4d9563a3adcac9e9b, type: 2}
+    - target: {fileID: 1316378967969799111, guid: 649bede7ee9d7594dace71105033a13e, type: 3}
       propertyPath: turningGameObject
       value: 
       objectReference: {fileID: 0}
@@ -2337,6 +2345,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2050483745034317072, guid: 649bede7ee9d7594dace71105033a13e, type: 3}
+      propertyPath: TowerStats
+      value: 
+      objectReference: {fileID: 11400000, guid: cc2684476317fab4d9563a3adcac9e9b, type: 2}
     - target: {fileID: 2427945328215922206, guid: 649bede7ee9d7594dace71105033a13e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2375,7 +2387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3647315434395575687, guid: 649bede7ee9d7594dace71105033a13e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3678257666485978969, guid: 649bede7ee9d7594dace71105033a13e, type: 3}
       propertyPath: m_Layer

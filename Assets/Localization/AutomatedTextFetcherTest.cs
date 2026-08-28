@@ -2,10 +2,9 @@
 using System.Linq;
 using TMPro;
 using UnityEditor;
-using UnityEditor.Localization;
+//using UnityEditor.Localization;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
 using UnityEngine.Localization.Tables;
 
@@ -14,7 +13,7 @@ using UnityEngine.Localization.Tables;
 public class AutomatedTextFetcherTest : MonoBehaviour
 {
 
-
+    /*
     public void FetchStrings()
     {
         TextMeshProUGUI[] components = Resources.FindObjectsOfTypeAll<TextMeshProUGUI>();
@@ -32,6 +31,7 @@ public class AutomatedTextFetcherTest : MonoBehaviour
         }
     }
 
+    
     public void SetupForLocalization(TextMeshProUGUI target)
     {
         var comp = Undo.AddComponent(target.gameObject, typeof(LocalizeStringEvent)) as LocalizeStringEvent;
@@ -49,4 +49,5 @@ public class AutomatedTextFetcherTest : MonoBehaviour
         EditorUtility.SetDirty(stringTable);
         EditorUtility.SetDirty(stringTable.SharedData);
     }
+    */
 }
