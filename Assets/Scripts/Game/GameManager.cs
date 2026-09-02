@@ -124,6 +124,8 @@ public class GameManager : MonoBehaviour
 
     public Animator PauseButtonAnimator;
 
+    [SerializeField] Transform rundeBeendenButton;
+
 
 
     void Start()
@@ -180,7 +182,14 @@ public class GameManager : MonoBehaviour
             cameraController.MoveCameraToAttackerPosition();
             audioManager.PlayUISound(13); 
             
+            ChangeRundeBeendenButton(true);
         }
+    }
+
+    public void ChangeRundeBeendenButton(bool attackeStarten)
+    {
+        rundeBeendenButton.GetChild(0).gameObject.SetActive(!attackeStarten);
+        rundeBeendenButton.GetChild(1).gameObject.SetActive(attackeStarten);
     }
 
     private void DefendersTurn()
